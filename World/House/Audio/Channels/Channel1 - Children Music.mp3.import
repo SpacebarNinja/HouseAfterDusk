@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsqfc5dynomg5"
+path="res://.godot/imported/Channel1 - Children Music.mp3-37bee52e400780e8914f19f01abdb6be.mp3str"
+
+[deps]
+
+source_file="res://World/House/Audio/Channels/Channel1 - Children Music.mp3"
+dest_files=["res://.godot/imported/Channel1 - Children Music.mp3-37bee52e400780e8914f19f01abdb6be.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

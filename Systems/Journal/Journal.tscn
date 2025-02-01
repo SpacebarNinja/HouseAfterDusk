@@ -1,0 +1,254 @@
+[gd_scene load_steps=24 format=3 uid="uid://ce2nviltx65es"]
+
+[ext_resource type="Script" path="res://Systems/Journal/Journal.gd" id="1_s50go"]
+[ext_resource type="Texture2D" uid="uid://b5oy7pjn7jdxu" path="res://Systems/Journal/Art/Journal_Spritesheet.png" id="2_wnnw8"]
+[ext_resource type="AudioStream" uid="uid://cqxqoqepp4o2p" path="res://Systems/Journal/Audio/journal_flip.mp3" id="5_cllvo"]
+[ext_resource type="AudioStream" uid="uid://nntpsebkboxi" path="res://Systems/Journal/Audio/journal_close.mp3" id="6_xgbdv"]
+[ext_resource type="Texture2D" uid="uid://btl4iyf2f3xwf" path="res://Systems/Journal/Art/ICON (ARROW).png" id="16_fshsi"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="22_abhf4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hn58"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16fgm"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erm0f"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg7a0"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsmev"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11062"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06g1s"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54r4m"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaj5x"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ib11"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skp4q"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbuha"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw0l8"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g15bm"]
+atlas = ExtResource("2_wnnw8")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl7xc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hn58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16fgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erm0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg7a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsmev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11062")
+}],
+"loop": false,
+"name": &"FlipPage",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06g1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54r4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaj5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ib11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skp4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbuha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw0l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g15bm")
+}],
+"loop": false,
+"name": &"OpenJournal",
+"speed": 15.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a6mo0"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("5_cllvo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v0j7v"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("6_xgbdv")
+
+[node name="Journal" type="Control" groups=["Journal"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s50go")
+closed_y_position = 450.0
+metadata/_edit_horizontal_guides_ = [432.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_tl7xc")
+animation = &"FlipPage"
+
+[node name="CategoryButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 39.0
+
+[node name="Humanoid" type="Button" parent="CategoryButtons"]
+layout_mode = 0
+offset_left = -427.0
+offset_top = -227.0
+offset_right = -122.0
+offset_bottom = -125.0
+rotation = -0.20944
+theme_override_colors/font_hover_color = Color(0.984314, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_abhf4")
+theme_override_font_sizes/font_size = 100
+text = "Humanoid"
+flat = true
+
+[node name="Monster" type="Button" parent="CategoryButtons"]
+layout_mode = 0
+offset_left = -270.0
+offset_top = -130.0
+offset_right = -24.0
+offset_bottom = -28.0
+rotation = 0.10472
+theme_override_colors/font_hover_color = Color(0.984314, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_abhf4")
+theme_override_font_sizes/font_size = 100
+text = "Monster"
+flat = true
+
+[node name="Object" type="Button" parent="CategoryButtons"]
+layout_mode = 0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -247.0
+offset_bottom = 103.0
+rotation = 0.10472
+theme_override_colors/font_hover_color = Color(0.984314, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_abhf4")
+theme_override_font_sizes/font_size = 100
+text = "Object"
+flat = true
+
+[node name="Unknown" type="Button" parent="CategoryButtons"]
+layout_mode = 0
+offset_left = -388.0
+offset_top = 195.0
+offset_right = -30.0
+offset_bottom = 336.0
+rotation = -0.314159
+theme_override_colors/font_hover_color = Color(0.984314, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_abhf4")
+theme_override_font_sizes/font_size = 100
+text = "Unknown"
+flat = true
+
+[node name="TurnLeft" type="Button" parent="."]
+layout_mode = 0
+offset_left = -340.0
+offset_top = 300.0
+offset_right = -76.0
+offset_bottom = 564.0
+scale = Vector2(-0.6, 0.6)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.510256, 0.443869, 1)
+icon = ExtResource("16_fshsi")
+flat = true
+
+[node name="TurnRight" type="Button" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 300.0
+offset_right = 624.0
+offset_bottom = 564.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.510256, 0.443869, 1)
+icon = ExtResource("16_fshsi")
+flat = true
+
+[node name="JournalOpenSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_a6mo0")
+volume_db = -10.0
+
+[node name="JournalCloseSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_v0j7v")
+volume_db = -10.0
+
+[connection signal="pressed" from="CategoryButtons/Humanoid" to="." method="humanoid_pressed"]
+[connection signal="pressed" from="CategoryButtons/Monster" to="." method="monster_pressed"]
+[connection signal="pressed" from="CategoryButtons/Object" to="." method="object_pressed"]
+[connection signal="pressed" from="CategoryButtons/Unknown" to="." method="unknown_pressed"]
+[connection signal="pressed" from="TurnLeft" to="." method="next_page"]
+[connection signal="pressed" from="TurnRight" to="." method="previous_page"]

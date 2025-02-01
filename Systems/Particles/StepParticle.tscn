@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://chpmd454k2mu3"]
+
+[ext_resource type="Texture2D" uid="uid://c385ytdx2hdm6" path="res://Entities/Gene/Art/Step Particle.png" id="1_lw5h0"]
+[ext_resource type="Script" path="res://Systems/Particles/step_particle.gd" id="2_ij0cd"]
+
+[sub_resource type="Curve" id="Curve_vgerq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494505), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_drj7j"]
+interpolation_mode = 2
+colors = PackedColorArray(0.622196, 0.622196, 0.622196, 1, 1, 1, 1, 0)
+
+[node name="StepParticle" type="CPUParticles2D"]
+position = Vector2(0, 28)
+scale = Vector2(2, 2)
+emitting = false
+amount = 1
+lifetime = 0.8
+one_shot = true
+speed_scale = 0.8
+texture = ExtResource("1_lw5h0")
+gravity = Vector2(0, -150)
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_vgerq")
+color_ramp = SubResource("Gradient_drj7j")
+script = ExtResource("2_ij0cd")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

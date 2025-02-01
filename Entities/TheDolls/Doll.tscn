@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://chact4baxwqfo"]
+
+[ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/TheDolls/Art/Doll_Idle.png" id="1_bluyw"]
+[ext_resource type="Script" path="res://Entities/TheDolls/Doll.gd" id="1_v3bm4"]
+[ext_resource type="Texture2D" uid="uid://crhys4clwm17s" path="res://Entities/TheDolls/Art/Doll_Passive.png" id="2_8fyii"]
+[ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="4_5vufh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26sml"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"Activated",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bluyw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8fyii")
+}],
+"loop": false,
+"name": &"Prop",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jj146"]
+
+[node name="Doll" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_v3bm4")
+spawn_location = "CABIN"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.16, 0.16)
+sprite_frames = SubResource("SpriteFrames_26sml")
+animation = &"Prop"
+autoplay = "Prop"
+offset = Vector2(0, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_jj146")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="visionsprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_5vufh")
+
+[node name="Vision" type="PointLight2D" parent="."]
+visible = false
+color = Color(0.832644, 0.290377, 0.290377, 1)
+texture = ExtResource("4_5vufh")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(75, 30)
+collision_mask = 3
+
+[node name="RayCast2D3" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(75, 15)
+collision_mask = 3
+
+[node name="RayCast2D4" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(75, 0)
+collision_mask = 3
+
+[node name="RayCast2D5" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(75, -15)
+collision_mask = 3
+
+[node name="RayCast2D6" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(75, -30)
+collision_mask = 3

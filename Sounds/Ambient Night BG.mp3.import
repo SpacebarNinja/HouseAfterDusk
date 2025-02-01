@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d08rrm1sibsdm"
+path="res://.godot/imported/Ambient Night BG.mp3-5156ff0eb3212a24154f01a8b060812a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Ambient Night BG.mp3"
+dest_files=["res://.godot/imported/Ambient Night BG.mp3-5156ff0eb3212a24154f01a8b060812a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

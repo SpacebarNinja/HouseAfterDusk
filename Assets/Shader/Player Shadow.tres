@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ce4ggjdlwdg63"]
+
+[ext_resource type="Shader" path="res://Assets/Shader/shader.gdshader" id="1_3uedq"]
+
+[resource]
+shader = ExtResource("1_3uedq")
+shader_parameter/debug = false
+shader_parameter/border_scale = 0.667
+shader_parameter/shadow_offset = Vector2(0, 0)
+shader_parameter/color = Color(0, 0, 0, 0.690196)
+shader_parameter/blur_amount = 5.0
+shader_parameter/shadow_scale = 1.5
+shader_parameter/disable_rotating = false

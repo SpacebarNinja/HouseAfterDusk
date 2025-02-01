@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8w13giciappm"]
+
+[ext_resource type="Script" path="res://World/House/Scripts/Canvas_Modulate.gd" id="7_fmvl3"]
+
+[sub_resource type="Environment" id="Environment_hca5b"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_white = 4.0
+glow_enabled = true
+glow_levels/1 = 1.03
+glow_levels/2 = 0.6
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_intensity = 1.14
+glow_strength = 0.57
+glow_bloom = 0.65
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 0.68
+fog_light_color = Color(1, 0, 0.427451, 1)
+
+[node name="3DMainScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hca5b")
+
+[node name="Canvas Modulate" type="CanvasModulate" parent="."]
+y_sort_enabled = true
+color = Color(0.44, 0.3905, 0.3212, 1)
+script = ExtResource("7_fmvl3")

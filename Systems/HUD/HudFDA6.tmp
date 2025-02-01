@@ -1,0 +1,276 @@
+[gd_scene load_steps=23 format=3 uid="uid://ctm1dfhfkd0fl"]
+
+[ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
+[ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_cu4va"]
+[ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
+[ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
+[ext_resource type="Texture2D" uid="uid://bejiwjyyicoh4" path="res://Systems/Inventory/Backpack/Art/Backpack.png" id="5_dcrnc"]
+[ext_resource type="Texture2D" uid="uid://dyoppchjbfcf4" path="res://Systems/HUD/Art/HPBarBG.png" id="6_6xx1r"]
+[ext_resource type="Texture2D" uid="uid://vmnj8hovs5q8" path="res://Systems/HUD/Art/HungerBarBG.png" id="6_bxfdd"]
+[ext_resource type="Material" uid="uid://dpaaednks3iyr" path="res://Assets/Shader/HUD Shadow.tres" id="7_cm8k1"]
+[ext_resource type="Texture2D" uid="uid://dbp6jtu1o2s75" path="res://Systems/HUD/Art/HungerBar.png" id="7_mc64d"]
+[ext_resource type="Texture2D" uid="uid://bpxtq036g4j51" path="res://Systems/HUD/Art/HPBar.png" id="7_o8nrm"]
+[ext_resource type="Texture2D" uid="uid://bxs3m1fskp3xt" path="res://Systems/Inventory/Backpack/Art/ICON (BAG).png" id="7_s703r"]
+[ext_resource type="Texture2D" uid="uid://bywqhh6utc21w" path="res://Systems/Journal/Art/ICON (JOURNAL).png" id="8_r3lqb"]
+[ext_resource type="Script" path="res://Systems/HUD/HudButton.gd" id="9_dlaxh"]
+[ext_resource type="Texture2D" uid="uid://mo83elou1nbx" path="res://Systems/HUD/Art/SprintBar.png" id="10_66pv7"]
+[ext_resource type="Script" path="res://Systems/HUD/beta_text.gd" id="14_ovp23"]
+[ext_resource type="Shader" path="res://Assets/Shader/vignette.gdshader" id="15_k06wk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
+shader = ExtResource("15_k06wk")
+shader_parameter/inner_radius = 0.29
+shader_parameter/outer_radius = 1.59
+shader_parameter/vignette_strength = 7.6
+shader_parameter/dither_strength = 0.01
+shader_parameter/opacity = 0.585
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_1oo2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackpackInventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(536, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackpackInventory:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_657e0"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackpackInventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.233258),
+"update": 0,
+"values": [Vector2(536, 0), Vector2(520, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackpackInventory:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.8), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03pyk"]
+_data = {
+"RESET": SubResource("Animation_1oo2h"),
+"hover": SubResource("Animation_657e0")
+}
+
+[sub_resource type="Theme" id="Theme_iv4kw"]
+
+[sub_resource type="FontVariation" id="FontVariation_j6nef"]
+spacing_top = -5
+
+[node name="Hud" type="Control" groups=["Hud"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("1_cu4va")
+tired_color = Color(0.95484, 0.665806, 0.665806, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -110
+material = SubResource("ShaderMaterial_k5gsb")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Blood_Overlay" type="TextureRect" parent="CanvasLayer"]
+visible = false
+z_index = 50
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ak6f")
+stretch_mode = 4
+
+[node name="Journal" parent="CanvasLayer" instance=ExtResource("1_7mtow")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Backpack" type="Control" parent="CanvasLayer"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BackpackInventory" parent="CanvasLayer/Backpack" groups=["Backpack"] instance=ExtResource("3_idjsy")]
+position = Vector2(536, 0)
+scale = Vector2(0.817009, 0.90688)
+
+[node name="Backpack Sprite2" type="Sprite2D" parent="CanvasLayer/Backpack/BackpackInventory"]
+modulate = Color(1, 1, 1, 0.7)
+z_index = -40
+position = Vector2(48.9591, -8.82144)
+scale = Vector2(8.02111, 15.8309)
+texture = ExtResource("5_dcrnc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Backpack"]
+libraries = {
+"": SubResource("AnimationLibrary_03pyk")
+}
+
+[node name="HungerBar" type="TextureProgressBar" parent="CanvasLayer"]
+material = ExtResource("7_cm8k1")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.36
+offset_top = 160.53
+offset_right = -524.36
+offset_bottom = 182.53
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+value = 55.0
+texture_under = ExtResource("6_bxfdd")
+texture_progress = ExtResource("7_mc64d")
+texture_progress_offset = Vector2(0, 0.94)
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.0
+offset_top = 210.71
+offset_right = -502.0
+offset_bottom = 244.71
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+theme = SubResource("Theme_iv4kw")
+value = 100.0
+texture_under = ExtResource("6_6xx1r")
+texture_progress = ExtResource("7_o8nrm")
+texture_progress_offset = Vector2(0, 4.83)
+
+[node name="SprintBar" type="TextureProgressBar" parent="CanvasLayer"]
+self_modulate = Color(0.741079, 0.582015, 0.377293, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 228.0
+offset_right = -17.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+step = 0.1
+value = 100.0
+texture_under = ExtResource("6_6xx1r")
+texture_progress = ExtResource("10_66pv7")
+texture_progress_offset = Vector2(0, 5.15)
+
+[node name="BackpackButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = -324.0
+offset_right = 664.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+icon = ExtResource("7_s703r")
+flat = true
+script = ExtResource("9_dlaxh")
+opacity_color = Color(1, 1, 1, 0.392157)
+
+[node name="JournalButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.0
+offset_top = -316.0
+offset_right = -304.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+icon = ExtResource("8_r3lqb")
+flat = true
+script = ExtResource("9_dlaxh")
+opacity_color = Color(1, 1, 1, 0.392157)
+
+[node name="BetaText" type="Label" parent="CanvasLayer"]
+z_index = 100
+offset_top = 5.0
+offset_right = 1152.0
+offset_bottom = 38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_j6nef")
+text = "House After Dusk - Beta - V0.17 | FPS: 0.0
+Date"
+horizontal_alignment = 1
+script = ExtResource("14_ovp23")
+
+[connection signal="mouse_entered" from="CanvasLayer/BackpackButton" to="CanvasLayer/BackpackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackpackButton" to="CanvasLayer/BackpackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/BackpackButton" to="." method="_on_backpack_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/JournalButton" to="CanvasLayer/JournalButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/JournalButton" to="CanvasLayer/JournalButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/JournalButton" to="." method="_on_journal_button_pressed"]

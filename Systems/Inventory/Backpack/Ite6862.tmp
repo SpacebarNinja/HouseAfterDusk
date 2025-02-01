@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://b30oa05buxfxg"]
+
+[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="1_decbf"]
+
+[resource]
+script = ExtResource("1_decbf")
+json_data = ""

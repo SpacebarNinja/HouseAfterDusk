@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://by4g10sqwjfdf"]
+
+[ext_resource type="Script" path="res://Systems/BackgroundAudio/BackgroundAudio.gd" id="1_4omuv"]
+[ext_resource type="AudioStream" uid="uid://dobx38i2es5nr" path="res://World/House/Art/Background_Ambience.mp3" id="2_aaadn"]
+[ext_resource type="AudioStream" uid="uid://8frwc0wm0uix" path="res://Entities/WindowGirl/Audio/Window Girl Chase Theme.mp3" id="3_yfdy7"]
+
+[node name="Background_Audio" type="Node2D" node_paths=PackedStringArray("Audio_list")]
+script = ExtResource("1_4omuv")
+Audio_list = [NodePath("Background_Ambience"), NodePath("Window_Girl_Theme")]
+
+[node name="Background_Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_aaadn")
+volume_db = -8.0
+autoplay = true
+
+[node name="Window_Girl_Theme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yfdy7")
+volume_db = -5.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

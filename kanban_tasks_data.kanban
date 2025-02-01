@@ -1,0 +1,81 @@
+{
+	"categories": [
+		{
+			"uuid": "dd3f6f85-ece5-405b-b48c-88360abdf11c",
+			"title": "Task",
+			"color": "407a47"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "ddbf9a18-da67-4058-8ced-968af01c5220",
+			"title": "Todo",
+			"tasks": []
+		},
+		{
+			"uuid": "31733d60-5fab-441b-b28a-798247325ea1",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "ab2744d5-d6b3-4a25-bd9b-732a171f9fbc",
+			"title": "Done",
+			"tasks": [
+				"58b6c20a-1c62-4c60-9309-fff6b1072d66",
+				"8a090203-0261-4b94-8672-d3639e8cf4cd",
+				"a597ce94-5bc8-4ebd-8aea-dbe28abe96f3",
+				"0b90ea47-11a2-43e6-872e-7bff993c628d"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "76f80a8a-4be9-47a4-b45c-3a146a50ab30",
+			"title": "yes",
+			"description": "",
+			"category": "dd3f6f85-ece5-405b-b48c-88360abdf11c",
+			"steps": []
+		},
+		{
+			"uuid": "a597ce94-5bc8-4ebd-8aea-dbe28abe96f3",
+			"title": "Fix Error",
+			"description": "",
+			"category": "dd3f6f85-ece5-405b-b48c-88360abdf11c",
+			"steps": []
+		},
+		{
+			"uuid": "0b90ea47-11a2-43e6-872e-7bff993c628d",
+			"title": "Right Click Bag",
+			"description": "",
+			"category": "dd3f6f85-ece5-405b-b48c-88360abdf11c",
+			"steps": []
+		},
+		{
+			"uuid": "58b6c20a-1c62-4c60-9309-fff6b1072d66",
+			"title": "Fix Debugs",
+			"description": "",
+			"category": "dd3f6f85-ece5-405b-b48c-88360abdf11c",
+			"steps": []
+		},
+		{
+			"uuid": "8a090203-0261-4b94-8672-d3639e8cf4cd",
+			"title": "House Collision Error",
+			"description": "",
+			"category": "dd3f6f85-ece5-405b-b48c-88360abdf11c",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"ddbf9a18-da67-4058-8ced-968af01c5220"
+			],
+			[
+				"31733d60-5fab-441b-b28a-798247325ea1"
+			],
+			[
+				"ab2744d5-d6b3-4a25-bd9b-732a171f9fbc"
+			]
+		]
+	}
+}

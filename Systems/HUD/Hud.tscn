@@ -1,0 +1,1511 @@
+[gd_scene load_steps=90 format=3 uid="uid://ctm1dfhfkd0fl"]
+
+[ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
+[ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_cu4va"]
+[ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
+[ext_resource type="Script" path="res://Systems/HUD/main_hud.gd" id="2_miqxo"]
+[ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
+[ext_resource type="Texture2D" uid="uid://bejiwjyyicoh4" path="res://Systems/Inventory/Backpack/Art/Backpack.png" id="5_dcrnc"]
+[ext_resource type="Texture2D" uid="uid://dyoppchjbfcf4" path="res://Systems/HUD/Art/HPBarBG.png" id="6_6xx1r"]
+[ext_resource type="Texture2D" uid="uid://vmnj8hovs5q8" path="res://Systems/HUD/Art/HungerBarBG.png" id="6_bxfdd"]
+[ext_resource type="Script" path="res://Systems/HUD/BackpackSprite.gd" id="7_661ui"]
+[ext_resource type="Texture2D" uid="uid://dbp6jtu1o2s75" path="res://Systems/HUD/Art/HungerBar.png" id="7_mc64d"]
+[ext_resource type="Texture2D" uid="uid://bpxtq036g4j51" path="res://Systems/HUD/Art/HPBar.png" id="7_o8nrm"]
+[ext_resource type="Texture2D" uid="uid://bxs3m1fskp3xt" path="res://Systems/Inventory/Backpack/Art/ICON (BAG).png" id="7_s703r"]
+[ext_resource type="Texture2D" uid="uid://bywqhh6utc21w" path="res://Systems/Journal/Art/ICON (JOURNAL).png" id="8_r3lqb"]
+[ext_resource type="Script" path="res://Systems/HUD/HudButton.gd" id="9_dlaxh"]
+[ext_resource type="Texture2D" uid="uid://mo83elou1nbx" path="res://Systems/HUD/Art/SprintBar.png" id="10_66pv7"]
+[ext_resource type="Script" path="res://Systems/HUD/BetaText.gd" id="14_ovp23"]
+[ext_resource type="Shader" path="res://Assets/Shader/vignette.gdshader" id="15_k06wk"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="16_dnbc0"]
+[ext_resource type="Script" path="res://Systems/HUD/Keybind.gd" id="17_dpk2t"]
+[ext_resource type="Texture2D" uid="uid://dro6j75bhe75l" path="res://Systems/HUD/Art/QTE_button_hold.png" id="19_5b5fa"]
+[ext_resource type="Texture2D" uid="uid://k4pwyg81cd63" path="res://Systems/HUD/Art/Clock/Clock.png" id="19_hou1q"]
+[ext_resource type="Script" path="res://Systems/HUD/quick_time_event.gd" id="19_unuhn"]
+[ext_resource type="Script" path="res://Systems/HUD/Clock.gd" id="19_xbt5x"]
+[ext_resource type="Texture2D" uid="uid://d3kxe07wlbmuv" path="res://Systems/HUD/Art/Clock/ClockMinuteHand.png" id="20_5x24c"]
+[ext_resource type="Texture2D" uid="uid://brqapcjwswkui" path="res://Systems/HUD/Art/Clock/ClockHourHand.png" id="20_fc33r"]
+[ext_resource type="Texture2D" uid="uid://cbda0cdpe7kmi" path="res://Systems/HUD/Art/QTE_Button.png" id="20_h45fp"]
+[ext_resource type="Texture2D" uid="uid://cj6mrdv61c0c0" path="res://Systems/HUD/Art/QTE_bar.png" id="21_ondmv"]
+[ext_resource type="Texture2D" uid="uid://lyguhc2jijia" path="res://Systems/HUD/Art/QTE_Bar_interior.png" id="22_ewsfi"]
+[ext_resource type="Script" path="res://Systems/HUD/item_panel.gd" id="26_874ad"]
+[ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="26_tggdx"]
+[ext_resource type="Texture2D" uid="uid://bb1nbgmfo3v2f" path="res://Systems/HUD/Art/Cooking_GUI.png" id="26_wlppn"]
+[ext_resource type="Texture2D" uid="uid://dp3t44eq4vjmr" path="res://Systems/Inventory/Backpack/Items/RareFish.png" id="27_qodvs"]
+[ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="28_0chnb"]
+[ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="28_omeas"]
+[ext_resource type="Texture2D" uid="uid://dc1ncqlchf7t0" path="res://Systems/Inventory/Backpack/Items/Fish.png" id="29_cc8gp"]
+[ext_resource type="Script" path="res://Systems/HUD/crafting_hud.gd" id="29_yu7lx"]
+[ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="30_qo76f"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/Universal.tres" id="32_1yik7"]
+[ext_resource type="Script" path="res://Systems/HUD/cooking_hud.gd" id="32_4ndme"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
+[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="38_qx4n6"]
+[ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="39_uh4yr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
+shader = ExtResource("15_k06wk")
+shader_parameter/inner_radius = 0.29
+shader_parameter/outer_radius = 1.56
+shader_parameter/vignette_strength = 9.36
+shader_parameter/dither_strength = 0.01
+shader_parameter/opacity = 0.6
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_iv4kw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oy74t"]
+
+[sub_resource type="FontVariation" id="FontVariation_8jj14"]
+base_font = ExtResource("16_dnbc0")
+
+[sub_resource type="FontVariation" id="FontVariation_j6nef"]
+spacing_top = -5
+
+[sub_resource type="FontVariation" id="FontVariation_h3f3o"]
+base_font = ExtResource("16_dnbc0")
+spacing_top = -10
+
+[sub_resource type="Animation" id="Animation_t1g2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette Effect:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vignette Effect:material:shader_parameter/vignette_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.36]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QTEBUTTON/QTEButtonPressed:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("QTEBUTTON/QTEButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6q7tj"]
+resource_name = "press_button"
+length = 0.02
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QTEBUTTON/QTEButtonPressed:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QTEBUTTON/QTEButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5au88"]
+resource_name = "quick_time_event"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette Effect:material:shader_parameter/opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vignette Effect:material:shader_parameter/vignette_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [9.36, 30.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hts70"]
+_data = {
+"RESET": SubResource("Animation_t1g2a"),
+"press_button": SubResource("Animation_6q7tj"),
+"quick_time_event": SubResource("Animation_5au88")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxqtg"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(4, 148, 180, 248)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oic7u"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(4, 116, 80, 28)
+modulate_color = Color(0.710448, 0.7044, 0.700972, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lby4v"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(4, 116, 80, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_51t3k"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(328, 8, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3clo2"]
+texture = ExtResource("26_tggdx")
+texture_margin_top = 44.77
+region_rect = Rect2(188, 165.63, 112, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5mey"]
+atlas = ExtResource("26_tggdx")
+region = Rect2(4, 148, 180, 248)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yptbm"]
+font = ExtResource("16_dnbc0")
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owv61"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(4, 116, 80, 28)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnil8"]
+font = ExtResource("16_dnbc0")
+font_size = 28
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vroa4"]
+font = ExtResource("16_dnbc0")
+font_size = 50
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4a4x8"]
+texture = ExtResource("26_wlppn")
+region_rect = Rect2(0, 19, 70, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lawdl"]
+atlas = ExtResource("26_wlppn")
+region = Rect2(25, 90, 25, 10)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bwavc"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(136, 44, 124, 52)
+modulate_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hreg0"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(136, 44, 124, 52)
+modulate_color = Color(0.701961, 0.701961, 0.701961, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v7jfd"]
+texture = ExtResource("26_tggdx")
+region_rect = Rect2(136, 44, 124, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y0oyr"]
+texture = ExtResource("26_wlppn")
+region_rect = Rect2(2, 2, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybh2a"]
+texture = ExtResource("26_wlppn")
+region_rect = Rect2(2, 2, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvx3x"]
+texture = ExtResource("26_wlppn")
+region_rect = Rect2(2, 2, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8a2g"]
+bg_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15hyp"]
+texture = ExtResource("26_wlppn")
+region_rect = Rect2(80, 41, 36, 29)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dasj"]
+region_rect = Rect2(2, 2, 16, 16)
+
+[sub_resource type="Animation" id="Animation_hqy0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CookingHud/CookingPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CookingHud/SkillCheck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(688, 232)]
+}
+
+[sub_resource type="Animation" id="Animation_0t1i1"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CookingHud/CookingPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(88, 64), Vector2(-688, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CookingHud/SkillCheck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(688, 232), Vector2(328, 240)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0daj"]
+_data = {
+"RESET": SubResource("Animation_hqy0f"),
+"transition": SubResource("Animation_0t1i1")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hjiq"]
+atlas = ExtResource("39_uh4yr")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsh7j"]
+atlas = ExtResource("39_uh4yr")
+region = Rect2(68, 24, 12, 364)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyg6f"]
+atlas = ExtResource("39_uh4yr")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="Gradient" id="Gradient_1r2w2"]
+offsets = PackedFloat32Array(0, 0.34375, 0.710938)
+colors = PackedColorArray(1, 0, 0.0680938, 1, 1, 0.913798, 0.013338, 1, 0, 1, 0.00900984, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcdus"]
+gradient = SubResource("Gradient_1r2w2")
+width = 12
+height = 364
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6q6o"]
+atlas = ExtResource("39_uh4yr")
+region = Rect2(100, 24, 20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hf3i"]
+size = Vector2(20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toceq"]
+atlas = ExtResource("39_uh4yr")
+region = Rect2(84, 28, 12, 360)
+margin = Rect2(0, -320, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dnom"]
+size = Vector2(20, 56)
+
+[sub_resource type="Animation" id="Animation_1oo2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackpackInventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(536, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackpackInventory:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_657e0"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackpackInventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.233258),
+"update": 0,
+"values": [Vector2(536, 0), Vector2(520, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackpackInventory:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.8), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03pyk"]
+_data = {
+"RESET": SubResource("Animation_1oo2h"),
+"hover": SubResource("Animation_657e0")
+}
+
+[node name="Hud" type="Control" groups=["Hud"]]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_cu4va")
+
+[node name="MainHud" type="CanvasLayer" parent="." groups=["MainHud"]]
+script = ExtResource("2_miqxo")
+tired_color = Color(0.70366, 0.310181, 0.310181, 1)
+
+[node name="BlackOverlay" type="ColorRect" parent="MainHud"]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="Vignette Effect" type="ColorRect" parent="MainHud"]
+z_index = -110
+material = SubResource("ShaderMaterial_k5gsb")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="BloodOverlay" type="TextureRect" parent="MainHud"]
+visible = false
+z_index = 50
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ak6f")
+stretch_mode = 4
+
+[node name="HungerBar" type="TextureProgressBar" parent="MainHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.36
+offset_top = 160.53
+offset_right = -524.36
+offset_bottom = 182.53
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+value = 55.0
+texture_under = ExtResource("6_bxfdd")
+texture_progress = ExtResource("7_mc64d")
+texture_progress_offset = Vector2(0, 0.94)
+
+[node name="HealthBar" type="TextureProgressBar" parent="MainHud"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.0
+offset_top = 210.71
+offset_right = -502.0
+offset_bottom = 244.71
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+theme = SubResource("Theme_iv4kw")
+value = 100.0
+texture_under = ExtResource("6_6xx1r")
+texture_progress = ExtResource("7_o8nrm")
+texture_progress_offset = Vector2(0, 4.83)
+
+[node name="SprintBar" type="TextureProgressBar" parent="MainHud"]
+self_modulate = Color(0.741079, 0.582015, 0.377293, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 224.0
+offset_right = -54.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+step = 0.1
+value = 100.0
+texture_under = ExtResource("6_6xx1r")
+texture_progress = ExtResource("10_66pv7")
+texture_progress_offset = Vector2(0, 5.15)
+
+[node name="BackpackButton" type="Button" parent="MainHud"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = -324.0
+offset_right = 664.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+icon = ExtResource("7_s703r")
+flat = true
+script = ExtResource("9_dlaxh")
+opacity_color = Color(1, 1, 1, 0.392157)
+
+[node name="JournalButton" type="Button" parent="MainHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.0
+offset_top = -196.0
+offset_right = -304.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oy74t")
+icon = ExtResource("8_r3lqb")
+flat = true
+script = ExtResource("9_dlaxh")
+opacity_color = Color(1, 1, 1, 0.392157)
+added_hover_y = 10.0
+
+[node name="Keybind" type="Label" parent="MainHud/JournalButton"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 106.667
+offset_right = 291.0
+offset_bottom = 388.667
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = SubResource("FontVariation_8jj14")
+theme_override_font_sizes/font_size = 225
+text = "J"
+script = ExtResource("17_dpk2t")
+
+[node name="BetaText" type="Label" parent="MainHud"]
+z_index = 100
+offset_top = 5.0
+offset_right = 1152.0
+offset_bottom = 38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_j6nef")
+text = "House After Dusk - Beta - V0.19.5 | FPS: 0.0
+Date"
+horizontal_alignment = 1
+script = ExtResource("14_ovp23")
+
+[node name="TimeDisplay" type="Label" parent="MainHud"]
+offset_left = 120.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 95.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = SubResource("FontVariation_h3f3o")
+theme_override_font_sizes/font_size = 50
+text = "Midnight
+Day: 1"
+
+[node name="Clock" type="Control" parent="MainHud"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+script = ExtResource("19_xbt5x")
+
+[node name="ClockSprite" type="Sprite2D" parent="MainHud/Clock"]
+position = Vector2(48.5, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("19_hou1q")
+
+[node name="HourHandSprite" type="Sprite2D" parent="MainHud/Clock"]
+position = Vector2(50, 45.6)
+rotation = 4.71239
+scale = Vector2(1.3, 1.6)
+texture = ExtResource("20_5x24c")
+offset = Vector2(0, 6.5)
+
+[node name="MinuteHandSprite" type="Sprite2D" parent="MainHud/Clock"]
+position = Vector2(50, 45)
+scale = Vector2(3, 3.5)
+texture = ExtResource("20_fc33r")
+offset = Vector2(0, 5)
+
+[node name="QTEHud" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+script = ExtResource("19_unuhn")
+qte_gain = 8.0
+
+[node name="QTETimer" type="Timer" parent="QTEHud"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Vignette Effect" type="ColorRect" parent="QTEHud"]
+z_index = -110
+material = SubResource("ShaderMaterial_k5gsb")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="QTEBUTTON" type="Control" parent="QTEHud"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 220.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="QTEButtonPressed" type="Sprite2D" parent="QTEHud/QTEBUTTON"]
+position = Vector2(0, 26.6667)
+texture = ExtResource("19_5b5fa")
+
+[node name="QTEButton" type="Sprite2D" parent="QTEHud/QTEBUTTON"]
+texture = ExtResource("20_h45fp")
+
+[node name="QTEBar" type="TextureProgressBar" parent="QTEHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 208.0
+offset_top = -220.0
+offset_right = 336.0
+offset_bottom = 804.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0174533
+scale = Vector2(0.4, 0.4)
+step = 0.1
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("21_ondmv")
+texture_progress = ExtResource("22_ewsfi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QTEHud"]
+libraries = {
+"": SubResource("AnimationLibrary_hts70")
+}
+
+[node name="CraftingHud" type="CanvasLayer" parent="." groups=["CraftingHud"]]
+visible = false
+script = ExtResource("29_yu7lx")
+
+[node name="CraftingPanel" type="Panel" parent="CraftingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -260.0
+offset_right = 8.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nxqtg")
+
+[node name="TabGrid1" type="GridContainer" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -132.0
+offset_right = 1201.0
+offset_bottom = 933.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 350
+theme_override_constants/v_separation = 350
+columns = 5
+
+[node name="TabGrid2" type="GridContainer" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -132.0
+offset_right = 1201.0
+offset_bottom = 933.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 350
+theme_override_constants/v_separation = 350
+columns = 5
+
+[node name="TabGrid3" type="GridContainer" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -132.0
+offset_right = 1201.0
+offset_bottom = 933.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 350
+theme_override_constants/v_separation = 350
+columns = 5
+
+[node name="TabGrid4" type="GridContainer" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -132.0
+offset_right = 1201.0
+offset_bottom = 933.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 350
+theme_override_constants/v_separation = 350
+columns = 5
+
+[node name="TabButton1" type="Button" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -244.0
+offset_right = -136.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
+theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
+theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
+theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
+theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+text = "Gear"
+
+[node name="AltButton1" type="Button" parent="CraftingHud/CraftingPanel/TabButton1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+disabled = true
+text = "Gear"
+
+[node name="TabButton2" type="Button" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -244.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
+theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
+theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
+theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
+theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+text = "Traps"
+
+[node name="AltButton2" type="Button" parent="CraftingHud/CraftingPanel/TabButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+disabled = true
+text = "Traps"
+
+[node name="TabButton3" type="Button" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -244.0
+offset_right = 136.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
+theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
+theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
+theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
+theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+text = "Material"
+
+[node name="AltButton3" type="Button" parent="CraftingHud/CraftingPanel/TabButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+disabled = true
+text = "Material"
+
+[node name="TabButton4" type="Button" parent="CraftingHud/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 136.0
+offset_top = -244.0
+offset_right = 272.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
+theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
+theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
+theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
+theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+text = "Miscellaneous"
+
+[node name="AltButton4" type="Button" parent="CraftingHud/CraftingPanel/TabButton4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
+disabled = true
+text = "Miscellaneous"
+
+[node name="ItemPanel" type="Panel" parent="CraftingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -196.0
+offset_right = 232.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3clo2")
+script = ExtResource("26_874ad")
+
+[node name="ItemLabel" parent="CraftingHud/ItemPanel" instance=ExtResource("28_0chnb")]
+position = Vector2(240, 248)
+
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel"]
+z_index = -1
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 416.0
+texture = SubResource("AtlasTexture_l5mey")
+expand_mode = 1
+
+[node name="ItemDisplay" type="TextureRect" parent="CraftingHud/ItemPanel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 62.0
+offset_right = 122.0
+offset_bottom = 142.0
+texture = ExtResource("27_qodvs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MaterialDisplay" type="Control" parent="CraftingHud/ItemPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Display1" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 328.0
+offset_right = 38.0
+offset_bottom = 358.0
+mouse_filter = 0
+texture = ExtResource("29_cc8gp")
+expand_mode = 1
+
+[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 25.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+label_settings = SubResource("LabelSettings_yptbm")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display1"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("28_omeas")
+
+[node name="Display2" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+z_index = 1
+layout_mode = 0
+offset_left = 48.0
+offset_top = 328.0
+offset_right = 78.0
+offset_bottom = 358.0
+texture = ExtResource("29_cc8gp")
+expand_mode = 1
+
+[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 25.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+label_settings = SubResource("LabelSettings_yptbm")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display2"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("28_omeas")
+
+[node name="Display3" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+z_index = 1
+layout_mode = 0
+offset_left = 88.0
+offset_top = 328.0
+offset_right = 118.0
+offset_bottom = 358.0
+texture = ExtResource("29_cc8gp")
+expand_mode = 1
+
+[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 25.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+label_settings = SubResource("LabelSettings_yptbm")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display3"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("28_omeas")
+
+[node name="Display4" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+z_index = 1
+layout_mode = 0
+offset_left = 128.0
+offset_top = 328.0
+offset_right = 158.0
+offset_bottom = 358.0
+texture = ExtResource("29_cc8gp")
+expand_mode = 1
+
+[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 25.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+label_settings = SubResource("LabelSettings_yptbm")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display4"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("28_omeas")
+
+[node name="CraftButton" type="Button" parent="CraftingHud/ItemPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 208.0
+offset_right = 28.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("30_qo76f")
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 25
+text = "CRAFT"
+icon_alignment = 1
+expand_icon = true
+
+[node name="ItemName" type="Label" parent="CraftingHud/ItemPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -148.0
+offset_right = 76.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_owv61")
+text = "Placeholder Text"
+label_settings = SubResource("LabelSettings_gnil8")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -64.0
+offset_right = 44.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+label_settings = SubResource("LabelSettings_vroa4")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemDescription" type="RichTextLabel" parent="CraftingHud/ItemPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = 24.0
+offset_right = 76.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("16_dnbc0")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+scroll_active = false
+
+[node name="CookingHud" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("32_4ndme")
+
+[node name="CookingPanel" type="Panel" parent="CookingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -260.0
+offset_right = 24.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_4a4x8")
+
+[node name="ArrowSprite" type="Sprite2D" parent="CookingHud/CookingPanel"]
+position = Vector2(600, 208)
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_lawdl")
+
+[node name="CookButton" type="Button" parent="CookingHud/CookingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 160.0
+offset_right = 144.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_bwavc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hreg0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v7jfd")
+text = "Cook"
+
+[node name="CookingSlots" type="Node" parent="CookingHud/CookingPanel"]
+script = ExtResource("31_mq4gt")
+size = Vector2i(2, 2)
+item_protoset = ExtResource("32_1yik7")
+
+[node name="CookingGrid" type="Control" parent="CookingHud/CookingPanel"]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -176.0
+offset_right = 162.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("34_qk7f8")
+inventory_path = NodePath("../CookingSlots")
+field_dimensions = Vector2(100, 100)
+item_spacing = 50
+field_style = SubResource("StyleBoxTexture_y0oyr")
+field_highlighted_style = SubResource("StyleBoxTexture_ybh2a")
+field_selected_style = SubResource("StyleBoxTexture_yvx3x")
+selection_style = SubResource("StyleBoxFlat_t8a2g")
+
+[node name="SkillCheck" type="Panel" parent="CookingHud"]
+offset_left = 688.0
+offset_top = 232.0
+offset_right = 904.0
+offset_bottom = 408.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_15hyp")
+
+[node name="CookingResult" type="Node" parent="CookingHud/SkillCheck"]
+script = ExtResource("31_mq4gt")
+size = Vector2i(1, 1)
+item_protoset = ExtResource("32_1yik7")
+
+[node name="CookingResultGrid" type="Control" parent="CookingHud/SkillCheck"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 93.0
+offset_top = 3.0
+offset_right = 183.0
+offset_bottom = 93.0
+script = ExtResource("34_qk7f8")
+inventory_path = NodePath("../CookingResult")
+field_dimensions = Vector2(90, 90)
+field_style = SubResource("StyleBoxTexture_3dasj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CookingHud"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_p0daj")
+}
+
+[node name="FishingHud" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("38_qx4n6")
+
+[node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 276.0
+offset_bottom = 500.0
+value = 100.0
+rounded = true
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_5hjiq")
+texture_progress = SubResource("AtlasTexture_dsh7j")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="ProgressMeter" type="TextureProgressBar" parent="FishingHud"]
+offset_left = 288.0
+offset_top = 128.0
+offset_right = 308.0
+offset_bottom = 500.0
+step = 0.01
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_eyg6f")
+texture_progress = SubResource("GradientTexture2D_fcdus")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="SuccessBar" type="NinePatchRect" parent="FishingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -72.0
+offset_right = -300.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_y6q6o")
+region_rect = Rect2(0, 0, 20, 60)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="SuccessArea" type="Area2D" parent="FishingHud/SuccessBar"]
+position = Vector2(10, 20)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/SuccessBar/SuccessArea"]
+visible = false
+shape = SubResource("RectangleShape2D_3hf3i")
+
+[node name="FishingHook" type="NinePatchRect" parent="FishingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -192.0
+offset_right = -304.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_toceq")
+region_rect = Rect2(0, 0, 12, 360)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="FishingArea" type="Area2D" parent="FishingHud/FishingHook"]
+position = Vector2(6, 24)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/FishingHook/FishingArea"]
+shape = SubResource("RectangleShape2D_8dnom")
+
+[node name="ChanceTimer" type="Timer" parent="FishingHud"]
+wait_time = 1.5
+
+[node name="DurationTimer" type="Timer" parent="FishingHud"]
+wait_time = 10.0
+one_shot = true
+
+[node name="MechanicHud" type="CanvasLayer" parent="."]
+
+[node name="Journal" parent="MechanicHud" instance=ExtResource("1_7mtow")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
+scale = Vector2(0.600937, 0.600937)
+
+[node name="Backpack" type="Control" parent="MechanicHud"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BackpackInventory" parent="MechanicHud/Backpack" groups=["Backpack"] instance=ExtResource("3_idjsy")]
+position = Vector2(536, 0)
+scale = Vector2(0.817009, 0.90688)
+
+[node name="BackpackSprite" type="Sprite2D" parent="MechanicHud/Backpack/BackpackInventory"]
+modulate = Color(1, 1, 1, 0.7)
+z_index = -40
+position = Vector2(48.9591, -8.82144)
+scale = Vector2(8.02111, 15.8309)
+texture = ExtResource("5_dcrnc")
+script = ExtResource("7_661ui")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MechanicHud/Backpack"]
+libraries = {
+"": SubResource("AnimationLibrary_03pyk")
+}
+
+[connection signal="mouse_entered" from="MainHud/BackpackButton" to="MainHud/BackpackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHud/BackpackButton" to="MainHud/BackpackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainHud/BackpackButton" to="MainHud" method="_on_backpack_button_pressed"]
+[connection signal="mouse_entered" from="MainHud/JournalButton" to="MainHud/JournalButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHud/JournalButton" to="MainHud/JournalButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainHud/JournalButton" to="MainHud" method="_on_journal_button_pressed"]
+[connection signal="pressed" from="MainHud/JournalButton" to="MechanicHud/Journal" method="_on_journal_button_pressed"]
+[connection signal="timeout" from="QTEHud/QTETimer" to="QTEHud" method="_on_qte_timer_timeout"]
+[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton1" to="CraftingHud" method="_on_tab_button_1_pressed"]
+[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton2" to="CraftingHud" method="_on_tab_button_2_pressed"]
+[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton3" to="CraftingHud" method="_on_tab_button_3_pressed"]
+[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton4" to="CraftingHud" method="_on_tab_button_4_pressed"]
+[connection signal="pressed" from="CraftingHud/ItemPanel/CraftButton" to="CraftingHud/ItemPanel" method="_on_craft_button_pressed"]
+[connection signal="pressed" from="CookingHud/CookingPanel/CookButton" to="CookingHud" method="_on_cook_button_pressed"]
+[connection signal="item_added" from="CookingHud/CookingPanel/CookingSlots" to="CookingHud" method="_on_cooking_item_added"]
+[connection signal="item_removed" from="CookingHud/CookingPanel/CookingSlots" to="CookingHud" method="_on_cooking_item_removed"]
+[connection signal="item_removed" from="CookingHud/SkillCheck/CookingResult" to="CookingHud" method="_on_cooking_result_item_removed"]
+[connection signal="value_changed" from="FishingHud/ProgressMeter" to="FishingHud" method="_on_progress_meter_value_changed"]
+[connection signal="area_entered" from="FishingHud/SuccessBar/SuccessArea" to="FishingHud" method="_on_success_area_entered"]
+[connection signal="area_exited" from="FishingHud/SuccessBar/SuccessArea" to="FishingHud" method="_on_success_area_exited"]
+[connection signal="timeout" from="FishingHud/ChanceTimer" to="FishingHud" method="_on_chance_timer_timeout"]
+[connection signal="timeout" from="FishingHud/DurationTimer" to="FishingHud" method="_on_duration_time_timeout"]

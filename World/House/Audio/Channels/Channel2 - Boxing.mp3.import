@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pvdvpu2vpdga"
+path="res://.godot/imported/Channel2 - Boxing.mp3-d675fabe9c5f5528327aa0880d0332be.mp3str"
+
+[deps]
+
+source_file="res://World/House/Audio/Channels/Channel2 - Boxing.mp3"
+dest_files=["res://.godot/imported/Channel2 - Boxing.mp3-d675fabe9c5f5528327aa0880d0332be.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

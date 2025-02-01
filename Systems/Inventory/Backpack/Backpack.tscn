@@ -1,0 +1,202 @@
+[gd_scene load_steps=24 format=3 uid="uid://dm0cauxxqnbsf"]
+
+[ext_resource type="Script" path="res://Systems/Inventory/Backpack/BackpackInfo.gd" id="1_dlcgs"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_w6ijb"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/Universal.tres" id="4_g1y3s"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="5_j15jq"]
+[ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="5_stp4t"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="7_0hrb1"]
+[ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="8_ams1b"]
+[ext_resource type="Texture2D" uid="uid://dyiuj0rpblf3d" path="res://Systems/Inventory/Backpack/Art/Slot2.png" id="9_7ayun"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="10_vrtxb"]
+[ext_resource type="AudioStream" uid="uid://dfmg7w8lu34n2" path="res://Systems/Inventory/Backpack/Audio/Inven_Select1.mp3" id="11_pjyqh"]
+[ext_resource type="AudioStream" uid="uid://djnj5h682ckpw" path="res://Systems/Inventory/Backpack/Audio/Inven_Select2.mp3" id="12_cgka1"]
+[ext_resource type="AudioStream" uid="uid://dxyv5seid46t1" path="res://Systems/Inventory/Backpack/Audio/Inven_Unselect1.mp3" id="13_6fn5e"]
+[ext_resource type="AudioStream" uid="uid://bgyap4vsae1ij" path="res://Sounds/Eat_SFX.mp3" id="13_fogmx"]
+[ext_resource type="AudioStream" uid="uid://bdiyrr05uc4fm" path="res://Systems/Inventory/Backpack/Audio/Inven_Unselect2.mp3" id="14_2novw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2gxh"]
+texture = ExtResource("8_ams1b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k43qe"]
+texture = ExtResource("8_ams1b")
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktrf7"]
+texture = ExtResource("8_ams1b")
+modulate_color = Color(1.5, 1.5, 1.5, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pu5o"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bapk"]
+texture = ExtResource("9_7ayun")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nso4x"]
+texture = ExtResource("9_7ayun")
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qec1"]
+texture = ExtResource("9_7ayun")
+modulate_color = Color(1.5, 1.5, 1.5, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0dh13"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("11_pjyqh")
+stream_1/stream = ExtResource("12_cgka1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sr35f"]
+random_pitch = 1.4
+streams_count = 2
+stream_0/stream = ExtResource("13_6fn5e")
+stream_1/stream = ExtResource("14_2novw")
+
+[node name="BackpackInventory" type="Node2D" node_paths=PackedStringArray("inventory", "equippable")]
+position = Vector2(575, 309)
+script = ExtResource("1_dlcgs")
+inventory = NodePath("Inventory")
+equippable = NodePath("Equippable")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_w6ijb")
+size = Vector2i(1, 6)
+item_protoset = ExtResource("4_g1y3s")
+
+[node name="_Node_248350" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "raw_wood"
+properties = {
+"grid_position": Vector2i(0, 5),
+"stack_size": 3
+}
+
+[node name="_Node_43817" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "tv_remote"
+
+[node name="_Node_199909" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "potato"
+properties = {
+"grid_position": Vector2i(0, 1)
+}
+
+[node name="_Node_200073" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "nightshade_berry"
+properties = {
+"grid_position": Vector2i(0, 2)
+}
+
+[node name="_Node_200249" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "rye"
+properties = {
+"grid_position": Vector2i(0, 3)
+}
+
+[node name="_Node_200431" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "sugarcane"
+properties = {
+"grid_position": Vector2i(0, 4)
+}
+
+[node name="Equippable" type="Node" parent="."]
+script = ExtResource("3_w6ijb")
+size = Vector2i(1, 1)
+item_protoset = ExtResource("4_g1y3s")
+
+[node name="Inventory UI" type="Node2D" parent="."]
+position = Vector2(-85, -75)
+scale = Vector2(1.155, 1.155)
+
+[node name="InventoryGrid" type="Control" parent="Inventory UI"]
+z_index = -10
+texture_filter = 1
+custom_minimum_size = Vector2(64, 404)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 42.4242
+offset_top = -58.8745
+offset_right = 106.424
+offset_bottom = 345.125
+script = ExtResource("7_0hrb1")
+inventory_path = NodePath("../../Inventory")
+field_dimensions = Vector2(64, 64)
+item_spacing = 4
+field_style = SubResource("StyleBoxTexture_n2gxh")
+field_highlighted_style = SubResource("StyleBoxTexture_k43qe")
+field_selected_style = SubResource("StyleBoxTexture_ktrf7")
+selection_style = SubResource("StyleBoxFlat_3pu5o")
+metadata/_edit_use_anchors_ = true
+
+[node name="EquipGrid" type="Control" parent="Inventory UI"]
+z_index = -10
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 42.4242
+offset_top = -135.065
+offset_right = 106.424
+offset_bottom = -71.065
+script = ExtResource("7_0hrb1")
+inventory_path = NodePath("../../Equippable")
+field_dimensions = Vector2(64, 64)
+item_spacing = 4
+field_style = SubResource("StyleBoxTexture_1bapk")
+field_highlighted_style = SubResource("StyleBoxTexture_nso4x")
+field_selected_style = SubResource("StyleBoxTexture_6qec1")
+selection_style = SubResource("StyleBoxFlat_3pu5o")
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory Title" type="Label" parent="."]
+offset_left = -99.0
+offset_top = 221.0
+offset_right = 134.0
+offset_bottom = 298.0
+rotation = -1.57079
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.941176, 0.784314, 0.486275)
+theme_override_fonts/font = ExtResource("10_vrtxb")
+theme_override_font_sizes/font_size = 72
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="ItemLabel" parent="." instance=ExtResource("5_stp4t")]
+
+[node name="SelectAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_0dh13")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[node name="UnselectAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_sr35f")
+volume_db = -5.0
+
+[node name="Eat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_fogmx")
+
+[connection signal="contents_changed" from="Equippable" to="." method="_on_equippable_contents_changed"]
+[connection signal="item_added" from="Equippable" to="." method="_on_equippable_item_added"]
+[connection signal="item_removed" from="Equippable" to="." method="_on_equippable_item_removed"]
+[connection signal="inventory_item_context_activated" from="Inventory UI/InventoryGrid" to="." method="_on_ctrl_inventory_grid_ex_inventory_item_context_activated"]
+[connection signal="item_mouse_entered" from="Inventory UI/InventoryGrid" to="." method="_on_ctrl_inventory_grid_ex_item_mouse_entered"]
+[connection signal="item_mouse_exited" from="Inventory UI/InventoryGrid" to="." method="_on_ctrl_inventory_grid_ex_item_mouse_exited"]
+[connection signal="selection_changed" from="Inventory UI/InventoryGrid" to="." method="_on_inventory_grid_selection_changed"]
+[connection signal="inventory_item_context_activated" from="Inventory UI/EquipGrid" to="." method="_on_ctrl_inventory_grid_ex_equippable_inventory_item_context_activated"]
+[connection signal="item_mouse_entered" from="Inventory UI/EquipGrid" to="." method="_on_ctrl_inventory_grid_ex_item_mouse_entered"]
+[connection signal="item_mouse_exited" from="Inventory UI/EquipGrid" to="." method="_on_ctrl_inventory_grid_ex_item_mouse_exited"]

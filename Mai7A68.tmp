@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://3r15ojyqxyb2"]
+
+[ext_resource type="PackedScene" uid="uid://ctm1dfhfkd0fl" path="res://Systems/HUD/Hud.tscn" id="1_fh8r2"]
+[ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_ofx2c"]
+[ext_resource type="PackedScene" uid="uid://n73n3a3s68pe" path="res://World/House/DemoMap2.tscn" id="3_k3r37"]
+[ext_resource type="PackedScene" uid="uid://boutdgluq4gbq" path="res://Entities/Gene/Gene.tscn" id="4_gh3rb"]
+[ext_resource type="Script" path="res://Entities/Gene/Camera.gd" id="5_twjhg"]
+
+[sub_resource type="Environment" id="Environment_0agw0"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_white = 4.0
+glow_enabled = true
+glow_levels/1 = 1.03
+glow_levels/2 = 6.06
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_intensity = 1.14
+glow_strength = 0.2
+glow_bloom = 0.3
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 0.68
+fog_light_color = Color(1, 0, 0.427451, 1)
+
+[node name="TestScene" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Hud" parent="." instance=ExtResource("1_fh8r2")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="DebugPanel" parent="." node_paths=PackedStringArray("lightnode", "defaultnode", "map") instance=ExtResource("2_ofx2c")]
+lightnode = NodePath("../Canvas Bright")
+defaultnode = NodePath("../Canvas Normal Dark")
+map = NodePath("../DemoMap2")
+
+[node name="DemoMap2" parent="." instance=ExtResource("3_k3r37")]
+position = Vector2(-1056, -16)
+
+[node name="Player" parent="." node_paths=PackedStringArray("hud", "camera") instance=ExtResource("4_gh3rb")]
+modulate = Color(1.1, 1.1, 1.1, 1)
+position = Vector2(-896, 72)
+hud = NodePath("../Hud")
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3.4, 3.4)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+script = ExtResource("5_twjhg")
+randomStrength = 20.0
+shakeFade = 8.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0agw0")
+
+[node name="Canvas Bright" type="CanvasModulate" parent="."]
+visible = false
+y_sort_enabled = true
+color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="Canvas Normal Dark" type="CanvasModulate" parent="."]
+visible = false
+y_sort_enabled = true
+color = Color(0.187176, 0.187176, 0.187176, 1)

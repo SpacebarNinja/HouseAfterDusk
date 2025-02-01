@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://be4u50ae7hfcr"]
+
+[ext_resource type="Script" path="res://Systems/HUD/item_label.gd" id="1_hfbnv"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="2_tkclp"]
+
+[sub_resource type="FontVariation" id="FontVariation_qwhc7"]
+base_font = ExtResource("2_tkclp")
+
+[sub_resource type="FontVariation" id="FontVariation_4cfwr"]
+base_font = ExtResource("2_tkclp")
+variation_embolden = 0.5
+variation_transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVariation_th2aw"]
+base_font = ExtResource("2_tkclp")
+variation_transform = Transform2D(1, 0.3, 0, 1, 0, 0)
+
+[node name="ItemLabel" type="Node2D"]
+z_index = 3
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_hfbnv")
+
+[node name="LabelInfo" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 49.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = SubResource("FontVariation_qwhc7")
+theme_override_fonts/bold_font = SubResource("FontVariation_4cfwr")
+theme_override_font_sizes/normal_font_size = 0
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][b]name[/b][/center]
+
+[center]description[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="LabelInfo"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.163958, 0.129882, 0.0977524, 0.8)
+
+[node name="LabelDescription" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 13.0
+offset_right = 43.0
+offset_bottom = 28.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/italics_font = SubResource("FontVariation_th2aw")
+theme_override_font_sizes/normal_font_size = 1
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[center][i]type[/i][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

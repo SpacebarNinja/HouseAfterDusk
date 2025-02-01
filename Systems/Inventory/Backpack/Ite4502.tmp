@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://b30oa05buxfxg"]
+
+[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="1_decbf"]
+
+[resource]
+script = ExtResource("1_decbf")
+json_data = "[
+    {
+		\"id\": \"fish\",
+		\"Name\": \"Fish\",
+        \"Description\": \"Heals 2 hp. Smells weird.\",
+        \"Type\": \"Food\",
+        \"image\": \"res://Assets/ItemFolder/Items/Fish.png\",
+        \"stack_size\": \"1\"
+    },
+	{
+		\"id\": \"key\",
+		\"Name\": \"Key\",
+        \"Description\": \"A key to something...?\",
+        \"Type\": \"Miscellaneous\",
+        \"image\": \"res://Assets/ItemFolder/Items/Key.png\",
+        \"stack_size\": \"1\"
+		print(\"beans\")
+    },
+	{
+		\"id\": \"potato\",
+		\"Name\": \"Potato\",
+        \"Description\": \"An uncooked potato. Can be cooked.\",
+		\"image\": \"res://Systems/Inventory/Items/Potato.png\",
+        \"Type\": \"Food\",
+        \"stack_size\": \"1\"
+    },
+	{
+		\"id\": \"planks\",
+		\"Name\": \"Planks\",
+        \"Description\": \"Sturdy wood. Useful for building.\",
+		\"image\": \"res://Systems/Inventory/Items/Planks.png\",
+        \"Type\": \"Resource\",
+        \"stack_size\": \"1\"
+    },
+	{
+		\"id\": \"tin_can\",
+		\"Name\": \"Tin Can\",
+        \"Description\": \"An old, empty tin can.\",
+		\"image\": \"res://Systems/Inventory/Items/Tin Can.png\",
+        \"Type\": \"Miscellaneous\",
+        \"stack_size\": \"1\"
+    },
+	{
+		\"id\": \"meat\",
+		\"Name\": \"Meat\",
+        \"Description\": \"I can't eat this raw...\",
+		\"image\": \"res://Systems/Inventory/Items/Meat.png\",
+        \"Type\": \"Food\",
+        \"stack_size\": \"1\"
+    },
+]"
