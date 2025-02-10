@@ -13,3 +13,6 @@ func _on_show_crafting_hud_pressed():
 
 func _on_show_cooking_hud_pressed():
 	hud.current_display("Cooking")
+
+func _on_show_fishing_hud_pressed():
+	hud.current_display("Fishing")

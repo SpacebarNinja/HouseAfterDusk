@@ -13,3 +13,7 @@ func _on_show_tilemaps_pressed():
 
 func _on_option_button_item_selected(index):
 	player.position = map.get_cabin_room(index)
+
+
+func _on_alt_option_button_item_selected(index):
+	player.position = map.get_forest_room(index)

@@ -19,3 +19,9 @@ func _on_doll_button_toggled(toggled_on):
 		GameManager.spawn_enemy(2)
 	else:
 		GameManager.kill_enemy(2)
+
+func _on_deer_button_toggled(toggled_on):
+	if toggled_on:
+		GameManager.spawn_enemy(3)
+	else:
+		GameManager.kill_enemy(3)
