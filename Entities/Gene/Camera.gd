@@ -1,4 +1,3 @@
-# Camera.gd
 extends Camera2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -19,6 +18,10 @@ var camera_anchor = Vector2.ZERO
 @export var max_lean_distance := 100.0
 @export var lean_speed: float = 8
 
+@export_category("Crafting")
+@export var craft_move_offset: float = 120.0
+@export var craft_move_speed: float = 5.0
+
 func _ready():
 	global_position = player.global_position
 	camera_anchor = player.global_position
@@ -32,12 +35,12 @@ func _process(delta):
 	var is_room_bounds_y = rooms_instance.is_room_bounds_y
 	
 	var journal_instance = get_node("/root/MainScene/Hud/MechanicHud/Journal")
-	var is_open = journal_instance.is_open
+	var is_journal_open = journal_instance.is_open
 
 	if is_hit:
 		CameraShake(delta)
 	else:
-		if not is_open:
+		if not is_journal_open and HudManager.camera_movement:
 			CameraLean()
 
 	if not is_room_bounds_x:
@@ -45,6 +48,7 @@ func _process(delta):
 	if not is_room_bounds_y:
 		camera_anchor.y = player.global_position.y
 
+	HandleCraftingOffset(delta)
 	RoundPosition()
 
 func RoundPosition():
@@ -70,6 +74,10 @@ func CameraLean():
 
 	var lean_cam_offset = Vector2(cam_offset.x / x_sensitivity, cam_offset.y / y_sensitivity)
 	global_position = global_position.lerp(target_position + lean_cam_offset, lean_speed * get_process_delta_time())
+
+func HandleCraftingOffset(delta):
+	var target_x = camera_anchor.x + (craft_move_offset if HudManager.is_crafting else 0.0)
+	global_position.x = lerp(global_position.x, target_x, craft_move_speed * delta)
 
 func randomcam_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))

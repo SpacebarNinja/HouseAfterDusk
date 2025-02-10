@@ -11,6 +11,12 @@ var fractional_time: float = 0.0
 var date_updated: bool = false
 
 func _process(delta):
+	
+	if HudManager.clock_visible:
+		visible = true
+	else:
+		visible = false
+	
 	# Increase fractional_time by the scaled amount of delta
 	fractional_time += WORLD_TIME_PER_SECOND * delta
 	

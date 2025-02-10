@@ -1,6 +1,6 @@
 extends Node
 
-@onready var protoset = preload("res://Systems/Inventory/Backpack/Universal.tres")
+@onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
 
 var food_items = {}
 var berry_list = {"baneberry": 1, "bogberry": 1, "gooseberry": 1}
@@ -29,7 +29,42 @@ var crafting_recipes: Dictionary = {
 	"bolt": {
 		"inputs": {"steel": 1},
 		"output": 3
-	}}
+	},
+	"paranormal_chip": {
+		"inputs": {"broken_chip": 1},
+		"output": 1
+	},
+	"makeshift_bat": {
+		"inputs": {"plank": 1, "bolt": 2, "stick": 1},
+		"output": 1
+	},
+	"fishing_rod": {
+		"inputs": {"stick": 2, "rope": 1},
+		"output": 1
+	},
+	"trap": {
+		"inputs": {"plank": 2, "rope": 1, "bolt": 1},
+		"output": 1
+	},
+	"key": {
+		"inputs": {"steel": 1, "bolt": 1},
+		"output": 1
+	},
+	"doll_hat": {
+		"inputs": {"red_fabric": 1, "pink_fabric": 1},
+		"output": 1
+	},
+	"stick": {
+		"inputs": {"plank": 1},
+		"output": 2
+	},
+	"rope": {
+		"inputs": {"red_fabric": 1, "pink_fabric": 1},
+		"output": 1
+	}
+}
+
+	
 var food_recipes: Dictionary = {
 	"barbecue": {
 		"inputs": {"meat": 1, "gravy": 1},
@@ -126,19 +161,19 @@ func _ready():
 	
 func get_recipe(recipe: String, dictionary: String) -> Dictionary:
 	if dictionary != "Crafting" and dictionary != "Food":
-		print("Error: Invalid dictionary type provided.")
+		#print("Error: Invalid dictionary type provided.")
 		return {}
 
 	var recipes = crafting_recipes if dictionary == "Crafting" else food_recipes
 
 	# Ensure the recipe exists
 	if not recipes.has(recipe):
-		print("Error: Recipe not found for item: ", recipe)
+		#print("Error: Recipe not found for item: ", recipe)
 		return {}
 		
 	# Ensure the recipe exists in the protoset
 	if not protoset.has_prototype(recipe):
-		print("Error: Recipe prototype not found for: ", recipe)
+		#print("Error: Recipe prototype not found for: ", recipe)
 		return {}
 
 	var recipe_data = recipes[recipe]
@@ -153,7 +188,7 @@ func get_recipe(recipe: String, dictionary: String) -> Dictionary:
 
 	for input_id in inputs.keys():
 		if not protoset.has_prototype(input_id):
-			print("Error: Material prototype not found for: ", input_id)
+			#print("Error: Material prototype not found for: ", input_id)
 			continue
 
 		var material = protoset.get_prototype(input_id)
@@ -165,7 +200,7 @@ func get_recipe(recipe: String, dictionary: String) -> Dictionary:
 			"amount": material_amount
 		}
 
-	print("Recipe result: ", result)
+	#print("Recipe result: ", result)
 	return result
 
 	

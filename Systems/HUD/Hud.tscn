@@ -1,7 +1,6 @@
-[gd_scene load_steps=90 format=3 uid="uid://ctm1dfhfkd0fl"]
+[gd_scene load_steps=82 format=3 uid="uid://ctm1dfhfkd0fl"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
-[ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_cu4va"]
 [ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
 [ext_resource type="Script" path="res://Systems/HUD/main_hud.gd" id="2_miqxo"]
 [ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
@@ -28,21 +27,26 @@
 [ext_resource type="Texture2D" uid="uid://cbda0cdpe7kmi" path="res://Systems/HUD/Art/QTE_Button.png" id="20_h45fp"]
 [ext_resource type="Texture2D" uid="uid://cj6mrdv61c0c0" path="res://Systems/HUD/Art/QTE_bar.png" id="21_ondmv"]
 [ext_resource type="Texture2D" uid="uid://lyguhc2jijia" path="res://Systems/HUD/Art/QTE_Bar_interior.png" id="22_ewsfi"]
-[ext_resource type="Script" path="res://Systems/HUD/item_panel.gd" id="26_874ad"]
+[ext_resource type="Texture2D" uid="uid://da7q4fiarxqqw" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollBase.png" id="26_1s1oi"]
+[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/item_panel.gd" id="26_874ad"]
+[ext_resource type="Texture2D" uid="uid://bkspp07fopy0s" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollCap.png" id="26_gsrpr"]
 [ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="26_tggdx"]
 [ext_resource type="Texture2D" uid="uid://bb1nbgmfo3v2f" path="res://Systems/HUD/Art/Cooking_GUI.png" id="26_wlppn"]
 [ext_resource type="Texture2D" uid="uid://dp3t44eq4vjmr" path="res://Systems/Inventory/Backpack/Items/RareFish.png" id="27_qodvs"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="28_0chnb"]
+[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/scroll_base.gd" id="28_1iy7h"]
+[ext_resource type="Texture2D" uid="uid://ct21jwiimm3yw" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollButton.png" id="28_dux36"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="28_omeas"]
 [ext_resource type="Texture2D" uid="uid://dc1ncqlchf7t0" path="res://Systems/Inventory/Backpack/Items/Fish.png" id="29_cc8gp"]
-[ext_resource type="Script" path="res://Systems/HUD/crafting_hud.gd" id="29_yu7lx"]
+[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/scroll_button.gd" id="29_pheyb"]
+[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/crafting_hud.gd" id="29_yu7lx"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="30_qo76f"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/Universal.tres" id="32_1yik7"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="32_1yik7"]
 [ext_resource type="Script" path="res://Systems/HUD/cooking_hud.gd" id="32_4ndme"]
+[ext_resource type="Texture2D" uid="uid://b47khq87dqvli" path="res://Systems/HUD/WorkbenchSystem/Art/Table.png" id="33_hqrie"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
-[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="38_qx4n6"]
-[ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="39_uh4yr"]
+[ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")
@@ -182,53 +186,47 @@ _data = {
 "quick_time_event": SubResource("Animation_5au88")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxqtg"]
-texture = ExtResource("26_tggdx")
-region_rect = Rect2(4, 148, 180, 248)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oic7u"]
-texture = ExtResource("26_tggdx")
-region_rect = Rect2(4, 116, 80, 28)
-modulate_color = Color(0.710448, 0.7044, 0.700972, 1)
+texture = ExtResource("28_dux36")
+modulate_color = Color(1.1, 1.1, 1.1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0og6w"]
+texture = ExtResource("28_dux36")
+modulate_color = Color(0.94902, 0.839216, 0.666667, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lby4v"]
-texture = ExtResource("26_tggdx")
-region_rect = Rect2(4, 116, 80, 28)
+texture = ExtResource("28_dux36")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_51t3k"]
-texture = ExtResource("26_tggdx")
-region_rect = Rect2(328, 8, 64, 64)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_akmgk"]
+texture = ExtResource("28_dux36")
+modulate_color = Color(0.94902, 0.839216, 0.666667, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3clo2"]
-texture = ExtResource("26_tggdx")
-texture_margin_top = 44.77
-region_rect = Rect2(188, 165.63, 112, 240)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i3trf"]
+texture = ExtResource("28_dux36")
+modulate_color = Color(0.94902, 0.839216, 0.666667, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5mey"]
-atlas = ExtResource("26_tggdx")
-region = Rect2(4, 148, 180, 248)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkp3p"]
+texture = ExtResource("28_dux36")
+modulate_color = Color(0.948052, 0.839824, 0.667307, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_xk42h"]
+base_font = ExtResource("16_dnbc0")
+spacing_bottom = -200
+
+[sub_resource type="FontVariation" id="FontVariation_ij5xg"]
+base_font = ExtResource("16_dnbc0")
+spacing_top = -6
 
 [sub_resource type="LabelSettings" id="LabelSettings_yptbm"]
 font = ExtResource("16_dnbc0")
-font_size = 24
-outline_size = 12
+font_size = 129
+outline_size = 21
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owv61"]
-texture = ExtResource("26_tggdx")
-region_rect = Rect2(4, 116, 80, 28)
-
-[sub_resource type="LabelSettings" id="LabelSettings_gnil8"]
-font = ExtResource("16_dnbc0")
-font_size = 28
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vroa4"]
-font = ExtResource("16_dnbc0")
-font_size = 50
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyi46"]
+random_pitch = 1.15
+streams_count = 1
+stream_0/stream = ExtResource("37_awfko")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4a4x8"]
 texture = ExtResource("26_wlppn")
@@ -339,127 +337,31 @@ _data = {
 "transition": SubResource("Animation_0t1i1")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hjiq"]
-atlas = ExtResource("39_uh4yr")
-region = Rect2(40, 20, 20, 372)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsh7j"]
-atlas = ExtResource("39_uh4yr")
-region = Rect2(68, 24, 12, 364)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eyg6f"]
-atlas = ExtResource("39_uh4yr")
-region = Rect2(40, 20, 20, 372)
-
-[sub_resource type="Gradient" id="Gradient_1r2w2"]
-offsets = PackedFloat32Array(0, 0.34375, 0.710938)
-colors = PackedColorArray(1, 0, 0.0680938, 1, 1, 0.913798, 0.013338, 1, 0, 1, 0.00900984, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcdus"]
-gradient = SubResource("Gradient_1r2w2")
-width = 12
-height = 364
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6q6o"]
-atlas = ExtResource("39_uh4yr")
-region = Rect2(100, 24, 20, 60)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hf3i"]
-size = Vector2(20, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_toceq"]
-atlas = ExtResource("39_uh4yr")
-region = Rect2(84, 28, 12, 360)
-margin = Rect2(0, -320, 0, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dnom"]
-size = Vector2(20, 56)
-
-[sub_resource type="Animation" id="Animation_1oo2h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackpackInventory:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(536, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BackpackInventory:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_657e0"]
-resource_name = "hover"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackpackInventory:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 0.233258),
-"update": 0,
-"values": [Vector2(536, 0), Vector2(520, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BackpackInventory:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.8), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_03pyk"]
-_data = {
-"RESET": SubResource("Animation_1oo2h"),
-"hover": SubResource("Animation_657e0")
-}
-
 [node name="Hud" type="Control" groups=["Hud"]]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
-script = ExtResource("1_cu4va")
 
-[node name="MainHud" type="CanvasLayer" parent="." groups=["MainHud"]]
-script = ExtResource("2_miqxo")
-tired_color = Color(0.70366, 0.310181, 0.310181, 1)
+[node name="BGProcessing" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="BlackOverlay" type="ColorRect" parent="MainHud"]
+[node name="Vignette Effect" type="ColorRect" parent="BGProcessing"]
+material = SubResource("ShaderMaterial_k5gsb")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="BlackOverlay" type="ColorRect" parent="BGProcessing"]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.4)
 
-[node name="Vignette Effect" type="ColorRect" parent="MainHud"]
-z_index = -110
-material = SubResource("ShaderMaterial_k5gsb")
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
+[node name="MainHud" type="CanvasLayer" parent="." groups=["MainHud"]]
+layer = 3
+script = ExtResource("2_miqxo")
+tired_color = Color(0.70366, 0.310181, 0.310181, 1)
 
 [node name="BloodOverlay" type="TextureRect" parent="MainHud"]
 visible = false
@@ -549,7 +451,7 @@ size_flags_horizontal = 4
 icon = ExtResource("7_s703r")
 flat = true
 script = ExtResource("9_dlaxh")
-opacity_color = Color(1, 1, 1, 0.392157)
+opacity_color = Color(1, 1, 1, 0.4)
 
 [node name="JournalButton" type="Button" parent="MainHud"]
 anchors_preset = 8
@@ -595,17 +497,6 @@ Date"
 horizontal_alignment = 1
 script = ExtResource("14_ovp23")
 
-[node name="TimeDisplay" type="Label" parent="MainHud"]
-offset_left = 120.0
-offset_top = 16.0
-offset_right = 336.0
-offset_bottom = 95.0
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = SubResource("FontVariation_h3f3o")
-theme_override_font_sizes/font_size = 50
-text = "Midnight
-Day: 1"
-
 [node name="Clock" type="Control" parent="MainHud"]
 layout_mode = 3
 anchors_preset = 0
@@ -614,6 +505,18 @@ offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 48.0
 script = ExtResource("19_xbt5x")
+
+[node name="TimeDisplay" type="Label" parent="MainHud/Clock"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 87.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = SubResource("FontVariation_h3f3o")
+theme_override_font_sizes/font_size = 50
+text = "Midnight
+Day: 1"
 
 [node name="ClockSprite" type="Sprite2D" parent="MainHud/Clock"]
 position = Vector2(48.5, 48)
@@ -696,97 +599,44 @@ libraries = {
 }
 
 [node name="CraftingHud" type="CanvasLayer" parent="." groups=["CraftingHud"]]
-visible = false
+unique_name_in_owner = true
 script = ExtResource("29_yu7lx")
+move_offset = -750.0
+move_speed = 4.2
 
-[node name="CraftingPanel" type="Panel" parent="CraftingHud"]
+[node name="Table" type="TextureRect" parent="CraftingHud"]
+z_index = -1
+texture_filter = 1
+offset_left = 1152.0
+offset_right = 2304.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("33_hqrie")
+stretch_mode = 4
+
+[node name="ScrollBase" type="TextureRect" parent="CraftingHud/Table"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -536.0
-offset_top = -260.0
-offset_right = 8.0
+offset_left = -560.0
+offset_top = -228.0
+offset_right = 160.0
 offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_nxqtg")
+scale = Vector2(0.96, 0.96)
+texture = ExtResource("26_1s1oi")
+stretch_mode = 4
+flip_h = true
+script = ExtResource("28_1iy7h")
+move_speed = 3.0
+move_offset = 565.0
 
-[node name="TabGrid1" type="GridContainer" parent="CraftingHud/CraftingPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -132.0
-offset_right = 1201.0
-offset_bottom = 933.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-theme_override_constants/h_separation = 350
-theme_override_constants/v_separation = 350
-columns = 5
-
-[node name="TabGrid2" type="GridContainer" parent="CraftingHud/CraftingPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -132.0
-offset_right = 1201.0
-offset_bottom = 933.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-theme_override_constants/h_separation = 350
-theme_override_constants/v_separation = 350
-columns = 5
-
-[node name="TabGrid3" type="GridContainer" parent="CraftingHud/CraftingPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -132.0
-offset_right = 1201.0
-offset_bottom = 933.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-theme_override_constants/h_separation = 350
-theme_override_constants/v_separation = 350
-columns = 5
-
-[node name="TabGrid4" type="GridContainer" parent="CraftingHud/CraftingPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -132.0
-offset_right = 1201.0
-offset_bottom = 933.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-theme_override_constants/h_separation = 350
-theme_override_constants/v_separation = 350
-columns = 5
-
-[node name="TabButton1" type="Button" parent="CraftingHud/CraftingPanel"]
+[node name="TabButton1" type="Button" parent="CraftingHud/Table/ScrollBase"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -794,52 +644,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -272.0
-offset_top = -244.0
+offset_top = -268.0
 offset_right = -136.0
-offset_bottom = -204.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
-theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
-theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
-theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
-theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("16_dnbc0")
 theme_override_font_sizes/font_size = 27
 theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0og6w")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-text = "Gear"
+text = "Gear
 
-[node name="AltButton1" type="Button" parent="CraftingHud/CraftingPanel/TabButton1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 68.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("16_dnbc0")
-theme_override_font_sizes/font_size = 27
-theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
-theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-disabled = true
-text = "Gear"
+"
+script = ExtResource("29_pheyb")
 
-[node name="TabButton2" type="Button" parent="CraftingHud/CraftingPanel"]
+[node name="TabButton2" type="Button" parent="CraftingHud/Table/ScrollBase"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -847,103 +669,47 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -136.0
-offset_top = -244.0
-offset_bottom = -204.0
+offset_top = -268.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
-theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
-theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
-theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
-theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("16_dnbc0")
 theme_override_font_sizes/font_size = 27
 theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_akmgk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-text = "Traps"
+text = "Traps
 
-[node name="AltButton2" type="Button" parent="CraftingHud/CraftingPanel/TabButton2"]
+"
+script = ExtResource("29_pheyb")
+
+[node name="TabButton3" type="Button" parent="CraftingHud/Table/ScrollBase"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 68.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("16_dnbc0")
-theme_override_font_sizes/font_size = 27
-theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
-theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-disabled = true
-text = "Traps"
-
-[node name="TabButton3" type="Button" parent="CraftingHud/CraftingPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -244.0
+offset_top = -268.0
 offset_right = 136.0
-offset_bottom = -204.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
-theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
-theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
-theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
-theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("16_dnbc0")
 theme_override_font_sizes/font_size = 27
 theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i3trf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-text = "Material"
+text = "Material
 
-[node name="AltButton3" type="Button" parent="CraftingHud/CraftingPanel/TabButton3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 68.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("16_dnbc0")
-theme_override_font_sizes/font_size = 27
-theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
-theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-disabled = true
-text = "Material"
+"
+script = ExtResource("29_pheyb")
 
-[node name="TabButton4" type="Button" parent="CraftingHud/CraftingPanel"]
+[node name="TabButton4" type="Button" parent="CraftingHud/Table/ScrollBase"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -951,93 +717,195 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 136.0
-offset_top = -244.0
+offset_top = -268.0
 offset_right = 272.0
-offset_bottom = -204.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0.913725, 0.815686, 0.486275, 1)
-theme_override_colors/font_pressed_color = Color(0.745098, 0.270588, 0.270588, 1)
-theme_override_colors/font_focus_color = Color(0.894118, 0.184314, 0.184314, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(0.893742, 0.182374, 0.182374, 1)
-theme_override_colors/icon_pressed_color = Color(0.744392, 0.26939, 0.26939, 1)
-theme_override_colors/icon_hover_color = Color(0.914108, 0.81525, 0.487112, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("16_dnbc0")
 theme_override_font_sizes/font_size = 27
 theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mkp3p")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-text = "Miscellaneous"
+text = "Miscellaneous
 
-[node name="AltButton4" type="Button" parent="CraftingHud/CraftingPanel/TabButton4"]
+"
+script = ExtResource("29_pheyb")
+
+[node name="ScrollContainer1" type="ScrollContainer" parent="CraftingHud/Table/ScrollBase"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 50.0
+offset_right = 901.0
+offset_bottom = 1717.0
+scale = Vector2(0.2, 0.2)
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="TabGrid1" type="GridContainer" parent="CraftingHud/Table/ScrollBase/ScrollContainer1"]
+layout_mode = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 35
+columns = 2
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="CraftingHud/Table/ScrollBase"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 50.0
+offset_right = 901.0
+offset_bottom = 1717.0
+scale = Vector2(0.2, 0.2)
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="TabGrid2" type="GridContainer" parent="CraftingHud/Table/ScrollBase/ScrollContainer2"]
+layout_mode = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 35
+columns = 2
+
+[node name="ScrollContainer3" type="ScrollContainer" parent="CraftingHud/Table/ScrollBase"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 50.0
+offset_right = 901.0
+offset_bottom = 1717.0
+scale = Vector2(0.2, 0.2)
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="TabGrid3" type="GridContainer" parent="CraftingHud/Table/ScrollBase/ScrollContainer3"]
+layout_mode = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 35
+columns = 2
+
+[node name="ScrollContainer4" type="ScrollContainer" parent="CraftingHud/Table/ScrollBase"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 50.0
+offset_right = 901.0
+offset_bottom = 1717.0
+scale = Vector2(0.2, 0.2)
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="TabGrid4" type="GridContainer" parent="CraftingHud/Table/ScrollBase/ScrollContainer4"]
+layout_mode = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 35
+columns = 2
+
+[node name="ItemPanel" type="Control" parent="CraftingHud/Table/ScrollBase"]
+z_index = 15
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 68.0
-offset_bottom = 20.0
+offset_left = -22.4999
+offset_top = -194.667
+offset_right = 145.5
+offset_bottom = 141.333
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.815)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.815686)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("16_dnbc0")
-theme_override_font_sizes/font_size = 27
-theme_override_styles/disabled = SubResource("StyleBoxTexture_51t3k")
-theme_override_styles/hover = SubResource("StyleBoxTexture_oic7u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_lby4v")
-disabled = true
-text = "Miscellaneous"
-
-[node name="ItemPanel" type="Panel" parent="CraftingHud"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = -196.0
-offset_right = 232.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_3clo2")
 script = ExtResource("26_874ad")
 
-[node name="ItemLabel" parent="CraftingHud/ItemPanel" instance=ExtResource("28_0chnb")]
+[node name="ItemLabel" parent="CraftingHud/Table/ScrollBase/ItemPanel" instance=ExtResource("28_0chnb")]
+visible = false
 position = Vector2(240, 248)
 
-[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel"]
-z_index = -1
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
 layout_mode = 0
-offset_right = 168.0
-offset_bottom = 416.0
-texture = SubResource("AtlasTexture_l5mey")
-expand_mode = 1
+offset_left = -33.3333
+offset_top = 0.000341733
+offset_right = 263.667
+offset_bottom = 113.0
+scale = Vector2(0.491023, 0.491023)
+theme_override_constants/separation = 15
 
-[node name="ItemDisplay" type="TextureRect" parent="CraftingHud/ItemPanel"]
+[node name="ItemName" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 120
+text = "Name"
+
+[node name="ItemCount" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.183485, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_xk42h")
+theme_override_font_sizes/font_size = 65
+text = "2x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingHud/Table/ScrollBase/ItemPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="ItemDescription" type="RichTextLabel" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 62.0
-offset_right = 122.0
-offset_bottom = 142.0
+offset_left = -33.0
+offset_top = 50.0
+offset_right = 297.0
+offset_bottom = 122.0
+scale = Vector2(0.959389, 0.959389)
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_ij5xg")
+theme_override_font_sizes/normal_font_size = 32
+text = "Item Description Item Description"
+
+[node name="ItemDisplay" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
+layout_mode = 0
+offset_left = -33.3333
+offset_top = 125.0
+offset_right = 46.6667
+offset_bottom = 205.0
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("27_qodvs")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="MaterialDisplay" type="Control" parent="CraftingHud/ItemPanel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MaterialsNeeded" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
+layout_mode = 0
+offset_left = -33.3333
+offset_top = 191.667
+offset_right = 48.6667
+offset_bottom = 214.667
+scale = Vector2(0.959, 0.959)
+theme_override_colors/font_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_fonts/font = ExtResource("16_dnbc0")
+theme_override_font_sizes/font_size = 32
+text = "Materials Needed:"
 
-[node name="Display1" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+[node name="CanCraft" type="RichTextLabel" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 267.0
+offset_right = 714.0
+offset_bottom = 311.0
+scale = Vector2(0.434827, 0.434827)
+theme_override_fonts/normal_font = ExtResource("16_dnbc0")
+theme_override_fonts/bold_font = ExtResource("16_dnbc0")
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[b]You don't have enough materials to craft this item.[/b]"
+scroll_active = false
+
+[node name="MaterialDisplay" type="Control" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
+anchors_preset = 0
+offset_left = -41.6667
+offset_top = -175.0
+offset_right = -1.66671
+offset_bottom = -135.0
+scale = Vector2(1.21732, 1.21732)
+
+[node name="Display1" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay"]
 z_index = 1
 layout_mode = 0
 offset_left = 8.0
@@ -1048,32 +916,33 @@ mouse_filter = 0
 texture = ExtResource("29_cc8gp")
 expand_mode = 1
 
-[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display1"]
+[node name="ItemCount" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 25.0
-offset_bottom = 24.0
+offset_left = 4.38262
+offset_top = -0.717221
+offset_right = 78.3826
+offset_bottom = 121.283
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.197533, 0.197533)
 text = "12"
 label_settings = SubResource("LabelSettings_yptbm")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display1"]
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display1"]
 z_index = -1
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("28_omeas")
 
-[node name="Display2" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+[node name="Display2" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay"]
 z_index = 1
 layout_mode = 0
 offset_left = 48.0
@@ -1083,32 +952,33 @@ offset_bottom = 358.0
 texture = ExtResource("29_cc8gp")
 expand_mode = 1
 
-[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display2"]
+[node name="ItemCount" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 25.0
-offset_bottom = 24.0
+offset_left = 5.45655
+offset_top = -0.717221
+offset_right = 79.4565
+offset_bottom = 121.283
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.197533, 0.197533)
 text = "12"
 label_settings = SubResource("LabelSettings_yptbm")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display2"]
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display2"]
 z_index = -1
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("28_omeas")
 
-[node name="Display3" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+[node name="Display3" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay"]
 z_index = 1
 layout_mode = 0
 offset_left = 88.0
@@ -1118,32 +988,33 @@ offset_bottom = 358.0
 texture = ExtResource("29_cc8gp")
 expand_mode = 1
 
-[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display3"]
+[node name="ItemCount" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 25.0
-offset_bottom = 24.0
+offset_left = 5.45654
+offset_top = -0.717224
+offset_right = 79.4565
+offset_bottom = 121.283
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.197533, 0.197533)
 text = "12"
 label_settings = SubResource("LabelSettings_yptbm")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display3"]
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display3"]
 z_index = -1
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("28_omeas")
 
-[node name="Display4" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay"]
+[node name="Display4" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay"]
 z_index = 1
 layout_mode = 0
 offset_left = 128.0
@@ -1153,42 +1024,43 @@ offset_bottom = 358.0
 texture = ExtResource("29_cc8gp")
 expand_mode = 1
 
-[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel/MaterialDisplay/Display4"]
+[node name="ItemCount" type="Label" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 25.0
-offset_bottom = 24.0
+offset_left = 5.45654
+offset_top = -0.717224
+offset_right = 79.4565
+offset_bottom = 121.283
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.197533, 0.197533)
 text = "12"
 label_settings = SubResource("LabelSettings_yptbm")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="CraftingHud/ItemPanel/MaterialDisplay/Display4"]
+[node name="TextureRect" type="TextureRect" parent="CraftingHud/Table/ScrollBase/ItemPanel/MaterialDisplay/Display4"]
 z_index = -1
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("28_omeas")
 
-[node name="CraftButton" type="Button" parent="CraftingHud/ItemPanel"]
+[node name="CraftButton" type="Button" parent="CraftingHud/Table/ScrollBase/ItemPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = 208.0
-offset_right = 28.0
-offset_bottom = 241.0
+offset_left = -117.334
+offset_top = 132.0
+offset_right = -53.3335
+offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("30_qo76f")
@@ -1199,62 +1071,21 @@ text = "CRAFT"
 icon_alignment = 1
 expand_icon = true
 
-[node name="ItemName" type="Label" parent="CraftingHud/ItemPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -148.0
-offset_right = 76.0
-offset_bottom = -121.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_owv61")
-text = "Placeholder Text"
-label_settings = SubResource("LabelSettings_gnil8")
-horizontal_alignment = 1
-autowrap_mode = 3
+[node name="ScrollCap" type="TextureRect" parent="CraftingHud/Table"]
+z_index = 15
+layout_mode = 0
+offset_top = 96.0
+offset_right = 727.0
+offset_bottom = 536.0
+scale = Vector2(0.986015, 0.986015)
+mouse_filter = 2
+texture = ExtResource("26_gsrpr")
+stretch_mode = 4
+flip_h = true
 
-[node name="ItemCount" type="Label" parent="CraftingHud/ItemPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 12.0
-offset_top = -64.0
-offset_right = 44.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "12"
-label_settings = SubResource("LabelSettings_vroa4")
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="ItemDescription" type="RichTextLabel" parent="CraftingHud/ItemPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = 24.0
-offset_right = 76.0
-offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("16_dnbc0")
-theme_override_font_sizes/normal_font_size = 25
-bbcode_enabled = true
-text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-scroll_active = false
+[node name="CraftSFX" type="AudioStreamPlayer" parent="CraftingHud"]
+stream = SubResource("AudioStreamRandomizer_eyi46")
+bus = &"SFX"
 
 [node name="CookingHud" type="CanvasLayer" parent="."]
 visible = false
@@ -1361,92 +1192,8 @@ libraries = {
 "": SubResource("AnimationLibrary_p0daj")
 }
 
-[node name="FishingHud" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("38_qx4n6")
-
-[node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
-offset_left = 256.0
-offset_top = 128.0
-offset_right = 276.0
-offset_bottom = 500.0
-value = 100.0
-rounded = true
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_5hjiq")
-texture_progress = SubResource("AtlasTexture_dsh7j")
-texture_progress_offset = Vector2(4, 4)
-
-[node name="ProgressMeter" type="TextureProgressBar" parent="FishingHud"]
-offset_left = 288.0
-offset_top = 128.0
-offset_right = 308.0
-offset_bottom = 500.0
-step = 0.01
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_eyg6f")
-texture_progress = SubResource("GradientTexture2D_fcdus")
-texture_progress_offset = Vector2(4, 4)
-
-[node name="SuccessBar" type="NinePatchRect" parent="FishingHud"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -72.0
-offset_right = -300.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_y6q6o")
-region_rect = Rect2(0, 0, 20, 60)
-patch_margin_top = 10
-patch_margin_bottom = 10
-
-[node name="SuccessArea" type="Area2D" parent="FishingHud/SuccessBar"]
-position = Vector2(10, 20)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/SuccessBar/SuccessArea"]
-visible = false
-shape = SubResource("RectangleShape2D_3hf3i")
-
-[node name="FishingHook" type="NinePatchRect" parent="FishingHud"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -316.0
-offset_top = -192.0
-offset_right = -304.0
-offset_bottom = 172.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_toceq")
-region_rect = Rect2(0, 0, 12, 360)
-patch_margin_top = 10
-patch_margin_bottom = 10
-
-[node name="FishingArea" type="Area2D" parent="FishingHud/FishingHook"]
-position = Vector2(6, 24)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/FishingHook/FishingArea"]
-shape = SubResource("RectangleShape2D_8dnom")
-
-[node name="ChanceTimer" type="Timer" parent="FishingHud"]
-wait_time = 1.5
-
-[node name="DurationTimer" type="Timer" parent="FishingHud"]
-wait_time = 10.0
-one_shot = true
-
 [node name="MechanicHud" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Journal" parent="MechanicHud" instance=ExtResource("1_7mtow")]
 anchors_preset = 8
@@ -1469,10 +1216,12 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+metadata/_edit_lock_ = true
 
 [node name="BackpackInventory" parent="MechanicHud/Backpack" groups=["Backpack"] instance=ExtResource("3_idjsy")]
 position = Vector2(536, 0)
 scale = Vector2(0.817009, 0.90688)
+metadata/_edit_lock_ = true
 
 [node name="BackpackSprite" type="Sprite2D" parent="MechanicHud/Backpack/BackpackInventory"]
 modulate = Color(1, 1, 1, 0.7)
@@ -1481,11 +1230,7 @@ position = Vector2(48.9591, -8.82144)
 scale = Vector2(8.02111, 15.8309)
 texture = ExtResource("5_dcrnc")
 script = ExtResource("7_661ui")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MechanicHud/Backpack"]
-libraries = {
-"": SubResource("AnimationLibrary_03pyk")
-}
+metadata/_edit_lock_ = true
 
 [connection signal="mouse_entered" from="MainHud/BackpackButton" to="MainHud/BackpackButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHud/BackpackButton" to="MainHud/BackpackButton" method="_on_mouse_exited"]
@@ -1495,17 +1240,12 @@ libraries = {
 [connection signal="pressed" from="MainHud/JournalButton" to="MainHud" method="_on_journal_button_pressed"]
 [connection signal="pressed" from="MainHud/JournalButton" to="MechanicHud/Journal" method="_on_journal_button_pressed"]
 [connection signal="timeout" from="QTEHud/QTETimer" to="QTEHud" method="_on_qte_timer_timeout"]
-[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton1" to="CraftingHud" method="_on_tab_button_1_pressed"]
-[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton2" to="CraftingHud" method="_on_tab_button_2_pressed"]
-[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton3" to="CraftingHud" method="_on_tab_button_3_pressed"]
-[connection signal="pressed" from="CraftingHud/CraftingPanel/TabButton4" to="CraftingHud" method="_on_tab_button_4_pressed"]
-[connection signal="pressed" from="CraftingHud/ItemPanel/CraftButton" to="CraftingHud/ItemPanel" method="_on_craft_button_pressed"]
+[connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton1" to="CraftingHud" method="_on_tab_button_1_pressed"]
+[connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton2" to="CraftingHud" method="_on_tab_button_2_pressed"]
+[connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton3" to="CraftingHud" method="_on_tab_button_3_pressed"]
+[connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton4" to="CraftingHud" method="_on_tab_button_4_pressed"]
+[connection signal="pressed" from="CraftingHud/Table/ScrollBase/ItemPanel/CraftButton" to="CraftingHud/Table/ScrollBase/ItemPanel" method="_on_craft_button_pressed"]
 [connection signal="pressed" from="CookingHud/CookingPanel/CookButton" to="CookingHud" method="_on_cook_button_pressed"]
 [connection signal="item_added" from="CookingHud/CookingPanel/CookingSlots" to="CookingHud" method="_on_cooking_item_added"]
 [connection signal="item_removed" from="CookingHud/CookingPanel/CookingSlots" to="CookingHud" method="_on_cooking_item_removed"]
 [connection signal="item_removed" from="CookingHud/SkillCheck/CookingResult" to="CookingHud" method="_on_cooking_result_item_removed"]
-[connection signal="value_changed" from="FishingHud/ProgressMeter" to="FishingHud" method="_on_progress_meter_value_changed"]
-[connection signal="area_entered" from="FishingHud/SuccessBar/SuccessArea" to="FishingHud" method="_on_success_area_entered"]
-[connection signal="area_exited" from="FishingHud/SuccessBar/SuccessArea" to="FishingHud" method="_on_success_area_exited"]
-[connection signal="timeout" from="FishingHud/ChanceTimer" to="FishingHud" method="_on_chance_timer_timeout"]
-[connection signal="timeout" from="FishingHud/DurationTimer" to="FishingHud" method="_on_duration_time_timeout"]

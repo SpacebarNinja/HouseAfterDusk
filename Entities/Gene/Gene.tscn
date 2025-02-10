@@ -421,21 +421,16 @@ shape = SubResource("CapsuleShape2D_vbktw")
 debug_color = Color(0.82, 0.2378, 0.79089, 0.184314)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
-metadata/_edit_group_ = true
 
 [node name="Flashlight" type="PointLight2D" parent="."]
-scale = Vector2(1.8, 2.7)
 energy = 0.4
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 shadow_item_cull_mask = 7
 texture = ExtResource("26_w7ypw")
-
-[node name="FlashlightSprite" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(1.8, 2.7)
-texture = ExtResource("26_w7ypw")
+offset = Vector2(10, 0)
+texture_scale = 2.0
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -457,47 +452,37 @@ wait_time = 5.0
 
 [node name="RayCast2D" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, 96)
+target_position = Vector2(170, 75)
 collision_mask = 5
 
 [node name="RayCast2D2" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, 72)
+target_position = Vector2(170, 50)
 collision_mask = 5
 
 [node name="RayCast2D3" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, 48)
+target_position = Vector2(170, 25)
 collision_mask = 5
 
 [node name="RayCast2D4" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, 24)
+target_position = Vector2(170, 0)
 collision_mask = 5
 
 [node name="RayCast2D5" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, 0)
+target_position = Vector2(170, -25)
 collision_mask = 5
 
 [node name="RayCast2D6" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, -24)
+target_position = Vector2(170, -50)
 collision_mask = 5
 
 [node name="RayCast2D7" type="RayCast2D" parent="RaycastNodes"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, -48)
-collision_mask = 5
-
-[node name="RayCast2D8" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, -72)
-collision_mask = 5
-
-[node name="RayCast2D9" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(130, -96)
+target_position = Vector2(170, -75)
 collision_mask = 5
 
 [node name="Step Shadow" type="Sprite2D" parent="."]

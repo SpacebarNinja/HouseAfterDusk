@@ -11,7 +11,6 @@ var target_modulate
 var target_position
 var is_hovering := false
 
-
 func _ready():
 	original_modulate = modulate
 	original_position = position
@@ -21,6 +20,11 @@ func _ready():
 	target_position = original_position
 
 func _process(delta):
+	if HudManager.journal_visible:
+		visible = false
+	else:
+		visible = false
+		
 	modulate = modulate.lerp(target_modulate, lerp_speed * delta)
 	position = position.lerp(target_position, lerp_speed * delta)
 	

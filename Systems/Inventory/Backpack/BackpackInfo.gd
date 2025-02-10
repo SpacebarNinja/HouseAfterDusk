@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var protoset = preload("res://Systems/Inventory/Backpack/Universal.tres")
+@onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
 @onready var item_label = $ItemLabel
 
 @onready var eat = $Eat
@@ -17,6 +17,10 @@ var hover_speed = 0.2  # The bigger the faster
 @onready var select_audio = $SelectAudio
 @onready var unselect_audio = $UnselectAudio
 
+func _ready():
+	var invitem = get_inventory_items()
+	print("invitems: ", invitem)
+	
 func _process(_delta):
 	HandleHover()
 
@@ -40,9 +44,10 @@ func _on_ctrl_inventory_grid_ex_item_mouse_exited(item):
 	item_label.on_item_mouse_exited(item)
 
 func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
-	if item.get_property("edible", true):
-		var food_value = item.get_property("hunger_value")
-		remove_inventory_item(item.get_property("id", ""), 1)
+	var item_type = item.get_property("Type", "")
+	if item_type == "Food":
+		var food_value = item.get_property("value")
+		item.queue_free()
 		player.replenish_hunger(food_value)
 		eat.play()
 	else:
@@ -55,9 +60,10 @@ func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
 				item.swap(item, item2)
 
 func _on_ctrl_inventory_grid_ex_equippable_inventory_item_context_activated(item):
-	if item.get_property("edible", true):
-		var food_value = item.get_property("hunger_value")
-		remove_equipped_item(item.get_property("id", ""), 1)
+	var item_type = item.get_property("Type", "")
+	if item_type == "Food":
+		var food_value = item.get_property("value")
+		item.queue_free()
 		player.replenish_hunger(food_value)
 		eat.play()
 	else:
@@ -85,25 +91,14 @@ func remove_inventory_item(id, amount):
 			var stack_size = inventory.get_item_stack_size(item)
 			var new_stack_size = stack_size - amount
 			inventory.set_item_stack_size(item, new_stack_size)
-			#print("Item Stack: ", inventory.get_item_stack_size(item))
+			print("Item Stack: ", inventory.get_item_stack_size(item))
 			
 			if stack_size <= 0:
 				inventory.remove_item(item)
-				print("Removing ", id)
+				print("Removing item")
 			else:
-				print("Reduced ", id, " stack by ", amount, " and is now ", new_stack_size)
-
-func remove_equipped_item(item, amount):
-	var stack_size = equippable.get_item_stack_size(item)
-	var new_stack_size = stack_size - amount
-	
-	equippable.set_item_stack_size(item, new_stack_size)
-	#print("Item Stack: ", equippable.get_item_stack_size(item))
-	
-	if new_stack_size <= 0:
-		equippable.remove_item(item)
-		print("Removing ", item)
-
+				print("Failed to remove item:", id)
+			
 func get_inventory_items() -> Array:
 	# Ensure `inventory` is properly set to a node or list of items
 	var inventory_items = inventory.get_children()

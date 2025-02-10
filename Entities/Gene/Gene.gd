@@ -21,6 +21,8 @@ extends CharacterBody2D
 @export var flashlight: PointLight2D
 @export var audio_list: Array[AudioStreamPlayer2D]
 
+@onready var rooms = get_node("/root/MainScene/DemoMap2/ROOMS")
+
 var current_hunger: int
 var current_health: int
 var can_take_damage: bool = true
@@ -29,7 +31,7 @@ var flashlight_on: bool = true
 var equipped_item: bool = false
 var current_weapon: String = ""
 var distance_to_mouse = 0.0
-
+var is_outside: bool
 func _ready():
 	current_health = max_health
 	current_hunger = max_hunger
@@ -39,15 +41,16 @@ func set_walk_speed(speed: int):
 	movement_speed = speed
 
 func _process(_delta):
+	modulate_player()
+	rotate_flashlight()
+	
+	if WorldManager.StopGeneMovement: return
+	
 	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
 	velocity = move_vector * movement_speed
 	
 	var backpack_instance = get_node("/root/MainScene/Hud/MechanicHud/Backpack/BackpackInventory/BackpackSprite")
 	var is_hovering_inventory = backpack_instance.is_hovering_inventory
-	
-	if Input.is_action_just_pressed("Escape"):
-		movement_speed = 80
-		animation_handler.current_animation.anim_sprite.self_modulate.a = 1
 	
 	if Input.is_action_pressed("AlternativeMove") and move_vector == Vector2.ZERO and !is_hovering_inventory:
 		alternative_move()
@@ -60,7 +63,17 @@ func _process(_delta):
 
 	move_and_slide()
 	finding_enemy()
-	rotate_flashlight()
+
+func modulate_player():
+	if str(rooms.current_room.name) == 'OUTSIDE':
+		is_outside = true
+	else:
+		is_outside = false
+		
+	if not WorldManager.is_generator_on and not is_outside:
+		self.modulate = Color(1.5, 1.5, 1.5, 1)
+	else:
+		self.modulate = Color(1, 1, 1, 1)
 
 func alternative_move():
 	var mouse_position = get_global_mouse_position()
@@ -127,7 +140,7 @@ func _on_invulnerability_timer_timeout():
 	can_take_damage = true
 
 func rotate_flashlight():
-	if not journal_instance.is_open:
+	if not journal_instance.is_open and HudManager.flashlight_movement:
 		var mouse_position = get_global_mouse_position()
 		flashlight.look_at(mouse_position)
 		raycast.look_at(mouse_position)

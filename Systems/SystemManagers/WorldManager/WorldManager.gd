@@ -17,4 +17,3 @@ func add_interactable(text: String, intr_duration: float, callback: Callable):
 		"IntrDuration": intr_duration,
 		"Callback": callback
 	}
-	

@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://27u4w2dyb8t8"]
+
+[ext_resource type="Script" path="res://craftable_item_display.gd" id="1_65dux"]
+[ext_resource type="Texture2D" uid="uid://dp3t44eq4vjmr" path="res://Systems/Inventory/Backpack/Items/RareFish.png" id="2_5jb7k"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="3_vcj2q"]
+[ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="4_12742"]
+[ext_resource type="AudioStream" uid="uid://itwba5keb7bd" path="res://Systems/HUD/WorkbenchSystem/Sounds/Click.wav" id="5_pwhiu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccu1s"]
+atlas = ExtResource("4_12742")
+region = Rect2(328, 8, 64, 64)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t7bo2"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_pwhiu")
+
+[node name="CraftableItemDisplay" type="Control" node_paths=PackedStringArray("texture_button")]
+custom_minimum_size = Vector2(319, 319)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_65dux")
+texture_button = NodePath("TextureButton")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_5jb7k")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = 52.0
+offset_right = 146.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_vcj2q")
+theme_override_font_sizes/font_size = 120
+text = "12"
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton"]
+z_index = -1
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 324.0
+texture = SubResource("AtlasTexture_ccu1s")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_t7bo2")
+volume_db = 2.0
+bus = &"SFX"

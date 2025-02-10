@@ -69,7 +69,6 @@ enum Category { HUMANOID, MONSTER, OBJECT, UNKNOWN }
 enum Sub_category { Descriptions, Behaviors, Methods }
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var hud = get_tree().get_first_node_in_group("Hud")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var category_buttons = $CategoryButtons
@@ -77,7 +76,7 @@ enum Sub_category { Descriptions, Behaviors, Methods }
 @onready var turn_right = $TurnRight
 @onready var journal_open_sfx = $JournalOpenSFX
 @onready var journal_close_sfx = $JournalCloseSFX
-@onready var black_overlay = $"../../MainHud/BlackOverlay"
+@onready var black_overlay = $"../../BGProcessing/BlackOverlay"
 
 @export var page_amount: int = 3
 var page_number: int
@@ -141,8 +140,10 @@ func _process(delta):
 	if not is_open:
 		hide_all_children(category_buttons)
 
-
 func start_open_journal_animation():
+	if not HudManager.journal_visible:
+		return
+		
 	is_animating = true
 	black_overlay.show()
 	journal_open_sfx.play()
@@ -151,7 +152,7 @@ func start_open_journal_animation():
 	anim_sprite.play("OpenJournal")
 	anim_sprite.connect("animation_finished", Callable(self, "_on_anim_sprite_animation_finished_open"))
 	Input.set_custom_mouse_cursor(quill, Input.CURSOR_ARROW)
-
+	
 	target_y_position = open_y_position
 	target_opacity = 1.0
 	black_overlay_target_opacity = 1
@@ -325,7 +326,3 @@ func new_word(main_category: String, category: String, subcategory: String, word
 		OBJECT[category][subcategory].append(word)
 	if main_category == 'UNKNOWN':
 		UNKNOWN[category][subcategory].append(word)
-
-
-func _on_journal_button_pressed():
-	open_journal_state != open_journal_state

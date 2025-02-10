@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Inventory/Backpack/BackpackInfo.gd" id="1_dlcgs"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_w6ijb"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/Universal.tres" id="4_g1y3s"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="4_g1y3s"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="5_j15jq"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="5_stp4t"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="7_0hrb1"]
@@ -68,51 +68,28 @@ script = ExtResource("3_w6ijb")
 size = Vector2i(1, 6)
 item_protoset = ExtResource("4_g1y3s")
 
-[node name="_Node_248350" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "raw_wood"
-properties = {
-"grid_position": Vector2i(0, 5),
-"stack_size": 3
-}
-
-[node name="_Node_43817" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "tv_remote"
-
-[node name="_Node_199909" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "potato"
-properties = {
-"grid_position": Vector2i(0, 1)
-}
-
-[node name="_Node_200073" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "nightshade_berry"
-properties = {
-"grid_position": Vector2i(0, 2)
-}
-
-[node name="_Node_200249" type="Node" parent="Inventory"]
+[node name="_Node_129367" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
 prototype_id = "rye"
 properties = {
-"grid_position": Vector2i(0, 3)
+"grid_position": Vector2i(0, 5),
+"stack_size": 5
 }
 
-[node name="_Node_200431" type="Node" parent="Inventory"]
+[node name="_Node_131401" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
-prototype_id = "sugarcane"
+prototype_id = "raw_wood"
 properties = {
-"grid_position": Vector2i(0, 4)
+"grid_position": Vector2i(0, 4),
+"stack_size": 3
 }
+
+[node name="_Node_263555" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "tv_remote"
 
 [node name="Equippable" type="Node" parent="."]
 script = ExtResource("3_w6ijb")
@@ -126,13 +103,12 @@ scale = Vector2(1.155, 1.155)
 [node name="InventoryGrid" type="Control" parent="Inventory UI"]
 z_index = -10
 texture_filter = 1
-custom_minimum_size = Vector2(64, 404)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.4242
 offset_top = -58.8745
-offset_right = 106.424
-offset_bottom = 345.125
+offset_right = 42.4242
+offset_bottom = -58.8745
 script = ExtResource("7_0hrb1")
 inventory_path = NodePath("../../Inventory")
 field_dimensions = Vector2(64, 64)
@@ -146,13 +122,12 @@ metadata/_edit_use_anchors_ = true
 [node name="EquipGrid" type="Control" parent="Inventory UI"]
 z_index = -10
 texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.4242
 offset_top = -135.065
-offset_right = 106.424
-offset_bottom = -71.065
+offset_right = 42.4242
+offset_bottom = -135.065
 script = ExtResource("7_0hrb1")
 inventory_path = NodePath("../../Equippable")
 field_dimensions = Vector2(64, 64)

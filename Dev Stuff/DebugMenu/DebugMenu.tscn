@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://chyhpk7ouru8b"]
+[gd_scene load_steps=34 format=3 uid="uid://chyhpk7ouru8b"]
 
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
@@ -14,15 +14,12 @@
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Map.gd" id="9_u6m8c"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Inventory.gd" id="10_gerqt"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="11_8rupj"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="12_gbwnt"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="13_nnlmn"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="14_m2d0y"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="15_w6hg1"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
-[ext_resource type="Resource" uid="uid://cpuwcvkaa2ekq" path="res://Systems/Inventory/Backpack/Gear.tres" id="16_vk0uj"]
-[ext_resource type="Resource" uid="uid://cur0w3wce5lgx" path="res://Systems/Inventory/Backpack/Consumables.tres" id="20_jbqyj"]
-[ext_resource type="Resource" uid="uid://c45aakqvd33r" path="res://Systems/Inventory/Backpack/Resource.tres" id="21_58y81"]
-[ext_resource type="Resource" uid="uid://by8cmg6buqlgn" path="res://Systems/Inventory/Backpack/Miscellaneous.tres" id="22_hmoxa"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ja3xc"]
 
@@ -73,7 +70,7 @@ anchors_preset = 0
 script = ExtResource("1_ovj22")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 10
 
 [node name="GameWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
 position = Vector2(1016, 16)
@@ -906,40 +903,40 @@ mouse_filter = 1
 [node name="Gear" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel"]
 script = ExtResource("11_8rupj")
 size = Vector2i(5, 1)
-item_protoset = ExtResource("16_vk0uj")
+item_protoset = ExtResource("12_gbwnt")
 
-[node name="_Node_184245" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
+[node name="_Node_26460" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("16_vk0uj")
-prototype_id = "bullet"
-
-[node name="_Node_184389" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("16_vk0uj")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "gun"
 properties = {
 "grid_position": Vector2i(1, 0)
 }
 
-[node name="_Node_184542" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
+[node name="_Node_27598" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("16_vk0uj")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "bullet"
+
+[node name="_Node_27751" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "makeshift_bat"
 properties = {
 "grid_position": Vector2i(2, 0)
 }
 
-[node name="_Node_184704" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
+[node name="_Node_27913" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("16_vk0uj")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "fishing_rod"
 properties = {
 "grid_position": Vector2i(3, 0)
 }
 
-[node name="_Node_184875" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
+[node name="_Node_28084" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("16_vk0uj")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "trap"
 properties = {
 "grid_position": Vector2i(4, 0)
@@ -970,291 +967,323 @@ offset_bottom = 634.4
 [node name="Food" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel"]
 script = ExtResource("11_8rupj")
 size = Vector2i(5, 8)
-item_protoset = ExtResource("20_jbqyj")
+item_protoset = ExtResource("12_gbwnt")
 
-[node name="_Node_217552" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_67161" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "trash"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "baneberry"
 
-[node name="_Node_198564" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_69125" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "bogberry"
-properties = {
-"grid_position": Vector2i(1, 0)
-}
-
-[node name="_Node_198787" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "gooseberry"
-properties = {
-"grid_position": Vector2i(2, 0)
-}
-
-[node name="_Node_199019" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "nightshadeberry"
-properties = {
-"grid_position": Vector2i(3, 0)
-}
-
-[node name="_Node_210158" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "pepper_beans"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "coffee_beans"
 properties = {
 "grid_position": Vector2i(0, 1)
 }
 
-[node name="_Node_198350" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_78268" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "baneberry"
-properties = {
-"grid_position": Vector2i(4, 0)
-}
-
-[node name="_Node_201242" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "carrot"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "potato"
 properties = {
 "grid_position": Vector2i(0, 2)
 }
 
-[node name="_Node_207873" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_82470" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "meat"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "tentacle"
+properties = {
+"grid_position": Vector2i(0, 3)
+}
+
+[node name="_Node_69706" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "cornucopia"
 properties = {
 "grid_position": Vector2i(0, 4)
 }
 
-[node name="_Node_205813" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_74360" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "grilled_fish"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "jam"
 properties = {
 "grid_position": Vector2i(0, 5)
 }
 
-[node name="_Node_214235" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_77306" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "sugar"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "pepper"
 properties = {
 "grid_position": Vector2i(0, 6)
 }
 
-[node name="_Node_205428" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_81908" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "gravy"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "sushi"
 properties = {
 "grid_position": Vector2i(0, 7)
 }
 
-[node name="_Node_202368" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_71665" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "coffee_beans"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "gooseberry"
+properties = {
+"grid_position": Vector2i(1, 0)
+}
+
+[node name="_Node_77781" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "pepper_beans"
 properties = {
 "grid_position": Vector2i(1, 1)
 }
 
-[node name="_Node_210642" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_97034" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "potato"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "sugarcane"
 properties = {
 "grid_position": Vector2i(1, 2)
 }
 
-[node name="_Node_201510" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_70010" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "chocolate"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "crab"
 properties = {
 "grid_position": Vector2i(1, 3)
 }
 
-[node name="_Node_26432" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_73151" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "bread"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "grilled_fish"
 properties = {
 "grid_position": Vector2i(1, 4)
 }
 
-[node name="_Node_203978" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_74781" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "bullet"
+properties = {
+"grid_position": Vector2i(1, 5)
+}
+
+[node name="_Node_70976" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "flour"
 properties = {
-"grid_position": Vector2i(1, 6)
+"grid_position": Vector2i(4, 5)
 }
 
-[node name="_Node_205052" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_67830" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "grassy_salad"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "bogberry"
 properties = {
-"grid_position": Vector2i(1, 7)
+"grid_position": Vector2i(2, 0)
 }
 
-[node name="_Node_204685" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_78761" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "grape"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "rye"
 properties = {
 "grid_position": Vector2i(2, 1)
 }
 
-[node name="_Node_211135" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_75650" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "rye"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "mushroom"
 properties = {
 "grid_position": Vector2i(2, 2)
 }
 
-[node name="_Node_203638" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_68580" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "fish"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "cocoa"
 properties = {
 "grid_position": Vector2i(2, 3)
 }
 
-[node name="_Node_206610" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_69411" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "herb"
-properties = {
-"grid_position": Vector2i(4, 1)
-}
-
-[node name="_Node_207022" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "jam"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "cordyceps"
 properties = {
 "grid_position": Vector2i(2, 4)
 }
 
-[node name="_Node_199503" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_67375" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "barbecue"
 properties = {
 "grid_position": Vector2i(2, 5)
 }
 
-[node name="_Node_213706" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_72766" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "gravy"
+properties = {
+"grid_position": Vector2i(2, 6)
+}
+
+[node name="_Node_80294" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "spaghetti"
 properties = {
 "grid_position": Vector2i(2, 7)
 }
 
-[node name="_Node_208312" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_76098" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "mushroom"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "nightshadeberry"
 properties = {
-"grid_position": Vector2i(3, 2)
+"grid_position": Vector2i(3, 0)
 }
 
-[node name="_Node_202985" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_68071" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "crab"
-properties = {
-"grid_position": Vector2i(3, 3)
-}
-
-[node name="_Node_209683" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "pepper"
-properties = {
-"grid_position": Vector2i(2, 6)
-}
-
-[node name="_Node_201787" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "cocoa"
-properties = {
-"grid_position": Vector2i(0, 3)
-}
-
-[node name="_Node_213186" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "simple_salad"
-properties = {
-"grid_position": Vector2i(3, 6)
-}
-
-[node name="_Node_211637" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "seaweed"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "carrot"
 properties = {
 "grid_position": Vector2i(3, 1)
 }
 
-[node name="_Node_214773" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_75211" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "sugarcane"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "meat"
+properties = {
+"grid_position": Vector2i(3, 2)
+}
+
+[node name="_Node_68321" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "chocolate"
+properties = {
+"grid_position": Vector2i(3, 3)
+}
+
+[node name="_Node_68848" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "coffee"
+properties = {
+"grid_position": Vector2i(3, 4)
+}
+
+[node name="_Node_135487" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "bread"
+properties = {
+"grid_position": Vector2i(3, 5)
+}
+
+[node name="_Node_70323" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "bullet"
+properties = {
+"grid_position": Vector2i(3, 6)
+}
+
+[node name="_Node_79774" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "simple_salad"
+properties = {
+"grid_position": Vector2i(3, 7)
+}
+
+[node name="_Node_72023" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "grape"
+properties = {
+"grid_position": Vector2i(4, 0)
+}
+
+[node name="_Node_79263" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "seaweed"
+properties = {
+"grid_position": Vector2i(4, 1)
+}
+
+[node name="_Node_70645" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "fish"
 properties = {
 "grid_position": Vector2i(4, 2)
 }
 
-[node name="_Node_215879" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_73948" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "tentacle"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "herb"
 properties = {
 "grid_position": Vector2i(4, 3)
 }
 
-[node name="_Node_209217" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_76840" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "pancakes"
 properties = {
 "grid_position": Vector2i(4, 4)
 }
 
-[node name="_Node_206207" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_72390" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "hearty_meal"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "grassy_salad"
 properties = {
-"grid_position": Vector2i(4, 5)
+"grid_position": Vector2i(1, 6)
 }
 
-[node name="_Node_215320" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_73545" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "sushi"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "hearty_meal"
 properties = {
 "grid_position": Vector2i(4, 6)
 }
 
-[node name="_Node_202672" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+[node name="_Node_67598" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("20_jbqyj")
-prototype_id = "cornucopia"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "bullet"
 properties = {
-"grid_position": Vector2i(1, 5)
+"grid_position": Vector2i(1, 7)
+}
+
+[node name="_Node_80823" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel/Food"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "sugar"
+properties = {
+"grid_position": Vector2i(4, 7)
 }
 
 [node name="FoodGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel"]
@@ -1281,139 +1310,139 @@ offset_bottom = 634.4
 [node name="Material" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel"]
 script = ExtResource("11_8rupj")
 size = Vector2i(5, 4)
-item_protoset = ExtResource("21_58y81")
+item_protoset = ExtResource("12_gbwnt")
 
-[node name="_Node_191475" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_45773" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "stick"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "raw_wood"
 
-[node name="_Node_190845" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_44114" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "rope"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "spring"
 properties = {
 "grid_position": Vector2i(0, 1)
 }
 
-[node name="_Node_190653" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_43538" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "plank"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "tv_remote"
 properties = {
 "grid_position": Vector2i(0, 2)
 }
 
-[node name="_Node_190470" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_46046" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "raw_wood"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "gun_trigger"
 properties = {
 "grid_position": Vector2i(0, 3)
 }
 
-[node name="_Node_191046" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_44771" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "spring"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "plank"
 properties = {
 "grid_position": Vector2i(1, 0)
 }
 
-[node name="_Node_190296" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_47228" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "bolt"
 properties = {
 "grid_position": Vector2i(1, 1)
 }
 
-[node name="_Node_191256" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_45509" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "steel"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "monochromatic_chip"
 properties = {
 "grid_position": Vector2i(1, 2)
 }
 
-[node name="_Node_191703" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_46619" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "tin_can"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "gun_barrel"
 properties = {
 "grid_position": Vector2i(1, 3)
 }
 
-[node name="_Node_192705" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_43721" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "chromatic_chip"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "stick"
 properties = {
 "grid_position": Vector2i(2, 0)
 }
 
-[node name="_Node_192186" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_44543" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "gun_muzzle"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "red_fabric"
 properties = {
 "grid_position": Vector2i(2, 1)
 }
 
-[node name="_Node_192441" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_46919" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "gun_trigger"
-properties = {
-"grid_position": Vector2i(3, 1)
-}
-
-[node name="_Node_191940" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "gun_barrel"
-properties = {
-"grid_position": Vector2i(4, 1)
-}
-
-[node name="_Node_192978" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "monochromatic_chip"
-properties = {
-"grid_position": Vector2i(3, 0)
-}
-
-[node name="_Node_193260" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "paranormal_chip"
-properties = {
-"grid_position": Vector2i(4, 0)
-}
-
-[node name="_Node_194446" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "pink_fabric"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "chromatic_chip"
 properties = {
 "grid_position": Vector2i(2, 2)
 }
 
-[node name="_Node_195055" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_44324" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "tv_remote"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "rope"
+properties = {
+"grid_position": Vector2i(4, 1)
+}
+
+[node name="_Node_43913" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "steel"
+properties = {
+"grid_position": Vector2i(3, 0)
+}
+
+[node name="_Node_45008" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "pink_fabric"
+properties = {
+"grid_position": Vector2i(3, 1)
+}
+
+[node name="_Node_46328" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "gun_muzzle"
 properties = {
 "grid_position": Vector2i(4, 2)
 }
 
-[node name="_Node_194746" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+[node name="_Node_45254" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("21_58y81")
-prototype_id = "red_fabric"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "paranormal_chip"
 properties = {
 "grid_position": Vector2i(3, 2)
+}
+
+[node name="_Node_43364" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel/Material"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "tin_can"
+properties = {
+"grid_position": Vector2i(4, 0)
 }
 
 [node name="MaterialGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel"]
@@ -1441,60 +1470,60 @@ offset_bottom = 306.4
 [node name="Enemy" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel"]
 script = ExtResource("11_8rupj")
 size = Vector2i(5, 2)
-item_protoset = ExtResource("22_hmoxa")
+item_protoset = ExtResource("12_gbwnt")
 
-[node name="_Node_186739" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+[node name="_Node_39913" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
-prototype_id = "broken_chip"
-properties = {
-"grid_position": Vector2i(3, 0)
-}
-
-[node name="_Node_186223" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
-prototype_id = "modified_remote"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "box_of_chocolate"
 properties = {
 "grid_position": Vector2i(0, 1)
 }
 
-[node name="_Node_186929" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+[node name="_Node_40402" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
+protoset = ExtResource("12_gbwnt")
 prototype_id = "key"
+
+[node name="_Node_40773" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "rare_fish"
 properties = {
 "grid_position": Vector2i(1, 0)
 }
 
-[node name="_Node_186069" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+[node name="_Node_40067" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
-prototype_id = "teddybear"
-properties = {
-"grid_position": Vector2i(4, 0)
-}
-
-[node name="_Node_186558" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
-prototype_id = "box_of_chocolate"
-properties = {
-"grid_position": Vector2i(2, 0)
-}
-
-[node name="_Node_186386" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
-script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
-prototype_id = "doll_hat"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "broken_chip"
 properties = {
 "grid_position": Vector2i(1, 1)
 }
 
-[node name="_Node_187128" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+[node name="_Node_40230" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
 script = ExtResource("13_nnlmn")
-protoset = ExtResource("22_hmoxa")
-prototype_id = "rare_fish"
+protoset = ExtResource("12_gbwnt")
+prototype_id = "doll_hat"
+properties = {
+"grid_position": Vector2i(2, 0)
+}
+
+[node name="_Node_40583" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "modified_remote"
+properties = {
+"grid_position": Vector2i(4, 0)
+}
+
+[node name="_Node_40972" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel/Enemy"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("12_gbwnt")
+prototype_id = "teddybear"
+properties = {
+"grid_position": Vector2i(3, 0)
+}
 
 [node name="EnemyGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel"]
 layout_mode = 3
@@ -1656,7 +1685,7 @@ anchor_bottom = 0.5
 offset_left = -80.0
 offset_top = 8.0
 offset_right = 88.0
-offset_bottom = 256.0
+offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("16_hx5qb")
@@ -1669,9 +1698,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = -116.0
+offset_top = -92.0
 offset_right = 68.0
-offset_bottom = -76.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -1685,9 +1714,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = -68.0
+offset_top = -44.0
 offset_right = 68.0
-offset_bottom = -28.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -1701,9 +1730,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = -20.0
+offset_top = 4.0
 offset_right = 68.0
-offset_bottom = 20.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -1717,29 +1746,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = 28.0
+offset_top = 52.0
 offset_right = 68.0
-offset_bottom = 68.0
+offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Cooking Hud"
-
-[node name="ShowFishingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = 76.0
-offset_right = 68.0
-offset_bottom = 116.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-text = "Fishing Hud"
 
 [node name="Canvas Light" type="CanvasModulate" parent="CanvasLayer"]
 visible = false
@@ -1785,4 +1798,3 @@ color = Color(0.821789, 0.821789, 0.821789, 1)
 [connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowQTEHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_qte_hud_pressed"]
 [connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowCraftingHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_crafting_hud_pressed"]
 [connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowCookingHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_cooking_hud_pressed"]
-[connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowFishingHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_fishing_hud_pressed"]

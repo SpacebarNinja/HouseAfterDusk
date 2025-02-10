@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var health_bar = $HealthBar
 @onready var hunger_bar = $HungerBar
 @onready var sprint_bar = $SprintBar
-@onready var time_display = $TimeDisplay
+@onready var time_display = $Clock/TimeDisplay
 
 @export_category("Sprint")
 @export var tired_color: Color
@@ -20,13 +20,22 @@ var debug_sprint: bool = false
 func _ready():
 	if sprint_bar.value >= sprint_bar.max_value - 3:
 		sprint_bar.hide()
-
+		
 func _process(_delta):
 	update_health_bar()
 	update_hunger_bar()
 	update_sprint_bar()
 	fade_blood_overlay()
 	update_time_display()
+	
+	if HudManager.stats_visible:
+		health_bar.visible = true
+		hunger_bar.visible = true
+		sprint_bar.visible = true
+	else:
+		health_bar.visible = false
+		hunger_bar.visible = false
+		sprint_bar.visible = false
 		
 func update_time_display():
 	time_display.text = WorldManager.DayPart + "\n" + WorldManager.CurrentDate

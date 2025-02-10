@@ -16,7 +16,7 @@ extends CanvasLayer
 var qte_camera_zoom: float = 3.2
 
 func _process(_delta):
-	if hud.current_hud == "QTE":
+	if 'temphud' == "QTE":
 		player.movement_speed = 0
 		if qte_timer.is_stopped():
 			qte_timer.start()

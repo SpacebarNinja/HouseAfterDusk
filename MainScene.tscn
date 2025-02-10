@@ -36,7 +36,7 @@ position = Vector2(-1352, -40)
 [node name="DebugPanel" parent="." instance=ExtResource("2_ofx2c")]
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["MainCamera"]]
-position = Vector2(-64, -56)
+position = Vector2(-1272, 64)
 zoom = Vector2(3.2, 3.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
@@ -46,7 +46,7 @@ script = ExtResource("5_twjhg")
 
 [node name="Player" parent="." instance=ExtResource("4_gh3rb")]
 modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(-64, -56)
+position = Vector2(-616, -136)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")

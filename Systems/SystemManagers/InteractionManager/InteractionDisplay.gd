@@ -97,6 +97,12 @@ func update_intr_text():
 
 
 func _process(delta):
+	if HudManager.interaction_enabled:
+		visible = true
+	else:
+		visible = false
+		return
+		
 	# Reposition Interaction Display above player's head
 	var player_screen_pos = player.get_global_transform_with_canvas().get_origin()
 	position = Vector2(player_screen_pos.x, player_screen_pos.y - 150)
@@ -201,3 +207,4 @@ func handle_interaction(key: String, delta):
 		else:
 			_current_callback = Callable()
 		_current_key = key
+		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=4 uid="uid://bsglmfebiwnb"]
+[gd_scene load_steps=142 format=4 uid="uid://bsglmfebiwnb"]
 
 [ext_resource type="Script" path="res://World/House/Scripts/Demomap2.gd" id="1_ffw1e"]
 [ext_resource type="Texture2D" uid="uid://cmt1c200gkqsr" path="res://World/House/Art/MAPTiles.png" id="2_e8q4k"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://World/House/Scripts/Rooms.gd" id="6_asq3q"]
 [ext_resource type="Material" uid="uid://dd1lkq85yan68" path="res://Assets/Shader/Furniture Shadow.tres" id="7_jj0mf"]
 [ext_resource type="Script" path="res://World/House/Scripts/Tv.gd" id="7_moaoa"]
+[ext_resource type="PackedScene" uid="uid://b4iq0rneorqjt" path="res://Systems/SystemManagers/InteractionManager/interaction_area.tscn" id="10_mk1jx"]
 [ext_resource type="Texture2D" uid="uid://cdtyu1fgiumb5" path="res://World/House/Art/Televisions_Tilesheet.png" id="13_sxctw"]
 [ext_resource type="AudioStream" uid="uid://e21vasx674dd" path="res://World/House/Audio/tv_on.mp3" id="14_rlmvb"]
 [ext_resource type="AudioStream" uid="uid://ng1ftqvckqqi" path="res://World/House/Audio/door_open.mp3" id="15_disf8"]
@@ -30,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cwt0ry1qmh6h2" path="res://World/House/Art/TVGlow.png" id="21_d16nc"]
 [ext_resource type="Texture2D" uid="uid://bs4ysvd3hopep" path="res://World/House/Art/MAPGenerator.png" id="21_u7gqm"]
 [ext_resource type="AudioStream" uid="uid://c6s1apohu7xkf" path="res://Sounds/Ambient Electric.mp3" id="30_c18we"]
-[ext_resource type="Script" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
+[ext_resource type="Script" path="res://World/House/Scripts/workbench.gd" id="30_s5to4"]
 [ext_resource type="Shader" path="res://Assets/Shader/shader.gdshader" id="30_v07gy"]
 [ext_resource type="AudioStream" uid="uid://jy6w2ie5oi73" path="res://Sounds/SmallElectricSparks.mp3" id="31_8luoa"]
 [ext_resource type="AudioStream" uid="uid://bvstno6a3812a" path="res://World/House/Audio/Electric/Generator_PowerOn.mp3" id="32_3ggy3"]
@@ -569,6 +570,18 @@ tile_size = Vector2i(32, 32)
 navigation_layer_0/layers = 2
 sources/1 = SubResource("TileSetAtlasSource_smbmw")
 
+[sub_resource type="GDScript" id="GDScript_m0jk6"]
+script/source = "extends Area2D
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipft"]
+radius = 24.0
+height = 58.63
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijtk5"]
+radius = 40.0
+height = 128.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kslwp"]
 texture = ExtResource("13_sxctw")
 texture_region_size = Vector2i(64, 75)
@@ -1052,24 +1065,21 @@ sources/1 = SubResource("TileSetAtlasSource_o30b0")
 sources/2 = SubResource("TileSetAtlasSource_5bx1e")
 sources/3 = SubResource("TileSetAtlasSource_whpas")
 
-[sub_resource type="GDScript" id="GDScript_m0jk6"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipft"]
-radius = 24.0
-height = 58.63
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud8yo"]
 size = Vector2(107.999, 111.001)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_novc8"]
 size = Vector2(54, 82)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijtk5"]
-radius = 40.0
-height = 128.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f8c7m"]
+radius = 16.0
+height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpb3v"]
 size = Vector2(56, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8wek"]
+radius = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao0ot"]
 size = Vector2(76, 84)
@@ -1721,6 +1731,7 @@ y_sort_enabled = true
 script = ExtResource("6_asq3q")
 
 [node name="Living Room" type="TileMapLayer" parent="ROOMS"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(128, 128)
@@ -1735,10 +1746,60 @@ window_location = Vector2(-10, 0)
 tilemap = NodePath("../Furniture")
 metadata/_edit_group_ = true
 
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/Window"]
+position = Vector2(5.72205e-06, -3.8147e-06)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_m0jk6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window/InteractionArea"]
+position = Vector2(6.24657e-05, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
+
+[node name="WindowArea" type="Area2D" parent="ROOMS/Living Room/Window"]
+position = Vector2(5.72205e-06, -3.8147e-06)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("20_8kuny")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window/WindowArea"]
+position = Vector2(0.000201702, 56)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ijtk5")
+
 [node name="Window2" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("tilemap") groups=["Window"]]
 position = Vector2(-56, 144)
 script = ExtResource("18_rd8s4")
 tilemap = NodePath("../Furniture")
+
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/Window2"]
+position = Vector2(24, -48)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_m0jk6")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window2/InteractionArea"]
+position = Vector2(-24, 64)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
+
+[node name="WindowArea" type="Area2D" parent="ROOMS/Living Room/Window2"]
+position = Vector2(24, -40)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("20_8kuny")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window2/WindowArea"]
+position = Vector2(-24, 112)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ijtk5")
 
 [node name="TV" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("tilemap") groups=["Electronic"]]
 y_sort_enabled = true
@@ -2012,17 +2073,17 @@ tile_map_data = PackedByteArray("AAD7//v/AAAKAAcAAAD7////AAAKAAcAAAAAAPr/AAAJAAg
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="Closet" type="Node2D" parent="ROOMS/Bathroom" node_paths=PackedStringArray("hiding_spot")]
-position = Vector2(54, -74)
+position = Vector2(48, -48)
 script = ExtResource("17_oi2wj")
 hiding_spot = NodePath(".")
 
 [node name="InteractionArea" type="Area2D" parent="ROOMS/Bathroom/Closet" node_paths=PackedStringArray("sprite")]
-position = Vector2(776, 40)
+position = Vector2(782, 14)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("42_yfjwe")
 sprite = NodePath("../../../Living Room/TV/TVTileMap")
-interactable_node = NodePath("..")
+interactable_node = NodePath("../../../Storage/Workbench")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bathroom/Closet/InteractionArea"]
 position = Vector2(-789, -33)
@@ -2096,6 +2157,19 @@ tile_set = SubResource("TileSet_vkpyt")
 position = Vector2(0, 176)
 script = ExtResource("18_rd8s4")
 
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Hallway/Window"]
+position = Vector2(24, -48)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_m0jk6")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/Window/InteractionArea"]
+position = Vector2(-24, 64)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
+
 [node name="WindowArea" type="Area2D" parent="ROOMS/Hallway/Window"]
 position = Vector2(24, -48)
 collision_layer = 0
@@ -2113,6 +2187,13 @@ shape = SubResource("CapsuleShape2D_ijtk5")
 position = Vector2(64, 105)
 script = ExtResource("17_oi2wj")
 hiding_spot = NodePath(".")
+
+[node name="InteractionArea" parent="ROOMS/Hallway/Closet" instance=ExtResource("10_mk1jx")]
+position = Vector2(8, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/Closet/InteractionArea"]
+position = Vector2(-16, 0)
+shape = SubResource("CapsuleShape2D_f8c7m")
 
 [node name="Black" type="ColorRect" parent="ROOMS/Hallway" groups=["ColorRect(Black)"]]
 show_behind_parent = true
@@ -2200,7 +2281,6 @@ shape = SubResource("RectangleShape2D_2f6xm")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 
 [node name="Bedroom" type="TileMapLayer" parent="ROOMS"]
-visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(608, 128)
@@ -2212,20 +2292,12 @@ position = Vector2(112, 48)
 script = ExtResource("16_du6og")
 metadata/_edit_group_ = true
 
-[node name="Book" type="TileMapLayer" parent="ROOMS/Bedroom/TableJournal"]
-y_sort_enabled = true
-texture_filter = 1
-material = ExtResource("7_jj0mf")
-position = Vector2(-112, -48)
-tile_map_data = PackedByteArray("AAADAAAAAAACAAEAAAA=")
-tile_set = SubResource("TileSet_nlj7c")
-
 [node name="InteractionArea" type="Area2D" parent="ROOMS/Bedroom/TableJournal" node_paths=PackedStringArray("sprite")]
 position = Vector2(-2, -74)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("42_yfjwe")
-sprite = NodePath("../Book")
+sprite = NodePath("../../LightSwitch7/Sprite2D")
 interactable_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/TableJournal/InteractionArea"]
@@ -2239,6 +2311,18 @@ rotation = -1.5708
 script = ExtResource("18_rd8s4")
 window_location = Vector2(5, 0)
 tilemap = NodePath("../Furniture")
+
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Bedroom/Window"]
+position = Vector2(1.90735e-06, -2.67029e-05)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_m0jk6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/Window/InteractionArea"]
+position = Vector2(0, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
 
 [node name="WindowArea" type="Area2D" parent="ROOMS/Bedroom/Window" node_paths=PackedStringArray("window")]
 position = Vector2(1.90735e-06, -2.67029e-05)
@@ -2257,6 +2341,12 @@ shape = SubResource("CapsuleShape2D_ijtk5")
 position = Vector2(176, -88)
 script = ExtResource("17_oi2wj")
 hiding_spot = NodePath(".")
+
+[node name="InteractionArea" parent="ROOMS/Bedroom/Closet" instance=ExtResource("10_mk1jx")]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/Closet/InteractionArea"]
+shape = SubResource("CircleShape2D_m8wek")
 
 [node name="LightSwitch7" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("light") groups=["Electronic"]]
 position = Vector2(16, -104)
@@ -2309,10 +2399,11 @@ tile_set = SubResource("TileSet_lhb4b")
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAD//wAAAAAAAAUAAAAFAP//AQAIAAcAAAAEAAMAAgAKAAgAAAAFAAAAAgAAAAEAAAACAPz/AgADAAQAAAADAPz/AgAEAAQAAAAEAPz/AgAFAAQAAAADAPv/AgAEAAUAAAAEAPv/AgAFAAUAAAACAPv/AgADAAsAAAAFAP3/AQADAAgAAAACAAAAAQAAAAIAAAAEAAEAAAAIAAIAAAA=")
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAUAAAACAAAAAQAAAAIAAAAFAP//AQAIAAcAAAADAAAAAAACAAEAAAAEAAEAAAAIAAIAAAAEAAMAAgAKAAgAAAAFAAAAAgAAAAEAAAACAPz/AgADAAQAAAADAPz/AgAEAAQAAAAEAPz/AgAFAAQAAAADAPv/AgAEAAUAAAAEAPv/AgAFAAUAAAACAPv/AgADAAsAAAAFAP3/AQADAAgAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
 [node name="Storage" type="TileMapLayer" parent="ROOMS"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(608, -32)
@@ -2901,10 +2992,20 @@ bus = &"Muffled"
 parameters/looping = true
 script = ExtResource("18_kqqhq")
 
+[connection signal="body_entered" from="ROOMS/Living Room/Window/InteractionArea" to="ROOMS/Living Room/Window/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Living Room/Window/InteractionArea" to="ROOMS/Living Room/Window/InteractionArea" method="_on_body_exited"]
+[connection signal="body_entered" from="ROOMS/Living Room/Window/WindowArea" to="ROOMS/Living Room/Window/WindowArea" method="_on_body_entered"]
+[connection signal="body_entered" from="ROOMS/Living Room/Window2/InteractionArea" to="ROOMS/Living Room/Window2/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Living Room/Window2/InteractionArea" to="ROOMS/Living Room/Window2/InteractionArea" method="_on_body_exited"]
+[connection signal="body_entered" from="ROOMS/Living Room/Window2/WindowArea" to="ROOMS/Living Room/Window2/WindowArea" method="_on_body_entered"]
 [connection signal="body_entered" from="ROOMS/Kitchen/Window/InteractionArea" to="ROOMS/Kitchen/Window/InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="ROOMS/Kitchen/Window/InteractionArea" to="ROOMS/Kitchen/Window/InteractionArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ROOMS/Kitchen/Window/WindowArea" to="ROOMS/Kitchen/Window/WindowArea" method="_on_body_entered"]
+[connection signal="body_entered" from="ROOMS/Hallway/Window/InteractionArea" to="ROOMS/Hallway/Window/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Hallway/Window/InteractionArea" to="ROOMS/Hallway/Window/InteractionArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ROOMS/Hallway/Window/WindowArea" to="ROOMS/Hallway/Window/WindowArea" method="_on_body_entered"]
+[connection signal="body_entered" from="ROOMS/Bedroom/Window/InteractionArea" to="ROOMS/Bedroom/Window/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Bedroom/Window/InteractionArea" to="ROOMS/Bedroom/Window/InteractionArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ROOMS/Bedroom/Window/WindowArea" to="ROOMS/Bedroom/Window/WindowArea" method="_on_body_entered"]
 [connection signal="area_entered" from="RoomDetection/Living Room" to="ROOMS" method="_on_living_room_area_entered"]
 [connection signal="area_entered" from="RoomDetection/Bathroom" to="ROOMS" method="_on_bathroom_area_entered"]

@@ -22,6 +22,8 @@ func _process(_delta):
 	handle_footsteps()
 
 func handle_animation():
+	if WorldManager.StopGeneMovement: return
+	
 	var player_instance = get_node("/root/MainScene/Player")
 	var distance_to_mouse = player_instance.distance_to_mouse
 	var altmove_sprint_distance = player_instance.altmove_sprint_distance
@@ -90,9 +92,11 @@ func flip_sprite(flip: bool):
 	if flip:
 		direction = "left"
 		anim_sprite.flip_h = true
+		anim_sprite.offset.x = 6
 	else:
 		direction = "right"
 		anim_sprite.flip_h = false
+		anim_sprite.offset.x = 0
 
 func get_direction() -> String:
 	var player_instance = get_node("/root/MainScene/Player")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=4 uid="uid://bsglmfebiwnb"]
+[gd_scene load_steps=135 format=4 uid="uid://bsglmfebiwnb"]
 
 [ext_resource type="Script" path="res://World/House/Scripts/Demomap2.gd" id="1_ffw1e"]
 [ext_resource type="Texture2D" uid="uid://cmt1c200gkqsr" path="res://World/House/Art/MAPTiles.png" id="2_e8q4k"]
@@ -10,14 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://bak3je71lqimb" path="res://World/House/Art/MAPElectrical.png" id="6_3ulbh"]
 [ext_resource type="Texture2D" uid="uid://kfx1rdk8htn5" path="res://World/House/Art/NavigationTile.png" id="6_7gkpj"]
 [ext_resource type="Script" path="res://World/House/Scripts/Rooms.gd" id="6_asq3q"]
+[ext_resource type="Script" path="res://Systems/SystemManagers/InteractionManager/interaction_area.gd" id="7_2y8s4"]
 [ext_resource type="Material" uid="uid://dd1lkq85yan68" path="res://Assets/Shader/Furniture Shadow.tres" id="7_jj0mf"]
 [ext_resource type="Script" path="res://World/House/Scripts/Tv.gd" id="7_moaoa"]
+[ext_resource type="PackedScene" uid="uid://b4iq0rneorqjt" path="res://Systems/SystemManagers/InteractionManager/interaction_area.tscn" id="10_mk1jx"]
 [ext_resource type="Texture2D" uid="uid://cdtyu1fgiumb5" path="res://World/House/Art/Televisions_Tilesheet.png" id="13_sxctw"]
 [ext_resource type="AudioStream" uid="uid://e21vasx674dd" path="res://World/House/Audio/tv_on.mp3" id="14_rlmvb"]
 [ext_resource type="AudioStream" uid="uid://ng1ftqvckqqi" path="res://World/House/Audio/door_open.mp3" id="15_disf8"]
 [ext_resource type="AudioStream" uid="uid://slecwkvnj0ju" path="res://World/House/Audio/tv_switch_static.wav" id="15_wgd6a"]
 [ext_resource type="AudioStream" uid="uid://cwil6cml1n162" path="res://World/House/Audio/tv_static.mp3" id="16_d2hp2"]
 [ext_resource type="Script" path="res://World/House/Scripts/TableJournal.gd" id="16_du6og"]
+[ext_resource type="Script" path="res://World/House/Scripts/light_switch.gd" id="17_3qfk1"]
 [ext_resource type="AudioStream" uid="uid://d08rrm1sibsdm" path="res://Sounds/Ambient Night BG.mp3" id="17_5j2w4"]
 [ext_resource type="Script" path="res://World/House/Scripts/HidingSpot.gd" id="17_oi2wj"]
 [ext_resource type="AudioStream" uid="uid://dsqfc5dynomg5" path="res://World/House/Audio/Channels/Channel1 - Children Music.mp3" id="17_up5o5"]
@@ -29,21 +32,16 @@
 [ext_resource type="AudioStream" uid="uid://btikk04bsxcnn" path="res://World/House/Audio/Channels/Channel4 - News.mp3" id="20_c3v45"]
 [ext_resource type="Texture2D" uid="uid://cwt0ry1qmh6h2" path="res://World/House/Art/TVGlow.png" id="21_d16nc"]
 [ext_resource type="Texture2D" uid="uid://bs4ysvd3hopep" path="res://World/House/Art/MAPGenerator.png" id="21_u7gqm"]
+[ext_resource type="Script" path="res://World/House/Scripts/generator.gd" id="24_7h07w"]
 [ext_resource type="AudioStream" uid="uid://c6s1apohu7xkf" path="res://Sounds/Ambient Electric.mp3" id="30_c18we"]
-[ext_resource type="Script" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
+[ext_resource type="Script" path="res://World/House/Scripts/workbench.gd" id="30_s5to4"]
 [ext_resource type="Shader" path="res://Assets/Shader/shader.gdshader" id="30_v07gy"]
 [ext_resource type="AudioStream" uid="uid://jy6w2ie5oi73" path="res://Sounds/SmallElectricSparks.mp3" id="31_8luoa"]
 [ext_resource type="AudioStream" uid="uid://bvstno6a3812a" path="res://World/House/Audio/Electric/Generator_PowerOn.mp3" id="32_3ggy3"]
 [ext_resource type="AudioStream" uid="uid://di4umle8y72fx" path="res://World/House/Audio/Electric/Generator_PowerOff.mp3" id="33_asylt"]
-[ext_resource type="Script" path="res://World/House/Scripts/LightSwitch.gd" id="40_omnsj"]
-[ext_resource type="Texture2D" uid="uid://plwy7x22th23" path="res://World/House/Art/Interactables/GeneratorOff.png" id="41_0upou"]
-[ext_resource type="Texture2D" uid="uid://chochta8gl8wq" path="res://World/House/Art/Interactables/LightRightOn.png" id="41_l3t43"]
-[ext_resource type="Script" path="res://World/House/Scripts/GeneratorSwitch.gd" id="41_sodru"]
-[ext_resource type="Texture2D" uid="uid://b1qmc7ed3k206" path="res://World/House/Art/Interactables/GeneratorOn.png" id="42_y01l5"]
-[ext_resource type="Texture2D" uid="uid://c5wri0vtrmufn" path="res://World/House/Art/Interactables/LightRightOff.png" id="42_y2k6t"]
-[ext_resource type="Script" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="42_yfjwe"]
-[ext_resource type="AudioStream" uid="uid://crfmp267qmu4v" path="res://World/House/Art/Interactables/light_switch_on.mp3" id="43_b48re"]
-[ext_resource type="AudioStream" uid="uid://b5kmn0jlbixqp" path="res://World/House/Art/Interactables/light_switch_off.mp3" id="44_2mtwq"]
+[ext_resource type="Shader" path="res://Assets/Shader/PixelOutline.gdshader" id="40_ynkay"]
+[ext_resource type="Texture2D" uid="uid://i3pykgoanitu" path="res://Entities/Gene/Art/Gene_Hurt.png" id="41_l41v6"]
+[ext_resource type="Script" path="res://World/House/Scripts/HoverEffect.gd" id="42_yfjwe"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6ld1d"]
 polygon = PackedVector2Array(-16, -12, 16, -12, 16, 12, -16, 12)
@@ -569,6 +567,14 @@ tile_size = Vector2i(32, 32)
 navigation_layer_0/layers = 2
 sources/1 = SubResource("TileSetAtlasSource_smbmw")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipft"]
+radius = 24.0
+height = 58.63
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijtk5"]
+radius = 40.0
+height = 128.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kslwp"]
 texture = ExtResource("13_sxctw")
 texture_region_size = Vector2i(64, 75)
@@ -675,28 +681,16 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_kslwp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0hyt"]
+size = Vector2(48, 24)
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fiunm"]
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("15_wgd6a")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4quj"]
-size = Vector2(72, 72)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvnsh"]
-random_pitch = 1.1
-random_volume_offset_db = 0.1
-streams_count = 1
-stream_0/stream = ExtResource("43_b48re")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ywweh"]
-random_pitch = 1.1
-random_volume_offset_db = 0.1
-streams_count = 1
-stream_0/stream = ExtResource("44_2mtwq")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f6xm"]
-size = Vector2(48, 80)
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8xvn"]
+radius = 16.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vob4h"]
 
@@ -1052,27 +1046,21 @@ sources/1 = SubResource("TileSetAtlasSource_o30b0")
 sources/2 = SubResource("TileSetAtlasSource_5bx1e")
 sources/3 = SubResource("TileSetAtlasSource_whpas")
 
-[sub_resource type="GDScript" id="GDScript_m0jk6"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipft"]
-radius = 24.0
-height = 58.63
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud8yo"]
 size = Vector2(107.999, 111.001)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_novc8"]
-size = Vector2(54, 82)
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8wek"]
+radius = 32.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijtk5"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f8c7m"]
+radius = 16.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vox2f"]
 radius = 40.0
-height = 128.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpb3v"]
-size = Vector2(56, 72)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao0ot"]
-size = Vector2(76, 84)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhcva"]
+size = Vector2(18, 48)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tiag5"]
 
@@ -1176,7 +1164,6 @@ shader_parameter/disable_rotating = false
 texture = ExtResource("3_cad2m")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(-32, 48)
 2:0/0 = 0
 3:0/0 = 0
 0:1/0 = 0
@@ -1443,6 +1430,11 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qk1gh"]
 texture = ExtResource("6_3ulbh")
 texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(2, 4)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-16, 48)
+0:0/0/y_sort_origin = -20
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, 48, 5.33333, 48, -21.3333, -16, -21.3333)
 4:1/size_in_atlas = Vector2i(2, 3)
 4:1/0 = 0
 4:1/0/texture_origin = Vector2i(-16, 32)
@@ -1497,9 +1489,11 @@ texture_region_size = Vector2i(32, 32)
 4:5/0/texture_origin = Vector2i(-32, 15)
 4:5/0/y_sort_origin = -20
 4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, 80, 5.33333, 80, -21.3333, -16, -21.3333)
-1:0/size_in_atlas = Vector2i(3, 4)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(48, 53.3333, -48, 53.3333, -48, 26.6667, 48, 26.6667)
+2:0/size_in_atlas = Vector2i(2, 4)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(-16, 48)
+2:0/0/y_sort_origin = -20
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.33333, 48, 5.33333, 48, -21.3333, -16, -21.3333)
 
 [sub_resource type="TileSet" id="TileSet_wtu58"]
 tile_size = Vector2i(32, 32)
@@ -1510,11 +1504,8 @@ sources/1 = SubResource("TileSetAtlasSource_aacnw")
 sources/2 = SubResource("TileSetAtlasSource_4t42p")
 sources/4 = SubResource("TileSetAtlasSource_qk1gh")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aebyc"]
-size = Vector2(64, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnorr"]
-size = Vector2(46, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgmpv"]
+size = Vector2(76, 20)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yljcs"]
 
@@ -1688,6 +1679,13 @@ random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("15_disf8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdowy"]
+shader = ExtResource("40_ynkay")
+shader_parameter/width = 1
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
 [node name="DemoMap2" type="Node2D" node_paths=PackedStringArray("spawn_location") groups=["Map", "navigation"]]
 y_sort_enabled = true
 script = ExtResource("1_ffw1e")
@@ -1727,23 +1725,76 @@ position = Vector2(128, 128)
 tile_map_data = PackedByteArray("AAD5/wUAAAAJAAYAAAAIAP//AAAIAAcAAAD1//j/AAAEAAEAAAD1//n/AAAKAAcAAAD1//r/AAAKAAcAAAD1//7/AAAKAAcAAAD1/wAAAAAKAAcAAAD1/wEAAAAKAAcAAAD1/wIAAAAKAAcAAAD1/wMAAAAKAAcAAAD1/wQAAAAKAAcAAAD1/wUAAAAFAAEAAAD2//j/AAAJAAgAAAD2/wUAAAAJAAYAAAD3/wUAAAAJAAYAAAD4/wUAAAAJAAYAAAD6/wUAAAAJAAYAAAD7/wUAAAAJAAYAAAD8/wUAAAAJAAYAAAD9//f/AAAJAAIAAAD9/wUAAAAJAAYAAAD+//f/AAAKAAIAAAD+/wUAAAAJAAYAAAD//wUAAAAJAAYAAAAAAAUAAAAKAAYAAAADAAUAAAAIAAYAAAAEAAUAAAAJAAYAAAAFAAUAAAAJAAYAAAAGAPj/AAAJAAgAAAAGAAUAAAAJAAYAAAAHAPj/AAAJAAgAAAAHAAUAAAAJAAYAAAAIAPj/AAAHAAEAAAAIAP3/AAAIAAcAAAAIAP7/AAAIAAcAAAAIAAAAAAAIAAcAAAAIAAEAAAAIAAcAAAAIAAIAAAAIAAcAAAAIAAMAAAAIAAcAAAAIAAQAAAAIAAcAAAAIAAUAAAAGAAEAAAAIAPv/AAAIAAcAAAAHAPv/AAAKAAkAAAD+//v/AAALAAgAAAD9//v/AAAKAAkAAAD8//v/AAAJAAkAAAD7//v/AAAJAAkAAAD6//v/AAAJAAkAAAD5//v/AAAJAAkAAAD1//3/AAAKAAcAAAD1////AAAKAAcAAAAIAPz/AAAIAAcAAAAGAPv/AAAJAAkAAAAFAPv/AAAJAAkAAAAEAPv/AAAJAAkAAAADAPv/AAAJAAkAAAACAPv/AAAJAAkAAAABAPv/AAAIAAkAAAAAAPv/AAAHAAgAAAD1//z/AAAKAAcAAAD1//v/AAAKAAcAAAD2//v/AAAIAAkAAAD3//v/AAAJAAkAAAD4//v/AAAJAAkAAAD6//r/AQAAAAIAAAAIAPn/AAAIAAcAAAAIAPr/AAAIAAcAAAD9//n/AAAJAAQAAAD+//n/AAAKAAQAAAAAAPn/AAAHAAQAAAABAPn/AAAIAAQAAAAEAPj/AAAJAAgAAAAFAPj/AAAJAAgAAAADAPj/AAAJAAgAAAACAPj/AAAJAAgAAAABAPj/AAAIAAgAAAAAAPj/AAAHAAMAAAD+//j/AAAKAAMAAAD9//j/AAAKAAgAAAD8//j/AAAJAAgAAAD7//j/AAAJAAgAAAD6//j/AAAJAAgAAAD5//j/AAAJAAgAAAD4//j/AAAJAAgAAAD3//j/AAAJAAgAAAABAPf/AAAIAAIAAAAAAPf/AAAHAAIAAAD2/wAAAwADAAEAAAD+/wQAAwABAAAAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
 
-[node name="Window" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("tilemap") groups=["Window"]]
+[node name="Window" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("int_area", "tilemap") groups=["Window"]]
 position = Vector2(-304, 16)
 rotation = 1.5708
 script = ExtResource("18_rd8s4")
+int_area = NodePath("InteractionArea")
 window_location = Vector2(-10, 0)
 tilemap = NodePath("../Furniture")
 metadata/_edit_group_ = true
 
-[node name="Window2" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("tilemap") groups=["Window"]]
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/Window"]
+position = Vector2(5.72205e-06, -3.8147e-06)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_2y8s4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window/InteractionArea"]
+position = Vector2(6.24657e-05, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
+
+[node name="WindowArea" type="Area2D" parent="ROOMS/Living Room/Window"]
+position = Vector2(5.72205e-06, -3.8147e-06)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("20_8kuny")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window/WindowArea"]
+position = Vector2(0.000201702, 56)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ijtk5")
+
+[node name="Window2" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("int_area", "tilemap") groups=["Window"]]
 position = Vector2(-56, 144)
 script = ExtResource("18_rd8s4")
+int_area = NodePath("InteractionArea")
 tilemap = NodePath("../Furniture")
 
-[node name="TV" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("tilemap") groups=["Electronic"]]
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/Window2"]
+position = Vector2(24, -48)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_2y8s4")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window2/InteractionArea"]
+position = Vector2(-24, 64)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
+
+[node name="WindowArea" type="Area2D" parent="ROOMS/Living Room/Window2"]
+position = Vector2(24, -40)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("20_8kuny")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/Window2/WindowArea"]
+position = Vector2(-24, 112)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ijtk5")
+
+[node name="TV" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("interaction_area", "tilemap") groups=["Electronic"]]
 y_sort_enabled = true
 position = Vector2(-224, -33)
 script = ExtResource("7_moaoa")
+interaction_area = NodePath("InteractionArea")
 tilemap = NodePath("TVTileMap")
 StaticChannelColors = Array[Color]([Color(1, 1, 1, 1), Color(0.74902, 0.74902, 0.74902, 1)])
 ChannelColors1 = Array[Color]([Color(0.301961, 0.65098, 1, 1), Color(1, 0.905882, 0.2, 1), Color(1, 0.568627, 0.4, 1)])
@@ -1756,6 +1807,12 @@ z_index = -1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_5makl")
+
+[node name="InteractionArea" parent="ROOMS/Living Room/TV" instance=ExtResource("10_mk1jx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/TV/InteractionArea"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_w0hyt")
 
 [node name="SwitchStatic" type="AudioStreamPlayer" parent="ROOMS/Living Room/TV"]
 stream = SubResource("AudioStreamRandomizer_fiunm")
@@ -1775,27 +1832,23 @@ stream = ExtResource("17_up5o5")
 volume_db = 4.0
 max_distance = 600.0
 bus = &"TVChannels"
-parameters/looping = true
 
 [node name="ChannelBGAudio2" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/TV"]
 stream = ExtResource("18_hx7gl")
 max_distance = 600.0
 bus = &"TVChannels"
-parameters/looping = true
 
 [node name="ChannelBGAudio3" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/TV"]
 stream = ExtResource("19_kpcc4")
 volume_db = 4.0
 max_distance = 600.0
 bus = &"TVChannels"
-parameters/looping = true
 
 [node name="ChannelBGAudio4" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/TV"]
 stream = ExtResource("20_c3v45")
 volume_db = -5.0
 max_distance = 600.0
 bus = &"TVChannels"
-parameters/looping = true
 
 [node name="TelevisionLight" type="PointLight2D" parent="ROOMS/Living Room/TV"]
 show_behind_parent = true
@@ -1807,80 +1860,31 @@ shadow_item_cull_mask = 3
 texture = ExtResource("21_d16nc")
 texture_scale = 0.3
 
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/TV" node_paths=PackedStringArray("sprite")]
-position = Vector2(144, -135)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../TVTileMap")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/TV/InteractionArea"]
-position = Vector2(-142, 138)
-shape = SubResource("RectangleShape2D_k4quj")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
-
-[node name="LightSwitch" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(-80, -168)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(-120, -136)
+script = ExtResource("17_3qfk1")
 light = NodePath("../../../LightNodes/LivingRoomLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(-4, -6)
 
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Living Room/LightSwitch"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/LightSwitch"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/LightSwitch"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/LightSwitch" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
+[node name="InteractionArea" parent="ROOMS/Living Room/LightSwitch" instance=ExtResource("10_mk1jx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/LightSwitch/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+shape = SubResource("CircleShape2D_x8xvn")
 
-[node name="LightSwitch2" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(224, -168)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
+[node name="LightSwitch2" type="Node2D" parent="ROOMS/Living Room" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(168, -136)
+script = ExtResource("17_3qfk1")
 light = NodePath("../../../LightNodes/DiningTableLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(5, -6)
 
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Living Room/LightSwitch2"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/LightSwitch2"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Living Room/LightSwitch2"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Living Room/LightSwitch2" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
+[node name="InteractionArea" parent="ROOMS/Living Room/LightSwitch2" instance=ExtResource("10_mk1jx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Living Room/LightSwitch2/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+shape = SubResource("CircleShape2D_x8xvn")
 
 [node name="Black" type="ColorRect" parent="ROOMS/Living Room" groups=["ColorRect(Black)"]]
 show_behind_parent = true
@@ -1906,6 +1910,8 @@ material = ExtResource("7_jj0mf")
 tile_map_data = PackedByteArray("AAD3//r/AAAEAAIAAAD5/wEAAQAGAAQAAAD8/wAAAQAKAAIAAAADAPr/AAACAAIAAAAEAP7/AAADAAAAAAAFAP3/AAACAAAAAAAFAP7/AAABAAAAAAAFAP//AAAIAAIAAAAGAP3/AAAKAAMAAAAGAP//AAAKAAMAAAAHAAEAAAABAAUAAAD7//r/AgADAAQAAAD8//r/AgAFAAQAAAD8//n/AgAEAAUAAAD7//n/AgABAAYAAAAFAPr/AgAHAAMAAAD2//7/AgAHAAoAAAAHAAIAAgAIAAkAAAAGAAIAAgADAAoAAAAHAAMAAgAIAAoAAAD2//3/AgAHAAkAAAD3//3/AgABAAcAAAD3//7/AgABAAsAAAD2/wIAAgAHAAkAAAD2/wMAAgAHAAoAAAD3/wIAAgABAAoAAAD3/wMAAgABAAkAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
+[node name="Node" type="Node" parent="ROOMS/Living Room"]
+
 [node name="Kitchen" type="TileMapLayer" parent="ROOMS"]
 visible = false
 z_index = 15
@@ -1915,11 +1921,12 @@ position = Vector2(128, -96)
 tile_map_data = PackedByteArray("AAD8//r/AAAEAAEAAAD8//v/AAAKAAcAAAD8//z/AAAKAAcAAAD8//3/AAAKAAcAAAD8//7/AAAKAAcAAAD8////AAAKAAcAAAD8/wAAAAAKAAcAAAD8/wEAAAAKAAcAAAD9/wEAAAAKAAUAAAD+/wEAAAALAAUAAAAAAAEAAAAHAAUAAAABAAEAAAAIAAUAAAAIAPr/AAAHAAEAAAAIAPv/AAAIAAcAAAAIAPz/AAAIAAcAAAAIAP3/AAAIAAcAAAAIAP7/AAAIAAcAAAAIAP//AAAIAAcAAAAIAAAAAAAIAAcAAAAIAAEAAAAIAAcAAAD8/wIAAAAFAAEAAAD9//r/AAAJAAgAAAD9//3/AAAIAAkAAAD9/wIAAAAKAAYAAAD+//r/AAAJAAgAAAD+//3/AAAJAAkAAAD+/wIAAAALAAYAAAD///r/AAAJAAgAAAD///3/AAAJAAkAAAAAAPr/AAAJAAgAAAAAAP3/AAAJAAkAAAAAAAIAAAAHAAYAAAABAPr/AAAJAAgAAAABAP3/AAAJAAkAAAABAAIAAAAIAAYAAAACAPr/AAAJAAgAAAACAP3/AAAJAAkAAAACAAIAAAAJAAYAAAADAPr/AAAJAAgAAAADAP3/AAAJAAkAAAADAAIAAAAJAAYAAAAEAPr/AAAJAAgAAAAEAP3/AAAJAAkAAAAEAAIAAAAJAAYAAAAFAPr/AAAJAAgAAAAFAP3/AAAJAAkAAAAFAAIAAAAJAAYAAAAGAPr/AAAJAAgAAAAGAP3/AAAJAAkAAAAGAAIAAAAJAAYAAAAHAPr/AAAJAAgAAAAHAP3/AAAKAAkAAAAHAAIAAAAJAAYAAAAIAAIAAAAGAAEAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
 
-[node name="Window" type="Node2D" parent="ROOMS/Kitchen" node_paths=PackedStringArray("tilemap") groups=["Window"]]
+[node name="Window" type="Node2D" parent="ROOMS/Kitchen" node_paths=PackedStringArray("int_area", "tilemap") groups=["Window"]]
 visible = false
 position = Vector2(224, -56)
 rotation = -3.14159
 script = ExtResource("18_rd8s4")
+int_area = NodePath("InteractionArea")
 window_location = Vector2(7, -4)
 tilemap = NodePath("../Furniture")
 
@@ -1927,7 +1934,7 @@ tilemap = NodePath("../Furniture")
 position = Vector2(24, -48)
 collision_layer = 0
 collision_mask = 2
-script = SubResource("GDScript_m0jk6")
+script = ExtResource("7_2y8s4")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1946,37 +1953,6 @@ metadata/_edit_lock_ = true
 position = Vector2(24.5002, 87.9999)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ud8yo")
-
-[node name="LightSwitch3" type="Node2D" parent="ROOMS/Kitchen" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(168, -104)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/KitchenLight")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Kitchen/LightSwitch3"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Kitchen/LightSwitch3"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Kitchen/LightSwitch3"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Kitchen/LightSwitch3" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Kitchen/LightSwitch3/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 
 [node name="Black" type="ColorRect" parent="ROOMS/Kitchen" groups=["ColorRect(Black)"]]
 show_behind_parent = true
@@ -2000,8 +1976,21 @@ z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAAGAPz/AgAEAAAAAAABAPv/AAAHAAUAAAABAP7/AAAHAAcAAAACAPv/AAAIAAUAAAACAP7/AAAIAAcAAAADAPv/AAAJAAUAAAADAP7/AAAJAAcAAAAEAPv/AAAKAAUAAAAEAP7/AAAKAAcAAAD+//7/AAADAAYAAAAAAPv/AAAFAAUAAAAAAP7/AAAFAAcAAAAFAP7/AAALAAgAAAA=")
+tile_map_data = PackedByteArray("AAAGAPz/AgAEAAAAAAABAPv/AAAHAAUAAAABAP7/AAAHAAcAAAACAPv/AAAIAAUAAAACAP7/AAAIAAcAAAADAPv/AAAJAAUAAAADAP7/AAAJAAcAAAAEAPv/AAAKAAUAAAAEAP7/AAAKAAcAAAD+//7/AAADAAYAAAAAAPv/AAAFAAUAAAAAAP7/AAAFAAcAAAAFAPz/AgALAAAAAAAFAP7/AAALAAgAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
+
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Kitchen" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(168, -56)
+script = ExtResource("17_3qfk1")
+light = NodePath("../../../LightNodes/KitchenLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(5, -4)
+
+[node name="InteractionArea" parent="ROOMS/Kitchen/LightSwitch" instance=ExtResource("10_mk1jx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Kitchen/LightSwitch/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
 
 [node name="Bathroom" type="TileMapLayer" parent="ROOMS"]
 visible = false
@@ -2011,54 +2000,16 @@ position = Vector2(-64, -64)
 tile_map_data = PackedByteArray("AAD7//v/AAAKAAcAAAD7////AAAKAAcAAAAAAPr/AAAJAAgAAAAAAP3/AAAJAAkAAAD7//r/AAAEAAEAAAD7//z/AAAKAAcAAAD7//3/AAAKAAcAAAD7//7/AAAKAAcAAAD7/wAAAAAKAAcAAAD7/wEAAAAFAAEAAAD8//r/AAAJAAgAAAD8//3/AAAIAAkAAAD8/wEAAAAJAAYAAAD9//r/AAAJAAgAAAD9//3/AAAJAAkAAAD9/wEAAAAJAAYAAAD+//r/AAAJAAgAAAD+//3/AAAJAAkAAAD+/wEAAAAKAAYAAAD///r/AAAJAAgAAAD///3/AAAJAAkAAAABAPr/AAAJAAgAAAABAP3/AAAKAAkAAAABAAEAAAAIAAYAAAACAPr/AAAHAAEAAAACAPv/AAAIAAcAAAACAPz/AAAIAAcAAAACAP3/AAAIAAcAAAACAP7/AAAIAAcAAAACAP//AAAIAAcAAAACAAAAAAAIAAcAAAACAAEAAAAGAAEAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
 
-[node name="Closet" type="Node2D" parent="ROOMS/Bathroom" node_paths=PackedStringArray("hiding_spot")]
-position = Vector2(54, -74)
+[node name="Closet" type="Node2D" parent="ROOMS/Bathroom" node_paths=PackedStringArray("hiding_spot", "int_area")]
+position = Vector2(48, -48)
 script = ExtResource("17_oi2wj")
 hiding_spot = NodePath(".")
+int_area = NodePath("InteractionArea")
 
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Bathroom/Closet" node_paths=PackedStringArray("sprite")]
-position = Vector2(776, 40)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../../../Living Room/TV/TVTileMap")
-interactable_node = NodePath("..")
+[node name="InteractionArea" parent="ROOMS/Bathroom/Closet" instance=ExtResource("10_mk1jx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bathroom/Closet/InteractionArea"]
-position = Vector2(-789, -33)
-shape = SubResource("RectangleShape2D_novc8")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
-
-[node name="LightSwitch4" type="Node2D" parent="ROOMS/Bathroom" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(-104, -104)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/BathroomLight")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Bathroom/LightSwitch4"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Bathroom/LightSwitch4"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Bathroom/LightSwitch4"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Bathroom/LightSwitch4" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bathroom/LightSwitch4/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+shape = SubResource("CircleShape2D_m8wek")
 
 [node name="Black" type="ColorRect" parent="ROOMS/Bathroom" groups=["ColorRect(Black)"]]
 show_behind_parent = true
@@ -2081,8 +2032,21 @@ y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
 position = Vector2(0, -32)
-tile_map_data = PackedByteArray("AAABAP7/AQADAAgAAAD+//3/AgAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAP7/AQADAAgAAAD+//z/AgAHAAAAAAD9//z/AgALAAAAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
+
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Bathroom" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(-88, -72)
+script = ExtResource("17_3qfk1")
+light = NodePath("../../../LightNodes/BathroomLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(-3, -4)
+
+[node name="InteractionArea" parent="ROOMS/Bathroom/LightSwitch" instance=ExtResource("10_mk1jx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bathroom/LightSwitch/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
 
 [node name="Hallway" type="TileMapLayer" parent="ROOMS"]
 visible = false
@@ -2092,9 +2056,23 @@ position = Vector2(480, 95)
 tile_map_data = PackedByteArray("AAD8//z/AAAEAAEAAAD8//3/AAAKAAcAAAD8//7/AAAKAAcAAAD8////AAAKAAcAAAD8/wAAAAAKAAcAAAD8/wEAAAAKAAcAAAD8/wIAAAAFAAEAAAD9//f/AAAEAAEAAAD9//j/AAAKAAcAAAD9//n/AAAKAAcAAAD9//r/AAAKAAcAAAD9//v/AAAKAAcAAAD9//z/AAAKAAgAAAD9////AAAKAAkAAAD9/wIAAAAKAAYAAAD9/wMAAAAKAAcAAAD9/wQAAAAKAAcAAAD9/wUAAAAKAAcAAAD9/wYAAAAFAAEAAAD+//f/AAAJAAgAAAD+//r/AAAIAAkAAAD+/wYAAAAJAAYAAAD///f/AAAJAAgAAAD///r/AAAJAAkAAAD//wYAAAAJAAYAAAAAAPf/AAAJAAgAAAAAAPr/AAAJAAkAAAAAAAYAAAAJAAYAAAABAPf/AAAJAAgAAAABAPr/AAAKAAkAAAABAAYAAAAJAAYAAAACAPf/AAAHAAEAAAACAPj/AAAIAAcAAAACAPn/AAAIAAcAAAACAPr/AAAIAAcAAAACAPv/AAAIAAcAAAACAPz/AAAIAAgAAAACAP//AAAIAAkAAAACAAIAAAAIAAYAAAACAAMAAAAIAAcAAAACAAQAAAAIAAcAAAACAAUAAAAIAAcAAAACAAYAAAAGAAEAAAADAPz/AAAHAAEAAAADAP3/AAAIAAcAAAADAP7/AAAIAAcAAAADAP//AAAIAAcAAAADAAAAAAAIAAcAAAADAAEAAAAIAAcAAAADAAIAAAAGAAEAAAD+////AAALAAgAAAABAP//AAAHAAgAAAACAAEAAAAIAAUAAAD9/wEAAAAKAAUAAAD+/wEAAAALAAUAAAD+/wIAAAALAAYAAAABAAEAAAAHAAUAAAABAAIAAAAHAAYAAAD+/wUAAAACAAMAAAABAAUAAAADAAMAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
 
-[node name="Window" type="Node2D" parent="ROOMS/Hallway" groups=["Window"]]
+[node name="Window" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("int_area") groups=["Window"]]
 position = Vector2(0, 176)
 script = ExtResource("18_rd8s4")
+int_area = NodePath("InteractionArea")
+
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Hallway/Window"]
+position = Vector2(24, -48)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_2y8s4")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/Window/InteractionArea"]
+position = Vector2(-24, 64)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
 
 [node name="WindowArea" type="Area2D" parent="ROOMS/Hallway/Window"]
 position = Vector2(24, -48)
@@ -2109,10 +2087,38 @@ position = Vector2(-24, 112)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ijtk5")
 
-[node name="Closet" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("hiding_spot")]
+[node name="Closet" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("hiding_spot", "int_area")]
 position = Vector2(64, 105)
 script = ExtResource("17_oi2wj")
 hiding_spot = NodePath(".")
+int_area = NodePath("InteractionArea")
+
+[node name="InteractionArea" parent="ROOMS/Hallway/Closet" instance=ExtResource("10_mk1jx")]
+position = Vector2(8, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/Closet/InteractionArea"]
+position = Vector2(-16, 0)
+shape = SubResource("CapsuleShape2D_f8c7m")
+
+[node name="HallwayLight1" type="PointLight2D" parent="ROOMS/Hallway"]
+position = Vector2(0, -152)
+scale = Vector2(0.6, 0.6)
+color = Color(1, 0.835402, 0.835402, 1)
+energy = 0.6
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("5_vgchx")
+metadata/_edit_lock_ = true
+
+[node name="HallwayLight2" type="PointLight2D" parent="ROOMS/Hallway"]
+position = Vector2(0, 80)
+scale = Vector2(0.6, 0.6)
+color = Color(1, 0.835402, 0.835402, 1)
+energy = 0.6
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("5_vgchx")
+metadata/_edit_lock_ = true
 
 [node name="Black" type="ColorRect" parent="ROOMS/Hallway" groups=["ColorRect(Black)"]]
 show_behind_parent = true
@@ -2134,70 +2140,34 @@ tile_set = SubResource("TileSet_lhb4b")
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAAAAPr/AAAAAAIAAAABAP3/AAABAAUAAAAAAAUAAgABAAAAAAACAAIAAAABAAUAAAD9/wIAAAAAAAUAAAABAAQAAQACAAgAAAA=")
+tile_map_data = PackedByteArray("AAAAAPr/AAAAAAIAAAABAP3/AAABAAUAAAAAAAUAAgABAAAAAAACAAIAAAABAAUAAAD9/wIAAAAAAAUAAAD9//7/AgALAAAAAAACAP7/AgALAAAAAAABAAQAAQACAAgAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
-[node name="LightSwitch5" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(40, -199)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/HallwayLightUp")
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(-80, -7)
+script = ExtResource("17_3qfk1")
+light = NodePath("../HallwayLight1")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(-3, -2)
 
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Hallway/LightSwitch5"]
-texture = ExtResource("41_l3t43")
+[node name="InteractionArea" parent="ROOMS/Hallway/LightSwitch" instance=ExtResource("10_mk1jx")]
 
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Hallway/LightSwitch5"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/LightSwitch/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
 
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Hallway/LightSwitch5"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
+[node name="LightSwitch2" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(80, -7)
+script = ExtResource("17_3qfk1")
+light = NodePath("../HallwayLight2")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(2, -2)
 
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Hallway/LightSwitch5" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
+[node name="InteractionArea" parent="ROOMS/Hallway/LightSwitch2" instance=ExtResource("10_mk1jx")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/LightSwitch5/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
-
-[node name="LightSwitch6" type="Node2D" parent="ROOMS/Hallway" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(-80, -39)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/HallwayLightDown")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Hallway/LightSwitch6"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Hallway/LightSwitch6"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Hallway/LightSwitch6"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Hallway/LightSwitch6" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/LightSwitch6/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Hallway/LightSwitch2/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
 
 [node name="Bedroom" type="TileMapLayer" parent="ROOMS"]
 visible = false
@@ -2207,38 +2177,40 @@ position = Vector2(608, 128)
 tile_map_data = PackedByteArray("AAD///3/AAAJAAkAAAD//wUAAAAJAAYAAAAGAPv/AAAIAAcAAAAGAP7/AAAIAAcAAAD+//r/AAAEAAEAAAD+//v/AAAKAAcAAAD+//z/AAAKAAcAAAD+//3/AAAKAAcAAAD+//7/AAAKAAcAAAD+////AAAKAAcAAAD+/wAAAAAKAAcAAAD+/wEAAAAKAAcAAAD+/wIAAAAKAAcAAAD+/wMAAAAKAAcAAAD+/wQAAAAKAAcAAAD+/wUAAAAFAAEAAAD///r/AAAJAAgAAAAAAPr/AAAJAAgAAAAAAP3/AAAJAAkAAAAAAAUAAAAJAAYAAAABAPr/AAAJAAgAAAABAP3/AAAJAAkAAAABAAUAAAAJAAYAAAACAPr/AAAJAAgAAAACAP3/AAAJAAkAAAACAAUAAAAJAAYAAAADAPr/AAAJAAgAAAADAP3/AAAJAAkAAAADAAUAAAAJAAYAAAAEAPr/AAAJAAgAAAAEAP3/AAAJAAkAAAAEAAUAAAAJAAYAAAAFAPr/AAAJAAgAAAAFAP3/AAAJAAkAAAAFAAUAAAAJAAYAAAAGAPr/AAAHAAEAAAAGAPz/AAAIAAcAAAAGAP3/AAAIAAcAAAAGAP//AAAIAAcAAAAGAAAAAAAIAAcAAAAGAAEAAAAIAAcAAAAGAAIAAAAIAAcAAAAGAAMAAAAIAAcAAAAGAAQAAAAIAAcAAAAGAAUAAAAGAAEAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
 
-[node name="TableJournal" type="Node2D" parent="ROOMS/Bedroom"]
+[node name="TableJournal" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("interaction_area")]
 position = Vector2(112, 48)
 script = ExtResource("16_du6og")
+interaction_area = NodePath("InteractionArea")
 metadata/_edit_group_ = true
 
-[node name="Book" type="TileMapLayer" parent="ROOMS/Bedroom/TableJournal"]
-y_sort_enabled = true
-texture_filter = 1
-material = ExtResource("7_jj0mf")
-position = Vector2(-112, -48)
-tile_map_data = PackedByteArray("AAADAAAAAAACAAEAAAA=")
-tile_set = SubResource("TileSet_nlj7c")
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Bedroom/TableJournal" node_paths=PackedStringArray("sprite")]
-position = Vector2(-2, -74)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Book")
-interactable_node = NodePath("..")
+[node name="InteractionArea" parent="ROOMS/Bedroom/TableJournal" instance=ExtResource("10_mk1jx")]
+visible = false
+position = Vector2(0, -15)
+action_name = "Check Journal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/TableJournal/InteractionArea"]
-position = Vector2(-4, 44)
-shape = SubResource("RectangleShape2D_bpb3v")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_vox2f")
 
-[node name="Window" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("tilemap") groups=["Window"]]
+[node name="Window" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("int_area", "tilemap") groups=["Window"]]
 position = Vector2(181, 16)
 rotation = -1.5708
 script = ExtResource("18_rd8s4")
+int_area = NodePath("InteractionArea")
 window_location = Vector2(5, 0)
 tilemap = NodePath("../Furniture")
+
+[node name="InteractionArea" type="Area2D" parent="ROOMS/Bedroom/Window"]
+position = Vector2(1.90735e-06, -2.67029e-05)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_2y8s4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/Window/InteractionArea"]
+position = Vector2(0, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pipft")
 
 [node name="WindowArea" type="Area2D" parent="ROOMS/Bedroom/Window" node_paths=PackedStringArray("window")]
 position = Vector2(1.90735e-06, -2.67029e-05)
@@ -2253,41 +2225,17 @@ position = Vector2(0, 64)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ijtk5")
 
-[node name="Closet" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("hiding_spot")]
+[node name="Closet" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("hiding_spot", "int_area")]
 position = Vector2(176, -88)
 script = ExtResource("17_oi2wj")
 hiding_spot = NodePath(".")
+int_area = NodePath("InteractionArea")
 
-[node name="LightSwitch7" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(16, -104)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/BedroomLight")
+[node name="InteractionArea" parent="ROOMS/Bedroom/Closet" instance=ExtResource("10_mk1jx")]
+position = Vector2(0, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Bedroom/LightSwitch7"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Bedroom/LightSwitch7"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Bedroom/LightSwitch7"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Bedroom/LightSwitch7" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/LightSwitch7/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/Closet/InteractionArea"]
+shape = SubResource("CircleShape2D_m8wek")
 
 [node name="Black" type="ColorRect" parent="ROOMS/Bedroom" groups=["ColorRect(Black)"]]
 show_behind_parent = true
@@ -2309,10 +2257,24 @@ tile_set = SubResource("TileSet_lhb4b")
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAD//wAAAAAAAAUAAAAFAP//AQAIAAcAAAAEAAMAAgAKAAgAAAAFAAAAAgAAAAEAAAACAPz/AgADAAQAAAADAPz/AgAEAAQAAAAEAPz/AgAFAAQAAAADAPv/AgAEAAUAAAAEAPv/AgAFAAUAAAACAPv/AgADAAsAAAAFAP3/AQADAAgAAAACAAAAAQAAAAIAAAAEAAEAAAAIAAIAAAA=")
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAUAAAACAAAAAQAAAAIAAAAFAP//AQAIAAcAAAADAAAAAAACAAEAAAAEAAEAAAAIAAIAAAAEAAMAAgAKAAgAAAAFAAAAAgAAAAEAAAACAPz/AgADAAQAAAADAPz/AgAEAAQAAAAEAPz/AgAFAAQAAAADAPv/AgAEAAUAAAAEAPv/AgAFAAUAAAACAPv/AgADAAsAAAAAAPz/AgALAAAAAAAFAP3/AQADAAgAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Bedroom" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(8, -72)
+script = ExtResource("17_3qfk1")
+light = NodePath("../../../LightNodes/BedroomLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(0, -4)
+
+[node name="InteractionArea" parent="ROOMS/Bedroom/LightSwitch" instance=ExtResource("10_mk1jx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Bedroom/LightSwitch/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
+
 [node name="Storage" type="TileMapLayer" parent="ROOMS"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(608, -32)
@@ -2339,56 +2301,32 @@ tile_set = SubResource("TileSet_lhb4b")
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAD//wEAAAAAAAUAAAAFAAEAAAABAAUAAAAFAP3/AgAKAAgAAAA=")
+tile_map_data = PackedByteArray("AAD//wEAAAAAAAUAAAAFAAEAAAABAAUAAAAAAPv/AgALAAAAAAAFAP3/AgAKAAgAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
-[node name="Workbench" type="Node2D" parent="ROOMS/Storage"]
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Storage" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(8, -104)
+script = ExtResource("17_3qfk1")
+light = NodePath("../../../LightNodes/StorageRoomLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+light_switch_coord = Vector2i(0, -5)
+
+[node name="InteractionArea" parent="ROOMS/Storage/LightSwitch" instance=ExtResource("10_mk1jx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Storage/LightSwitch/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
+
+[node name="Workbench" type="Node2D" parent="ROOMS/Storage" node_paths=PackedStringArray("interaction_area")]
 position = Vector2(152, -64)
 script = ExtResource("30_s5to4")
+interaction_area = NodePath("InteractionArea")
 
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Storage/Workbench" node_paths=PackedStringArray("sprite")]
-position = Vector2(6, -2)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../../../Living Room/TV/TVTileMap")
-interactable_node = NodePath("..")
+[node name="InteractionArea" parent="ROOMS/Storage/Workbench" instance=ExtResource("10_mk1jx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Storage/Workbench/InteractionArea"]
-position = Vector2(-2, 6)
-shape = SubResource("RectangleShape2D_ao0ot")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
-
-[node name="LightSwitch8" type="Node2D" parent="ROOMS/Storage" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(16, -136)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/StorageRoomLight")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Storage/LightSwitch8"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Storage/LightSwitch8"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Storage/LightSwitch8"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Storage/LightSwitch8" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Storage/LightSwitch8/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_uhcva")
 
 [node name="Electrical" type="TileMapLayer" parent="ROOMS"]
 visible = false
@@ -2418,8 +2356,35 @@ tile_set = SubResource("TileSet_7ba0h")
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_v8c80")
-tile_map_data = PackedByteArray("AAAHAPz/BAAGAAEAAAAIAPz/BAAHAAEAAAAJAP3/BAAIAAEAAAAJAP7/BAAIAAEAAAAFAPz/BAAEAAEAAAAAAPv/BAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAPr/AgALAAAAAAAAAPz/BAACAAAAAAAHAPz/BAAGAAEAAAAIAPz/BAAHAAEAAAAJAP3/BAAIAAEAAAAJAP7/BAAIAAEAAAD+//z/BAAAAAQAAAAFAPz/BAAEAAEAAAA=")
 tile_set = SubResource("TileSet_wtu58")
+
+[node name="LightSwitch" type="Node2D" parent="ROOMS/Electrical" node_paths=PackedStringArray("light", "interaction_area", "tile_map") groups=["Electronic"]]
+position = Vector2(80, -136)
+script = ExtResource("17_3qfk1")
+light = NodePath("../../../LightNodes/ElectricalRoomLight")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("..")
+light_switch_coord = Vector2i(2, -6)
+
+[node name="InteractionArea" parent="ROOMS/Electrical/LightSwitch" instance=ExtResource("10_mk1jx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Electrical/LightSwitch/InteractionArea"]
+shape = SubResource("CircleShape2D_x8xvn")
+
+[node name="Generator" type="Node2D" parent="ROOMS/Electrical" node_paths=PackedStringArray("interaction_area", "tile_map")]
+position = Vector2(-48, -112)
+script = ExtResource("24_7h07w")
+interaction_area = NodePath("InteractionArea")
+tile_map = NodePath("../Furniture")
+
+[node name="InteractionArea" parent="ROOMS/Electrical/Generator" instance=ExtResource("10_mk1jx")]
+position = Vector2(0, 16)
+action_name = "Turn On Generator"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Electrical/Generator/InteractionArea"]
+position = Vector2(18, 0)
+shape = SubResource("RectangleShape2D_pgmpv")
 
 [node name="AmbientElectrical" type="AudioStreamPlayer" parent="ROOMS/Electrical"]
 stream = ExtResource("30_c18we")
@@ -2433,74 +2398,15 @@ volume_db = -5.0
 bus = &"Ambient BG"
 parameters/looping = true
 
-[node name="LightSwitch9" type="Node2D" parent="ROOMS/Electrical" node_paths=PackedStringArray("light") groups=["Electronic"]]
-position = Vector2(80, -168)
-script = ExtResource("40_omnsj")
-off_sprite = ExtResource("42_y2k6t")
-on_sprite = ExtResource("41_l3t43")
-light = NodePath("../../../LightNodes/ElectricalRoomLight")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Electrical/LightSwitch9"]
-texture = ExtResource("41_l3t43")
-
-[node name="SwitchOnSFX" type="AudioStreamPlayer2D" parent="ROOMS/Electrical/LightSwitch9"]
-stream = SubResource("AudioStreamRandomizer_qvnsh")
-bus = &"SFX"
-
-[node name="SwitchOffSFX" type="AudioStreamPlayer2D" parent="ROOMS/Electrical/LightSwitch9"]
-stream = SubResource("AudioStreamRandomizer_ywweh")
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Electrical/LightSwitch9" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Electrical/LightSwitch9/InteractionArea"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_2f6xm")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
-
-[node name="Generator" type="StaticBody2D" parent="ROOMS/Electrical"]
-y_sort_enabled = true
-position = Vector2(80, -168)
-script = ExtResource("41_sodru")
-off_sprite = ExtResource("41_0upou")
-on_sprite = ExtResource("42_y01l5")
-
-[node name="PowerOn" type="AudioStreamPlayer" parent="ROOMS/Electrical/Generator"]
+[node name="PowerOn" type="AudioStreamPlayer" parent="ROOMS/Electrical"]
 stream = ExtResource("32_3ggy3")
 volume_db = -3.0
 bus = &"SFX"
 
-[node name="PowerOff" type="AudioStreamPlayer" parent="ROOMS/Electrical/Generator"]
+[node name="PowerOff" type="AudioStreamPlayer" parent="ROOMS/Electrical"]
 stream = ExtResource("33_asylt")
 volume_db = -3.0
 bus = &"SFX"
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/Electrical/Generator"]
-y_sort_enabled = true
-position = Vector2(-122, 30)
-texture = ExtResource("42_y01l5")
-
-[node name="InteractionArea" type="Area2D" parent="ROOMS/Electrical/Generator" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("42_yfjwe")
-sprite = NodePath("../Sprite2D")
-interactable_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Electrical/Generator/InteractionArea"]
-position = Vector2(-114, 62)
-shape = SubResource("RectangleShape2D_aebyc")
-debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/Electrical/Generator"]
-position = Vector2(-122, 58)
-shape = SubResource("RectangleShape2D_hnorr")
 
 [node name="OUTSIDE" type="TileMapLayer" parent="."]
 visible = false
@@ -2793,16 +2699,6 @@ position = Vector2(785, -201)
 
 [node name="LightNodes" type="Node2D" parent="."]
 
-[node name="BathroomLight" type="PointLight2D" parent="LightNodes"]
-position = Vector2(-96, -136)
-scale = Vector2(0.8, 0.8)
-color = Color(1, 0.835402, 0.835402, 1)
-energy = 0.6
-shadow_enabled = true
-shadow_item_cull_mask = 3
-texture = ExtResource("5_vgchx")
-metadata/_edit_lock_ = true
-
 [node name="KitchenLight" type="PointLight2D" parent="LightNodes"]
 position = Vector2(112, -136)
 scale = Vector2(1.78486, 1)
@@ -2833,19 +2729,9 @@ shadow_item_cull_mask = 3
 texture = ExtResource("5_vgchx")
 metadata/_edit_lock_ = true
 
-[node name="HallwayLightUp" type="PointLight2D" parent="LightNodes"]
-position = Vector2(480, -57)
-scale = Vector2(0.6, 0.6)
-color = Color(1, 0.835402, 0.835402, 1)
-energy = 0.6
-shadow_enabled = true
-shadow_item_cull_mask = 3
-texture = ExtResource("5_vgchx")
-metadata/_edit_lock_ = true
-
-[node name="HallwayLightDown" type="PointLight2D" parent="LightNodes"]
-position = Vector2(480, 175)
-scale = Vector2(0.6, 0.6)
+[node name="BathroomLight" type="PointLight2D" parent="LightNodes"]
+position = Vector2(-96, -136)
+scale = Vector2(0.8, 0.8)
 color = Color(1, 0.835402, 0.835402, 1)
 energy = 0.6
 shadow_enabled = true
@@ -2901,10 +2787,27 @@ bus = &"Muffled"
 parameters/looping = true
 script = ExtResource("18_kqqhq")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_qdowy")
+texture = ExtResource("41_l41v6")
+script = ExtResource("42_yfjwe")
+
+[connection signal="body_entered" from="ROOMS/Living Room/Window/InteractionArea" to="ROOMS/Living Room/Window/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Living Room/Window/InteractionArea" to="ROOMS/Living Room/Window/InteractionArea" method="_on_body_exited"]
+[connection signal="body_entered" from="ROOMS/Living Room/Window/WindowArea" to="ROOMS/Living Room/Window/WindowArea" method="_on_body_entered"]
+[connection signal="body_entered" from="ROOMS/Living Room/Window2/InteractionArea" to="ROOMS/Living Room/Window2/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Living Room/Window2/InteractionArea" to="ROOMS/Living Room/Window2/InteractionArea" method="_on_body_exited"]
+[connection signal="body_entered" from="ROOMS/Living Room/Window2/WindowArea" to="ROOMS/Living Room/Window2/WindowArea" method="_on_body_entered"]
 [connection signal="body_entered" from="ROOMS/Kitchen/Window/InteractionArea" to="ROOMS/Kitchen/Window/InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="ROOMS/Kitchen/Window/InteractionArea" to="ROOMS/Kitchen/Window/InteractionArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ROOMS/Kitchen/Window/WindowArea" to="ROOMS/Kitchen/Window/WindowArea" method="_on_body_entered"]
+[connection signal="body_entered" from="ROOMS/Hallway/Window/InteractionArea" to="ROOMS/Hallway/Window/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Hallway/Window/InteractionArea" to="ROOMS/Hallway/Window/InteractionArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ROOMS/Hallway/Window/WindowArea" to="ROOMS/Hallway/Window/WindowArea" method="_on_body_entered"]
+[connection signal="body_entered" from="ROOMS/Bedroom/Window/InteractionArea" to="ROOMS/Bedroom/Window/InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ROOMS/Bedroom/Window/InteractionArea" to="ROOMS/Bedroom/Window/InteractionArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ROOMS/Bedroom/Window/WindowArea" to="ROOMS/Bedroom/Window/WindowArea" method="_on_body_entered"]
 [connection signal="area_entered" from="RoomDetection/Living Room" to="ROOMS" method="_on_living_room_area_entered"]
 [connection signal="area_entered" from="RoomDetection/Bathroom" to="ROOMS" method="_on_bathroom_area_entered"]
