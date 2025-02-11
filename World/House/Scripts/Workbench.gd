@@ -26,4 +26,6 @@ func _on_use():
 
 func _process(delta):
 	if not HudManager.is_crafting and can_interact:
+		HudManager.camera_movement = true
+		HudManager.flashlight_movement = true
 		handle_text()
