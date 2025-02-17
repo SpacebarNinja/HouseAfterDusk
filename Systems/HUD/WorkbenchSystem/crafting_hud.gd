@@ -7,26 +7,18 @@ var camera_anchor = Vector2.ZERO
 
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var item_display_scene = preload("res://Systems/HUD/WorkbenchSystem/craftable_item_display.tscn")
-@onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
+@onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
 @onready var scroll_base = $Table/ScrollBase
 @onready var item_panel = $Table/ScrollBase/ItemPanel
 @onready var table = $Table
 @onready var scroll_container1 = $Table/ScrollBase/ScrollContainer1
 
 var tabs_dict: Dictionary
-var category_dict: Dictionary = {} # Holds categories with their items
 var CURRENT_TAB = 0
-
-enum ITEM_CATEGORY {GEAR, WEAPON, TRAPS, MATERIAL, MISCELANEOUS}
-var gear_dict: Dictionary = {}
-var trap_dict: Dictionary = {}
-var material_dict: Dictionary = {}
-var miscelaneous_dict: Dictionary = {}
 
 var currently_crafting: bool
 
 func _ready():
-	
 	scroll_container1.get_v_scroll_bar().custom_minimum_size.x = 55;
 	
 	tabs_dict = {
@@ -36,12 +28,6 @@ func _ready():
 		"tab4": $Table/ScrollBase/ScrollContainer4/TabGrid4,
 	}
 
-	category_dict = {
-		ITEM_CATEGORY.GEAR: gear_dict,
-		ITEM_CATEGORY.TRAPS: trap_dict,
-		ITEM_CATEGORY.MATERIAL: material_dict,
-		ITEM_CATEGORY.MISCELANEOUS: miscelaneous_dict
-	}
 	show_current_tab("tab1")
 	CURRENT_TAB = 1
 	
@@ -63,7 +49,7 @@ func _on_tab_button_1_pressed():
 	show_current_tab("tab1")
 	CURRENT_TAB = 1
 	#scroll_base.position = scroll_base.closed_position
-	
+
 func _on_tab_button_2_pressed():
 	show_current_tab("tab2")
 	CURRENT_TAB = 2
@@ -107,20 +93,20 @@ func add_item(item_id: String, item_count: int):
 	}
 	# Add the new item to the category dictionary
 	#print("NewItem: ", new_item)
-	category_dict[item_category] = new_item
 	
 	# Instantiate the button for the item and add it to the corresponding tab
 	var item_button = create_item_button(new_item)
 	match item_category:
-		"Gear", "Weapon":
+		"Tool", "Weapon":
 			tabs_dict["tab1"].add_child(item_button)
-		"Traps":
+		"Raw Material":
 			tabs_dict["tab2"].add_child(item_button)
-		"Resource":
+		"Component":
 			tabs_dict["tab3"].add_child(item_button)
-		"Miscellaneous":
+		"Entity", "Special":
 			tabs_dict["tab4"].add_child(item_button)
-
+	print("New Button: ", item_button, " in ", item_category)
+	
 # Creates a button for the item
 func create_item_button(item: Dictionary):
 	var item_display = item_display_scene.instantiate()

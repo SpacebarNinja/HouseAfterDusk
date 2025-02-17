@@ -2,8 +2,8 @@ extends AnimationBase
 
 @onready var journal = get_tree().get_first_node_in_group("Journal")
 @onready var anim_sprite = $AnimatedSprite2D
-@export var audio_list: Array[AudioStreamPlayer2D]
 @export var timer_list: Array[Timer]
+@export var basic_audio_list: Array[AudioStreamPlayer2D]
 
 var direction: String
 var idle_played: bool = false
@@ -11,6 +11,7 @@ var right_click_moving: bool = false
 var StepParticleScene = preload("res://Systems/Particles/StepParticle.tscn")
 
 func enter():
+	audio_list = basic_audio_list
 	timer_list[0].start()
 
 func exit():
@@ -83,9 +84,10 @@ func handle_footsteps():
 	var animation_state = anim_sprite.animation.split("_")[0]
 	#print(animation_state)
 	if animation_state == 'Sprint' and anim_sprite.frame in sprint_footstep_frames:
-		basic_play_audio(0, true)
+		play_audio(0)
+		spawn_particle()
 	elif animation_state == 'Walk' and anim_sprite.frame in walk_footstep_frames:
-		basic_play_audio(0, false)
+		play_audio(1)
 		
 	
 func flip_sprite(flip: bool):
@@ -104,20 +106,6 @@ func get_direction() -> String:
 		return "left"
 	else:
 		return "right"
-
-func basic_play_audio(index: int, is_sprinting: bool):
-	if index >= 0 and index < audio_list.size():
-		var audio = audio_list[index]
-		if is_sprinting:
-			audio.pitch_scale = 1.5
-		else:
-			audio.pitch_scale = 1.0
-			
-		audio.play()
-		if index == 0:
-			spawn_particle()
-	else:
-		print("Invalid audio index: ", index)
 
 func spawn_particle():
 	var step_particle_instance = StepParticleScene.instantiate()

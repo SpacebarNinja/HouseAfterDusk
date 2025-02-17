@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Inventory/Backpack/BackpackInfo.gd" id="1_dlcgs"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_w6ijb"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="4_g1y3s"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="4_g1y3s"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="5_j15jq"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="5_stp4t"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="7_0hrb1"]
@@ -68,33 +68,15 @@ script = ExtResource("3_w6ijb")
 size = Vector2i(1, 6)
 item_protoset = ExtResource("4_g1y3s")
 
-[node name="_Node_129367" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "rye"
-properties = {
-"grid_position": Vector2i(0, 5),
-"stack_size": 5
-}
-
-[node name="_Node_131401" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "raw_wood"
-properties = {
-"grid_position": Vector2i(0, 4),
-"stack_size": 3
-}
-
-[node name="_Node_263555" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "tv_remote"
-
 [node name="Equippable" type="Node" parent="."]
 script = ExtResource("3_w6ijb")
 size = Vector2i(1, 1)
 item_protoset = ExtResource("4_g1y3s")
+
+[node name="_Node_71914" type="Node" parent="Equippable"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "gun"
 
 [node name="Inventory UI" type="Node2D" parent="."]
 position = Vector2(-85, -75)

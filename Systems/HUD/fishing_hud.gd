@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var hud = get_tree().get_first_node_in_group("Hud")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
-@onready var protoset = preload("res://Systems/Inventory/Backpack/Consumables.tres")
+@onready var protoset = preload("res://Systems/Inventory/Others/Consumables.tres")
 
 @onready var background_bar = $BackgroundBar
 @onready var progress_meter = $ProgressMeter

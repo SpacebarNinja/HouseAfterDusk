@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var hud = get_tree().get_first_node_in_group("Hud")
+@onready var hud = get_tree().get_first_node_in_group("MainHud")
 @onready var map = get_tree().get_first_node_in_group("Map")
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
 
@@ -16,6 +16,7 @@ extends Panel
 @onready var noclip_button = $EnableNoclip
 @onready var time_label = $TimeSlider/TimeLabel
 @onready var time_slider = $TimeSlider
+@onready var infinite_sprint = $InfiniteSprint
 
 var no_clip_enabled: bool = false
 
@@ -71,3 +72,13 @@ func _on_show_inventory_panel_pressed():
 
 func _on_show_hud_panel_pressed():
 	hud_panel.show()
+
+func _on_infinite_sprint_toggled(toggled_on):
+	if toggled_on:
+		player.set_walk_speed(400)
+		hud.debug_sprint = true
+		infinite_sprint.self_modulate = Color(0,1,0, 1)
+	else:
+		player.set_walk_speed(80)
+		hud.debug_sprint = false
+		infinite_sprint.self_modulate = Color(1,1,1)

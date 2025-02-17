@@ -1264,11 +1264,11 @@ random_pitch = 1.4
 streams_count = 1
 stream_0/stream = ExtResource("6_jbrt6")
 
-[node name="Animation_Basics" type="Node2D" node_paths=PackedStringArray("audio_list", "timer_list", "animation_tree", "animation_player")]
+[node name="Animation_Basics" type="Node2D" node_paths=PackedStringArray("timer_list", "basic_audio_list", "animation_tree", "animation_player")]
 y_sort_enabled = true
 script = ExtResource("1_lm76y")
-audio_list = [NodePath("Audio/Move_Wood"), NodePath("Audio/Move_Grass")]
 timer_list = [NodePath("Timer/Idle_Timer")]
+basic_audio_list = [NodePath("Audio/Move_Wood"), NodePath("Audio/Move_Grass")]
 animation_tree = NodePath("AnimationTree")
 animation_player = NodePath("AnimationPlayer")
 

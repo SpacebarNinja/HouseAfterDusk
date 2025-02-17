@@ -46,7 +46,7 @@ script = ExtResource("5_twjhg")
 
 [node name="Player" parent="." instance=ExtResource("4_gh3rb")]
 modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(-616, -136)
+position = Vector2(-618, -75)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")

@@ -4,7 +4,7 @@ extends Node2D
 @onready var switch_static_sfx = $SwitchStatic
 @onready var turn_on_sfx = $TurnOn
 @onready var static_sfx = $Static
-@onready var rooms = $"../.."
+@onready var rooms = $"../../.."
 @onready var television_light = $TelevisionLight
 
 @export var interaction_area: Area2D
@@ -69,7 +69,7 @@ func _process(delta):
 	
 	# Adjust audio volume based on current room
 	for audio in channel_bg_audio:
-		if str(rooms.current_room.name) == 'OUTSIDE':
+		if rooms.is_outside == true:
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), -5)
 		else:
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), 5)

@@ -1,6 +1,11 @@
 extends CanvasLayer
 
+<<<<<<< Updated upstream
 @onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
+=======
+# Preload consumable data
+@onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
+>>>>>>> Stashed changes
 
 @onready var cooking_panel = $CookingPanel
 @onready var cooking_slots = $CookingPanel/CookingSlots

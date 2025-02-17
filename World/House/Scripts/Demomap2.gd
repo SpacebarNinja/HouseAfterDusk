@@ -44,6 +44,10 @@ func get_cabin_room(room: int):
 	var cabin_room = rooms.cabin_rooms[room]
 	return cabin_room.global_position
 
+func get_forest_room(room: int):
+	var forest_room = rooms.forest_rooms[room]
+	return forest_room.global_position
+
 func get_black_rect():
 	return black_rects
 

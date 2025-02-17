@@ -1,5 +1,6 @@
 extends AnimationBase
 
+@onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var gun_cast = $Guncast
 @onready var ray_cast = $Guncast/RayCast2D
 @export var glock_audio_list: Array[AudioStreamPlayer2D]
@@ -9,6 +10,7 @@ var direction = Vector2i(0, 0)
 var glock_equipped: bool = false
 
 func enter():
+	audio_list = glock_audio_list
 	glock_equipped = true
 	print("Holding a glock")
 	
@@ -29,14 +31,18 @@ func _process(_delta):
 
 func shoot():
 	var collider = ray_cast.get_collider()
-	play_audio(0)
+	var bullet = backpack.find_inventory_item("bullet")
+	
+	if bullet:
+		backpack.remove_inventory_item(bullet["item"], 1)
+		play_audio(0)
+	else:
+		return
+	
 	if collider:
 		if ray_cast.is_colliding() and collider.is_in_group("Enemy"):
 			print("Shot Enemy")
 			collider.take_damage(100)
-			
-func reload():
-	pass
 	
 func handle_animation():
 	var screen_size = get_viewport().size
