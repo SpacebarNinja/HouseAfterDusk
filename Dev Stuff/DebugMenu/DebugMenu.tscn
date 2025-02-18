@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=34 format=3 uid="uid://chyhpk7ouru8b"]
-=======
-[gd_scene load_steps=37 format=3 uid="uid://chyhpk7ouru8b"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
@@ -24,40 +20,19 @@
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="15_w6hg1"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
-<<<<<<< Updated upstream
-=======
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="16_lwjpa"]
-[ext_resource type="Texture2D" uid="uid://ds5wnn3jpk8ir" path="res://Dev Stuff/DebugMenu/Trash_Icon.png" id="20_ndrq0"]
-[ext_resource type="Texture2D" uid="uid://dyiuj0rpblf3d" path="res://Systems/Inventory/Backpack/Art/Slot2.png" id="20_nw6bf"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8xqsi"]
-texture = ExtResource("20_nw6bf")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4i3t0"]
-texture = ExtResource("20_ndrq0")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6lfw"]
-texture = ExtResource("20_ndrq0")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mlqvn"]
-texture = ExtResource("20_ndrq0")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63kor"]
-draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
->>>>>>> Stashed changes
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ja3xc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfcoo"]
+size = Vector2(192, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a7x3"]
+size = Vector2(256, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phl58"]
 atlas = ExtResource("2_64gco")
 region = Rect2(5, 20, 48, 48)
 
-<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pybsh"]
 size = Vector2(256, 24)
 
@@ -66,11 +41,6 @@ size = Vector2(256, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8qd7"]
 size = Vector2(337.778, 24)
-=======
-[sub_resource type="AtlasTexture" id="AtlasTexture_rl35x"]
-atlas = ExtResource("16_awk0u")
-region = Rect2(2, 2, 29, 30)
->>>>>>> Stashed changes
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_geosd"]
 texture = ExtResource("15_w6hg1")
@@ -100,43 +70,10 @@ anchors_preset = 0
 script = ExtResource("1_ovj22")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-<<<<<<< Updated upstream
 layer = 10
-=======
-layer = 5
-
-[node name="TrashPanel" type="Panel" parent="CanvasLayer"]
-z_index = 1
-offset_left = 1080.0
-offset_top = 40.0
-offset_right = 1144.0
-offset_bottom = 104.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8xqsi")
-
-[node name="Trash" type="Node" parent="CanvasLayer/TrashPanel"]
-script = ExtResource("11_8rupj")
-size = Vector2i(1, 1)
-item_protoset = ExtResource("16_lwjpa")
-
-[node name="TrashGrid" type="Control" parent="CanvasLayer/TrashPanel"]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 58.0
-offset_bottom = 58.0
-script = ExtResource("14_on3mp")
-inventory_path = NodePath("../Trash")
-field_dimensions = Vector2(52, 52)
-field_style = SubResource("StyleBoxTexture_4i3t0")
-field_highlighted_style = SubResource("StyleBoxTexture_e6lfw")
-field_selected_style = SubResource("StyleBoxTexture_mlqvn")
-selection_style = SubResource("StyleBoxFlat_63kor")
->>>>>>> Stashed changes
 
 [node name="GameWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(120, 16)
+position = Vector2(1016, 16)
 script = ExtResource("5_nofec")
 panel = NodePath("GamePanel")
 
@@ -155,6 +92,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("CanvasTexture_ja3xc")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/GameWindow/Window"]
+position = Vector2(128, 12)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/GameWindow/Window/Area2D"]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_rfcoo")
 
 [node name="Label" type="Label" parent="CanvasLayer/GameWindow/Window"]
 layout_mode = 0
@@ -334,23 +279,6 @@ grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Kill All Enemies"
 
-[node name="InfiniteSprint" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -36.0
-offset_right = 112.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-toggle_mode = true
-text = "Enable Fast Sprint"
-
 [node name="ShowPlayerPanel" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 1
 anchors_preset = 8
@@ -359,9 +287,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 20.0
+offset_top = -36.0
 offset_right = -16.0
-offset_bottom = 67.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -376,9 +304,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 84.0
+offset_top = 28.0
 offset_right = -16.0
-offset_bottom = 131.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -393,9 +321,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 16.0
-offset_top = 20.0
+offset_top = -36.0
 offset_right = 112.0
-offset_bottom = 67.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -410,9 +338,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 16.0
-offset_top = 84.0
+offset_top = 28.0
 offset_right = 112.0
-offset_bottom = 131.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -427,9 +355,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 148.0
+offset_top = 92.0
 offset_right = -16.0
-offset_bottom = 195.0
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -437,11 +365,7 @@ toggle_mode = true
 text = "HUD"
 
 [node name="EnemyWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-<<<<<<< Updated upstream
 position = Vector2(704, 16)
-=======
-position = Vector2(424, 16)
->>>>>>> Stashed changes
 script = ExtResource("5_nofec")
 panel = NodePath("EnemyPanel")
 
@@ -459,8 +383,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_filter = 0
 texture = SubResource("CanvasTexture_ja3xc")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/EnemyWindow/Window"]
+position = Vector2(128, 12)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/EnemyWindow/Window/Area2D"]
+shape = SubResource("RectangleShape2D_1a7x3")
 
 [node name="Label" type="Label" parent="CanvasLayer/EnemyWindow/Window"]
 layout_mode = 0
@@ -568,11 +498,7 @@ toggle_mode = true
 texture_normal = ExtResource("4_ke238")
 
 [node name="PlayerWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-<<<<<<< Updated upstream
 position = Vector2(344, 16)
-=======
-position = Vector2(400, 352)
->>>>>>> Stashed changes
 script = ExtResource("5_nofec")
 panel = NodePath("PlayerPanel")
 
@@ -591,6 +517,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("CanvasTexture_ja3xc")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/PlayerWindow/Window"]
+position = Vector2(96, 12)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PlayerWindow/Window/Area2D"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_pybsh")
 
 [node name="Label" type="Label" parent="CanvasLayer/PlayerWindow/Window"]
 layout_mode = 0
@@ -713,8 +647,25 @@ theme = ExtResource("3_mat6y")
 text = "-10 Hg
 "
 
+[node name="InfiniteSprint" type="Button" parent="CanvasLayer/PlayerWindow/PlayerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+toggle_mode = true
+text = "Enable Fast Sprint"
+
 [node name="MapWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(760, 352)
+position = Vector2(704, 312)
 script = ExtResource("5_nofec")
 panel = NodePath("MapPanel")
 
@@ -733,6 +684,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("CanvasTexture_ja3xc")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/MapWindow/Window"]
+position = Vector2(96, 16)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/MapWindow/Window/Area2D"]
+position = Vector2(32, -4)
+shape = SubResource("RectangleShape2D_fnyhg")
 
 [node name="Label" type="Label" parent="CanvasLayer/MapWindow/Window"]
 layout_mode = 0
@@ -805,7 +764,6 @@ offset_top = 48.0
 offset_right = 152.0
 offset_bottom = 88.0
 theme = ExtResource("3_mat6y")
-alignment = 1
 item_count = 7
 popup/item_0/text = "Living Room"
 popup/item_1/text = "Bathroom"
@@ -821,31 +779,6 @@ popup/item_5/id = 5
 popup/item_6/text = "Electrical"
 popup/item_6/id = 6
 
-<<<<<<< Updated upstream
-=======
-[node name="TeleportLabel2" type="Label" parent="CanvasLayer/MapWindow/MapPanel"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 96.0
-offset_right = 147.0
-offset_bottom = 119.0
-theme = ExtResource("3_mat6y")
-text = "Teleport to Forest:"
-
-[node name="TeleportButton2" type="OptionButton" parent="CanvasLayer/MapWindow/MapPanel"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 128.0
-offset_right = 152.0
-offset_bottom = 168.0
-theme = ExtResource("3_mat6y")
-alignment = 1
-item_count = 2
-popup/item_0/text = "OutsideCabin"
-popup/item_1/text = "CropField"
-popup/item_1/id = 1
-
->>>>>>> Stashed changes
 [node name="HideBlackRect" type="Button" parent="CanvasLayer/MapWindow/MapPanel"]
 layout_mode = 1
 anchors_preset = 8
@@ -878,168 +811,8 @@ grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Show Tilemaps"
 
-<<<<<<< Updated upstream
 [node name="InventoryWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
 position = Vector2(1368, 16)
-=======
-[node name="HudWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(1024, 352)
-script = ExtResource("5_nofec")
-panel = NodePath("HudPanel")
-
-[node name="Window" type="TextureRect" parent="CanvasLayer/HudWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -16.0
-offset_right = 88.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Label" type="Label" parent="CanvasLayer/HudWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Hud Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/HudWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = -12.0
-offset_right = 61.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/HudWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -12.0
-offset_right = 93.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
-[node name="HudPanel" type="Panel" parent="CanvasLayer/HudWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 8.0
-offset_right = 88.0
-offset_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("16_hx5qb")
-
-[node name="ShowMainHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -116.0
-offset_right = 68.0
-offset_bottom = -76.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-text = "Main Hud"
-
-[node name="ShowQTEHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 68.0
-offset_bottom = -28.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-text = "QTE Hud"
-
-[node name="ShowCraftingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -20.0
-offset_right = 68.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-text = "Crafting Hud"
-
-[node name="ShowCookingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = 28.0
-offset_right = 68.0
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-text = "Cooking Hud"
-
-[node name="ShowFishingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = 76.0
-offset_right = 68.0
-offset_bottom = 116.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-text = "Fishing Hud"
-
-[node name="InventoryWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(784, 16)
->>>>>>> Stashed changes
 script = ExtResource("5_nofec")
 panel = NodePath("InventoryPanel")
 
@@ -1060,6 +833,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("CanvasTexture_ja3xc")
 
+[node name="Area2D" type="Area2D" parent="CanvasLayer/InventoryWindow/Window"]
+position = Vector2(96, 16)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/InventoryWindow/Window/Area2D"]
+position = Vector2(72.889, -4)
+shape = SubResource("RectangleShape2D_g8qd7")
+
 [node name="Label" type="Label" parent="CanvasLayer/InventoryWindow/Window"]
 layout_mode = 0
 offset_left = 8.0
@@ -1075,9 +856,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 151.056
+offset_left = 142.167
 offset_top = -12.0
-offset_right = 184.056
+offset_right = 175.167
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1110,15 +891,7 @@ script = ExtResource("10_gerqt")
 
 [node name="ItemLabel" parent="CanvasLayer/InventoryWindow/InventoryPanel" instance=ExtResource("14_m2d0y")]
 z_index = 1
-<<<<<<< Updated upstream
 position = Vector2(64, 642.4)
-=======
-position = Vector2(440, -30)
-
-[node name="Delay" type="Timer" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
-wait_time = 0.1
-one_shot = true
->>>>>>> Stashed changes
 
 [node name="GearPanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
 layout_mode = 0
@@ -1185,19 +958,11 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="FoodPanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
-visible = false
 layout_mode = 0
-<<<<<<< Updated upstream
 offset_left = 384.0
 offset_top = 50.4
 offset_right = 752.0
 offset_bottom = 634.4
-=======
-offset_left = 376.0
-offset_top = 50.0
-offset_right = 744.0
-offset_bottom = 634.0
->>>>>>> Stashed changes
 
 [node name="Food" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel"]
 script = ExtResource("11_8rupj")
@@ -1537,7 +1302,6 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="ResourcePanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
-visible = false
 layout_mode = 0
 offset_top = 338.4
 offset_right = 368.0
@@ -1698,7 +1462,6 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="MiscellaneousPanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
-visible = false
 layout_mode = 0
 offset_top = 154.4
 offset_right = 368.0
@@ -2002,7 +1765,6 @@ color = Color(0.821789, 0.821789, 0.821789, 1)
 [connection signal="value_changed" from="CanvasLayer/GameWindow/GamePanel/ZoomSlider" to="CanvasLayer/GameWindow/GamePanel" method="_on_zoom_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/EnableNoclip" to="CanvasLayer/GameWindow/GamePanel" method="_on_enable_noclip_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/KillAllEnemies" to="CanvasLayer/GameWindow/GamePanel" method="_on_kill_all_enemies_pressed"]
-[connection signal="toggled" from="CanvasLayer/GameWindow/GamePanel/InfiniteSprint" to="CanvasLayer/GameWindow/GamePanel" method="_on_infinite_sprint_toggled"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowPlayerPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_player_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowMapPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_map_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowEnemyPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_enemy_panel_pressed"]
@@ -2015,6 +1777,7 @@ color = Color(0.821789, 0.821789, 0.821789, 1)
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_hunger_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Health" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehealth_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Hunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehunger_pressed"]
+[connection signal="toggled" from="CanvasLayer/PlayerWindow/PlayerPanel/InfiniteSprint" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_infinite_sprint_toggled"]
 [connection signal="item_selected" from="CanvasLayer/MapWindow/MapPanel/TeleportButton" to="CanvasLayer/MapWindow/MapPanel" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/MapWindow/MapPanel/HideBlackRect" to="CanvasLayer/MapWindow/MapPanel" method="_on_hide_black_rect_pressed"]
 [connection signal="pressed" from="CanvasLayer/MapWindow/MapPanel/ShowTilemaps" to="CanvasLayer/MapWindow/MapPanel" method="_on_show_tilemaps_pressed"]

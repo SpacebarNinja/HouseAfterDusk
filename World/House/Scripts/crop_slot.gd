@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
+@onready var protoset = preload("res://Systems/Inventory/Backpack/Universal.tres")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 
 var crop_list = {

@@ -1,7 +1,6 @@
 # Rooms.gd
 extends Node2D
 
-# Cabin Room Area Detectors =---------------------------------------------------
 @onready var area_living_room = $"../RoomDetection/Living Room"
 @onready var area_bathroom = $"../RoomDetection/Bathroom"
 @onready var area_kitchen = $"../RoomDetection/Kitchen"
@@ -9,29 +8,21 @@ extends Node2D
 @onready var area_bedroom = $"../RoomDetection/Bedroom"
 @onready var area_storage = $"../RoomDetection/Storage"
 @onready var area_electrical = $"../RoomDetection/Electrical"
-
-# Forest Room Area Detectors =--------------------------------------------------
 @onready var area_outside_cabin = $"../RoomDetection/OutsideCabin"
-@onready var area_crop_field = $"../RoomDetection/CropField"
 
-# Cabin Room Tilemaps =---------------------------------------------------------
-@onready var living_room = $"CabinNodes/Living Room"
-@onready var bathroom = $CabinNodes/Bathroom
-@onready var kitchen = $CabinNodes/Kitchen
-@onready var hallway = $CabinNodes/Hallway
-@onready var bedroom = $CabinNodes/Bedroom
-@onready var storage = $CabinNodes/Storage
-@onready var electrical = $CabinNodes/Electrical
+@onready var living_room = $"Living Room"
+@onready var bathroom = $Bathroom
+@onready var kitchen = $Kitchen
+@onready var hallway = $Hallway
+@onready var bedroom = $Bedroom
+@onready var storage = $Storage
+@onready var electrical = $Electrical
+@onready var outside_cabin = $"../OUTSIDE"
 
-# Forest Room Tilemaps =--------------------------------------------------------
-@onready var outside_cabin = $ForestNodes/OutsideCabin
-@onready var crop_field = $ForestNodes/CropField
-
-# Others =----------------------------------------------------------------------
 @onready var door_sfx = $"../DoorSFX"
 
-@onready var ambient_electrical = $CabinNodes/Electrical/AmbientElectrical
-@onready var ambient_sparks = $CabinNodes/Electrical/AmbientSparks
+@onready var ambient_electrical = $Electrical/AmbientElectrical
+@onready var ambient_sparks = $Electrical/AmbientSparks
 
 var cabin_rooms = []
 var forest_rooms = []
@@ -44,14 +35,13 @@ var is_transitioning = false
 
 var is_room_bounds_x: bool = false
 var is_room_bounds_y: bool = false
-var is_outside: bool
 
 var is_electrical_ambient_playing: bool = false
 
 func _ready():
 	old_room = null
 	cabin_rooms = [living_room, bathroom, kitchen, hallway, bedroom, storage, electrical]
-	forest_rooms = [outside_cabin, crop_field]
+	forest_rooms = [outside_cabin]
 	reset_rooms()
 
 func reset_rooms():
@@ -103,12 +93,7 @@ func show_room(room):
 			if child is TileMapLayer:
 				child.collision_enabled = true
 		door_sfx.play()
-	
-	if current_room in cabin_rooms:
-		is_outside = false
-	elif current_room in cabin_rooms:
-		is_outside = true
-		
+
 func _process(delta):
 	if is_transitioning:
 		transition_timer += delta
@@ -162,6 +147,7 @@ func _on_bedroom_area_entered(_area):
 
 func _on_storage_area_entered(_area):
 	print("Entered Storage area")
+	
 	show_room(storage)
 
 func _on_electrical_area_entered(_area):
@@ -171,10 +157,6 @@ func _on_electrical_area_entered(_area):
 func _on_outside_cabin_area_entered(_area):
 	print("Exited Cabin")
 	show_room(outside_cabin)
-
-func _on_crop_field_area_entered(area):
-	print("At Crop Field")
-	show_room(crop_field)
 	
 func _on_cam_x_living_room_area_entered(_area):
 	is_room_bounds_x = true

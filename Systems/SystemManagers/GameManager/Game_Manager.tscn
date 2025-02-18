@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://8f7lk7e3cf87"]
+[gd_scene load_steps=5 format=3 uid="uid://8f7lk7e3cf87"]
 
 [ext_resource type="Script" path="res://Systems/SystemManagers/GameManager/GameManager.gd" id="1_pihvo"]
 [ext_resource type="PackedScene" uid="uid://cs6l875gtd73x" path="res://Entities/WindowGirl/WindowGirl.tscn" id="2_nx82h"]
 [ext_resource type="PackedScene" uid="uid://38ts1v8d4yx6" path="res://Entities/ElectronicGuy/ElectronicGuyV2.tscn" id="3_wfyjo"]
 [ext_resource type="PackedScene" uid="uid://chact4baxwqfo" path="res://Entities/TheDolls/Doll.tscn" id="4_d70ti"]
-[ext_resource type="PackedScene" uid="uid://btnne6ekpxmv4" path="res://Entities/Deer/Deer.tscn" id="5_2o2gd"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_pihvo")
-entity_list = Array[PackedScene]([ExtResource("2_nx82h"), ExtResource("3_wfyjo"), ExtResource("4_d70ti"), ExtResource("5_2o2gd")])
+entity_list = Array[PackedScene]([ExtResource("2_nx82h"), ExtResource("3_wfyjo"), ExtResource("4_d70ti")])
 
 [node name="SpawnCooldown" type="Timer" parent="."]
 wait_time = 20.0
