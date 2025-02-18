@@ -20,7 +20,10 @@ protoset = ExtResource("3_nfvrw")
 prototype_id = "bullet"
 
 [node name="CtrlInventoryGridEx" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
 script = ExtResource("5_mjr8d")
 inventory_path = NodePath("../DroppedItem")

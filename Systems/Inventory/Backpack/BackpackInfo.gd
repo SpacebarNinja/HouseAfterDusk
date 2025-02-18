@@ -1,8 +1,11 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+<<<<<<< Updated upstream
+@onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
+=======
 @onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
-
+>>>>>>> Stashed changes
 @onready var item_label = $ItemLabel
 
 @onready var eat = $Eat
@@ -45,17 +48,17 @@ func _on_ctrl_inventory_grid_ex_item_mouse_exited(item):
 	item_label.on_item_mouse_exited(item)
 
 func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
-
+<<<<<<< Updated upstream
 	var item_type = item.get_property("Type", "")
 	if item_type == "Food":
 		var food_value = item.get_property("value")
 		item.queue_free()
 		player.replenish_hunger(food_value)
-
+=======
 	if item.get_property("edible", true) and (item.get_property("Type", "") == "Ingredient" or item.get_property("Type", "") == "Product"):
 		remove_inventory_item(item, 1)
 		player.replenish_hunger(item.get_property("hunger_value"))
-
+>>>>>>> Stashed changes
 		eat.play()
 	else:
 		# If not food, attempt to equip or swap
@@ -67,17 +70,17 @@ func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
 				item.swap(item, item2)
 
 func _on_ctrl_inventory_grid_ex_equippable_inventory_item_context_activated(item):
-
+<<<<<<< Updated upstream
 	var item_type = item.get_property("Type", "")
 	if item_type == "Food":
 		var food_value = item.get_property("value")
 		item.queue_free()
 		player.replenish_hunger(food_value)
-
+=======
 	if item.get_property("edible", true) and (item.get_property("Type", "") == "Ingredient" or item.get_property("Type", "") == "Product"):
 		remove_equipped_item(item, 1)
 		player.replenish_hunger(item.get_property("hunger_value"))
-
+>>>>>>> Stashed changes
 		eat.play()
 	else:
 		# If not food, attempt to return it to inventory
@@ -92,6 +95,28 @@ func get_equipped_item():
 	#print("Equipped Item: ", equipped_item)
 	return equipped_item
 
+<<<<<<< Updated upstream
+func add_inventory_item(id, amount):
+	for number in range(amount):
+		inventory.create_and_add_item(id)
+	
+func remove_inventory_item(id, amount):
+	var inventory_items = inventory.get_children()
+	
+	for item in inventory_items:
+		if item.get_property("id", "") == id:
+			var stack_size = inventory.get_item_stack_size(item)
+			var new_stack_size = stack_size - amount
+			inventory.set_item_stack_size(item, new_stack_size)
+			print("Item Stack: ", inventory.get_item_stack_size(item))
+			
+			if stack_size <= 0:
+				inventory.remove_item(item)
+				print("Removing item")
+			else:
+				print("Failed to remove item:", id)
+			
+=======
 func add_inventory_item(item: InventoryItem, amount: int):
 	if amount <= 0:
 		return
@@ -146,7 +171,7 @@ func remove_equipped_item(item, amount):
 		equippable.remove_item(item)
 		print("Removing ", item)
 
-
+>>>>>>> Stashed changes
 func get_inventory_items() -> Array:
 	# Ensure `inventory` is properly set to a node or list of items
 	var inventory_items = inventory.get_children()
