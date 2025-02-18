@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://tehcs4dunwu6"]
+
+[ext_resource type="Script" path="res://Systems/Inventory/Others/dropped_item.gd" id="1_rxg02"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="2_lr3x2"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="3_nfvrw"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="4_gxbog"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="5_mjr8d"]
+
+[node name="Dropped_Item" type="Node2D"]
+script = ExtResource("1_rxg02")
+
+[node name="DroppedItem" type="Node" parent="."]
+script = ExtResource("2_lr3x2")
+size = Vector2i(1, 1)
+item_protoset = ExtResource("3_nfvrw")
+
+[node name="_Node_99777" type="Node" parent="DroppedItem"]
+script = ExtResource("4_gxbog")
+protoset = ExtResource("3_nfvrw")
+prototype_id = "bullet"
+
+[node name="CtrlInventoryGridEx" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("5_mjr8d")
+inventory_path = NodePath("../DroppedItem")
