@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 # Preload consumable data
-@onready var protoset = preload("res://Systems/Inventory/Backpack/Consumables.tres")
+@onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
 
 # UI Elements
 @onready var cooking_panel = $CookingPanel

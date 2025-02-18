@@ -1,6 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://ctm1dfhfkd0fl"]
+[gd_scene load_steps=94 format=3 uid="uid://ctm1dfhfkd0fl"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
+[ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_ofedd"]
 [ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
 [ext_resource type="Script" path="res://Systems/HUD/main_hud.gd" id="2_miqxo"]
 [ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
@@ -42,11 +43,13 @@
 [ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/crafting_hud.gd" id="29_yu7lx"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="30_qo76f"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="32_1yik7"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="32_1yik7"]
 [ext_resource type="Script" path="res://Systems/HUD/cooking_hud.gd" id="32_4ndme"]
 [ext_resource type="Texture2D" uid="uid://b47khq87dqvli" path="res://Systems/HUD/WorkbenchSystem/Art/Table.png" id="33_hqrie"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
 [ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
+[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="45_s6v0h"]
+[ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")
@@ -337,10 +340,49 @@ _data = {
 "transition": SubResource("Animation_0t1i1")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_omof5"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paots"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(68, 24, 12, 364)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o1cm"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="Gradient" id="Gradient_1r2w2"]
+offsets = PackedFloat32Array(0, 0.34375, 0.710938)
+colors = PackedColorArray(1, 0, 0.0680938, 1, 1, 0.913798, 0.013338, 1, 0, 1, 0.00900984, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rc5qm"]
+gradient = SubResource("Gradient_1r2w2")
+width = 12
+height = 364
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6xsa"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(100, 24, 20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdn8i"]
+size = Vector2(20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af16c"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(84, 28, 12, 360)
+margin = Rect2(0, -320, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvkac"]
+size = Vector2(20, 56)
+
 [node name="Hud" type="Control" groups=["Hud"]]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
+script = ExtResource("1_ofedd")
 
 [node name="BGProcessing" type="CanvasLayer" parent="."]
 layer = 2
@@ -600,6 +642,7 @@ libraries = {
 
 [node name="CraftingHud" type="CanvasLayer" parent="." groups=["CraftingHud"]]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("29_yu7lx")
 move_offset = -750.0
 move_speed = 4.2
@@ -1191,6 +1234,91 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_p0daj")
 }
+
+[node name="FishingHud" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("45_s6v0h")
+
+[node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 276.0
+offset_bottom = 500.0
+value = 100.0
+rounded = true
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_omof5")
+texture_progress = SubResource("AtlasTexture_paots")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="ProgressMeter" type="TextureProgressBar" parent="FishingHud"]
+offset_left = 288.0
+offset_top = 128.0
+offset_right = 308.0
+offset_bottom = 500.0
+step = 0.01
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_2o1cm")
+texture_progress = SubResource("GradientTexture2D_rc5qm")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="SuccessBar" type="NinePatchRect" parent="FishingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -72.0
+offset_right = -300.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_k6xsa")
+region_rect = Rect2(0, 0, 20, 60)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="SuccessArea" type="Area2D" parent="FishingHud/SuccessBar"]
+position = Vector2(10, 20)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/SuccessBar/SuccessArea"]
+visible = false
+shape = SubResource("RectangleShape2D_mdn8i")
+
+[node name="FishingHook" type="NinePatchRect" parent="FishingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -192.0
+offset_right = -304.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_af16c")
+region_rect = Rect2(0, 0, 12, 360)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="FishingArea" type="Area2D" parent="FishingHud/FishingHook"]
+position = Vector2(6, 24)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/FishingHook/FishingArea"]
+shape = SubResource("RectangleShape2D_tvkac")
+
+[node name="ChanceTimer" type="Timer" parent="FishingHud"]
+wait_time = 1.5
+
+[node name="DurationTimer" type="Timer" parent="FishingHud"]
+wait_time = 10.0
+one_shot = true
 
 [node name="MechanicHud" type="CanvasLayer" parent="."]
 layer = 2

@@ -53,7 +53,7 @@ func on_item_mouse_exited(item):
 
 func on_item_context_activated(item):
 	if Backpack.inventory.has_place_for(item):
-		Backpack.add_inventory_item(item.get_property("id",""), 1)
+		Backpack.add_inventory_item(item, 1)
 	
 func on_item_removed(item):
 	if item and is_instance_valid(item) and is_instance_valid(current_grid):

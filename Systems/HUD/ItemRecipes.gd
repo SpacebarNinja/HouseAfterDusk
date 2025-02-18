@@ -1,6 +1,6 @@
 extends Node
 
-@onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
+@onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
 
 var food_items = {}
 var berry_list = {"baneberry": 1, "bogberry": 1, "gooseberry": 1}

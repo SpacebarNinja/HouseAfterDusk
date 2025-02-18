@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="15_w6hg1"]
 [ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/deer male calciumtrice.png" id="16_awk0u"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/Universal.tres" id="16_lwjpa"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="16_lwjpa"]
 [ext_resource type="Texture2D" uid="uid://ds5wnn3jpk8ir" path="res://Dev Stuff/DebugMenu/Trash_Icon.png" id="20_ndrq0"]
 [ext_resource type="Texture2D" uid="uid://dyiuj0rpblf3d" path="res://Systems/Inventory/Backpack/Art/Slot2.png" id="20_nw6bf"]
 
@@ -97,7 +97,7 @@ anchors_preset = 0
 script = ExtResource("1_ovj22")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 5
 
 [node name="TrashPanel" type="Panel" parent="CanvasLayer"]
 z_index = 1
@@ -113,13 +113,12 @@ size = Vector2i(1, 1)
 item_protoset = ExtResource("16_lwjpa")
 
 [node name="TrashGrid" type="Control" parent="CanvasLayer/TrashPanel"]
-custom_minimum_size = Vector2(52, 52)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 58.0
-offset_bottom = 58.0
+offset_right = 6.0
+offset_bottom = 6.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Trash")
 field_dimensions = Vector2(52, 52)
@@ -1200,12 +1199,11 @@ protoset = ExtResource("16_lwjpa")
 prototype_id = "bullet"
 
 [node name="GearGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel"]
-custom_minimum_size = Vector2(352, 64)
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 360.0
-offset_bottom = 72.0
+offset_right = 8.0
+offset_bottom = 8.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Gear")
 field_dimensions = Vector2(64, 64)
@@ -1545,12 +1543,11 @@ properties = {
 }
 
 [node name="FoodGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel"]
-custom_minimum_size = Vector2(352, 568)
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 360.0
-offset_bottom = 576.0
+offset_right = 8.0
+offset_bottom = 8.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Food")
 field_dimensions = Vector2(64, 64)
@@ -1713,13 +1710,12 @@ properties = {
 }
 
 [node name="MaterialGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel"]
-custom_minimum_size = Vector2(352, 280)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 360.0
-offset_bottom = 288.0
+offset_right = 8.0
+offset_bottom = 8.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Material")
 field_dimensions = Vector2(64, 64)
@@ -1802,13 +1798,12 @@ properties = {
 }
 
 [node name="EnemyGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel"]
-custom_minimum_size = Vector2(352, 136)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 360.0
-offset_bottom = 144.0
+offset_right = 8.0
+offset_bottom = 8.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Enemy")
 field_dimensions = Vector2(64, 64)

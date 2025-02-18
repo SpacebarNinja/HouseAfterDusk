@@ -12,7 +12,7 @@ json_data = "[
         \"id\": \"bullet\",
         \"image\": \"res://Systems/Inventory/Backpack/Items/Bullet.png\",
         \"max_stack_size\": \"12\",
-        \"stack_size\": \"4\"
+        \"stack_size\": \"1\"
     },
     {
         \"Description\": \"A regular ole gun\",

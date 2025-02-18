@@ -24,6 +24,7 @@ EnemyDirector="*res://Systems/SystemManagers/GameDirector/GameDirector.gd"
 GameManager="*res://Systems/SystemManagers/GameManager/Game_Manager.tscn"
 ItemRecipes="*res://Systems/HUD/ItemRecipes.gd"
 HudManager="*res://Systems/SystemManagers/HudManager/HudManager.gd"
+GlobalItemList="*res://Systems/Inventory/Others/item_list.tscn"
 
 [debug]
 

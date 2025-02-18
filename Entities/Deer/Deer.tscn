@@ -127,7 +127,6 @@ animations = [{
 [node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone")]
 scale = Vector2(2, 2)
 script = ExtResource("1_ca34h")
-speed = 100
 acceleration = 2
 health = 100
 attack_damage = 0

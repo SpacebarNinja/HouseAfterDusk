@@ -200,11 +200,11 @@ height = 38.0
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_vui34")
-spawn_location = "TV"
 teleport_max_speed = 90
 teleport_min_speed = 70
 teleport_min_hide_length = 1.5
 teleport_max_hide_length = 2.5
+spawn_location = "TV"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

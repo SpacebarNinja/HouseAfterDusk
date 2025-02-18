@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=3 uid="uid://baent8h2dfd7u"]
+
+[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="1_kvyfn"]
+[ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="2_fss8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elywg"]
+atlas = ExtResource("2_fss8v")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciuv0"]
+atlas = ExtResource("2_fss8v")
+region = Rect2(68, 24, 12, 364)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1imjy"]
+atlas = ExtResource("2_fss8v")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="Gradient" id="Gradient_1r2w2"]
+offsets = PackedFloat32Array(0, 0.34375, 0.710938)
+colors = PackedColorArray(1, 0, 0.0680938, 1, 1, 0.913798, 0.013338, 1, 0, 1, 0.00900984, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_he738"]
+gradient = SubResource("Gradient_1r2w2")
+width = 12
+height = 364
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okbhu"]
+atlas = ExtResource("2_fss8v")
+region = Rect2(100, 24, 20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuvtd"]
+size = Vector2(20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uni13"]
+atlas = ExtResource("2_fss8v")
+region = Rect2(84, 28, 12, 360)
+margin = Rect2(0, -320, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rce3r"]
+size = Vector2(20, 56)
+
+[node name="FishingHud" type="CanvasLayer"]
+script = ExtResource("1_kvyfn")
+
+[node name="BackgroundBar" type="TextureProgressBar" parent="."]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 276.0
+offset_bottom = 500.0
+value = 100.0
+rounded = true
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_elywg")
+texture_progress = SubResource("AtlasTexture_ciuv0")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="ProgressMeter" type="TextureProgressBar" parent="."]
+offset_left = 288.0
+offset_top = 128.0
+offset_right = 308.0
+offset_bottom = 500.0
+step = 0.01
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_1imjy")
+texture_progress = SubResource("GradientTexture2D_he738")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="SuccessBar" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -72.0
+offset_right = -300.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_okbhu")
+region_rect = Rect2(0, 0, 20, 60)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="SuccessArea" type="Area2D" parent="SuccessBar"]
+position = Vector2(10, 20)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuccessBar/SuccessArea"]
+visible = false
+shape = SubResource("RectangleShape2D_nuvtd")
+
+[node name="FishingHook" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -192.0
+offset_right = -304.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_uni13")
+region_rect = Rect2(0, 0, 12, 360)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="FishingArea" type="Area2D" parent="FishingHook"]
+position = Vector2(6, 24)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHook/FishingArea"]
+shape = SubResource("RectangleShape2D_rce3r")
+
+[node name="ChanceTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="DurationTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="value_changed" from="ProgressMeter" to="." method="_on_progress_meter_value_changed"]
+[connection signal="area_entered" from="SuccessBar/SuccessArea" to="." method="_on_success_area_entered"]
+[connection signal="area_exited" from="SuccessBar/SuccessArea" to="." method="_on_success_area_exited"]
+[connection signal="timeout" from="ChanceTimer" to="." method="_on_chance_timer_timeout"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_time_timeout"]

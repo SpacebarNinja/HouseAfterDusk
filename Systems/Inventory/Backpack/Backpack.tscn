@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Inventory/Backpack/BackpackInfo.gd" id="1_dlcgs"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_w6ijb"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="4_g1y3s"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="4_g1y3s"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="5_j15jq"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="5_stp4t"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="7_0hrb1"]

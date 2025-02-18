@@ -104,10 +104,10 @@ func _on_craft_button_pressed():
 		for material_name in inputs.keys():
 			var material_data = inputs[material_name]
 			var required_amount = material_data["amount"]
-			backpack.remove_inventory_item(material_name, required_amount)
+			backpack.remove_inventory_item(backpack.inventory.get_item_by_id(material_name), required_amount)
 
 		# Add crafted item to inventory
-		backpack.add_inventory_item(selected_item, output)
+		backpack.add_inventory_item(GlobalItemList.get_item_by_id(selected_item), output)
 		display_materials(selected_item)
 		
 		craft_sfx.play()

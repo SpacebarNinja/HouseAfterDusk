@@ -1,0 +1,550 @@
+[gd_scene load_steps=4 format=3 uid="uid://b75p3fcrvmurc"]
+
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="1_lyuuv"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="2_nak3j"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="3_2p131"]
+
+[node name="ItemList" type="Node"]
+script = ExtResource("1_lyuuv")
+item_protoset = ExtResource("2_nak3j")
+
+[node name="_Node_56557" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "gun"
+properties = {
+"grid_position": Vector2i(0, 1)
+}
+
+[node name="_Node_56578" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "makeshift_bat"
+properties = {
+"grid_position": Vector2i(0, 2)
+}
+
+[node name="_Node_56605" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "fishing_rod"
+properties = {
+"grid_position": Vector2i(0, 3)
+}
+
+[node name="_Node_56638" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "teddybear"
+properties = {
+"grid_position": Vector2i(0, 4)
+}
+
+[node name="_Node_56677" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "modified_remote"
+properties = {
+"grid_position": Vector2i(0, 5)
+}
+
+[node name="_Node_56722" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "doll_hat"
+properties = {
+"grid_position": Vector2i(0, 6)
+}
+
+[node name="_Node_56773" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "box_of_chocolate"
+properties = {
+"grid_position": Vector2i(0, 7)
+}
+
+[node name="_Node_56830" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "broken_chip"
+properties = {
+"grid_position": Vector2i(0, 8)
+}
+
+[node name="_Node_56893" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "rare_fish"
+properties = {
+"grid_position": Vector2i(0, 9)
+}
+
+[node name="_Node_56962" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "bolt"
+properties = {
+"grid_position": Vector2i(1, 0)
+}
+
+[node name="_Node_57037" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "raw_wood"
+properties = {
+"grid_position": Vector2i(1, 1)
+}
+
+[node name="_Node_57118" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "plank"
+properties = {
+"grid_position": Vector2i(1, 2)
+}
+
+[node name="_Node_57205" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "rope"
+properties = {
+"grid_position": Vector2i(1, 3)
+}
+
+[node name="_Node_57298" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "spring"
+properties = {
+"grid_position": Vector2i(1, 4)
+}
+
+[node name="_Node_57397" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "steel"
+properties = {
+"grid_position": Vector2i(1, 5)
+}
+
+[node name="_Node_57502" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "stick"
+properties = {
+"grid_position": Vector2i(1, 6)
+}
+
+[node name="_Node_57613" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "tin_can"
+properties = {
+"grid_position": Vector2i(1, 7)
+}
+
+[node name="_Node_57730" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "gun_barrel"
+properties = {
+"grid_position": Vector2i(1, 8)
+}
+
+[node name="_Node_57853" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "gun_muzzle"
+properties = {
+"grid_position": Vector2i(1, 9)
+}
+
+[node name="_Node_59117" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "cordyceps"
+properties = {
+"grid_position": Vector2i(2, 0)
+}
+
+[node name="_Node_59252" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "chromatic_chip"
+properties = {
+"grid_position": Vector2i(2, 1)
+}
+
+[node name="_Node_59393" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "monochromatic_chip"
+properties = {
+"grid_position": Vector2i(2, 2)
+}
+
+[node name="_Node_59540" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "paranormal_chip"
+properties = {
+"grid_position": Vector2i(2, 3)
+}
+
+[node name="_Node_59693" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "pink_fabric"
+properties = {
+"grid_position": Vector2i(2, 4)
+}
+
+[node name="_Node_59852" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "red_fabric"
+properties = {
+"grid_position": Vector2i(2, 5)
+}
+
+[node name="_Node_60017" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "tv_remote"
+properties = {
+"grid_position": Vector2i(2, 6)
+}
+
+[node name="_Node_60188" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "acai_berry"
+properties = {
+"grid_position": Vector2i(2, 7)
+}
+
+[node name="_Node_60365" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "berry_salad"
+properties = {
+"grid_position": Vector2i(2, 8)
+}
+
+[node name="_Node_60548" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "bread"
+properties = {
+"grid_position": Vector2i(2, 9)
+}
+
+[node name="_Node_60737" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "carrot"
+properties = {
+"grid_position": Vector2i(3, 0)
+}
+
+[node name="_Node_60932" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "chocolate"
+properties = {
+"grid_position": Vector2i(3, 1)
+}
+
+[node name="_Node_61133" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "cocoa"
+properties = {
+"grid_position": Vector2i(3, 2)
+}
+
+[node name="_Node_61340" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "coffee"
+properties = {
+"grid_position": Vector2i(3, 3)
+}
+
+[node name="_Node_61553" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "coffee_beans"
+properties = {
+"grid_position": Vector2i(3, 4)
+}
+
+[node name="_Node_61871" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "cornucopia"
+properties = {
+"grid_position": Vector2i(3, 5)
+}
+
+[node name="_Node_62096" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "crab"
+properties = {
+"grid_position": Vector2i(3, 6)
+}
+
+[node name="_Node_62327" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "crab_meal"
+properties = {
+"grid_position": Vector2i(3, 7)
+}
+
+[node name="_Node_62564" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "fish"
+properties = {
+"grid_position": Vector2i(3, 8)
+}
+
+[node name="_Node_62807" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "flour"
+properties = {
+"grid_position": Vector2i(3, 9)
+}
+
+[node name="_Node_63056" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "goji_berry"
+properties = {
+"grid_position": Vector2i(4, 0)
+}
+
+[node name="_Node_63311" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "goose_berry"
+properties = {
+"grid_position": Vector2i(4, 1)
+}
+
+[node name="_Node_63572" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "grape"
+properties = {
+"grid_position": Vector2i(4, 2)
+}
+
+[node name="_Node_63839" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "grassy_salad"
+properties = {
+"grid_position": Vector2i(4, 3)
+}
+
+[node name="_Node_64112" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "gravy"
+properties = {
+"grid_position": Vector2i(4, 4)
+}
+
+[node name="_Node_64391" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "grilled_fish"
+properties = {
+"grid_position": Vector2i(4, 5)
+}
+
+[node name="_Node_64676" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "hearty_meal"
+properties = {
+"grid_position": Vector2i(4, 6)
+}
+
+[node name="_Node_64967" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "herb"
+properties = {
+"grid_position": Vector2i(4, 7)
+}
+
+[node name="_Node_65264" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "jam"
+properties = {
+"grid_position": Vector2i(4, 8)
+}
+
+[node name="_Node_65570" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "jam_sandwich"
+properties = {
+"grid_position": Vector2i(4, 9)
+}
+
+[node name="_Node_65879" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "meat"
+properties = {
+"grid_position": Vector2i(5, 0)
+}
+
+[node name="_Node_66194" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "mushroom"
+properties = {
+"grid_position": Vector2i(5, 1)
+}
+
+[node name="_Node_66515" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "nightshade_berry"
+properties = {
+"grid_position": Vector2i(5, 2)
+}
+
+[node name="_Node_66842" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "pancakes"
+properties = {
+"grid_position": Vector2i(5, 3)
+}
+
+[node name="_Node_67175" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "pepper"
+properties = {
+"grid_position": Vector2i(5, 4)
+}
+
+[node name="_Node_67514" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "pepper_beans"
+properties = {
+"grid_position": Vector2i(5, 5)
+}
+
+[node name="_Node_67859" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "potato"
+properties = {
+"grid_position": Vector2i(5, 6)
+}
+
+[node name="_Node_68210" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "rye"
+properties = {
+"grid_position": Vector2i(5, 7)
+}
+
+[node name="_Node_68567" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "seaweed"
+properties = {
+"grid_position": Vector2i(5, 8)
+}
+
+[node name="_Node_68930" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "simple_salad"
+properties = {
+"grid_position": Vector2i(5, 9)
+}
+
+[node name="_Node_69299" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "spaghetti"
+properties = {
+"grid_position": Vector2i(6, 0)
+}
+
+[node name="_Node_69674" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "sugar"
+properties = {
+"grid_position": Vector2i(6, 1)
+}
+
+[node name="_Node_70827" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "sugarcane"
+properties = {
+"grid_position": Vector2i(6, 2)
+}
+
+[node name="_Node_71214" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "sushi"
+properties = {
+"grid_position": Vector2i(6, 3)
+}
+
+[node name="_Node_71607" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "tentacle"
+properties = {
+"grid_position": Vector2i(6, 4)
+}
+
+[node name="_Node_72006" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "trash"
+properties = {
+"grid_position": Vector2i(6, 5)
+}
+
+[node name="_Node_72411" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "toxin"
+properties = {
+"grid_position": Vector2i(6, 6)
+}
+
+[node name="_Node_72822" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "veggie_salad"
+properties = {
+"grid_position": Vector2i(6, 7)
+}
+
+[node name="_Node_31679" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "bullet"
