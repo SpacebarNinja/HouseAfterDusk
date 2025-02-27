@@ -9,7 +9,7 @@ func _ready():
 	label_info.hide()
 	label_description.hide()
 
-func _process(delta):
+func _process(_delta):
 	global_position = get_global_mouse_position() + INFO_OFFSET
 
 func on_item_mouse_entered(item):

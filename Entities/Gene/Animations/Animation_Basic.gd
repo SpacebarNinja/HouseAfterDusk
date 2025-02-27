@@ -22,7 +22,9 @@ func _process(_delta):
 	handle_footsteps()
 
 func handle_animation():
-	if WorldManager.StopGeneMovement: return
+	if WorldManager.StopGeneMovement:
+		animation_tree.get("parameters/playback").travel("Idle1")
+		return
 	
 	var player_instance = get_node("/root/MainScene/Player")
 	var distance_to_mouse = player_instance.distance_to_mouse

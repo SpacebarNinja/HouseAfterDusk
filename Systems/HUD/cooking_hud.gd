@@ -1,7 +1,9 @@
 extends CanvasLayer
 
-@onready var protoset = preload("res://Systems/Inventory/Backpack/ItemProtoset.tres")
+# Preload consumable data
+@onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
 
+# UI Elements
 @onready var cooking_panel = $CookingPanel
 @onready var cooking_slots = $CookingPanel/CookingSlots
 @onready var cooking_grid = $CookingPanel/CookingGrid
@@ -13,102 +15,126 @@ extends CanvasLayer
 
 @onready var animation_player = $AnimationPlayer
 
+# Constants for better readability
+const TYPE_INGREDIENT = "Ingredient"
+const CATEGORY_FOOD = "Food"
+const ITEM_TRASH = "trash"
+
+# State Variables
 var materials_list: Dictionary = {}
-var is_craftable: bool = false
-var finished_crafting: bool = true
+var can_craft: bool = false
+var is_finished_crafting: bool = true
 var craftable_item: String = ""
 var craft_amount: int
 
-func _ready():
-	cooking_panel.show()
+func _process(_delta):
+	cook_button.visible = can_craft
 
-func _process(delta):
-	cook_button.visible = cooking_slots.get_item_count() > 0
-
-func update_food_list(item_id: String, item_count: int, item_type):
-	if not protoset.has_prototype(item_id):
-		return
-	
-	if item_type != "Food":
-		return
-	
+func update_food_list(item_id: String, item_count: int, _item_type):
+	# Update the materials list with the current item
 	materials_list[item_id] = item_count
 	
+	# Remove items with zero or negative count
 	if materials_list[item_id] <= 0:
 		materials_list.erase(item_id)
-	
-	if finished_crafting:
+
+	# Re-evaluate can_craft based on the entire materials_list
+	if materials_list.is_empty():
+		can_craft = false
+		
+	for material_id in materials_list.keys():
+		var item = protoset.get_prototype(material_id)
+		if not protoset.has_prototype(material_id) or item.get("Type", "") != TYPE_INGREDIENT:
+			can_craft = false
+			break  # Exit early if any invalid item is found
+		else:
+			can_craft = true
+			
+	# If crafting is allowed, proceed with recipe check
+	if is_finished_crafting and can_craft:
 		var recipe_check = ItemRecipes.check_food_recipe(materials_list)
 		craftable_item = recipe_check.get("id", "")
-		is_craftable = craftable_item != ""
 		craft_amount = calculate_crafting_amount(recipe_check, materials_list)
-		finished_crafting = false
-		print("RecipeChk: ", recipe_check)
-		print("MatList: ", materials_list)
-		print("CraftableItem: ", craftable_item)
-		print("ItemIsCraftable: ", is_craftable)
-		print("ItmCnt: ", craft_amount)
-	
+
+		if OS.is_debug_build():
+			print("RecipeChk: ", recipe_check)
+			print("MatList: ", materials_list)
+			print("CraftableItem: ", craftable_item)
+			print("ItemIsCraftable: ", can_craft)
+			print("ItmCnt: ", craft_amount)
+
+
 func calculate_crafting_amount(recipe, materials):
-	var craft_amount: int = 0  # Default to 0 as minimum
 	var inputs = recipe["inputs"]
-	
+	var item = protoset.get_prototype(recipe["id"])
+	var max_stack_size = item.get("max_stack_size")
+
+	var craft_times = INF  # Start with a large number to find the minimum possible crafts
+
 	for material_name in inputs.keys():
+		if not materials.has(material_name):
+			return 0  # Missing material, crafting is impossible
+
 		var required_amount = inputs[material_name]
-		if materials.has(material_name):
-			var available_amount = materials[material_name]
-			var craft_times = available_amount / required_amount
-			craft_amount = max(craft_amount, craft_times)  # Ensure we don't decrease craft_amount
-		else:
-			return 0  # If any required material is missing, crafting is impossible
-	
-	return craft_amount
+		var available_amount = materials[material_name]
+		var possible_crafts = int(available_amount / required_amount)
+
+		craft_times = min(craft_times, possible_crafts)  # Find the limiting material
+
+	var new_craft_amount = min(max_stack_size, craft_times)
+
+	return new_craft_amount
 
 func add_inventory_item(item_id: String, amount: int):
 	for i in range(amount):
 		cooking_result.create_and_add_item(item_id)
 
 func remove_inventory_item(item_id: String, amount: int):
+	var remaining_amount = amount
 	for item in cooking_slots.get_children():
 		if item.get_property("id", "") == item_id:
-			var remaining_stack = cooking_slots.get_item_stack_size(item) - amount
-			if remaining_stack > 0:
-				cooking_slots.set_item_stack_size(item, remaining_stack)
+			var stack_size = cooking_slots.get_item_stack_size(item)
+			if stack_size > remaining_amount:
+				cooking_slots.set_item_stack_size(item, stack_size - remaining_amount)
+				break
 			else:
 				cooking_slots.remove_item(item)
-			break
+				remaining_amount -= stack_size
+			if remaining_amount <= 0:
+				break
 
 func _on_cooking_item_added(item):
-	update_food_list(item.get_property("id", ""), cooking_slots.get_item_stack_size(item), item.get_property("Type", ""))
+	update_food_list(item.get_property("id", ""), item.get_property("stack_size", ""), item.get_property("Type", ""))
 
 func _on_cooking_item_removed(item):
-	update_food_list(item.get_property("id", ""), -1 * cooking_slots.get_item_stack_size(item), item.get_property("Type", ""))
+	update_food_list(item.get_property("id", ""), -1 * item.get_property("stack_size", ""), item.get_property("Type", ""))
 
-func _on_cooking_result_item_removed(item):
+func _on_cooking_result_item_removed(_item):
 	if animation_player:
 		animation_player.play_backwards("transition")
 
 func _on_cook_button_pressed():
-	if is_craftable:
+	if can_craft:
+		is_finished_crafting = false
 		animation_player.play("transition")
 		await animation_player.animation_finished
 
-		var recipe = ItemRecipes.get_recipe(craftable_item, "Food")
+		var recipe = ItemRecipes.get_recipe(craftable_item, CATEGORY_FOOD)
 		var id = recipe["id"]
 		var inputs = recipe["inputs"]
 		var output = recipe["output"]
 
 		# Deduct materials from inventory
-		for material_name in inputs.keys():
-			var material_data = inputs[material_name]
-			var required_amount = material_data["amount"]  # Access the nested "amount"
-			if id != "trash":
+		if id != ITEM_TRASH:
+			for material_name in inputs.keys():
+				var required_amount = inputs[material_name]["amount"]
 				remove_inventory_item(material_name, required_amount * craft_amount)
-			else:
-				cooking_slots.clear()
+		else:
+			for material_name in materials_list.keys():
+				remove_inventory_item(material_name, 1)
 
 		# Add crafted item to inventory
 		add_inventory_item(id, output * craft_amount)
-		finished_crafting = true
+		is_finished_crafting = true
 	else:
 		print("Cannot craft item: Found Non Food Item")

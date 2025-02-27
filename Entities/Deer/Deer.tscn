@@ -1,0 +1,197 @@
+[gd_scene load_steps=21 format=3 uid="uid://btnne6ekpxmv4"]
+
+[ext_resource type="Script" path="res://Entities/Deer/deer.gd" id="1_ca34h"]
+[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/deer male calciumtrice.png" id="2_4tpnj"]
+[ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="3_gl0rp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ucros"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2mpi"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e30c8"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5pos"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h01hn"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7rjy"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jis8x"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du3vf"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_587qq"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldavl"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0smu"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l03t5"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elcrx"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8aj4"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m63f6"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkag6"]
+atlas = ExtResource("2_4tpnj")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8eft"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_d2mpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e30c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5pos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h01hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7rjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jis8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du3vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_587qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldavl")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_n0smu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l03t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elcrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8aj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m63f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkag6")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 6.0
+}]
+
+[node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone")]
+scale = Vector2(2, 2)
+script = ExtResource("1_ca34h")
+acceleration = 2
+health = 100
+attack_damage = 0
+sense = 2
+intelligence = 2
+spawn_location = "FOREST"
+anim_sprite = NodePath("AnimatedSprite2D")
+navigation_agent = NodePath("NavigationAgent2D")
+vision_cone = NodePath("Vision")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ucros")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b8eft")
+animation = &"Run"
+autoplay = "Idle"
+frame_progress = 0.176199
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 2
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="visionsprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_gl0rp")
+
+[node name="Vision" type="PointLight2D" parent="."]
+color = Color(0.832644, 0.290377, 0.290377, 1)
+texture = ExtResource("3_gl0rp")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(80, -35)
+collision_mask = 3
+
+[node name="RayCast2D3" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(80, -15)
+collision_mask = 3
+
+[node name="RayCast2D4" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(80, 0)
+collision_mask = 3
+
+[node name="RayCast2D5" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(80, 15)
+collision_mask = 3
+
+[node name="RayCast2D6" type="RayCast2D" parent="Vision"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(80, 35)
+collision_mask = 3
+
+[node name="WanderTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

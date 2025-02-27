@@ -21,6 +21,11 @@ extends CharacterBody2D
 @export var flashlight: PointLight2D
 @export var audio_list: Array[AudioStreamPlayer2D]
 
+@export_category("Flashlight Fade Settings")
+@export var alpha_start: float = 0
+@export var alpha_end: float = 1
+@export var fade_speed: float = 7.0
+
 @onready var rooms = get_node("/root/MainScene/DemoMap2/ROOMS")
 
 var current_hunger: int
@@ -40,11 +45,12 @@ func _ready():
 func set_walk_speed(speed: int):
 	movement_speed = speed
 
-func _process(_delta):
+func _process(delta):
 	modulate_player()
-	rotate_flashlight()
+	handle_flashlight(delta)
 	
-	if WorldManager.StopGeneMovement: return
+	if WorldManager.StopGeneMovement:
+		return
 	
 	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
 	velocity = move_vector * movement_speed
@@ -139,11 +145,19 @@ func _on_hunger_timer_timeout():
 func _on_invulnerability_timer_timeout():
 	can_take_damage = true
 
-func rotate_flashlight():
+func handle_flashlight(delta):
+	var target_alpha = alpha_start if HudManager.is_dialoguing else alpha_end
+	
+	# Fade the light's color alpha instead of its modulate
+	var current_color = flashlight.color
+	current_color.a = lerp(current_color.a, target_alpha, fade_speed * delta)
+	flashlight.color = current_color
+	
 	if not journal_instance.is_open and HudManager.flashlight_movement:
 		var mouse_position = get_global_mouse_position()
 		flashlight.look_at(mouse_position)
 		raycast.look_at(mouse_position)
+
 
 func toggle_flashlight():
 	flashlight_on = not flashlight_on

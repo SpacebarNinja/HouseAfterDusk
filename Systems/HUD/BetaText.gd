@@ -1,7 +1,7 @@
 extends Label
 
 ## PLEASE CHANGE VERSION HERE
-var CURRENT_VERSION := '0.20.0'
+var CURRENT_VERSION := '0.24.0'
 #------------------------------------------
 
 const weekday_names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]

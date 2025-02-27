@@ -1,0 +1,729 @@
+[gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://b30oa05buxfxg"]
+
+[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="1_fwgd0"]
+
+[resource]
+script = ExtResource("1_fwgd0")
+json_data = "[
+    {
+        \"Description\": \"Bullets for a gun\",
+        \"Name\": \"Bullet\",
+        \"Type\": \"Tool\",
+        \"id\": \"bullet\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Bullet.png\",
+        \"max_stack_size\": \"12\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A regular ole gun\",
+        \"Name\": \"Gun\",
+        \"Type\": \"Weapon\",
+        \"id\": \"gun\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/GUN.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Brought to you by home depot, a 2x4 with nails\",
+        \"Name\": \"Makeshift bat\",
+        \"Type\": \"Weapon\",
+        \"id\": \"makeshift_bat\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Makeshift Bat.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A rod for fishing\",
+        \"Name\": \"Fishing Rod\",
+        \"Type\": \"Tool\",
+        \"id\": \"fishing_rod\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/FishingRod.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A trap!!\",
+        \"Name\": \"Trap\",
+        \"Type\": \"Tool\",
+        \"id\": \"trap\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Trap.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A very old looking teddy bear, looks to be owned and loved\",
+        \"Name\": \"Teddybear\",
+        \"Type\": \"Entity\",
+        \"id\": \"teddybear\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Teddybear.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Look whos the boss now\",
+        \"Name\": \"Modified Remote\",
+        \"Type\": \"Entity\",
+        \"id\": \"modified_remote\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Enhanced Remote.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A small hat, very cute\",
+        \"Name\": \"DollHat\",
+        \"Type\": \"Entity\",
+        \"id\": \"doll_hat\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/DollHat.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A gift for a special someone\",
+        \"Name\": \"Box of Chocolates\",
+        \"Type\": \"Special\",
+        \"id\": \"box_of_chocolate\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/BoxOfChocolates.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A broken chip?\",
+        \"Name\": \"Broken Chip\",
+        \"Type\": \"Special\",
+        \"id\": \"broken_chip\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Broken Chip.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A key to something...?\",
+        \"Name\": \"Key\",
+        \"Type\": \"Special\",
+        \"id\": \"key\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Key.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"An odd, like very odd, looking fish\",
+        \"Name\": \"Rare Fish\",
+        \"Type\": \"Special\",
+        \"id\": \"rare_fish\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/RareFish.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A rusty bolt.\",
+        \"Name\": \"Bolt\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"bolt\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Bolt.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I mean its a log\",
+        \"Name\": \"Log\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"raw_wood\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Log.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Sturdy wood. Useful for building.\",
+        \"Name\": \"Planks\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"plank\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Plank.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"you thinking what im thinking?\",
+        \"Name\": \"Rope\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"rope\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Rope.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"boing boing\",
+        \"Name\": \"Spring\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"spring\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Spring.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"what a marvel\",
+        \"Name\": \"Steel\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"steel\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Steel.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"stick\",
+        \"Name\": \"Stick\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"stick\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Stick.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"An old, empty tin can.\",
+        \"Name\": \"Tin Can\",
+        \"Type\": \"Raw Material\",
+        \"id\": \"tin_can\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Tin Can.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A barrel of a gun.\",
+        \"Name\": \"Gun Barrel\",
+        \"Type\": \"Component\",
+        \"id\": \"gun_barrel\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Barrel.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A muzzle of a gun.\",
+        \"Name\": \"Gun Muzzle\",
+        \"Type\": \"Component\",
+        \"id\": \"gun_muzzle\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Muzzle.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A trigger of a gun.\",
+        \"Name\": \"Gun Trigger\",
+        \"Type\": \"Component\",
+        \"id\": \"gun_trigger\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Trigger.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Not a very fungi\",
+        \"Name\": \"Cordyceps\",
+        \"Type\": \"Product\",
+        \"id\": \"cordyceps\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Cordyceps.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A colorful chip?\",
+        \"Name\": \"Chromatic Chip\",
+        \"Type\": \"Component\",
+        \"id\": \"chromatic_chip\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/ChromaticChip.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A grey chip?\",
+        \"Name\": \"Monochromatic Chip\",
+        \"Type\": \"Component\",
+        \"id\": \"monochromatic_chip\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/MonochromaticChip.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"ok now it has an eye\",
+        \"Name\": \"Paranormal Chip\",
+        \"Type\": \"Component\",
+        \"id\": \"paranormal_chip\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/ParanormalChip.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"does it come in black?\",
+        \"Name\": \"Pink Fabric\",
+        \"Type\": \"Component\",
+        \"id\": \"pink_fabric\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pink Fabric.png\",
+        \"max_stack_size\": \"2\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"does it come in pink?\",
+        \"Name\": \"Red Fabric\",
+        \"Type\": \"Component\",
+        \"id\": \"red_fabric\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Red Fabric.png\",
+        \"max_stack_size\": \"2\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"A remote to that old tv\",
+        \"Name\": \"TV Remote\",
+        \"Type\": \"Component\",
+        \"id\": \"tv_remote\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Remote.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"is a black berry\",
+        \"Name\": \"Acai Berry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"acai_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Bogberry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"it is a berry nice salad\",
+        \"Name\": \"Berry Nice Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"50\",
+        \"id\": \"berry_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Berry Nice Salad.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"bread\",
+        \"Name\": \"Bread\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"25\",
+        \"id\": \"bread\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Bread.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Rabbits :3\",
+        \"Name\": \"Carrot\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"carrot\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Carrot.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I prefer dark\",
+        \"Name\": \"Chocolate\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"chocolate\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Chocolate.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I swear these are round\",
+        \"Name\": \"Cocoa\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"cocoa\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Cocoa.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Its coffee\",
+        \"Name\": \"Coffee\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"coffee\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Coffee.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Almost coffee\",
+        \"Name\": \"Coffee Beans\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"coffee_beans\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Coffee Beans.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Hunger games\",
+        \"Name\": \"Cornucopia\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"cornucopia\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Cornucopia.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Look at him dance\",
+        \"Name\": \"Crab\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"crab\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Crab.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Well crab, this is a very crabby meal\",
+        \"Name\": \"Crab Meal\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"crab_meal\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Crabby Meal.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Heals 2 hp. Smells weird.\",
+        \"Name\": \"Fish\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"fish\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Fish.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Doesnt look like a flower\",
+        \"Name\": \"Flour\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"flour\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Flour.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"is a berry\",
+        \"Name\": \"Goji Berry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"goji_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Baneberry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"its a berry... is it honking?\",
+        \"Name\": \"Goose Berry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"goose_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Gooseberry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"This is grape\",
+        \"Name\": \"Grape\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"grape\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Grape.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"all natural salad\",
+        \"Name\": \"Grassy Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"grassy_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Grassy Salad.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"WHO DRINKS GRAVY??\",
+        \"Name\": \"Gravy\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"gravy\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Gravy.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Tasty Fish\",
+        \"Name\": \"Grilled Fish\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"grilled_fish\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Grilled Fish.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"a very hearty meal\",
+        \"Name\": \"Hearty Meal\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"hearty_meal\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Hearty Meal.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"1/11 collected\",
+        \"Name\": \"Herb\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"herb\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Herb.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"This is a jam\",
+        \"Name\": \"Jam\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"jam\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Jam.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Wheres the P for this J\",
+        \"Name\": \"Jam Sandwich\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"jam_sandwich\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Jam Sandwich.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I can't eat this raw...\",
+        \"Name\": \"Meat\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"meat\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Meat.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Good ole shrooms\",
+        \"Name\": \"Mushroom\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"mushroom\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Mushroom.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"its very dark\",
+        \"Name\": \"Nightshadeberry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"-10\",
+        \"id\": \"nightshade_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/NightshadeBerry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"the best breakfast\",
+        \"Name\": \"Pancakes\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"pancakes\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pancakes.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"BLACK BEANS\",
+        \"Name\": \"Pepper\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"pepper\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pepper.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"BLACK BEANS\",
+        \"Name\": \"Pepper Beans\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"30\",
+        \"id\": \"pepper_beans\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pepper Beans.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"An uncooked potato. Can be cooked.\",
+        \"Name\": \"Potato\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"potato\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Potato.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Just call it wheat\",
+        \"Name\": \"Rye\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"20\",
+        \"id\": \"rye\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Rye.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Dope seafloor\",
+        \"Name\": \"Seaweed\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"seaweed\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Seaweed.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Pretty simple\",
+        \"Name\": \"Simple Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"simple_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Simple Salad.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Very Italian\",
+        \"Name\": \"Spaghetti\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"spaghetti\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Spaghetti.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Its just sugar\",
+        \"Name\": \"Sugar\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"sugar\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Sugar.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Its just sugarcane\",
+        \"Name\": \"Sugarcane\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"20\",
+        \"id\": \"sugarcane\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Sugarcane.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Japanese cuisine\",
+        \"Name\": \"Sushi\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"sushi\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Sushi.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Dont look at me like that\",
+        \"Name\": \"Tentacle\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"tentacle\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Tentacle.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"ITS RAW\",
+        \"Name\": \"Trash\",
+        \"Type\": \"Product\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"20\",
+        \"id\": \"trash\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Garbage.png\",
+        \"max_stack_size\": \"16\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Very venomous ;)\",
+        \"Name\": \"toxin\",
+        \"Type\": \"Product\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"0\",
+        \"id\": \"toxin\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Toxin.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Greeenst\",
+        \"Name\": \"Veggie Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"veggie_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Simple Salad.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    }
+]"

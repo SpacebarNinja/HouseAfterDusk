@@ -9,11 +9,17 @@ extends CanvasLayer
 @onready var hunger_bar = $HungerBar
 @onready var sprint_bar = $SprintBar
 @onready var time_display = $Clock/TimeDisplay
+@onready var clock = $Clock
 
 @export_category("Sprint")
 @export var tired_color: Color
 @export var sprint_bar_decrease_speed := 0.3
 @export var sprint_bar_regen_speed := 0.15
+
+@export_category("Fade Settings")
+@export var alpha_start: float = 0
+@export var alpha_end: float = 1
+@export var fade_speed: float = 7.0
 
 var debug_sprint: bool = false
 
@@ -21,7 +27,7 @@ func _ready():
 	if sprint_bar.value >= sprint_bar.max_value - 3:
 		sprint_bar.hide()
 		
-func _process(_delta):
+func _process(delta):
 	update_health_bar()
 	update_hunger_bar()
 	update_sprint_bar()
@@ -36,6 +42,21 @@ func _process(_delta):
 		health_bar.visible = false
 		hunger_bar.visible = false
 		sprint_bar.visible = false
+	
+	var target_alpha = alpha_start if HudManager.is_dialoguing else alpha_end
+	
+	health_bar.modulate.a = lerp(health_bar.modulate.a, target_alpha, fade_speed * delta)
+	hunger_bar.modulate.a = lerp(hunger_bar.modulate.a, target_alpha, fade_speed * delta)
+	clock.modulate.a = lerp(clock.modulate.a, target_alpha, fade_speed * delta)
+	
+	if HudManager.is_dialoguing:
+		WorldManager.StopGeneMovement = true
+		HudManager.camera_movement = false
+		sprint_bar.visible = false
+	else:
+		WorldManager.StopGeneMovement = false
+		HudManager.camera_movement = true
+		sprint_bar.visible = true
 		
 func update_time_display():
 	time_display.text = WorldManager.DayPart + "\n" + WorldManager.CurrentDate
@@ -45,14 +66,14 @@ func _on_backpack_button_pressed():
 		backpack.close_backpack()
 	else:
 		backpack.open_backpack()
-	backpack.is_open != backpack.is_open
+	backpack.is_open = !backpack.is_open
 
 func _on_journal_button_pressed():
 	if journal.is_open:
 		journal.open_journal_state = false
 	else:
 		journal.open_journal_state = true
-	journal.is_open != journal.is_open
+	journal.is_open = !journal.is_open
 
 func update_health_bar():
 	health_bar.value = player.current_health

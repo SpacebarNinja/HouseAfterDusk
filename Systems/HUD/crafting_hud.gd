@@ -2,9 +2,9 @@ extends CanvasLayer
 
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var item_display_scene = preload("res://Systems/HUD/craftable_item_display.tscn")
-@onready var gear_protoset = preload("res://Systems/Inventory/Backpack/Gear.tres")
-@onready var resource_protoset = preload("res://Systems/Inventory/Backpack/Resource.tres")
-@onready var miscellaneous_protoset = preload("res://Systems/Inventory/Backpack/Miscellaneous.tres")
+@onready var gear_protoset = preload("res://Systems/Inventory/Others/Gear.tres")
+@onready var resource_protoset = preload("res://Systems/Inventory/Others/Resource.tres")
+@onready var miscellaneous_protoset = preload("res://Systems/Inventory/Others/Miscellaneous.tres")
 @onready var crafting_panel = $CraftingPanel
 @onready var item_panel = $ItemPanel
 

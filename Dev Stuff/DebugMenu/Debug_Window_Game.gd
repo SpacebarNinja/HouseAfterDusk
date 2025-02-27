@@ -6,10 +6,10 @@ extends Panel
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
 
 @onready var enemy_panel = $"../../EnemyWindow"
-@onready var map_panel = $"../../MapWindow"
 @onready var player_panel = $"../../PlayerWindow"
-@onready var inventory_panel = $"../../InventoryWindow"
+@onready var map_panel = $"../../MapWindow"
 @onready var hud_panel = $"../../HudWindow"
+@onready var inventory_panel = $"../../InventoryWindow"
 
 @onready var zoom_slider = $ZoomSlider
 @onready var zoom_label = $ZoomSlider/Label

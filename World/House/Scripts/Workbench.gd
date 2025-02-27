@@ -24,6 +24,8 @@ func _on_use():
 		WorldManager.StopGeneMovement = true
 		WorldManager.Interactables.erase("Use Workbench")
 
-func _process(delta):
+func _process(_delta):
 	if not HudManager.is_crafting and can_interact:
+		HudManager.camera_movement = true
+		HudManager.flashlight_movement = true
 		handle_text()

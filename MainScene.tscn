@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3r15ojyqxyb2"]
+[gd_scene load_steps=10 format=3 uid="uid://3r15ojyqxyb2"]
 
 [ext_resource type="PackedScene" uid="uid://ctm1dfhfkd0fl" path="res://Systems/HUD/Hud.tscn" id="1_fh8r2"]
 [ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_ofx2c"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsglmfebiwnb" path="res://World/House/Scripts/DemoMap2.tscn" id="5_4xog2"]
 [ext_resource type="Script" path="res://Entities/Gene/Camera.gd" id="5_twjhg"]
 [ext_resource type="PackedScene" uid="uid://85g3prbvvwkv" path="res://Systems/Particles/RoomParticles.tscn" id="6_txbsq"]
+[ext_resource type="PackedScene" uid="uid://b6pc0pegkjbea" path="res://Entities/Alice/alice.tscn" id="8_p7uja"]
 [ext_resource type="Script" path="res://World/House/Scripts/Canvas_Modulate.gd" id="9_7ksos"]
 
 [sub_resource type="Environment" id="Environment_0agw0"]
@@ -46,7 +47,7 @@ script = ExtResource("5_twjhg")
 
 [node name="Player" parent="." instance=ExtResource("4_gh3rb")]
 modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(-616, -136)
+position = Vector2(-1256, 117)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")
@@ -57,3 +58,6 @@ color = Color(0.439216, 0.392157, 0.321569, 1)
 script = ExtResource("9_7ksos")
 generator_off_darkness = 15
 generator_transition_time = 0.5
+
+[node name="Alice" parent="." instance=ExtResource("8_p7uja")]
+position = Vector2(-1325, -18)

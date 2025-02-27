@@ -1,9 +1,12 @@
-[gd_scene load_steps=82 format=3 uid="uid://ctm1dfhfkd0fl"]
+[gd_scene load_steps=96 format=3 uid="uid://ctm1dfhfkd0fl"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
+[ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_ofedd"]
 [ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
 [ext_resource type="Script" path="res://Systems/HUD/main_hud.gd" id="2_miqxo"]
+[ext_resource type="Texture2D" uid="uid://cn81rks2rm6sr" path="res://Systems/HUD/Art/DialogueOverlay2.png" id="3_gncqb"]
 [ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
+[ext_resource type="Script" path="res://Systems/HUD/dialogue_overlay.gd" id="4_oxeg6"]
 [ext_resource type="Texture2D" uid="uid://bejiwjyyicoh4" path="res://Systems/Inventory/Backpack/Art/Backpack.png" id="5_dcrnc"]
 [ext_resource type="Texture2D" uid="uid://dyoppchjbfcf4" path="res://Systems/HUD/Art/HPBarBG.png" id="6_6xx1r"]
 [ext_resource type="Texture2D" uid="uid://vmnj8hovs5q8" path="res://Systems/HUD/Art/HungerBarBG.png" id="6_bxfdd"]
@@ -42,11 +45,13 @@
 [ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/crafting_hud.gd" id="29_yu7lx"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="30_qo76f"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
-[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Backpack/ItemProtoset.tres" id="32_1yik7"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="32_1yik7"]
 [ext_resource type="Script" path="res://Systems/HUD/cooking_hud.gd" id="32_4ndme"]
 [ext_resource type="Texture2D" uid="uid://b47khq87dqvli" path="res://Systems/HUD/WorkbenchSystem/Art/Table.png" id="33_hqrie"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
 [ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
+[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="45_s6v0h"]
+[ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")
@@ -337,10 +342,49 @@ _data = {
 "transition": SubResource("Animation_0t1i1")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_omof5"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paots"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(68, 24, 12, 364)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o1cm"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(40, 20, 20, 372)
+
+[sub_resource type="Gradient" id="Gradient_1r2w2"]
+offsets = PackedFloat32Array(0, 0.34375, 0.710938)
+colors = PackedColorArray(1, 0, 0.0680938, 1, 1, 0.913798, 0.013338, 1, 0, 1, 0.00900984, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rc5qm"]
+gradient = SubResource("Gradient_1r2w2")
+width = 12
+height = 364
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6xsa"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(100, 24, 20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdn8i"]
+size = Vector2(20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af16c"]
+atlas = ExtResource("45_xk6gj")
+region = Rect2(84, 28, 12, 360)
+margin = Rect2(0, -320, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvkac"]
+size = Vector2(20, 56)
+
 [node name="Hud" type="Control" groups=["Hud"]]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
+script = ExtResource("1_ofedd")
 
 [node name="BGProcessing" type="CanvasLayer" parent="."]
 layer = 2
@@ -357,6 +401,15 @@ offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.4)
+
+[node name="DialogueOverlay" type="TextureRect" parent="BGProcessing"]
+visible = false
+modulate = Color(0.921, 0.883, 0.866, 0.3)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.600388, 0.600388)
+texture = ExtResource("3_gncqb")
+script = ExtResource("4_oxeg6")
 
 [node name="MainHud" type="CanvasLayer" parent="." groups=["MainHud"]]
 layer = 3
@@ -615,6 +668,7 @@ texture = ExtResource("33_hqrie")
 stretch_mode = 4
 
 [node name="ScrollBase" type="TextureRect" parent="CraftingHud/Table"]
+modulate = Color(0.90732, 0.84947, 0.799746, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -630,7 +684,6 @@ grow_vertical = 2
 scale = Vector2(0.96, 0.96)
 texture = ExtResource("26_1s1oi")
 stretch_mode = 4
-flip_h = true
 script = ExtResource("28_1iy7h")
 move_speed = 3.0
 move_offset = 565.0
@@ -644,9 +697,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -272.0
-offset_top = -268.0
+offset_top = -247.0
 offset_right = -136.0
-offset_bottom = -180.0
+offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
@@ -669,8 +722,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -136.0
-offset_top = -268.0
-offset_bottom = -180.0
+offset_top = -247.0
+offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
@@ -692,9 +745,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -268.0
+offset_top = -247.0
 offset_right = 136.0
-offset_bottom = -180.0
+offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
@@ -717,9 +770,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 136.0
-offset_top = -268.0
+offset_top = -247.0
 offset_right = 272.0
-offset_bottom = -180.0
+offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
@@ -809,12 +862,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.4999
-offset_top = -194.667
-offset_right = 145.5
-offset_bottom = 141.333
+offset_left = -21.4584
+offset_top = -176.958
+offset_right = 146.542
+offset_bottom = 159.042
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.940159, 0.940159)
 script = ExtResource("26_874ad")
 
 [node name="ItemLabel" parent="CraftingHud/Table/ScrollBase/ItemPanel" instance=ExtResource("28_0chnb")]
@@ -1072,6 +1126,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="ScrollCap" type="TextureRect" parent="CraftingHud/Table"]
+visible = false
 z_index = 15
 layout_mode = 0
 offset_top = 96.0
@@ -1139,7 +1194,6 @@ item_protoset = ExtResource("32_1yik7")
 
 [node name="CookingGrid" type="Control" parent="CookingHud/CookingPanel"]
 texture_filter = 1
-custom_minimum_size = Vector2(250, 250)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1148,8 +1202,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
 offset_top = -176.0
-offset_right = 162.0
-offset_bottom = 74.0
+offset_right = -88.0
+offset_bottom = -176.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("34_qk7f8")
@@ -1174,13 +1228,12 @@ size = Vector2i(1, 1)
 item_protoset = ExtResource("32_1yik7")
 
 [node name="CookingResultGrid" type="Control" parent="CookingHud/SkillCheck"]
-custom_minimum_size = Vector2(90, 90)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 93.0
 offset_top = 3.0
-offset_right = 183.0
-offset_bottom = 93.0
+offset_right = 93.0
+offset_bottom = 3.0
 script = ExtResource("34_qk7f8")
 inventory_path = NodePath("../CookingResult")
 field_dimensions = Vector2(90, 90)
@@ -1191,6 +1244,91 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_p0daj")
 }
+
+[node name="FishingHud" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("45_s6v0h")
+
+[node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 276.0
+offset_bottom = 500.0
+value = 100.0
+rounded = true
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_omof5")
+texture_progress = SubResource("AtlasTexture_paots")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="ProgressMeter" type="TextureProgressBar" parent="FishingHud"]
+offset_left = 288.0
+offset_top = 128.0
+offset_right = 308.0
+offset_bottom = 500.0
+step = 0.01
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_2o1cm")
+texture_progress = SubResource("GradientTexture2D_rc5qm")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="SuccessBar" type="NinePatchRect" parent="FishingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -72.0
+offset_right = -300.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_k6xsa")
+region_rect = Rect2(0, 0, 20, 60)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="SuccessArea" type="Area2D" parent="FishingHud/SuccessBar"]
+position = Vector2(10, 20)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/SuccessBar/SuccessArea"]
+visible = false
+shape = SubResource("RectangleShape2D_mdn8i")
+
+[node name="FishingHook" type="NinePatchRect" parent="FishingHud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -192.0
+offset_right = -304.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_af16c")
+region_rect = Rect2(0, 0, 12, 360)
+patch_margin_top = 10
+patch_margin_bottom = 10
+
+[node name="FishingArea" type="Area2D" parent="FishingHud/FishingHook"]
+position = Vector2(6, 24)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHud/FishingHook/FishingArea"]
+shape = SubResource("RectangleShape2D_tvkac")
+
+[node name="ChanceTimer" type="Timer" parent="FishingHud"]
+wait_time = 1.5
+
+[node name="DurationTimer" type="Timer" parent="FishingHud"]
+wait_time = 10.0
+one_shot = true
 
 [node name="MechanicHud" type="CanvasLayer" parent="."]
 layer = 2

@@ -15,6 +15,10 @@ extends Node2D
 @onready var intr_display = %InteractionDisplay
 @onready var intr_text = %IntrText
 @onready var outer_ring = %OuterRing
+@export_category("Fade Settings")
+@export var alpha_start: float = 0
+@export var alpha_end: float = 1
+@export var fade_speed: float = 7.0
 
 @onready var rings = $Rings
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -47,7 +51,6 @@ func _ready():
 	intr_display_original_pos = intr_display.position
 	intr_display_target_pos = intr_display_original_pos
 
-
 func on_intr_area_entered(sprite):
 	sprite_2d = sprite
 	sprite_original_mod = sprite_2d.modulate
@@ -58,7 +61,6 @@ func on_intr_area_entered(sprite):
 
 	inside_intr_area = true
 	
-
 func on_intr_area_exited(sprite):
 	sprite_2d = sprite
 	sprite_target_mod = sprite_original_mod
@@ -67,7 +69,6 @@ func on_intr_area_exited(sprite):
 	intr_display_target_pos = intr_display_original_pos
 	
 	inside_intr_area = false
-
 
 func update_intr_text():
 	var keybind_events = [
@@ -95,46 +96,49 @@ func update_intr_text():
 	# Join the text list with newlines and update the interaction text
 	intr_text.text = "\n".join(text_list)
 
-
 func _process(delta):
-	if HudManager.interaction_enabled:
-		visible = true
-	else:
+	# Check if interaction is enabled
+	if not HudManager.interaction_enabled:
 		visible = false
 		return
-		
-	# Reposition Interaction Display above player's head
+	visible = true
+
+	# Always update the sprite's modulate for a smooth transition
+	if sprite_2d:
+		sprite_2d.modulate = sprite_2d.modulate.lerp(sprite_target_mod, transition_speed * delta)
+	
+	# Adjust base alpha regardless of interaction state
+	var target_base_alpha = alpha_start if (HudManager.is_dialoguing or not inside_intr_area) else alpha_end
+	modulate.a = lerp(modulate.a, target_base_alpha, fade_speed * delta)
+	
+	# If dialoguing or not inside the interaction area, skip further processing
+	if HudManager.is_dialoguing or not inside_intr_area:
+		return
+	
+	# --- Only runs when interactions are active ---
 	var player_screen_pos = player.get_global_transform_with_canvas().get_origin()
 	position = Vector2(player_screen_pos.x, player_screen_pos.y - 150)
 	scale = Vector2(0.3, 0.3)
 	
-	# Reposition rings above the text
 	var current_rings_x = rings.position.x
 	rings.position = Vector2(current_rings_x, intr_text.position.y - 120)
-
-	# Smooth transitions for hovering and interaction display
-	if sprite_2d:
-		sprite_2d.modulate = sprite_2d.modulate.lerp(sprite_target_mod, transition_speed * delta)
+	
 	intr_display.modulate = intr_display.modulate.lerp(intr_target_mod, transition_speed * delta)
 	intr_display.position = intr_display.position.lerp(intr_display_target_pos, lift_speed * delta)
+	
 
 	# Update the displayed text
 	update_intr_text()
 
-	# If we can't interact or we're not inside the interaction area, fade out the ring
-	if not can_interact or not inside_intr_area:
-		# Fade out the ring
+	# Outer ring fades out when we cannot interact
+	if not can_interact:
 		outer_ring.modulate = outer_ring.modulate.lerp(Color(1, 1, 1, 0), outer_ring_transition_speed * delta)
-		
-		# Also check if no interaction key is held; if none are held, we can allow future interactions again
-		if not (Input.is_action_pressed("InteractFirst")
-				or Input.is_action_pressed("InteractSecond")
-				or Input.is_action_pressed("InteractThird")):
+		# Allow new interactions when no key is held down
+		if not (Input.is_action_pressed("InteractFirst") or Input.is_action_pressed("InteractSecond") or Input.is_action_pressed("InteractThird")):
 			can_interact = true
 		return
 
-	# 1) Check if the player **just pressed** one of the interaction keys. 
-	#    If so, prepare to start the "hold" interaction (get callback & set ring speed, etc.)
+	# 1) Check if the player just pressed one of the interaction keys.
 	var interacted_key = ""
 	if Input.is_action_just_pressed("InteractFirst"):
 		interacted_key = get_interactable_by_index(1)
@@ -146,13 +150,13 @@ func _process(delta):
 	if interacted_key != "":
 		handle_interaction(interacted_key, delta)
 
-	# 2) Gradually fade outer ring in or out based on the frame
+	# 2) Gradually fade outer ring in or out based on its frame
 	if outer_ring.frame == 0 or outer_ring.frame >= 49:
 		outer_ring.modulate = outer_ring.modulate.lerp(Color(1, 1, 1, 0), outer_ring_transition_speed * delta)
 	else:
 		outer_ring.modulate = outer_ring.modulate.lerp(Color(1, 1, 1, 1), outer_ring_transition_speed * delta)
 
-	# 3) Determine if any of the 3 interaction keys is currently held down
+	# 3) Process held interaction key for the ring animation
 	var key_index_held = 0
 	if Input.is_action_pressed("InteractFirst"):
 		key_index_held = 1
@@ -161,31 +165,23 @@ func _process(delta):
 	elif Input.is_action_pressed("InteractThird"):
 		key_index_held = 3
 
-	# 4) Only increment the ring if the held key corresponds to a valid interactable
 	if key_index_held > 0:
 		var current_held_key = get_interactable_by_index(key_index_held)
 		if current_held_key != "":
-			# Increment the ring animation since we have a valid interactable for this key
 			animation_progress += delta / intr_duration
 			if animation_progress >= 1.0:
 				animation_progress = 1.0
-				can_interact = false  # Interaction is done
-
-				# Call the interactable's callback if valid
+				can_interact = false  # Interaction is complete
 				if _current_callback and _current_callback.is_valid():
 					_current_callback.call()
 				_current_callback = Callable()
-
 			outer_ring.frame = int(animation_progress * 49)
 		else:
-			# The user is holding a key with no valid interactable; reset the ring
 			animation_progress = 0.0
 			outer_ring.frame = 0
 	else:
-		# No key is being held; reset the ring
 		animation_progress = 0.0
 		outer_ring.frame = 0
-
 
 func get_interactable_by_index(index: int) -> String:
 	var i = 0
@@ -195,8 +191,7 @@ func get_interactable_by_index(index: int) -> String:
 			return key
 	return ""
 
-
-func handle_interaction(key: String, delta):
+func handle_interaction(key: String, _delta):
 	if WorldManager.Interactables.has(key):
 		var interactable = WorldManager.Interactables[key]
 		intr_duration = interactable["IntrDuration"]

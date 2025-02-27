@@ -1,0 +1,11 @@
+~ start
+Gene Greyer: What's up? How are you? [#left=Gene:Talk, #right=Alice:Surprised]
+Alice: Oh hey... I didn't notice you standing there... [#right=Alice:Smile]
+Alice: Why are you talking to me? Are you up to something?
+- FLIRT
+	Gene Greyer: Oh nothing, I just wanted to talk to you, baby girl~ *bites lips* [#left=Gene:Smug]
+	Alice: What the fuck...?! [#right=Alice:Flustered]
+- NEVERMIND
+	Gene Greyer: Nevermind, you smell bitch, I'm gonna leave now.[#left=Gene:Neutral]
+	Alice: Oh... okay... [#right=Alice:Surprised]
+=> END

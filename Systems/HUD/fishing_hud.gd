@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var hud = get_tree().get_first_node_in_group("Hud")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
-@onready var protoset = preload("res://Systems/Inventory/Backpack/Consumables.tres")
+@onready var protoset = preload("res://Systems/Inventory/Others/Consumables.tres")
 
 @onready var background_bar = $BackgroundBar
 @onready var progress_meter = $ProgressMeter
@@ -16,7 +16,7 @@ extends CanvasLayer
 @export var move_chance: int = 6        #1-10 = (10% - 100%), 6 = 60%
 @export var gravity: int = 1            #drop speed
 @export var hook_strength: int = 3      #input stength
-@export var progress_speed: int = 0.5   #speed of success bar
+@export var progress_speed: float = 0.5   #speed of success bar
 
 var move_bar: bool = false
 var found_hook: bool = false
@@ -63,11 +63,11 @@ func _on_chance_timer_timeout():
 func _on_duration_time_timeout():
 	reset()
 
-func _on_success_area_entered(area):
+func _on_success_area_entered(_area):
 	found_hook = true
 	print("FoundHook")
 
-func _on_success_area_exited(area):
+func _on_success_area_exited(_area):
 	found_hook = false
 	print("HooKLost")
 

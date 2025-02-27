@@ -34,9 +34,6 @@ func shoot():
 		if ray_cast.is_colliding() and collider.is_in_group("Enemy"):
 			print("Shot Enemy")
 			collider.take_damage(100)
-			
-func reload():
-	pass
 	
 func handle_animation():
 	var screen_size = get_viewport().size
