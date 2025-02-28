@@ -104,7 +104,7 @@ func _process(delta):
 	visible = true
 
 	# Always update the sprite's modulate for a smooth transition
-	if sprite_2d:
+	if is_instance_valid(sprite_2d):
 		sprite_2d.modulate = sprite_2d.modulate.lerp(sprite_target_mod, transition_speed * delta)
 	
 	# Adjust base alpha regardless of interaction state

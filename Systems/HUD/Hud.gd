@@ -17,7 +17,6 @@ func _ready():
 		"Fishing": $FishingHud
 	}
 
-
 func _input(_event):
 	if current_hud == "QTE":
 		return

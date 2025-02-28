@@ -2,7 +2,6 @@ extends AnimationBase
 
 @onready var journal = get_tree().get_first_node_in_group("Journal")
 @onready var anim_sprite = $AnimatedSprite2D
-@export var audio_list: Array[AudioStreamPlayer2D]
 @export var timer_list: Array[Timer]
 
 var direction: String
@@ -19,16 +18,12 @@ func exit():
 
 func _process(_delta):
 	handle_animation()
-	handle_footsteps()
 
 func handle_animation():
-	if WorldManager.StopGeneMovement:
-		animation_tree.get("parameters/playback").travel("Idle1")
-		return
+	if WorldManager.StopGeneMovement: return
 	
-	var player_instance = get_node("/root/MainScene/Player")
-	var distance_to_mouse = player_instance.distance_to_mouse
-	var altmove_sprint_distance = player_instance.altmove_sprint_distance
+	var distance_to_mouse = player.distance_to_mouse
+	var altmove_sprint_distance = player.altmove_sprint_distance
 
 	var horizontal_input = Input.get_action_strength("WalkRight") - Input.get_action_strength("WalkLeft")
 	var vertical_input = Input.get_action_strength("WalkDown") - Input.get_action_strength("WalkUp")
@@ -58,8 +53,12 @@ func handle_animation():
 		var is_sprinting = (sprint_pressed or distance_to_mouse > altmove_sprint_distance) and can_sprint
 		if is_sprinting:
 			animation_tree.get("parameters/playback").travel("Sprint")
+			play_audio(1 if player.is_outside else 0, 1.5)
+			spawn_particle()
+			
 		else:
 			animation_tree.get("parameters/playback").travel("Walk")
+			play_audio(1 if player.is_outside else 0, 1)
 	else:
 		right_click_moving = false
 		# Keyboard movement logic
@@ -73,22 +72,14 @@ func handle_animation():
 			var is_sprinting = sprint_pressed and can_sprint
 			if is_sprinting:
 				animation_tree.get("parameters/playback").travel("Sprint")
+				play_audio(1 if player.is_outside else 0, 1.5)
+				spawn_particle()
 			else:
 				animation_tree.get("parameters/playback").travel("Walk")
+				play_audio(1 if player.is_outside else 0, 1)
 
 		timer_list[0].start()
 		idle_played = false
-
-func handle_footsteps():
-	var walk_footstep_frames := [1, 6]
-	var sprint_footstep_frames := [1, 5]
-	var animation_state = anim_sprite.animation.split("_")[0]
-	#print(animation_state)
-	if animation_state == 'Sprint' and anim_sprite.frame in sprint_footstep_frames:
-		basic_play_audio(0, true)
-	elif animation_state == 'Walk' and anim_sprite.frame in walk_footstep_frames:
-		basic_play_audio(0, false)
-		
 	
 func flip_sprite(flip: bool):
 	if flip:
@@ -101,25 +92,10 @@ func flip_sprite(flip: bool):
 		anim_sprite.offset.x = 0
 
 func get_direction() -> String:
-	var player_instance = get_node("/root/MainScene/Player")
-	if player_instance.velocity.x < 0:
+	if player.velocity.x < 0:
 		return "left"
 	else:
 		return "right"
-
-func basic_play_audio(index: int, is_sprinting: bool):
-	if index >= 0 and index < audio_list.size():
-		var audio = audio_list[index]
-		if is_sprinting:
-			audio.pitch_scale = 1.5
-		else:
-			audio.pitch_scale = 1.0
-			
-		audio.play()
-		if index == 0:
-			spawn_particle()
-	else:
-		print("Invalid audio index: ", index)
 
 func spawn_particle():
 	var step_particle_instance = StepParticleScene.instantiate()

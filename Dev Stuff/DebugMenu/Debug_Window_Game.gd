@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var main_hud = get_tree().get_first_node_in_group("MainHud")
 @onready var hud = get_tree().get_first_node_in_group("Hud")
 @onready var map = get_tree().get_first_node_in_group("Map")
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
@@ -16,6 +17,7 @@ extends Panel
 @onready var noclip_button = $EnableNoclip
 @onready var time_label = $TimeSlider/TimeLabel
 @onready var time_slider = $TimeSlider
+@onready var infinite_sprint_button = $InfiniteSprint
 
 var no_clip_enabled: bool = false
 
@@ -55,6 +57,16 @@ func _on_midnight_pressed():
 
 func _on_noon_pressed():
 	WorldManager.WorldTime = 1200
+
+func _on_infinite_sprint_toggled(toggled_on):
+	if toggled_on:
+		player.set_walk_speed(400)
+		main_hud.debug_sprint = true
+		infinite_sprint_button.self_modulate = Color(0,1,0, 1)
+	else:
+		player.set_walk_speed(80)
+		main_hud.debug_sprint = false
+		infinite_sprint_button.self_modulate = Color(1,1,1)
 
 #Debug_Panels -----------------------------------------
 func _on_show_player_panel_pressed():

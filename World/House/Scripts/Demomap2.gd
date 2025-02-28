@@ -9,7 +9,7 @@ extends Node2D
 @onready var black_rects = get_tree().get_nodes_in_group("ColorRect(Black)")
 @onready var tilemaps = $ROOMS.get_children()
 @export var spawn_location: Array[Node2D]
-
+	
 func get_current_room():
 	return rooms.current_room.global_position
 
@@ -20,21 +20,33 @@ func get_random_cabin_room():
 		print("RandomRoom: ", spawn)
 		return spawn.global_position
 
-func get_forest_spawn_nodes():
+func get_forest_random_spawn_nodes():
 	var nodes = forest_spawn_nodes.get_children()
 	if nodes.size() > 0:
 		var spawn = nodes[randi() % nodes.size()]
 		print("ForestSpawn: ", spawn)
 		return spawn
 		
-func get_cabin_spawn_nodes():
+func get_cabin_spawn_random_nodes():
 	var nodes = cabin_spawn_nodes.get_children()
 	if nodes.size() > 0:
 		var spawn = nodes[randi() % nodes.size()]
 		print("CabinSpawn: ", spawn)
 		return spawn
+	
+func get_closest_window(Location: Vector2):
+	var window_list: Array
+	
+	for node in get_window_nodes():
+		var window_location = node.global_position.distance_to(Location)
+		var window = {node: window_location}
+		window_list.append(window)
+		window_list.sort()
 		
-func get_window_node():
+	print("Window List: ", window_list)
+	return window_list.front()
+
+func get_window_nodes():
 	return window_nodes
 	
 func get_tv_node():

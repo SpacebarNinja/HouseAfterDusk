@@ -29,7 +29,6 @@ func _process(_delta):
 	
 func open_debug_tab(tab: String):
 	WindowDict[tab].show()
-	print("Debug menu shown")
 
 func close_debug_menu():
 	for window in canvas_layer.get_children():

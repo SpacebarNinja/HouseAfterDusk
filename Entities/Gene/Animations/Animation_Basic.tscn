@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7dqk0xa4at1e" path="res://Entities/Gene/Art/Gene_Spritesheet_Left_Updated.png" id="2_0r0xt"]
 [ext_resource type="Texture2D" uid="uid://dc1ncqlchf7t0" path="res://Systems/Inventory/Backpack/Items/Fish.png" id="2_5eb2d"]
 [ext_resource type="Material" uid="uid://ce4ggjdlwdg63" path="res://Assets/Shader/Player Shadow.tres" id="2_ksiop"]
-[ext_resource type="Script" path="res://Entities/Gene/HandItem.gd" id="2_wgvro"]
+[ext_resource type="Script" path="res://Entities/Gene/Scripts/HandItem.gd" id="2_wgvro"]
 [ext_resource type="Texture2D" uid="uid://647ffci78nwb" path="res://Entities/Gene/Art/Gene_Spritesheet.png" id="4_4yue2"]
 [ext_resource type="AudioStream" uid="uid://drpyp0r6ywk2k" path="res://Entities/WindowGirl/Audio/Walk_wood.mp3" id="5_ojlfl"]
 [ext_resource type="AudioStream" uid="uid://b1lsplcl6ymej" path="res://Entities/Gene/Audio/Cigarette_Light.wav" id="6_4t7o0"]
@@ -1264,13 +1264,13 @@ random_pitch = 1.4
 streams_count = 1
 stream_0/stream = ExtResource("6_jbrt6")
 
-[node name="Animation_Basics" type="Node2D" node_paths=PackedStringArray("audio_list", "timer_list", "animation_tree", "animation_player")]
+[node name="Animation_Basics" type="Node2D" node_paths=PackedStringArray("timer_list", "animation_tree", "animation_player", "audio_list")]
 y_sort_enabled = true
 script = ExtResource("1_lm76y")
-audio_list = [NodePath("Audio/Move_Wood"), NodePath("Audio/Move_Grass")]
 timer_list = [NodePath("Timer/Idle_Timer")]
 animation_tree = NodePath("AnimationTree")
 animation_player = NodePath("AnimationPlayer")
+audio_list = [NodePath("Audio/Move_Wood"), NodePath("Audio/Move_Grass")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

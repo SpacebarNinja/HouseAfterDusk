@@ -10,21 +10,16 @@ extends CharacterBody2D
 @onready var animation_handler = $AnimationHandler
 @onready var hitbox = $Hitbox
 
-@export_category("Stats")
+@export_category("Gene Stats")
 @export var movement_speed: int = 80
 @export var max_health = 100
 @export var max_hunger = 55
 @export var knockback_power: int = 1000
 @export var altmove_sprint_distance = 75
 
-@export_category("Nodes")
+@export_category("Gene Nodes")
 @export var flashlight: PointLight2D
 @export var audio_list: Array[AudioStreamPlayer2D]
-
-@export_category("Flashlight Fade Settings")
-@export var alpha_start: float = 0
-@export var alpha_end: float = 1
-@export var fade_speed: float = 7.0
 
 @onready var rooms = get_node("/root/MainScene/DemoMap2/ROOMS")
 
@@ -36,7 +31,8 @@ var flashlight_on: bool = true
 var equipped_item: bool = false
 var current_weapon: String = ""
 var distance_to_mouse = 0.0
-var is_outside: bool
+var is_outside: bool = false
+
 func _ready():
 	current_health = max_health
 	current_hunger = max_hunger
@@ -45,12 +41,11 @@ func _ready():
 func set_walk_speed(speed: int):
 	movement_speed = speed
 
-func _process(delta):
+func _process(_delta):
 	modulate_player()
-	handle_flashlight(delta)
+	rotate_flashlight()
 	
-	if WorldManager.StopGeneMovement:
-		return
+	if WorldManager.StopGeneMovement: return
 	
 	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
 	velocity = move_vector * movement_speed
@@ -71,7 +66,7 @@ func _process(delta):
 	finding_enemy()
 
 func modulate_player():
-	if str(rooms.current_room.name) == 'OUTSIDE':
+	if rooms.is_outside:
 		is_outside = true
 	else:
 		is_outside = false
@@ -145,27 +140,16 @@ func _on_hunger_timer_timeout():
 func _on_invulnerability_timer_timeout():
 	can_take_damage = true
 
-func handle_flashlight(delta):
-	var target_alpha = alpha_start if HudManager.is_dialoguing else alpha_end
-	
-	# Fade the light's color alpha instead of its modulate
-	var current_color = flashlight.color
-	current_color.a = lerp(current_color.a, target_alpha, fade_speed * delta)
-	flashlight.color = current_color
-	
+func rotate_flashlight():
 	if not journal_instance.is_open and HudManager.flashlight_movement:
 		var mouse_position = get_global_mouse_position()
 		flashlight.look_at(mouse_position)
 		raycast.look_at(mouse_position)
 
-
 func toggle_flashlight():
 	flashlight_on = not flashlight_on
 	flashlight.visible = flashlight_on
-	if flashlight_on:
-		play_audio(0)
-	else:
-		play_audio(1)
+	play_audio(0 if flashlight_on else 1)
 
 func play_audio(index: int):
 	if index >= 0 and index < audio_list.size():
@@ -178,9 +162,7 @@ func finding_enemy():
 		if collider:
 			if raycasts.is_colliding() and collider.is_in_group("Enemy"):
 				if collider:
-					collider.base_bools["is_seen"] = true
-				else:
-					collider.base_bools["is_seen"] = false
+					print("Found enemy: ", collider)
 
 func equip_weapon(has_equipped: bool, weapon: String):
 	equipped_item = has_equipped

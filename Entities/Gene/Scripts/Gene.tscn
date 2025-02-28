@@ -1,6 +1,6 @@
 [gd_scene load_steps=69 format=3 uid="uid://boutdgluq4gbq"]
 
-[ext_resource type="Script" path="res://Entities/Gene/Gene.gd" id="1_dghqg"]
+[ext_resource type="Script" path="res://Entities/Gene/Scripts/Gene.gd" id="1_dghqg"]
 [ext_resource type="Texture2D" uid="uid://kmdjuohfkrv" path="res://Entities/Gene/Art/StepShadow.png" id="5_8ccvq"]
 [ext_resource type="PackedScene" uid="uid://doi0gc0x5c2cu" path="res://Entities/Gene/Animations/Animation_Damaged.tscn" id="8_4b4sb"]
 [ext_resource type="Script" path="res://Systems/SystemManagers/InteractionManager/InteractionDisplay.gd" id="10_jm0va"]
@@ -14,11 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://cwqpy14ox2ieg" path="res://Systems/Flashlight/Flashlight_On.wav" id="27_bpiyo"]
 [ext_resource type="AudioStream" uid="uid://tgv6uoqok60j" path="res://Systems/Flashlight/Flashlight_Off.wav" id="28_gk3e4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_648xo"]
-radius = 0.01
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xf0wo"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_648xo"]
+radius = 0.01
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbktw"]
 radius = 18.0
@@ -390,33 +390,32 @@ spacing_bottom = -24
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("flashlight", "audio_list") groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_dghqg")
 flashlight = NodePath("Flashlight")
 audio_list = [NodePath("Audio/FlashlightOn"), NodePath("Audio/FlashlightOff")]
-
-[node name="Point Hitbox" type="Area2D" parent="."]
-position = Vector2(0, 30)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Point Hitbox"]
-z_index = 2
-shape = SubResource("CircleShape2D_648xo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 28)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xf0wo")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Point Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 28)
 collision_layer = 2
-collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point Hitbox"]
+z_index = 2
+shape = SubResource("CircleShape2D_648xo")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
 monitorable = false
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -28)
 shape = SubResource("CapsuleShape2D_vbktw")
 debug_color = Color(0.82, 0.2378, 0.79089, 0.184314)
 
@@ -497,19 +496,17 @@ y_sort_enabled = true
 script = ExtResource("12_o4wjr")
 initial_animation = NodePath("Basic")
 
-[node name="Gun" parent="AnimationHandler" node_paths=PackedStringArray("player", "animation_handler") instance=ExtResource("12_cd0wl")]
+[node name="Gun" parent="AnimationHandler" node_paths=PackedStringArray("animation_handler") instance=ExtResource("12_cd0wl")]
 visible = false
 y_sort_enabled = true
-player = NodePath("../..")
 animation_handler = NodePath("..")
 
-[node name="Basic" parent="AnimationHandler" node_paths=PackedStringArray("player") instance=ExtResource("13_dgayu")]
-player = NodePath("../..")
+[node name="Basic" parent="AnimationHandler" node_paths=PackedStringArray("animation_handler") instance=ExtResource("13_dgayu")]
+animation_handler = NodePath("..")
 
-[node name="Damaged" parent="AnimationHandler" node_paths=PackedStringArray("player", "animation_handler") instance=ExtResource("8_4b4sb")]
+[node name="Damaged" parent="AnimationHandler" node_paths=PackedStringArray("animation_handler") instance=ExtResource("8_4b4sb")]
 visible = false
 y_sort_enabled = true
-player = NodePath("../..")
 animation_handler = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

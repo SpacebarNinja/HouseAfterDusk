@@ -26,6 +26,7 @@ ItemRecipes="*res://Singletons/ItemRecipes.gd"
 HudManager="*res://Singletons/HudManager.gd"
 GlobalItemList="*res://Singletons/item_list.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+QteHud="*res://Singletons/qte_hud.tscn"
 
 [debug]
 

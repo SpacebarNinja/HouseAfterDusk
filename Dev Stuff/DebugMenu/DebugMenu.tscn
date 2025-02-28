@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://chyhpk7ouru8b"]
+[gd_scene load_steps=34 format=3 uid="uid://chyhpk7ouru8b"]
 
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
@@ -6,10 +6,8 @@
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Enemy.gd" id="3_6x55g"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="3_mat6y"]
 [ext_resource type="Texture2D" uid="uid://dfcnpdl2irh8p" path="res://Entities/ElectronicGuy/Art/The Sexyman.png" id="3_nyy1d"]
-[ext_resource type="Theme" uid="uid://domqwgw7g646m" path="res://Dev Stuff/DebugMenu/Gui_Minimize.tres" id="4_1qtaa"]
 [ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/TheDolls/Art/Doll_Idle.png" id="4_ke238"]
-[ext_resource type="Theme" uid="uid://c4c6stt0oceom" path="res://Dev Stuff/DebugMenu/Gui_Close.tres" id="5_6eqat"]
-[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window.gd" id="5_nofec"]
+[ext_resource type="PackedScene" path="res://Dev Stuff/DebugMenu/DebugWindow.tscn" id="7_qv0nl"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Player.gd" id="8_iwgxf"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Map.gd" id="9_u6m8c"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Inventory.gd" id="10_gerqt"]
@@ -18,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="14_m2d0y"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="15_w6hg1"]
-[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/deer male calciumtrice.png" id="16_awk0u"]
+[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/Art/deer male calciumtrice.png" id="16_awk0u"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="16_lwjpa"]
 [ext_resource type="Texture2D" uid="uid://ds5wnn3jpk8ir" path="res://Dev Stuff/DebugMenu/Trash_Icon.png" id="20_ndrq0"]
@@ -44,14 +42,6 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_ja3xc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfcoo"]
-size = Vector2(192, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a7x3"]
-size = Vector2(256, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_phl58"]
 atlas = ExtResource("2_64gco")
 region = Rect2(5, 20, 48, 48)
@@ -59,18 +49,6 @@ region = Rect2(5, 20, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl35x"]
 atlas = ExtResource("16_awk0u")
 region = Rect2(2, 2, 29, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pybsh"]
-size = Vector2(256, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnyhg"]
-size = Vector2(256, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pd36b"]
-size = Vector2(104, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8qd7"]
-size = Vector2(337.778, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_geosd"]
 texture = ExtResource("15_w6hg1")
@@ -113,12 +91,13 @@ size = Vector2i(1, 1)
 item_protoset = ExtResource("16_lwjpa")
 
 [node name="TrashGrid" type="Control" parent="CanvasLayer/TrashPanel"]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 58.0
+offset_bottom = 58.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Trash")
 field_dimensions = Vector2(52, 52)
@@ -127,90 +106,25 @@ field_highlighted_style = SubResource("StyleBoxTexture_e6lfw")
 field_selected_style = SubResource("StyleBoxTexture_mlqvn")
 selection_style = SubResource("StyleBoxFlat_63kor")
 
-[node name="GameWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(1016, 16)
-script = ExtResource("5_nofec")
+[node name="GameWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -320.0
+offset_bottom = -300.0
 panel = NodePath("GamePanel")
 
-[node name="Window" type="TextureRect" parent="CanvasLayer/GameWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -16.0
-offset_right = 136.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/GameWindow/Window"]
-position = Vector2(128, 12)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/GameWindow/Window/Area2D"]
-position = Vector2(-32, 0)
-shape = SubResource("RectangleShape2D_rfcoo")
-
-[node name="Label" type="Label" parent="CanvasLayer/GameWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Game Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/GameWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 72.0
-offset_top = -12.0
-offset_right = 105.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/GameWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 104.0
-offset_top = -12.0
-offset_right = 137.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
 [node name="GamePanel" type="Panel" parent="CanvasLayer/GameWindow"]
-anchors_preset = 8
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = 8.0
-offset_right = 136.0
-offset_bottom = 656.0
+offset_left = -128.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 648.0
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_mat6y")
 script = ExtResource("3_2ur0b")
-metadata/_edit_use_anchors_ = true
 
 [node name="TimeSlider" type="HSlider" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 0
@@ -309,9 +223,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -164.0
+offset_top = -156.0
 offset_right = 112.0
-offset_bottom = -117.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -325,9 +239,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -100.0
+offset_top = -92.0
 offset_right = 112.0
-offset_bottom = -53.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -341,9 +255,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -36.0
+offset_top = 36.0
 offset_right = -16.0
-offset_bottom = 11.0
+offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -358,9 +272,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 28.0
+offset_top = 100.0
 offset_right = -16.0
-offset_bottom = 75.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -375,9 +289,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 16.0
-offset_top = -36.0
+offset_top = 36.0
 offset_right = 112.0
-offset_bottom = 11.0
+offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -392,9 +306,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 16.0
-offset_top = 28.0
+offset_top = 100.0
 offset_right = 112.0
-offset_bottom = 75.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -409,93 +323,50 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = 92.0
+offset_top = 164.0
 offset_right = -16.0
-offset_bottom = 139.0
+offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
 toggle_mode = true
 text = "HUD"
 
-[node name="EnemyWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(368, 312)
-script = ExtResource("5_nofec")
+[node name="InfiniteSprint" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -28.0
+offset_right = 112.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+toggle_mode = true
+text = "Enable Fast Sprint"
+
+[node name="EnemyWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = -304.0
+offset_top = -324.0
+offset_right = 16.0
+offset_bottom = -300.0
 panel = NodePath("EnemyPanel")
 
-[node name="Window" type="TextureRect" parent="CanvasLayer/EnemyWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -16.0
-offset_right = 168.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/EnemyWindow/Window"]
-position = Vector2(128, 12)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/EnemyWindow/Window/Area2D"]
-shape = SubResource("RectangleShape2D_1a7x3")
-
-[node name="Label" type="Label" parent="CanvasLayer/EnemyWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Enemy Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/EnemyWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 104.0
-offset_top = -12.0
-offset_right = 137.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/EnemyWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 136.0
-offset_top = -12.0
-offset_right = 169.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
 [node name="EnemyPanel" type="Panel" parent="CanvasLayer/EnemyWindow"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = 8.0
-offset_right = 168.0
-offset_bottom = 264.0
+offset_left = -160.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_6x55g")
@@ -513,7 +384,6 @@ offset_right = -96.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
 texture_normal = SubResource("AtlasTexture_phl58")
 
 [node name="TvGButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
@@ -530,7 +400,6 @@ offset_bottom = 1816.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.095, 0.025)
-toggle_mode = true
 texture_normal = ExtResource("3_nyy1d")
 
 [node name="DollButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
@@ -547,7 +416,6 @@ offset_bottom = 456.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.095, 0.085)
-toggle_mode = true
 texture_normal = ExtResource("4_ke238")
 
 [node name="DeerButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
@@ -564,88 +432,26 @@ offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6, 1.6)
-toggle_mode = true
 texture_normal = SubResource("AtlasTexture_rl35x")
 
-[node name="PlayerWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(680, 16)
-script = ExtResource("5_nofec")
+[node name="PlayerWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = 32.0
+offset_top = -4.0
+offset_right = 352.0
+offset_bottom = 20.0
 panel = NodePath("PlayerPanel")
 
-[node name="Window" type="TextureRect" parent="CanvasLayer/PlayerWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -16.0
-offset_right = 192.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/PlayerWindow/Window"]
-position = Vector2(96, 12)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/PlayerWindow/Window/Area2D"]
-position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_pybsh")
-
-[node name="Label" type="Label" parent="CanvasLayer/PlayerWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Player Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/PlayerWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 104.0
-offset_top = -12.0
-offset_right = 137.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/PlayerWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 136.0
-offset_top = -12.0
-offset_right = 169.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
 [node name="PlayerPanel" type="Panel" parent="CanvasLayer/PlayerWindow"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = 8.0
-offset_right = 192.0
-offset_bottom = 264.0
+offset_left = -160.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_iwgxf")
@@ -716,102 +522,24 @@ theme = ExtResource("3_mat6y")
 text = "-10 Hg
 "
 
-[node name="InfiniteSprint" type="Button" parent="CanvasLayer/PlayerWindow/PlayerPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = 16.0
+[node name="MapWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = -304.0
+offset_top = -4.0
 offset_right = 16.0
-offset_bottom = 63.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mat6y")
-toggle_mode = true
-text = "Enable Fast Sprint"
-
-[node name="MapWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(704, 312)
-script = ExtResource("5_nofec")
+offset_bottom = 20.0
 panel = NodePath("MapPanel")
 
-[node name="Window" type="TextureRect" parent="CanvasLayer/MapWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -16.0
-offset_right = 168.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/MapWindow/Window"]
-position = Vector2(96, 16)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/MapWindow/Window/Area2D"]
-position = Vector2(32, -4)
-shape = SubResource("RectangleShape2D_fnyhg")
-
-[node name="Label" type="Label" parent="CanvasLayer/MapWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Map Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/MapWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 104.0
-offset_top = -12.0
-offset_right = 137.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/MapWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 136.0
-offset_top = -12.0
-offset_right = 169.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
 [node name="MapPanel" type="Panel" parent="CanvasLayer/MapWindow"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = 8.0
-offset_right = 168.0
-offset_bottom = 264.0
+offset_left = -160.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_u6m8c")
@@ -900,85 +628,24 @@ grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Show Tilemaps"
 
-[node name="HudWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-position = Vector2(448, 16)
-script = ExtResource("5_nofec")
+[node name="HudWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = 368.0
+offset_top = -4.0
+offset_right = 536.0
+offset_bottom = 20.0
 panel = NodePath("HudPanel")
 
-[node name="Window" type="TextureRect" parent="CanvasLayer/HudWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -16.0
-offset_right = 88.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/HudWindow/Window"]
-position = Vector2(96, 16)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/HudWindow/Window/Area2D"]
-position = Vector2(-44, -4)
-shape = SubResource("RectangleShape2D_pd36b")
-
-[node name="Label" type="Label" parent="CanvasLayer/HudWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Hud Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/HudWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = -12.0
-offset_right = 61.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/HudWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -12.0
-offset_right = 93.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
 [node name="HudPanel" type="Panel" parent="CanvasLayer/HudWindow"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 8.0
-offset_right = 88.0
-offset_bottom = 256.0
+offset_left = -84.0
+offset_top = 12.0
+offset_right = 84.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("16_hx5qb")
@@ -1063,87 +730,23 @@ grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Fishing Hud"
 
-[node name="InventoryWindow" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("panel")]
-visible = false
-position = Vector2(176, 16)
-script = ExtResource("5_nofec")
+[node name="InventoryWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = 32.0
+offset_top = -324.0
+offset_right = 400.0
+offset_bottom = -300.0
 panel = NodePath("InventoryPanel")
 
-[node name="Window" type="TextureRect" parent="CanvasLayer/InventoryWindow"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -176.0
-offset_top = -16.0
-offset_right = 233.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.9, 0.9)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ja3xc")
-
-[node name="Area2D" type="Area2D" parent="CanvasLayer/InventoryWindow/Window"]
-position = Vector2(96, 16)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/InventoryWindow/Window/Area2D"]
-position = Vector2(72.889, -4)
-shape = SubResource("RectangleShape2D_g8qd7")
-
-[node name="Label" type="Label" parent="CanvasLayer/InventoryWindow/Window"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 108.0
-offset_bottom = 23.0
-theme = ExtResource("3_mat6y")
-text = "Inventory Panel"
-
-[node name="Minimize" type="Button" parent="CanvasLayer/InventoryWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 142.167
-offset_top = -12.0
-offset_right = 175.167
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("4_1qtaa")
-
-[node name="Close" type="Button" parent="CanvasLayer/InventoryWindow/Window"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 181.055
-offset_top = -12.0
-offset_right = 214.055
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.735, 0.735)
-theme = ExtResource("5_6eqat")
-
 [node name="InventoryPanel" type="Panel" parent="CanvasLayer/InventoryWindow"]
-offset_left = -176.0
-offset_top = 6.0
-offset_right = 192.0
-offset_bottom = 56.0
+layout_mode = 0
+offset_top = 24.0
+offset_right = 368.0
+offset_bottom = 74.0
 script = ExtResource("10_gerqt")
 
 [node name="ItemLabel" parent="CanvasLayer/InventoryWindow/InventoryPanel" instance=ExtResource("14_m2d0y")]
 z_index = 1
-position = Vector2(440, 154)
+position = Vector2(624, 16)
 
 [node name="Delay" type="Timer" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
 wait_time = 0.1
@@ -1151,9 +754,9 @@ one_shot = true
 
 [node name="GearPanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
 layout_mode = 0
-offset_top = 50.4
+offset_top = 48.0
 offset_right = 368.0
-offset_bottom = 130.4
+offset_bottom = 128.0
 mouse_filter = 1
 
 [node name="Gear" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel"]
@@ -1199,11 +802,12 @@ protoset = ExtResource("16_lwjpa")
 prototype_id = "bullet"
 
 [node name="GearGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel"]
+custom_minimum_size = Vector2(352, 64)
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 72.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Gear")
 field_dimensions = Vector2(64, 64)
@@ -1214,6 +818,7 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="FoodPanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
+visible = false
 layout_mode = 0
 offset_left = -376.0
 offset_top = 50.0
@@ -1543,11 +1148,12 @@ properties = {
 }
 
 [node name="FoodGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/FoodPanel"]
+custom_minimum_size = Vector2(352, 568)
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 576.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Food")
 field_dimensions = Vector2(64, 64)
@@ -1558,6 +1164,7 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="ResourcePanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
+visible = false
 layout_mode = 0
 offset_top = 338.4
 offset_right = 368.0
@@ -1710,12 +1317,13 @@ properties = {
 }
 
 [node name="MaterialGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/ResourcePanel"]
+custom_minimum_size = Vector2(352, 280)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 288.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Material")
 field_dimensions = Vector2(64, 64)
@@ -1726,6 +1334,7 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="MiscellaneousPanel" type="Panel" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
+visible = false
 layout_mode = 0
 offset_top = 154.4
 offset_right = 368.0
@@ -1798,12 +1407,13 @@ properties = {
 }
 
 [node name="EnemyGrid" type="Control" parent="CanvasLayer/InventoryWindow/InventoryPanel/MiscellaneousPanel"]
+custom_minimum_size = Vector2(352, 136)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 144.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Enemy")
 field_dimensions = Vector2(64, 64)
@@ -1895,15 +1505,15 @@ color = Color(0.821789, 0.821789, 0.821789, 1)
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowEnemyPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_enemy_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowInventoryPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_inventory_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowHudPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_hud_panel_pressed"]
-[connection signal="toggled" from="CanvasLayer/EnemyWindow/EnemyPanel/WGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_wg_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_tvg_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/EnemyWindow/EnemyPanel/DollButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_doll_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_deer_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/GameWindow/GamePanel/InfiniteSprint" to="CanvasLayer/GameWindow/GamePanel" method="_on_infinite_sprint_toggled"]
+[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/WGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_wg_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_tv_g_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/DollButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_doll_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_deer_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHealth" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_health_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_hunger_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Health" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehealth_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Hunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehunger_pressed"]
-[connection signal="toggled" from="CanvasLayer/PlayerWindow/PlayerPanel/InfiniteSprint" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_infinite_sprint_toggled"]
 [connection signal="item_selected" from="CanvasLayer/MapWindow/MapPanel/TeleportButton" to="CanvasLayer/MapWindow/MapPanel" method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/MapWindow/MapPanel/TeleportButton2" to="CanvasLayer/MapWindow/MapPanel" method="_on_alt_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/MapWindow/MapPanel/HideBlackRect" to="CanvasLayer/MapWindow/MapPanel" method="_on_hide_black_rect_pressed"]

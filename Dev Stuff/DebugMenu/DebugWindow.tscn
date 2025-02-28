@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://irgqgsmvthyx"]
+
+[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window.gd" id="1_hjflg"]
+[ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="2_72cll"]
+[ext_resource type="Theme" uid="uid://domqwgw7g646m" path="res://Dev Stuff/DebugMenu/Gui_Minimize.tres" id="3_5u388"]
+[ext_resource type="Theme" uid="uid://c4c6stt0oceom" path="res://Dev Stuff/DebugMenu/Gui_Close.tres" id="4_g36ap"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ffwud"]
+
+[node name="WindowPanel" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -16.0
+offset_right = 136.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = SubResource("CanvasTexture_ffwud")
+script = ExtResource("1_hjflg")
+
+[node name="Label" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_right = 56.0
+offset_bottom = 17.0
+grow_vertical = 2
+theme = ExtResource("2_72cll")
+placeholder_text = "Name"
+max_length = 15
+expand_to_text_length = true
+flat = true
+
+[node name="Minimize" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -12.0
+offset_right = -23.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.735, 0.735)
+theme = ExtResource("3_5u388")
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_right = 9.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.735, 0.735)
+theme = ExtResource("4_g36ap")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="text_submitted" from="Label" to="." method="_on_label_text_submitted"]
+[connection signal="pressed" from="Minimize" to="." method="_on_minimize_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

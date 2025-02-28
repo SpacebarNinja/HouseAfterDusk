@@ -8,6 +8,11 @@
 script = ExtResource("1_lyuuv")
 item_protoset = ExtResource("2_nak3j")
 
+[node name="_Node_31679" type="Node" parent="."]
+script = ExtResource("3_2p131")
+protoset = ExtResource("2_nak3j")
+prototype_id = "bullet"
+
 [node name="_Node_56557" type="Node" parent="."]
 script = ExtResource("3_2p131")
 protoset = ExtResource("2_nak3j")
@@ -543,8 +548,3 @@ prototype_id = "veggie_salad"
 properties = {
 "grid_position": Vector2i(6, 7)
 }
-
-[node name="_Node_31679" type="Node" parent="."]
-script = ExtResource("3_2p131")
-protoset = ExtResource("2_nak3j")
-prototype_id = "bullet"

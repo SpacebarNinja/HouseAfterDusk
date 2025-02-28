@@ -56,6 +56,9 @@ func on_item_context_activated(item):
 		Backpack.add_inventory_item(item, 1)
 	
 func on_item_removed(item):
+	if tree_exited:
+		return
+	
 	if item and is_instance_valid(item) and is_instance_valid(current_grid):
 		item_coord = current_grid.get_item_position(item)
 		current_item = item.get_property("id", "")

@@ -9,28 +9,18 @@ extends Node2D
 @export var inventory: InventoryGridStacked
 @export var equippable: InventoryGridStacked
 
-@onready var select_audio = $SelectAudio
-@onready var unselect_audio = $UnselectAudio
-
-@export_category("Fade Settings")
-@export var alpha_start: float = 0
-@export var alpha_end: float = 1
-@export var fade_speed: float = 7.0
-
 # Hover behavior
 var target_position = Vector2()
 var target_alpha = 0.6
 var hover_speed = 0.2  # The bigger the faster
 
-func _process(delta):
-	# When dialoguing, fade out the node.
-	if HudManager.is_dialoguing:
-		modulate.a = lerp(modulate.a, alpha_start, fade_speed * delta)
-		return
-	else:
-		modulate.a = lerp(modulate.a, alpha_end, fade_speed * delta)
-	
-	# Only update hover behavior when not dialoguing.
+@onready var select_audio = $SelectAudio
+@onready var unselect_audio = $UnselectAudio
+
+func _ready():
+	print(get_inventory_items())
+
+func _process(_delta):
 	HandleHover()
 
 func HandleHover():
@@ -53,9 +43,9 @@ func _on_ctrl_inventory_grid_ex_item_mouse_exited(item):
 	item_label.on_item_mouse_exited(item)
 
 func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
-	if item.get_property("edible", true) and item.get_property("Type", "") == "Ingredient":
+	if item.get_property("edible") == true and item.get_property("Type", "") == "Ingredient":
 		var food_value = item.get_property("hunger_value")
-		remove_inventory_item(item.get_property("id", ""), 1)
+		remove_inventory_item(item, 1)
 		player.replenish_hunger(food_value)
 		eat.play()
 	else:
@@ -68,7 +58,7 @@ func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
 				item.swap(item, item2)
 
 func _on_ctrl_inventory_grid_ex_equippable_inventory_item_context_activated(item):
-	if item.get_property("edible", true):
+	if item.get_property("edible") == true:
 		var food_value = item.get_property("hunger_value")
 		remove_equipped_item(item, 1)
 		player.replenish_hunger(food_value)
@@ -88,8 +78,13 @@ func get_equipped_item():
 
 func add_inventory_item(item: InventoryItem, amount: int):
 	if amount <= 0:
+		print("Amount cant be 0 or less")
 		return
-
+	
+	if not inventory.has_place_for(item):
+		print("Inventory has no place for ", item)
+		return
+	
 	var item_id = item.get_property("id", "")
 	var max_stack = item.get_property("max_stack_size", "")
 
@@ -97,20 +92,20 @@ func add_inventory_item(item: InventoryItem, amount: int):
 	var existing_item = inventory.get_item_by_id(item_id) if inventory.has_item_by_id(item_id) else null
 
 	if existing_item:
-		var current_stack = InventoryGridStacked.get_item_stack_size(existing_item)
+		var current_stack = inventory.get_item_stack_size(existing_item)
 		var available_space = max_stack - current_stack
 
 		# Add to existing stack if possible
 		if available_space > 0:
 			var amount_to_add = min(amount, available_space)
-			InventoryGridStacked.set_item_stack_size(existing_item, current_stack + amount_to_add)
+			inventory.set_item_stack_size(existing_item, current_stack + amount_to_add)
 			amount -= amount_to_add
 
 	# If there’s still remaining amount, create a new item
 	if amount > 0:
 		var new_item = inventory.create_and_add_item(item_id)
 		var new_stack_size = min(amount, max_stack)
-		InventoryGridStacked.set_item_stack_size(new_item, new_stack_size)
+		inventory.set_item_stack_size(new_item, new_stack_size)
 
 	# Play inventory selection sound if valid
 	if is_instance_valid(select_audio) and not select_audio.playing:
@@ -118,9 +113,9 @@ func add_inventory_item(item: InventoryItem, amount: int):
 		
 func remove_inventory_item(item: InventoryItem, amount: int):
 	if inventory.has_item(item):
-		var stack_size = InventoryGridStacked.get_item_stack_size(item)
+		var stack_size = inventory.get_item_stack_size(item)
 		var new_stack_size = stack_size - amount
-		InventoryGridStacked.set_item_stack_size(item, new_stack_size)
+		inventory.set_item_stack_size(item, new_stack_size)
 		#print("Item Stack: ", inventory.get_item_stack_size(item))
 		
 		if stack_size <= 0:
@@ -128,12 +123,14 @@ func remove_inventory_item(item: InventoryItem, amount: int):
 			print("Removing ", item)
 		else:
 			print("Reduced ", item, " stack by ", amount, " and is now ", new_stack_size)
+	else:
+		print("Inventory does not have ", item)
 
 func remove_equipped_item(item, amount):
-	var stack_size = InventoryGridStacked.get_item_stack_size(item)
+	var stack_size = equippable.get_item_stack_size(item)
 	var new_stack_size = stack_size - amount
 	
-	InventoryGridStacked.set_item_stack_size(item, new_stack_size)
+	equippable.set_item_stack_size(item, new_stack_size)
 	#print("Item Stack: ", equippable.get_item_stack_size(item))
 	
 	if new_stack_size <= 0:
@@ -158,16 +155,10 @@ func get_inventory_items() -> Array:
 
 func find_inventory_item(item_id: String):
 	if inventory.has_item_by_id(item_id):
-		print(item_id, " Found")
-		var item = inventory.get_item_by_id(item_id)
-		var item_stats = {
-			"item": item,
-			"position": inventory.get_item_position(item)
-		}
-		print(item_id, " Stats:", item_stats)
-		return item_stats
+		#print(item_id, " Found")
+		return inventory.get_item_by_id(item_id)
 	else:
-		print(item_id, " Not Found")
+		#print("Invetory Does not have ", item_id)
 		return null
 
 func _on_equippable_item_added(item):
@@ -175,15 +166,13 @@ func _on_equippable_item_added(item):
 	if item != null:
 		var item_type = item.get_property("Type", "")
 		if item_type == "Weapon":
-			var item_name = item.get_property("Name", "")
-			player.equip_weapon(true, item_name)
+			player.equip_weapon(true, item.get_property("Name", ""))
 
 func _on_equippable_item_removed(item):
 	if is_instance_valid(player) and is_instance_valid(item):
 		var item_type = item.get_property("Type", "")
 		if item_type == "Weapon":
-			var item_name = item.get_property("Name", "")
-			player.equip_weapon(false, item_name)
+			player.equip_weapon(false, item.get_property("Name", ""))
 		else:
 			print("no Item")
 

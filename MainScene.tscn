@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ctm1dfhfkd0fl" path="res://Systems/HUD/Hud.tscn" id="1_fh8r2"]
 [ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_ofx2c"]
-[ext_resource type="PackedScene" uid="uid://boutdgluq4gbq" path="res://Entities/Gene/Gene.tscn" id="4_gh3rb"]
 [ext_resource type="PackedScene" uid="uid://bsglmfebiwnb" path="res://World/House/Scripts/DemoMap2.tscn" id="5_4xog2"]
-[ext_resource type="Script" path="res://Entities/Gene/Camera.gd" id="5_twjhg"]
+[ext_resource type="Script" path="res://Entities/Gene/Scripts/Camera.gd" id="5_twjhg"]
+[ext_resource type="PackedScene" uid="uid://boutdgluq4gbq" path="res://Entities/Gene/Scripts/Gene.tscn" id="6_eot6d"]
 [ext_resource type="PackedScene" uid="uid://85g3prbvvwkv" path="res://Systems/Particles/RoomParticles.tscn" id="6_txbsq"]
 [ext_resource type="PackedScene" uid="uid://b6pc0pegkjbea" path="res://Entities/Alice/alice.tscn" id="8_p7uja"]
 [ext_resource type="Script" path="res://World/House/Scripts/Canvas_Modulate.gd" id="9_7ksos"]
@@ -45,9 +45,8 @@ script = ExtResource("5_twjhg")
 
 [node name="RoomParticles" parent="Camera2D" instance=ExtResource("6_txbsq")]
 
-[node name="Player" parent="." instance=ExtResource("4_gh3rb")]
-modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(-1256, 117)
+[node name="Player" parent="." instance=ExtResource("6_eot6d")]
+position = Vector2(-1272, 64)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")

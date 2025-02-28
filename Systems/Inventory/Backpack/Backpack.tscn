@@ -68,33 +68,37 @@ script = ExtResource("3_w6ijb")
 size = Vector2i(1, 6)
 item_protoset = ExtResource("4_g1y3s")
 
-[node name="_Node_129367" type="Node" parent="Inventory"]
+[node name="_Node_49831" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
-prototype_id = "rye"
-properties = {
-"grid_position": Vector2i(0, 5),
-"stack_size": 5
-}
+prototype_id = "teddybear"
 
-[node name="_Node_131401" type="Node" parent="Inventory"]
+[node name="_Node_49977" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
-prototype_id = "raw_wood"
+prototype_id = "bullet"
 properties = {
-"grid_position": Vector2i(0, 4),
+"grid_position": Vector2i(0, 1),
 "stack_size": 3
 }
 
-[node name="_Node_263555" type="Node" parent="Inventory"]
+[node name="_Node_50806" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
-prototype_id = "tv_remote"
+prototype_id = "sushi"
+properties = {
+"grid_position": Vector2i(0, 2)
+}
 
 [node name="Equippable" type="Node" parent="."]
 script = ExtResource("3_w6ijb")
 size = Vector2i(1, 1)
 item_protoset = ExtResource("4_g1y3s")
+
+[node name="_Node_71914" type="Node" parent="Equippable"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "gun"
 
 [node name="Inventory UI" type="Node2D" parent="."]
 position = Vector2(-85, -75)
@@ -103,12 +107,13 @@ scale = Vector2(1.155, 1.155)
 [node name="InventoryGrid" type="Control" parent="Inventory UI"]
 z_index = -10
 texture_filter = 1
+custom_minimum_size = Vector2(64, 404)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.4242
 offset_top = -58.8745
-offset_right = 42.4242
-offset_bottom = -58.8745
+offset_right = 106.424
+offset_bottom = 345.125
 script = ExtResource("7_0hrb1")
 inventory_path = NodePath("../../Inventory")
 field_dimensions = Vector2(64, 64)
@@ -122,12 +127,13 @@ metadata/_edit_use_anchors_ = true
 [node name="EquipGrid" type="Control" parent="Inventory UI"]
 z_index = -10
 texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.4242
 offset_top = -135.065
-offset_right = 42.4242
-offset_bottom = -135.065
+offset_right = 106.424
+offset_bottom = -71.065
 script = ExtResource("7_0hrb1")
 inventory_path = NodePath("../../Equippable")
 field_dimensions = Vector2(64, 64)

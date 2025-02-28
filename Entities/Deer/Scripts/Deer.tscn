@@ -1,69 +1,71 @@
-[gd_scene load_steps=21 format=3 uid="uid://btnne6ekpxmv4"]
+[gd_scene load_steps=22 format=3 uid="uid://btnne6ekpxmv4"]
 
-[ext_resource type="Script" path="res://Entities/Deer/deer.gd" id="1_ca34h"]
-[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/deer male calciumtrice.png" id="2_4tpnj"]
-[ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="3_gl0rp"]
+[ext_resource type="Script" path="res://Entities/Deer/Scripts/deer.gd" id="1_mm3lw"]
+[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/Art/deer male calciumtrice.png" id="2_s3xci"]
+[ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="3_fexvt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ucros"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y62b4"]
+radius = 6.0
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2mpi"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e30c8"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5pos"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h01hn"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7rjy"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jis8x"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_du3vf"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_587qq"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldavl"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0smu"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l03t5"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_elcrx"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8aj4"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m63f6"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkag6"]
-atlas = ExtResource("2_4tpnj")
+atlas = ExtResource("2_s3xci")
 region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b8eft"]
@@ -124,40 +126,47 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yybsu"]
+radius = 11.5434
+
+[node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone", "hitbox")]
 scale = Vector2(2, 2)
-script = ExtResource("1_ca34h")
-acceleration = 2
-health = 100
-attack_damage = 0
-sense = 2
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_mm3lw")
+movement_speed = 150
+health = 80
 intelligence = 2
 spawn_location = "FOREST"
+wander_radius = 100.0
 anim_sprite = NodePath("AnimatedSprite2D")
 navigation_agent = NodePath("NavigationAgent2D")
 vision_cone = NodePath("Vision")
+hitbox = NodePath("Hitbox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_ucros")
+position = Vector2(0, 3.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y62b4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8eft")
 animation = &"Run"
 autoplay = "Idle"
-frame_progress = 0.176199
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 50.0
 navigation_layers = 2
 path_postprocessing = 1
 debug_enabled = true
 
 [node name="visionsprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_gl0rp")
+texture = ExtResource("3_fexvt")
 
 [node name="Vision" type="PointLight2D" parent="."]
 color = Color(0.832644, 0.290377, 0.290377, 1)
-texture = ExtResource("3_gl0rp")
+texture = ExtResource("3_fexvt")
 
 [node name="RayCast2D2" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
@@ -184,14 +193,19 @@ self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 35)
 collision_mask = 3
 
-[node name="WanderTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
-[node name="IdleTimer" type="Timer" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_yybsu")
+
+[node name="MovementTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
-[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="Death" from="." to="." method="_on_death"]
+[connection signal="PlayerFound" from="." to="." method="_on_player_found"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

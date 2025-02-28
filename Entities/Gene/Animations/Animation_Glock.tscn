@@ -418,11 +418,11 @@ states/point_gun/node = SubResource("AnimationNodeBlendSpace2D_nnico")
 states/point_gun/position = Vector2(401, 100)
 transitions = ["Start", "point_gun", SubResource("AnimationNodeStateMachineTransition_yukmf")]
 
-[node name="Animation_Glock" type="Node2D" node_paths=PackedStringArray("glock_audio_list", "animation_tree", "animation_player")]
+[node name="Animation_Glock" type="Node2D" node_paths=PackedStringArray("animation_tree", "animation_player", "audio_list")]
 script = ExtResource("1_yy2ss")
-glock_audio_list = [NodePath("Shoot_Audio")]
 animation_tree = NodePath("AnimationTree")
 animation_player = NodePath("AnimationPlayer")
+audio_list = [NodePath("Audio/Shoot_Audio")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -434,10 +434,7 @@ animation = &"Point_Up_Right"
 [node name="RayCast2D" type="RayCast2D" parent="Guncast"]
 self_modulate = Color(1, 0.412589, 0.838473, 1)
 target_position = Vector2(280, 0)
-collision_mask = 4
-
-[node name="Shoot_Audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_mfq7a")
+collision_mask = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -450,3 +447,8 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/point_gun/blend_position = Vector2(0.00263858, 0.0903955)
 
 [node name="Audio" type="Node2D" parent="."]
+
+[node name="Shoot_Audio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_mfq7a")
+
+[connection signal="finished" from="Audio/Shoot_Audio" to="." method="_on_shoot_audio_finished"]

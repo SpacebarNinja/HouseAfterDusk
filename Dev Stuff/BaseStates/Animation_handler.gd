@@ -17,7 +17,6 @@ func _ready():
 		for child in get_children():
 			if child != initial_animation:
 				child.hide()
-
 	
 func _process(delta):
 	if current_animation:
