@@ -6,7 +6,9 @@ extends Node2D
 @onready var power_on_sfx = $PowerOn
 @onready var power_off_sfx = $PowerOff
 @onready var sprite_2d = $Sprite2D
-@onready var electronics = get_tree().get_nodes_in_group("Electronic")
+@onready var power_timer = $Timer
+
+var electronics
 
 var light_state: bool = true
 const TILE_LAYER: int = 2
@@ -20,9 +22,10 @@ func on_intr_area_exited():
 #====================================
 
 func handle_text():
+	electronics = get_tree().get_nodes_in_group("Electronic")
 	if WorldManager.is_generator_on == false:
 		WorldManager.Interactables.erase("Turn Off Generator")
-		WorldManager.add_interactable("Turn On Generator", 2.5, Callable(self, "switch_on"))
+		WorldManager.add_interactable("Turn On Generator", 5, Callable(self, "switch_on"))
 	else:
 		WorldManager.add_interactable("Turn Off Generator", 2.5, Callable(self, "switch_off"))
 		WorldManager.Interactables.erase("Turn On Generator")
@@ -36,8 +39,10 @@ func switch_on():
 	
 func switch_off():
 	power_off_sfx.play()
+	power_timer.start()
 	WorldManager.is_generator_on = false
 	lights_turn_off()
+	eliminate_tvg()
 	handle_text()
 	sprite_2d.texture = off_sprite
 
@@ -55,6 +60,9 @@ func flicker_lights():
 		if electronic.has_method("slowly_turn_on_light"):
 			electronic.slowly_turn_on_light()
 
+func eliminate_tvg():
+	_apply_to_electronics("on_generator_turn_off")
+
 func lights_turn_on():
 	_apply_to_electronics("turn_on_light")
 
@@ -65,3 +73,7 @@ func _apply_to_electronics(method: String):
 	for electronic in electronics:
 		if electronic.has_method(method):
 			electronic.call(method)
+
+func _on_timer_timeout():
+	if not WorldManager.is_generator_on:
+		switch_on()

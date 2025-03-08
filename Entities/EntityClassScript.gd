@@ -4,7 +4,8 @@ class_name Entity_Class
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var item_drop = preload("res://Systems/Inventory/Others/dropped_item.tscn")
 
-enum STATES {IDLE, WANDER, SEARCH, PURSUE, FLEE, RETREAT, STUNNED}
+enum BEHAVIOR_STATES {IDLE, WANDER, SEARCH, PURSUE, FLEE, RETREAT, STUNNED}
+enum VISION_DIRECTION {RANDOM, PATH, PLAYER}
 
 @export_category("General Enemy Stats")
 @export var movement_speed: int = 75
@@ -18,7 +19,8 @@ enum STATES {IDLE, WANDER, SEARCH, PURSUE, FLEE, RETREAT, STUNNED}
 @export var origin_location: Vector2
 @export var spawn_location: String
 @export var wander_radius: float
-@export var current_state: STATES
+@export var current_state: BEHAVIOR_STATES
+@export var current_vision_direction: VISION_DIRECTION
 
 @export_category("General Enemy Nodes")
 @export var anim_sprite: AnimatedSprite2D
@@ -31,82 +33,84 @@ enum STATES {IDLE, WANDER, SEARCH, PURSUE, FLEE, RETREAT, STUNNED}
 
 signal PlayerFound
 signal PlayerLost
-signal PlayerEnteredHitbox
-signal PlayerExittedHitbox
 signal Death
 signal Stunned
 signal Unstunned
 
 # State variables
-const MAX_SUSPICION = 100.0
-var player_detected: bool = false
+var player_seen: bool = false
 var player_in_hitbox: bool = false
 var random_idle_angle: float = 0.0
+var previous_state: BEHAVIOR_STATES
 
 func _ready():
 	add_child(idle_timer)
-	idle_timer.one_shot = false
-	idle_timer.start(2.0)
 	idle_timer.timeout.connect(_on_idle_timer_timeout)
-	
-	if hitbox:
-		hitbox.connect("body_entered", Callable(self, "on_body_entered"))
-		hitbox.connect("body_exited", Callable(self, "on_body_exited"))
 	
 func _physics_process(delta):
 	handle_movement(delta)
+	handle_vision_cone(delta)
 	if health <= 0:
 		Death.emit()
-	
+
 func handle_movement(delta):
 	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
-	#print("Direction:", direction)
 	
-	if current_state == STATES.IDLE:
-		#print("Navigation finished, setting idle.")
+	if current_state in [BEHAVIOR_STATES.IDLE, BEHAVIOR_STATES.STUNNED]:
 		velocity = Vector2.ZERO
-		handle_vision_cone(random_idle_angle, delta)
+		current_vision_direction = VISION_DIRECTION.RANDOM
+		if idle_timer.is_stopped():
+			idle_timer.start()
 	else:
 		#print("Moving towards:", navigation_agent.get_next_path_position())
 		velocity = velocity.lerp(direction * movement_speed, acceleration * delta)
-		handle_vision_cone(direction.angle(), delta)
+		current_vision_direction = VISION_DIRECTION.PATH
 		move_and_slide()
 	
 	#print("Velocity:", velocity)
-	handle_animation_direction(direction)
+	anim_sprite.flip_h = velocity.x < 0
 
-func handle_vision_cone(target_angle: float, delta):
-	# Flag to check if player is currently detected in this frame
-	var player_currently_detected = false
+func handle_vision_cone(delta):
+	var player_currently_detected: bool = false
 
-	# Check if player is within the vision cone using raycasts
 	for raycast in vision_cone.get_children():
-		var collider = raycast.get_collider()
-		if collider == player:
-			player_currently_detected = true
-			print("Detected Player")
-			break  # Exit loop early if player is found
+		if not raycast is RayCast2D:
+			continue  # Skip non-raycast nodes
+		
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider and collider.is_in_group("Player"):
+				player_currently_detected = true
+				break  # Exit loop early if player is found
+
 
 	# Emit signals based on player detection state
-	if player_currently_detected and not player_detected:
+	if player_currently_detected and not player_seen:
 		PlayerFound.emit()
-		player_detected = true
+		player_seen = true
 		print("Found Player")
-	elif not player_currently_detected and player_detected:
+	elif not player_currently_detected and player_seen:
 		PlayerLost.emit()
-		player_detected = false
+		player_seen = false
 		print("Lost Player")
 
+	# Determine target rotation angle with PLAYER as the highest priority
+	var target_angle: float
+
+	if current_vision_direction == VISION_DIRECTION.PLAYER and player_seen and player:
+		target_angle = (player.global_position - global_position).angle()
+	elif current_vision_direction == VISION_DIRECTION.PATH and velocity.length() > 0.1:
+		target_angle = velocity.angle()
+	else:  # Default to RANDOM if none of the above conditions are met
+		target_angle = random_idle_angle
+
 	# Rotate the vision cone towards the target angle
-	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, delta * (4 if current_state == STATES.IDLE else 2))
+	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, delta * (3 if current_vision_direction == VISION_DIRECTION.RANDOM else 8))
 
 func _on_idle_timer_timeout():
-	if current_state == STATES.IDLE:
+	if current_state == BEHAVIOR_STATES.IDLE:
 		# Generate a new random angle for vision cone movement
 		random_idle_angle = randf_range(-PI, PI)
-
-func handle_animation_direction(direction):
-	anim_sprite.flip_h = velocity.x < 0
 	
 func set_target_position(target_position: Vector2) -> void:
 	if navigation_agent:
@@ -114,50 +118,49 @@ func set_target_position(target_position: Vector2) -> void:
 			navigation_agent.target_position = target_position
 		else:
 			print(global_position.distance_to(target_position), " too close, not setting.")
-			if current_state == STATES.WANDER:
-				wander()
 	
 func take_damage(playerdamage: int):
-	health -= playerdamage
-	print("Enemy Health: ", health)
+	if playerdamage > 0:
+		health = max(0, health - playerdamage)  # Clamp to 0
+		print("Enemy Health: ", health)
+	
+func manage_suspicion_meter(suspicion_speed: float):
+	if player_seen:
+		suspicion = clampf(suspicion + suspicion_speed, 0, 100)
+	else:
+		suspicion = clampf(suspicion - suspicion_speed, 0, 100)
 	
 func wander():
-	current_state = STATES.WANDER
+	current_state = BEHAVIOR_STATES.WANDER
 	var random_offset_x = randf_range(-wander_radius, wander_radius)
 	var random_offset_y = randf_range(-wander_radius, wander_radius)
 	var target_position = global_position + Vector2(random_offset_x, random_offset_y)
-	print("Wandering to ", target_position)
+	#print("Wandering to ", target_position)
 	
 	set_target_position(target_position)
 	
 func flee():
-	current_state = STATES.FLEE
-	var flee_direction = (global_position - get_player_position()).normalized()
+	current_state = BEHAVIOR_STATES.FLEE
+	var flee_direction = (global_position - player.global_position).normalized()
 	var flee_distance = wander_radius * 2
 	var new_position = global_position + flee_direction * flee_distance
-	print("Fleeing to ", new_position)
+	#print("Fleeing to ", new_position)
 	
 	set_target_position(new_position)
 
 func stun(duration: float):
-	current_state = STATES.STUNNED
+	current_state = BEHAVIOR_STATES.STUNNED
 	Stunned.emit()
 	movement_speed = 0
-	print("Stunned for ", duration)
+	suspicion = 0
+	self_modulate = Color(0.5,1,1)
+	#print("Stunned for ", duration)
 	
 	await get_tree().create_timer(duration).timeout
 	Unstunned.emit()
-	print("No longer stunned")
+	self_modulate = Color(1,1,1)
+	#print("No longer stunned")
 
-func get_player_position() -> Vector2:
-	if player:
-		return player.global_position
-	return global_position
-
-func on_body_entered():
-	PlayerEnteredHitbox.emit()
-	player_in_hitbox = true
-
-func on_body_exited():
-	PlayerExittedHitbox.emit()
-	player_in_hitbox = false
+func retreat():
+	current_state = BEHAVIOR_STATES.RETREAT
+	set_target_position(origin_location)

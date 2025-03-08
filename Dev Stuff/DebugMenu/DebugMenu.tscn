@@ -1,17 +1,18 @@
-[gd_scene load_steps=34 format=3 uid="uid://chyhpk7ouru8b"]
+[gd_scene load_steps=38 format=3 uid="uid://chyhpk7ouru8b"]
 
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Game.gd" id="3_2ur0b"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Enemy.gd" id="3_6x55g"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="3_mat6y"]
-[ext_resource type="Texture2D" uid="uid://dfcnpdl2irh8p" path="res://Entities/ElectronicGuy/Art/The Sexyman.png" id="3_nyy1d"]
 [ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/TheDolls/Art/Doll_Idle.png" id="4_ke238"]
 [ext_resource type="PackedScene" path="res://Dev Stuff/DebugMenu/DebugWindow.tscn" id="7_qv0nl"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Player.gd" id="8_iwgxf"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Map.gd" id="9_u6m8c"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Inventory.gd" id="10_gerqt"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="11_8rupj"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="12_734th"]
+[ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/ElectronicGuy/Art/TvG_Idle.png" id="13_8qyrp"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="13_nnlmn"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="14_m2d0y"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
@@ -46,9 +47,26 @@ border_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
 atlas = ExtResource("2_64gco")
 region = Rect2(5, 20, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rl35x"]
+[sub_resource type="LabelSettings" id="LabelSettings_fjag6"]
+font = ExtResource("12_734th")
+font_size = 33
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nnwx"]
+atlas = ExtResource("13_8qyrp")
+region = Rect2(8, 488, 40, 110)
+margin = Rect2(0, 0, 0, -61.285)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq56q"]
+atlas = ExtResource("4_ke238")
+region = Rect2(37.99, 78, 40, 60)
+margin = Rect2(0, 0, 0, -11.66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ny0x"]
 atlas = ExtResource("16_awk0u")
-region = Rect2(2, 2, 29, 30)
+region = Rect2(2, 2, 41.22, 43.225)
+margin = Rect2(11.69, 13.22, 0, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_geosd"]
 texture = ExtResource("15_w6hg1")
@@ -384,7 +402,18 @@ offset_right = -96.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
+button_mask = 3
 texture_normal = SubResource("AtlasTexture_phl58")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyWindow/EnemyPanel/WGButton"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 40.0
+text = "0"
+label_settings = SubResource("LabelSettings_fjag6")
+horizontal_alignment = 1
 
 [node name="TvGButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
 layout_mode = 1
@@ -393,14 +422,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -79.9999
-offset_top = -104.0
-offset_right = 432.0
-offset_bottom = 1816.0
+offset_left = -144.0
+offset_top = -48.0
+offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.095, 0.025)
-texture_normal = ExtResource("3_nyy1d")
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_7nnwx")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 40.0
+text = "0"
+label_settings = SubResource("LabelSettings_fjag6")
+horizontal_alignment = 1
 
 [node name="DollButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
 layout_mode = 1
@@ -411,12 +449,22 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -16.0
 offset_top = -104.0
-offset_right = 496.0
-offset_bottom = 456.0
+offset_right = 32.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.095, 0.085)
-texture_normal = ExtResource("4_ke238")
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_rq56q")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyWindow/EnemyPanel/DollButton"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 40.0
+text = "0"
+label_settings = SubResource("LabelSettings_fjag6")
+horizontal_alignment = 1
 
 [node name="DeerButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
 layout_mode = 1
@@ -425,14 +473,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 56.0
-offset_top = -104.0
-offset_right = 85.0
-offset_bottom = -72.0
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.6, 1.6)
-texture_normal = SubResource("AtlasTexture_rl35x")
+button_mask = 3
+texture_normal = SubResource("AtlasTexture_4ny0x")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 40.0
+text = "0"
+label_settings = SubResource("LabelSettings_fjag6")
+horizontal_alignment = 1
 
 [node name="PlayerWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
 offset_left = 32.0
@@ -1506,10 +1563,10 @@ color = Color(0.821789, 0.821789, 0.821789, 1)
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowInventoryPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_inventory_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowHudPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_hud_panel_pressed"]
 [connection signal="toggled" from="CanvasLayer/GameWindow/GamePanel/InfiniteSprint" to="CanvasLayer/GameWindow/GamePanel" method="_on_infinite_sprint_toggled"]
-[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/WGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_wg_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_tv_g_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/DollButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_doll_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_deer_button_pressed"]
+[connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/WGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_wg_button_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_tvg_button_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/DollButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_doll_button_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_deer_button_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHealth" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_health_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_hunger_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Health" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehealth_pressed"]

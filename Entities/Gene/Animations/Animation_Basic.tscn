@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://cyb62lsrjwyej"]
+[gd_scene load_steps=150 format=3 uid="uid://cyb62lsrjwyej"]
 
 [ext_resource type="Script" path="res://Entities/Gene/Animations/Animation_Basic.gd" id="1_lm76y"]
 [ext_resource type="Texture2D" uid="uid://c7dqk0xa4at1e" path="res://Entities/Gene/Art/Gene_Spritesheet_Left_Updated.png" id="2_0r0xt"]
@@ -1089,6 +1089,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EquippedItemVisual:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_glp61"]
 resource_name = "Walk_Right"
@@ -1156,35 +1168,6 @@ tracks/4/keys = {
 "values": [1.5708]
 }
 
-[sub_resource type="Animation" id="Animation_26coc"]
-resource_name = "Walk_Backwards"
-length = 2.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Walk_Right"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vghxr"]
 _data = {
 "Idle1": SubResource("Animation_sixy1"),
@@ -1192,8 +1175,7 @@ _data = {
 "Opening_Journal": SubResource("Animation_yeq87"),
 "RESET": SubResource("Animation_f8lsv"),
 "Sprint": SubResource("Animation_imk5w"),
-"Walk": SubResource("Animation_glp61"),
-"Walk_Backwards": SubResource("Animation_26coc")
+"Walk": SubResource("Animation_glp61")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlr85"]

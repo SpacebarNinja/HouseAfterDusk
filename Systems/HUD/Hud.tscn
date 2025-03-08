@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://ctm1dfhfkd0fl"]
+[gd_scene load_steps=97 format=3 uid="uid://ctm1dfhfkd0fl"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
 [ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_ofedd"]
@@ -52,6 +52,7 @@
 [ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
 [ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="45_s6v0h"]
 [ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="46_4teqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")
@@ -408,6 +409,7 @@ modulate = Color(0.921, 0.883, 0.866, 0.3)
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.600388, 0.600388)
+mouse_filter = 2
 texture = ExtResource("3_gncqb")
 script = ExtResource("4_oxeg6")
 
@@ -1192,6 +1194,11 @@ script = ExtResource("31_mq4gt")
 size = Vector2i(2, 2)
 item_protoset = ExtResource("32_1yik7")
 
+[node name="_Node_46358" type="Node" parent="CookingHud/CookingPanel/CookingSlots"]
+script = ExtResource("46_4teqw")
+protoset = ExtResource("32_1yik7")
+prototype_id = "rye"
+
 [node name="CookingGrid" type="Control" parent="CookingHud/CookingPanel"]
 texture_filter = 1
 custom_minimum_size = Vector2(250, 250)
@@ -1356,12 +1363,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-metadata/_edit_lock_ = true
 
 [node name="BackpackInventory" parent="MechanicHud/Backpack" groups=["Backpack"] instance=ExtResource("3_idjsy")]
 position = Vector2(536, 0)
 scale = Vector2(0.817009, 0.90688)
-metadata/_edit_lock_ = true
 
 [node name="BackpackSprite" type="Sprite2D" parent="MechanicHud/Backpack/BackpackInventory"]
 modulate = Color(1, 1, 1, 0.7)

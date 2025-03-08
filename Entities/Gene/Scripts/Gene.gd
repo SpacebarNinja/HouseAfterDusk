@@ -6,7 +6,8 @@ extends CharacterBody2D
 
 @onready var invulnerability_timer = $Timers/InvulnerabilityTimer
 @onready var hunger_timer = $Timers/HungerTimer
-@onready var raycast = $RaycastNodes
+@onready var vision_cone = $VisionCone
+
 @onready var animation_handler = $AnimationHandler
 @onready var hitbox = $Hitbox
 
@@ -18,7 +19,6 @@ extends CharacterBody2D
 @export var altmove_sprint_distance = 75
 
 @export_category("Gene Nodes")
-@export var flashlight: PointLight2D
 @export var audio_list: Array[AudioStreamPlayer2D]
 
 @onready var rooms = get_node("/root/MainScene/DemoMap2/ROOMS")
@@ -43,7 +43,7 @@ func set_walk_speed(speed: int):
 
 func _process(_delta):
 	modulate_player()
-	rotate_flashlight()
+	handle_vision_cone()
 	
 	if WorldManager.StopGeneMovement: return
 	
@@ -61,9 +61,8 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("ToggleFlashlight"):
 		toggle_flashlight()
-
+	
 	move_and_slide()
-	finding_enemy()
 
 func modulate_player():
 	if rooms.is_outside:
@@ -140,29 +139,25 @@ func _on_hunger_timer_timeout():
 func _on_invulnerability_timer_timeout():
 	can_take_damage = true
 
-func rotate_flashlight():
+func handle_vision_cone():
 	if not journal_instance.is_open and HudManager.flashlight_movement:
 		var mouse_position = get_global_mouse_position()
-		flashlight.look_at(mouse_position)
-		raycast.look_at(mouse_position)
-
+		vision_cone.look_at(mouse_position)
+		
+	for raycasts in vision_cone.get_children():
+		var collider = raycasts.get_collider()
+		if collider and collider.is_in_group("Enemy"):
+			print("Found enemy: ", collider)
+					
 func toggle_flashlight():
 	flashlight_on = not flashlight_on
-	flashlight.visible = flashlight_on
+	vision_cone.visible = flashlight_on
 	play_audio(0 if flashlight_on else 1)
 
 func play_audio(index: int):
 	if index >= 0 and index < audio_list.size():
 		if not audio_list[index].is_playing():
 			audio_list[index].play()
-
-func finding_enemy():
-	for raycasts in raycast.get_children():
-		var collider = raycasts.get_collider()
-		if collider:
-			if raycasts.is_colliding() and collider.is_in_group("Enemy"):
-				if collider:
-					print("Found enemy: ", collider)
 
 func equip_weapon(has_equipped: bool, weapon: String):
 	equipped_item = has_equipped

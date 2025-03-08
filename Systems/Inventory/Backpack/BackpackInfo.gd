@@ -17,9 +17,6 @@ var hover_speed = 0.2  # The bigger the faster
 @onready var select_audio = $SelectAudio
 @onready var unselect_audio = $UnselectAudio
 
-func _ready():
-	print(get_inventory_items())
-
 func _process(_delta):
 	HandleHover()
 
@@ -33,43 +30,6 @@ func HandleHover():
 
 	global_position.x = lerp(global_position.x, target_position.x, hover_speed)
 	modulate.a = lerp(modulate.a, target_alpha, hover_speed)
-
-func _on_ctrl_inventory_grid_ex_item_mouse_entered(item):
-	# Display item info when mouse enters an item
-	item_label.on_item_mouse_entered(item)
-
-func _on_ctrl_inventory_grid_ex_item_mouse_exited(item):
-	# Hide item info when mouse leaves the item
-	item_label.on_item_mouse_exited(item)
-
-func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
-	if item.get_property("edible") == true and item.get_property("Type", "") == "Ingredient":
-		var food_value = item.get_property("hunger_value")
-		remove_inventory_item(item, 1)
-		player.replenish_hunger(food_value)
-		eat.play()
-	else:
-		# If not food, attempt to equip or swap
-		if item.get_inventory() == inventory:
-			if equippable.has_place_for(item):
-				item._add_item_to_owner(item, equippable, 0)
-			else:
-				var item2 = equippable.get_item_at(Vector2i(0,0))
-				item.swap(item, item2)
-
-func _on_ctrl_inventory_grid_ex_equippable_inventory_item_context_activated(item):
-	if item.get_property("edible") == true:
-		var food_value = item.get_property("hunger_value")
-		remove_equipped_item(item, 1)
-		player.replenish_hunger(food_value)
-		eat.play()
-	else:
-		# If not food, attempt to return it to inventory
-		if item.get_inventory() == equippable:
-			if inventory.has_place_for(item):
-				item._add_item_to_owner(item, inventory, 0)
-			else:
-				print("No Space for Item")
 
 func get_equipped_item():
 	var equipped_item = equippable.get_item_at(Vector2i(0,0))
@@ -185,3 +145,40 @@ func _on_inventory_grid_selection_changed():
 	# Play unselection sound
 	if is_instance_valid(unselect_audio) and not unselect_audio.playing:
 		unselect_audio.play()
+
+func _on_ctrl_inventory_grid_ex_item_mouse_entered(item):
+	# Display item info when mouse enters an item
+	item_label.on_item_mouse_entered(item)
+
+func _on_ctrl_inventory_grid_ex_item_mouse_exited(item):
+	# Hide item info when mouse leaves the item
+	item_label.on_item_mouse_exited(item)
+
+func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
+	if item.get_property("edible") == true and item.get_property("Type", "") == "Ingredient":
+		var food_value = item.get_property("hunger_value")
+		remove_inventory_item(item, 1)
+		player.replenish_hunger(food_value)
+		eat.play()
+	else:
+		# If not food, attempt to equip or swap
+		if item.get_inventory() == inventory:
+			if equippable.has_place_for(item):
+				item._add_item_to_owner(item, equippable, 0)
+			else:
+				var item2 = equippable.get_item_at(Vector2i(0,0))
+				item.swap(item, item2)
+
+func _on_ctrl_inventory_grid_ex_equippable_inventory_item_context_activated(item):
+	if item.get_property("edible") == true:
+		var food_value = item.get_property("hunger_value")
+		remove_equipped_item(item, 1)
+		player.replenish_hunger(food_value)
+		eat.play()
+	else:
+		# If not food, attempt to return it to inventory
+		if item.get_inventory() == equippable:
+			if inventory.has_place_for(item):
+				item._add_item_to_owner(item, inventory, 0)
+			else:
+				print("No Space for Item")

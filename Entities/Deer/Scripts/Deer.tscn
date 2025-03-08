@@ -132,7 +132,6 @@ radius = 11.5434
 [node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone", "hitbox")]
 scale = Vector2(2, 2)
 collision_layer = 8
-collision_mask = 9
 script = ExtResource("1_mm3lw")
 movement_speed = 150
 health = 80
@@ -151,11 +150,10 @@ shape = SubResource("CapsuleShape2D_y62b4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8eft")
-animation = &"Run"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 50.0
 navigation_layers = 2
 path_postprocessing = 1
 debug_enabled = true
@@ -172,26 +170,36 @@ texture = ExtResource("3_fexvt")
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, -35)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D3" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, -15)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D4" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 0)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D5" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 15)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D6" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 35)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8

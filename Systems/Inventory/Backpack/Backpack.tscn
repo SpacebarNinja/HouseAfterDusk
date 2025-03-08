@@ -68,10 +68,29 @@ script = ExtResource("3_w6ijb")
 size = Vector2i(1, 6)
 item_protoset = ExtResource("4_g1y3s")
 
-[node name="_Node_49831" type="Node" parent="Inventory"]
+[node name="_Node_50806" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
-prototype_id = "teddybear"
+prototype_id = "sushi"
+properties = {
+"grid_position": Vector2i(0, 2)
+}
+
+[node name="_Node_71914" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "gun"
+properties = {
+"grid_position": Vector2i(0, 3)
+}
+
+[node name="_Node_26255" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "raw_wood"
+properties = {
+"stack_size": 3
+}
 
 [node name="_Node_49977" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
@@ -82,23 +101,15 @@ properties = {
 "stack_size": 3
 }
 
-[node name="_Node_50806" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "sushi"
-properties = {
-"grid_position": Vector2i(0, 2)
-}
-
 [node name="Equippable" type="Node" parent="."]
 script = ExtResource("3_w6ijb")
 size = Vector2i(1, 1)
 item_protoset = ExtResource("4_g1y3s")
 
-[node name="_Node_71914" type="Node" parent="Equippable"]
+[node name="_Node_219039" type="Node" parent="Equippable"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
-prototype_id = "gun"
+prototype_id = "modified_remote"
 
 [node name="Inventory UI" type="Node2D" parent="."]
 position = Vector2(-85, -75)

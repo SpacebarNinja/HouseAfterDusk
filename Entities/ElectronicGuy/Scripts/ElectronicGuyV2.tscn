@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://38ts1v8d4yx6"]
+[gd_scene load_steps=53 format=3 uid="uid://38ts1v8d4yx6"]
 
 [ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/ElectronicGuy/Art/TvG_Idle.png" id="1_qxvli"]
 [ext_resource type="Script" path="res://Entities/ElectronicGuy/Scripts/Electronic_Guy.gd" id="1_vui34"]
@@ -194,6 +194,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qfv6g"]
 radius = 0.01
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk86f"]
+atlas = ExtResource("5_7t6pa")
+region = Rect2(0, 56, 200, 88)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ww1c"]
 radius = 25.0799
 
@@ -265,6 +269,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:movement_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_aewdu"]
 length = 0.001
@@ -304,11 +320,35 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:movement_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_o4k43"]
 resource_name = "Teleport"
 length = 0.6
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -340,10 +380,34 @@ tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0001, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:movement_speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 80]
 }
 
 [sub_resource type="Animation" id="Animation_71ixp"]
@@ -386,6 +450,47 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:movement_speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q80dk"]
+resource_name = "prowl"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c2gp"]
 _data = {
@@ -393,7 +498,8 @@ _data = {
 "Idle": SubResource("Animation_haii7"),
 "RESET": SubResource("Animation_aewdu"),
 "Teleport": SubResource("Animation_o4k43"),
-"Teleport_Backward": SubResource("Animation_71ixp")
+"Teleport_Backward": SubResource("Animation_71ixp"),
+"prowl": SubResource("Animation_q80dk")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nu1t0"]
@@ -407,14 +513,14 @@ loop_mode = 0
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6jfkl"]
 animation = &"Idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bhdds"]
+animation = &"prowl"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_53c6o"]
 animation = &"Teleport"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ljog"]
 animation = &"Teleport_Backward"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wdx0u"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7obh5"]
 
@@ -429,32 +535,37 @@ switch_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0khis"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fue7b"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ah7ye"]
 states/Glitch/node = SubResource("AnimationNodeAnimation_nu1t0")
-states/Glitch/position = Vector2(353, 172)
+states/Glitch/position = Vector2(453, 172)
 states/Idle/node = SubResource("AnimationNodeAnimation_6jfkl")
-states/Idle/position = Vector2(353, 66)
-states/Start/position = Vector2(211, 100)
+states/Idle/position = Vector2(453, 66)
+states/Prowl/node = SubResource("AnimationNodeAnimation_bhdds")
+states/Prowl/position = Vector2(332, 100)
+states/Start/position = Vector2(212, 100)
 states/Teleport/node = SubResource("AnimationNodeAnimation_53c6o")
-states/Teleport/position = Vector2(485, 66)
+states/Teleport/position = Vector2(585, 66)
 states/Teleport_Backward/node = SubResource("AnimationNodeAnimation_0ljog")
-states/Teleport_Backward/position = Vector2(485, 172)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wdx0u"), "Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_7obh5"), "Teleport", "Teleport_Backward", SubResource("AnimationNodeStateMachineTransition_qq1up"), "Idle", "Glitch", SubResource("AnimationNodeStateMachineTransition_b4r00"), "Glitch", "Idle", SubResource("AnimationNodeStateMachineTransition_naexb"), "Teleport_Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_117uq")]
+states/Teleport_Backward/position = Vector2(585, 172)
+transitions = ["Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_7obh5"), "Teleport", "Teleport_Backward", SubResource("AnimationNodeStateMachineTransition_qq1up"), "Idle", "Glitch", SubResource("AnimationNodeStateMachineTransition_b4r00"), "Glitch", "Idle", SubResource("AnimationNodeStateMachineTransition_naexb"), "Teleport_Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_117uq"), "Start", "Prowl", SubResource("AnimationNodeStateMachineTransition_0khis"), "Prowl", "Idle", SubResource("AnimationNodeStateMachineTransition_fue7b")]
 
-[node name="ElectronicGuyV2" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "anim_player", "anim_tree", "navigation_agent", "vision_cone", "hitbox")]
+[node name="ElectronicGuyV2" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "anim_player", "anim_tree", "navigation_agent", "vision_cone", "hitbox") groups=["Electronic"]]
+y_sort_enabled = true
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_vui34")
-teleport_min_speed = 70
-teleport_max_speed = 90
-teleport_min_hide_length = 1.5
-teleport_max_hide_length = 2.5
+teleport_max_hide_length = 2.0
 movement_speed = 0
 acceleration = 5
 health = 1000
 attack_damage = 200
 spawn_location = "TV"
-wander_radius = 50.0
+wander_radius = 200.0
 anim_sprite = NodePath("AnimatedSprite2D")
 anim_player = NodePath("AnimationPlayer")
 anim_tree = NodePath("AnimationTree")
@@ -479,16 +590,10 @@ debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.892237, 0.243212, 0.471087, 1)
 
-[node name="visionsprite" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(1.2, 2.5)
-texture = ExtResource("5_7t6pa")
-
 [node name="VisionCone" type="PointLight2D" parent="."]
-position = Vector2(0, -70)
 scale = Vector2(1.2, 2.5)
 color = Color(0.832644, 0.290377, 0.290377, 1)
-texture = ExtResource("5_7t6pa")
+texture = SubResource("AtlasTexture_wk86f")
 
 [node name="RayCast2D" type="RayCast2D" parent="VisionCone"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
@@ -555,7 +660,7 @@ collide_with_bodies = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 7)
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -570,6 +675,13 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_ah7ye")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="SearchCooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="TeleportTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -577,20 +689,19 @@ one_shot = true
 wait_time = 2.0
 autostart = true
 
-[node name="SearchCooldown" type="Timer" parent="."]
+[node name="ProwlTimer" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="MovementTimer" type="Timer" parent="."]
-wait_time = 5.0
 one_shot = true
 autostart = true
 
-[connection signal="PlayerEnteredHitbox" from="." to="." method="_on_player_entered_hitbox"]
 [connection signal="PlayerFound" from="." to="." method="_on_player_found"]
 [connection signal="PlayerLost" from="." to="." method="_on_player_lost"]
 [connection signal="Stunned" from="." to="." method="_on_stunned"]
 [connection signal="Unstunned" from="." to="." method="_on_unstunned"]
-[connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]
-[connection signal="timeout" from="GlitchTimer" to="." method="_on_glitch_timer_timeout"]
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="SearchCooldown" to="." method="_on_search_cooldown_timeout"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="TeleportTimer" to="." method="_on_teleport_timer_timeout"]
+[connection signal="timeout" from="GlitchTimer" to="." method="_on_glitch_timer_timeout"]
+[connection signal="timeout" from="ProwlTimer" to="." method="_on_prowl_timer_timeout"]

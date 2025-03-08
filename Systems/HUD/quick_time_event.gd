@@ -22,7 +22,7 @@ func _process(delta):
 	if qte_active:
 		handle_qte_speed(delta)
 	
-func handle_qte_speed(delta):
+func handle_qte_speed(_delta):
 	qte_bar.value -= qte_drain
 	qte_camera_zoom += 0.001
 	camera.zoom = Vector2(qte_camera_zoom,qte_camera_zoom)
@@ -33,6 +33,14 @@ func handle_qte_speed(delta):
 		
 	if qte_bar.value >= 100:
 		QTE_Success.emit()
+		HudManager.clock_visible = true
+		HudManager.journal_visible = true
+		HudManager.stats_visible = true
+		HudManager.inventory_visible = true
+		HudManager.flashlight_movement = true
+		HudManager.camera_movement = true
+		HudManager.interaction_enabled = true
+		
 		qte_reset()
 		print("Succeeded Qte")
 	elif qte_bar.value <= 0:

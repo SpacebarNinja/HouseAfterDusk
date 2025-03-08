@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://boutdgluq4gbq"]
+[gd_scene load_steps=70 format=3 uid="uid://boutdgluq4gbq"]
 
 [ext_resource type="Script" path="res://Entities/Gene/Scripts/Gene.gd" id="1_dghqg"]
 [ext_resource type="Texture2D" uid="uid://kmdjuohfkrv" path="res://Entities/Gene/Art/StepShadow.png" id="5_8ccvq"]
@@ -23,6 +23,10 @@ radius = 0.01
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbktw"]
 radius = 18.0
 height = 72.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0kl4"]
+atlas = ExtResource("26_w7ypw")
+region = Rect2(0, 56, 200, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s1f2"]
 atlas = ExtResource("11_nnoln")
@@ -387,13 +391,12 @@ base_font = ExtResource("12_wtv2l")
 spacing_top = -9
 spacing_bottom = -24
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("flashlight", "audio_list") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("audio_list") groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_dghqg")
-flashlight = NodePath("Flashlight")
 audio_list = [NodePath("Audio/FlashlightOn"), NodePath("Audio/FlashlightOff")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -409,7 +412,7 @@ collision_layer = 2
 z_index = 2
 shape = SubResource("CircleShape2D_648xo")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 2
 collision_mask = 8
 monitorable = false
@@ -421,16 +424,6 @@ debug_color = Color(0.82, 0.2378, 0.79089, 0.184314)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
-[node name="Flashlight" type="PointLight2D" parent="."]
-energy = 0.4
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
-shadow_filter = 2
-shadow_item_cull_mask = 7
-texture = ExtResource("26_w7ypw")
-offset = Vector2(10, 0)
-texture_scale = 2.0
-
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="FlashlightOn" type="AudioStreamPlayer2D" parent="Audio"]
@@ -439,6 +432,83 @@ stream = ExtResource("27_bpiyo")
 [node name="FlashlightOff" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("28_gk3e4")
 
+[node name="VisionCone" type="PointLight2D" parent="."]
+scale = Vector2(1.3, 2.708)
+energy = 0.6
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 5
+texture = SubResource("AtlasTexture_j0kl4")
+offset = Vector2(7, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, 40)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D2" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, 30)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D3" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, 20)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D4" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, 10)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D5" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, -40)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D7" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, -30)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D8" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, -20)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D9" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, -10)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D6" type="RayCast2D" parent="VisionCone"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+target_position = Vector2(100, 0)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="VisionCone2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.3, 2.708)
+texture = SubResource("AtlasTexture_j0kl4")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="InvulnerabilityTimer" type="Timer" parent="Timers"]
@@ -446,43 +516,6 @@ wait_time = 0.2
 
 [node name="HungerTimer" type="Timer" parent="Timers"]
 wait_time = 5.0
-
-[node name="RaycastNodes" type="Node2D" parent="."]
-
-[node name="RayCast2D" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, 75)
-collision_mask = 5
-
-[node name="RayCast2D2" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, 50)
-collision_mask = 5
-
-[node name="RayCast2D3" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, 25)
-collision_mask = 5
-
-[node name="RayCast2D4" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, 0)
-collision_mask = 5
-
-[node name="RayCast2D5" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, -25)
-collision_mask = 5
-
-[node name="RayCast2D6" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, -50)
-collision_mask = 5
-
-[node name="RayCast2D7" type="RayCast2D" parent="RaycastNodes"]
-self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
-target_position = Vector2(170, -75)
-collision_mask = 5
 
 [node name="Step Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.596078)

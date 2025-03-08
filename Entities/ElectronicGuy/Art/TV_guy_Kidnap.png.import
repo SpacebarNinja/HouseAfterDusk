@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfcnpdl2irh8p"
-path="res://.godot/imported/The Sexyman.png-04264614d61ef7ca838ad834c0e2ca3a.ctex"
+uid="uid://bbxxbbp03d7i8"
+path="res://.godot/imported/TV_guy_Kidnap.png-8a0ff0708ef0d3b342bbbba233f65949.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/ElectronicGuy/Art/The Sexyman.png"
-dest_files=["res://.godot/imported/The Sexyman.png-04264614d61ef7ca838ad834c0e2ca3a.ctex"]
+source_file="res://Entities/ElectronicGuy/Art/TV_guy_Kidnap.png"
+dest_files=["res://.godot/imported/TV_guy_Kidnap.png-8a0ff0708ef0d3b342bbbba233f65949.ctex"]
 
 [params]
 

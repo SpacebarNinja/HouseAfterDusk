@@ -3,75 +3,115 @@ extends Entity_Class
 @export_category("Window Chance")
 @export var chance_to_window: float = 20
 
+var actions = {"Attack": false, "Scream": false, "BreakIn": false}
+
 #------------{ Window GIrl Nodes }------------
-@onready var wander_timer = $WanderTimer
-@onready var search_duration = $SearchDuration
+@onready var movement_timer = $MovementTimer
+@onready var search_cooldown = $SearchCooldown
 @onready var window_check = $WindowCheck
+@onready var scream_cooldown = $ScreamCooldown
 
-func _process(delta):
-	handle_animation()
+var can_scream: bool = true
+var finding_window: bool = false
 
-func handle_animation():
-	if current_state == STATES.IDLE:
-		anim_sprite.play("Idle")
-	else:
-		anim_sprite.play("Run")
-		
-func check_suspicion_meter(suspicion_speed: float):
-	if current_state != STATES.SEARCH:
-		return
+func _ready():
+	super._ready()
 	
-	suspicion = clampf(suspicion + suspicion_speed, 0, MAX_SUSPICION)
-	print("Suspicion Level: ", suspicion)
-	if suspicion <= 25:
-		return
-	elif suspicion > 25 and suspicion <= 70 and not GameManager.directing_enemy:
-		GameManager.direct_enemy(self, "PLAYER_ROOM")
-	elif suspicion > 70 and not GameManager.directing_enemy:
-		GameManager.direct_enemy(self, "PLAYER_CURRENT")
+func _physics_process(delta):
+	super._physics_process(delta)
+	handle_animation()
+	handle_behavior(delta)
+		
+func handle_animation():
+	for key in actions.keys():
+		if actions[key]:
+			anim_tree.get("parameters/playback").travel(key)  # Directly play action animation
+			return  # Prevent movement animations from overriding
+
+	if velocity == Vector2.ZERO:
+		anim_tree.get("parameters/playback").travel("Idle")
+	else:
+		anim_tree.get("parameters/playback").travel("Run")
 		
 func attack():
-	anim_sprite.play("Attack")
-	await anim_sprite.animation_finished
 	if player_in_hitbox:
 		player.take_damage(attack_damage, velocity)
 	else:
 		return
-	
-func _on_wander_timer_timeout():
-	if current_state in [STATES.IDLE, STATES.WANDER] :
-		wander_timer.wait_time = randf_range(3, 5)
-		wander()
+		
+func handle_behavior(_delta):
+	if player_seen:
+		current_vision_direction = VISION_DIRECTION.PLAYER
+		manage_suspicion_meter(2)
+		if can_scream:
+			actions["Scream"] = true
+			can_scream = false
+			scream_cooldown.start()
+		
+	if suspicion >= 80 and not GameManager.directing_enemy:
+		GameManager.direct_enemy(self, GameManager.LOCATIONS.PLAYER_LOCATION)
 
-func _on_navigation_agent_2d_target_reached():
-	if current_state == STATES.WANDER:
-		current_state = STATES.IDLE
+func handle_actions(action):
+	actions[action] = not actions[action]
 
 func _on_player_found():
-	anim_sprite.play("Scream")
-	if current_state not in [STATES.PURSUE, STATES.FLEE, STATES.RETREAT]:
-		current_state = STATES.PURSUE
-		player_detected = true
+	if current_state in [BEHAVIOR_STATES.IDLE, BEHAVIOR_STATES.WANDER, BEHAVIOR_STATES.SEARCH]:
+		current_state = BEHAVIOR_STATES.PURSUE
+		manage_suspicion_meter(10)
 		
 func _on_player_lost():
-	if current_state == STATES.PURSUE and player_detected:
-		current_state = STATES.SEARCH
-		player_detected = false
-		
-	if search_duration.is_stopped():
-		search_duration.start() 
-	
-func _on_search_duration_timeout():
-	current_state = STATES.RETREAT
-	set_target_position(origin_location)
+	if current_state == BEHAVIOR_STATES.PURSUE:
+		current_state = BEHAVIOR_STATES.SEARCH
+		search_cooldown.start()
+		GameManager.direct_enemy(self, GameManager.LOCATIONS.PLAYER_LOCATION)
+
+func _on_death():
+	anim_tree.get("parameters/playback").travel("Death")
 
 func _on_window_check_timeout():
-	var chance = randf_range(chance_to_window + 2, 100)
-	if chance < 90:
-		return
-	else:
+	if randf() * 100 <= chance_to_window:
 		window_check.stop()
-		GameManager.direct_enemy(self, "CLOSE_WINDOW")
+		GameManager.direct_enemy(self, GameManager.LOCATIONS.CLOSEST_WINDOW)
+		finding_window = true
+		
+func _on_scream_cooldown_timeout():
+	can_scream = true
+
+func _on_search_cooldown_timeout():
+	if suspicion > 0:
+		manage_suspicion_meter(3)
+	else:
+		search_cooldown.stop()
+		window_check.stop()
+		scream_cooldown.stop()
+		retreat()
+
+func _on_movement_timer_timeout():
+	if current_state in [BEHAVIOR_STATES.IDLE, BEHAVIOR_STATES.WANDER]:
+		movement_timer.wait_time = 5
+		wander()
+		
+	elif current_state == BEHAVIOR_STATES.PURSUE:
+		movement_timer.wait_time = 3
+
+	movement_timer.start()
 
 func _on_hitbox_body_entered(body):
-	attack()
+	if body == player:
+		player_in_hitbox = true
+		actions["Attack"] = true
+
+func _on_hitbox_body_exited(body):
+	if body == player:
+		player_in_hitbox = false
+		actions["Attack"] = false
+
+func _on_navigation_agent_2d_navigation_finished():
+	if current_state == BEHAVIOR_STATES.WANDER:
+		current_state = BEHAVIOR_STATES.IDLE
+		
+	elif current_state == BEHAVIOR_STATES.RETREAT:
+		queue_free()
+		
+	if GameManager.directing_enemy:
+		GameManager.directing_enemy = false

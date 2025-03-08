@@ -61,7 +61,7 @@ func _ready():
 func _process(delta):
 	# Check if remote is equipped or not
 	var item = backpack.get_equipped_item()
-	var remote_status = item and item.get_property("id", "") == 'tv_remote'
+	var remote_status = item and (item.get_property("id", "") == 'tv_remote' or item.get_property("id", "") == 'modified_remote')
 
 	if remote_status != is_remote_equipped:
 		is_remote_equipped = remote_status
@@ -145,7 +145,6 @@ func _on_switch_channel_button_pressed():
 
 	_reset_color_indices()  # Reset indices for the new channel
 	_update_channel_display()
-
 
 func _update_channel_display():
 	# Play switch sound
@@ -252,3 +251,7 @@ func _update_light_color(delta):
 			color_lerp_value = 0.0
 			current_color_index = next_color_index
 			next_color_index = (next_color_index + 1) % color_array.size() if color_array.size() > 1 else 0
+
+func corrupt_channel(index: int):
+	channels["Channel %s" %index] = "Corrupted"
+	print("Corrupting Channel %s" %index)

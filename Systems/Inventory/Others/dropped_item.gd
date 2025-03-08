@@ -26,7 +26,6 @@ func handle_text():
 	
 func pickup_item():
 	backpack.add_inventory_item(item, amount)
-	await get_tree().create_timer(1.5)
 	queue_free()
 
 func _on_despawn_timer_timeout():

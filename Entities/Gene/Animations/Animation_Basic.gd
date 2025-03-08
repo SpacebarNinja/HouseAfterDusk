@@ -2,6 +2,7 @@ extends AnimationBase
 
 @onready var journal = get_tree().get_first_node_in_group("Journal")
 @onready var anim_sprite = $AnimatedSprite2D
+
 @export var timer_list: Array[Timer]
 
 var direction: String
@@ -28,7 +29,7 @@ func handle_animation():
 	var horizontal_input = Input.get_action_strength("WalkRight") - Input.get_action_strength("WalkLeft")
 	var vertical_input = Input.get_action_strength("WalkDown") - Input.get_action_strength("WalkUp")
 	var anim_vector = Vector2(horizontal_input, vertical_input)
-
+	
 	if horizontal_input == 1:
 		flip_sprite(false)
 	elif horizontal_input == -1:

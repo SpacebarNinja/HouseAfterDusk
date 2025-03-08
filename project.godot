@@ -20,7 +20,6 @@ config/icon="res://Logo.png"
 
 BackgroundAudio="*res://Singletons/BackgrondAudio.tscn"
 WorldManager="*res://Singletons/WorldManager.gd"
-EnemyDirector="*res://Singletons/GameDirector.gd"
 GameManager="*res://Singletons/Game_Manager.tscn"
 ItemRecipes="*res://Singletons/ItemRecipes.gd"
 HudManager="*res://Singletons/HudManager.gd"
@@ -45,6 +44,10 @@ mouse_cursor/custom_image="res://Assets/Cursors/Cursor.png"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gloot/plugin.cfg")
+
+[global_group]
+
+Electronic=""
 
 [input]
 

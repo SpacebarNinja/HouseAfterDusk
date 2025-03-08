@@ -141,39 +141,39 @@ func stop_electrical_ambient():
 	is_electrical_ambient_playing = false
 		
 func _on_living_room_area_entered(_area):
-	print("Entered Living Room area")
+	#print("Entered Living Room area")
 	show_room(living_room)
 
 func _on_bathroom_area_entered(_area):
-	print("Entered Bathroom area")
+	#print("Entered Bathroom area")
 	show_room(bathroom)
 
 func _on_kitchen_area_entered(_area):
-	print("Entered Kitchen area")
+	#print("Entered Kitchen area")
 	show_room(kitchen)
 
 func _on_hallway_area_entered(_area):
-	print("Entered Hallway area")
+	#print("Entered Hallway area")
 	show_room(hallway)
 
 func _on_bedroom_area_entered(_area):
-	print("Entered Bedroom area")
+	#print("Entered Bedroom area")
 	show_room(bedroom)
 
 func _on_storage_area_entered(_area):
-	print("Entered Storage area")
+	#print("Entered Storage area")
 	show_room(storage)
 
 func _on_electrical_area_entered(_area):
-	print("Entered Electrical area")
+	#print("Entered Electrical area")
 	show_room(electrical)
 	
 func _on_outside_cabin_area_entered(_area):
-	print("Exited Cabin")
+	#print("Exited Cabin")
 	show_room(outside_cabin)
 
 func _on_crop_field_area_entered(_area):
-	print("At Crop Field")
+	#print("At Crop Field")
 	show_room(crop_field)
 	
 func _on_cam_x_living_room_area_entered(_area):

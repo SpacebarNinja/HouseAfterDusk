@@ -547,7 +547,7 @@ sources/2 = SubResource("TileSetAtlasSource_oxatq")
 sources/3 = SubResource("TileSetAtlasSource_enr0i")
 sources/4 = SubResource("TileSetAtlasSource_fidhf")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_mvapc"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k4ow3"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
@@ -557,7 +557,7 @@ agent_radius = 0.0
 texture = ExtResource("6_7gkpj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mvapc")
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_k4ow3")
 
 [sub_resource type="TileSet" id="TileSet_32fin"]
 tile_size = Vector2i(32, 32)
@@ -568,7 +568,6 @@ sources/1 = SubResource("TileSetAtlasSource_hfl4m")
 texture = ExtResource("6_7gkpj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mvapc")
 
 [sub_resource type="TileSet" id="TileSet_d1d11"]
 tile_size = Vector2i(32, 32)
@@ -2602,7 +2601,7 @@ metadata/_edit_group_ = true
 position = Vector2(-56, 144)
 script = ExtResource("18_rd8s4")
 
-[node name="TV" type="Node2D" parent="ROOMS/CabinNodes/Living Room" node_paths=PackedStringArray("interaction_area", "tilemap") groups=["Electronic"]]
+[node name="TV" type="Node2D" parent="ROOMS/CabinNodes/Living Room" node_paths=PackedStringArray("interaction_area", "tilemap") groups=["Electronic", "Tv"]]
 y_sort_enabled = true
 position = Vector2(-224, -33)
 script = ExtResource("7_moaoa")
@@ -3102,7 +3101,7 @@ script = ExtResource("18_rd8s4")
 [node name="WindowArea" type="Area2D" parent="ROOMS/CabinNodes/Bedroom/Window" node_paths=PackedStringArray("window")]
 position = Vector2(1.90735e-06, -2.67029e-05)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 2
 script = ExtResource("20_8kuny")
 window = NodePath("..")
 metadata/_edit_lock_ = true
@@ -3345,6 +3344,10 @@ bus = &"SFX"
 y_sort_enabled = true
 position = Vector2(-122, 30)
 texture = ExtResource("42_y01l5")
+
+[node name="Timer" type="Timer" parent="ROOMS/CabinNodes/Electrical/Generator"]
+wait_time = 10.0
+one_shot = true
 
 [node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Electrical/Generator" node_paths=PackedStringArray("sprite")]
 collision_layer = 0
@@ -3825,6 +3828,7 @@ script = ExtResource("18_kqqhq")
 [connection signal="body_entered" from="ROOMS/CabinNodes/Kitchen/Window/WindowArea" to="ROOMS/CabinNodes/Kitchen/Window/WindowArea" method="_on_body_entered"]
 [connection signal="body_entered" from="ROOMS/CabinNodes/Hallway/Window/WindowArea" to="ROOMS/CabinNodes/Hallway/Window/WindowArea" method="_on_body_entered"]
 [connection signal="body_entered" from="ROOMS/CabinNodes/Bedroom/Window/WindowArea" to="ROOMS/CabinNodes/Bedroom/Window/WindowArea" method="_on_body_entered"]
+[connection signal="timeout" from="ROOMS/CabinNodes/Electrical/Generator/Timer" to="ROOMS/CabinNodes/Electrical/Generator" method="_on_timer_timeout"]
 [connection signal="area_entered" from="RoomDetection/Living Room" to="ROOMS" method="_on_living_room_area_entered"]
 [connection signal="area_entered" from="RoomDetection/Bathroom" to="ROOMS" method="_on_bathroom_area_entered"]
 [connection signal="area_entered" from="RoomDetection/Kitchen" to="ROOMS" method="_on_kitchen_area_entered"]
