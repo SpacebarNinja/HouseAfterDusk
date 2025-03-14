@@ -23,7 +23,7 @@ const REDUCED_CABIN_SUN_COLOR = 10
 @export var generator_off_darkness: int = 20
 @export var generator_transition_time: float = 1.0  # Duration of generator transition
 
-@onready var rooms = get_node("/root/MainScene/DemoMap2/ROOMS")
+@onready var rooms = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
 
 var target_brightness: float = 0.0
 var current_brightness: float = 0.0
@@ -50,23 +50,27 @@ func _ready():
 	color = Color.from_hsv(0, current_sun_color / 100.0, current_brightness / 100.0, 1)
 	
 func _process(delta):
+	if not is_instance_valid(rooms):
+		rooms = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
+		
 	var world_time = WorldManager.WorldTime
 	var base_brightness = get_brightness(world_time)
 	var base_sun_color = get_sun_color(world_time)
 	
 	# Make cabin darker than outside
-	if str(rooms.current_room.name) != 'OUTSIDE':
-		base_brightness = clamp(base_brightness - REDUCED_CABIN_BRIGHTNESS, MIN_BRIGHTNESS, base_brightness)
-		base_sun_color = clamp(base_sun_color - REDUCED_CABIN_SUN_COLOR, MIN_SUN_COLOR, base_sun_color)
-		
-		if not WorldManager.is_generator_on:
-			# Adjust target values when generator is off
-			target_brightness = clamp(base_brightness - generator_off_darkness, MIN_BRIGHTNESS - generator_off_darkness, base_brightness)
-			target_sun_color = base_sun_color
-		else:
-			# Normal brightness when generator is on
-			target_brightness = base_brightness
-			target_sun_color = base_sun_color
+	if is_instance_valid(rooms) and rooms and rooms.current_room:
+		if str(rooms.current_room.name) != 'OUTSIDE':
+			base_brightness = clamp(base_brightness - REDUCED_CABIN_BRIGHTNESS, MIN_BRIGHTNESS, base_brightness)
+			base_sun_color = clamp(base_sun_color - REDUCED_CABIN_SUN_COLOR, MIN_SUN_COLOR, base_sun_color)
+			
+			if not WorldManager.is_generator_on:
+				# Adjust target values when generator is off
+				target_brightness = clamp(base_brightness - generator_off_darkness, MIN_BRIGHTNESS - generator_off_darkness, base_brightness)
+				target_sun_color = base_sun_color
+			else:
+				# Normal brightness when generator is on
+				target_brightness = base_brightness
+				target_sun_color = base_sun_color
 	else:
 		target_brightness = base_brightness
 		target_sun_color = base_sun_color

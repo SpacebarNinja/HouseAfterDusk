@@ -1,7 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://chact4baxwqfo"]
 
 [ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/TheDolls/Art/Doll_Idle.png" id="1_bluyw"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Entities/TheDolls/Doll.gd" id="1_v3bm4"]
+=======
+[ext_resource type="Script" uid="uid://cx3ee1pis12wh" path="res://Entities/TheDolls/Doll.gd" id="1_v3bm4"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://crhys4clwm17s" path="res://Entities/TheDolls/Art/Doll_Passive.png" id="2_8fyii"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="4_5vufh"]
 

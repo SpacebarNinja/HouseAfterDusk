@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://baent8h2dfd7u"]
 
-[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="1_kvyfn"]
+[ext_resource type="Script" uid="uid://c6knq676vf5di" path="res://Systems/HUD/fishing_hud.gd" id="1_kvyfn"]
 [ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="2_fss8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_elywg"]

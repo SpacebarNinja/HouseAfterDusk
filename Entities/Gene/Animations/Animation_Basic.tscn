@@ -1,10 +1,14 @@
 [gd_scene load_steps=151 format=3 uid="uid://cyb62lsrjwyej"]
 
-[ext_resource type="Script" path="res://Entities/Gene/Animations/Animation_Basic.gd" id="1_lm76y"]
+[ext_resource type="Script" uid="uid://cprbu7bcsgk3l" path="res://Entities/Gene/Animations/Animation_Basic.gd" id="1_lm76y"]
 [ext_resource type="Texture2D" uid="uid://c7dqk0xa4at1e" path="res://Entities/Gene/Art/Gene_Spritesheet_Left_Updated.png" id="2_0r0xt"]
 [ext_resource type="Texture2D" uid="uid://dc1ncqlchf7t0" path="res://Systems/Inventory/Backpack/Items/Fish.png" id="2_5eb2d"]
 [ext_resource type="Material" uid="uid://ce4ggjdlwdg63" path="res://Assets/Shader/Player Shadow.tres" id="2_ksiop"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Entities/Gene/HandItem.gd" id="2_wgvro"]
+=======
+[ext_resource type="Script" uid="uid://d4bv0nb3alrwk" path="res://Entities/Gene/HandItem.gd" id="2_wgvro"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://647ffci78nwb" path="res://Entities/Gene/Art/Gene_Spritesheet.png" id="4_4yue2"]
 [ext_resource type="AudioStream" uid="uid://drpyp0r6ywk2k" path="res://Entities/WindowGirl/Audio/Walk_wood.mp3" id="5_ojlfl"]
 [ext_resource type="AudioStream" uid="uid://b1lsplcl6ymej" path="res://Entities/Gene/Audio/Cigarette_Light.wav" id="6_4t7o0"]
@@ -1187,6 +1191,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vghxr"]
 _data = {
+<<<<<<< Updated upstream
 "Idle1": SubResource("Animation_sixy1"),
 "Idle2": SubResource("Animation_dihk0"),
 "Opening_Journal": SubResource("Animation_yeq87"),
@@ -1194,6 +1199,15 @@ _data = {
 "Sprint": SubResource("Animation_imk5w"),
 "Walk": SubResource("Animation_glp61"),
 "Walk_Backwards": SubResource("Animation_26coc")
+=======
+&"Idle1": SubResource("Animation_sixy1"),
+&"Idle2": SubResource("Animation_dihk0"),
+&"Opening_Journal": SubResource("Animation_yeq87"),
+&"RESET": SubResource("Animation_f8lsv"),
+&"Sprint": SubResource("Animation_imk5w"),
+&"Walk": SubResource("Animation_glp61"),
+&"Walk_Backwards": SubResource("Animation_26coc")
+>>>>>>> Stashed changes
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlr85"]

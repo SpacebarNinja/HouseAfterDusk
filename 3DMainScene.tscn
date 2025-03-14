@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8w13giciappm"]
 
-[ext_resource type="Script" path="res://World/House/Scripts/Canvas_Modulate.gd" id="7_fmvl3"]
+[ext_resource type="Script" uid="uid://dxpfesq4sf0sm" path="res://World/House/Scripts/Canvas_Modulate.gd" id="7_fmvl3"]
 
 [sub_resource type="Environment" id="Environment_hca5b"]
 background_mode = 3

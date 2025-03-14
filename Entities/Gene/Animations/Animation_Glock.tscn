@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://c0te2f6mrt2cg"]
 
-[ext_resource type="Script" path="res://Entities/Gene/Animations/Item_glock.gd" id="1_yy2ss"]
+[ext_resource type="Script" uid="uid://dn6gaj3ix86po" path="res://Entities/Gene/Animations/Item_glock.gd" id="1_yy2ss"]
 [ext_resource type="Texture2D" uid="uid://ba62qmeng1u3k" path="res://Entities/Gene/Art/Gene_Holding_Glock.png" id="2_5ofnp"]
 [ext_resource type="AudioStream" uid="uid://dxyxe7mlwglu8" path="res://Entities/Gene/Audio/Glock_Shoot.wav" id="3_mfq7a"]
 
@@ -356,15 +356,15 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gac2n"]
 _data = {
-"Gun_point_down": SubResource("Animation_25rvx"),
-"Gun_point_down_left": SubResource("Animation_6c835"),
-"Gun_point_down_right": SubResource("Animation_xvcsa"),
-"Gun_point_left": SubResource("Animation_oj3qm"),
-"Gun_point_right": SubResource("Animation_b3xq2"),
-"Gun_point_up": SubResource("Animation_1n11f"),
-"Gun_point_up_left": SubResource("Animation_0y3gq"),
-"Gun_point_up_right": SubResource("Animation_afta7"),
-"RESET": SubResource("Animation_y72ap")
+&"Gun_point_down": SubResource("Animation_25rvx"),
+&"Gun_point_down_left": SubResource("Animation_6c835"),
+&"Gun_point_down_right": SubResource("Animation_xvcsa"),
+&"Gun_point_left": SubResource("Animation_oj3qm"),
+&"Gun_point_right": SubResource("Animation_b3xq2"),
+&"Gun_point_up": SubResource("Animation_1n11f"),
+&"Gun_point_up_left": SubResource("Animation_0y3gq"),
+&"Gun_point_up_right": SubResource("Animation_afta7"),
+&"RESET": SubResource("Animation_y72ap")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3i0wt"]

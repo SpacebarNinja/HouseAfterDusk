@@ -59,20 +59,31 @@ func _ready():
 	television_light.hide()
 
 func _process(delta):
+<<<<<<< Updated upstream
 	# Check if remote is equipped or not
 	var item = backpack.get_equipped_item()
+=======
+	var item = null
+	if is_instance_valid(backpack):
+		item = backpack.get_equipped_item()
+
+>>>>>>> Stashed changes
 	var remote_status = item and item.get_property("id", "") == 'tv_remote'
 
 	if remote_status != is_remote_equipped:
 		is_remote_equipped = remote_status
 		handle_text()
+
 	
 	# Adjust audio volume based on current room
 	for audio in channel_bg_audio:
-		if str(rooms.current_room.name) == 'OUTSIDE':
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), -5)
-		else:
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), 5)
+		# Ensure rooms and current_room are valid before accessing .name
+		if rooms and is_instance_valid(rooms) and rooms.current_room and is_instance_valid(rooms.current_room):
+			if str(rooms.current_room.name) == 'OUTSIDE':
+				AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), -5)
+			else:
+				AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), 5)
+
 	
 	# Update television light color if the TV is on
 	if is_on:

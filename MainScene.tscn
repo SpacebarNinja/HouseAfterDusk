@@ -1,13 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://3r15ojyqxyb2"]
+[gd_scene load_steps=9 format=3 uid="uid://3r15ojyqxyb2"]
 
 [ext_resource type="PackedScene" uid="uid://ctm1dfhfkd0fl" path="res://Systems/HUD/Hud.tscn" id="1_fh8r2"]
 [ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_ofx2c"]
 [ext_resource type="PackedScene" uid="uid://boutdgluq4gbq" path="res://Entities/Gene/Gene.tscn" id="4_gh3rb"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://bsglmfebiwnb" path="res://World/House/Scripts/DemoMap2.tscn" id="5_4xog2"]
 [ext_resource type="Script" path="res://Entities/Gene/Camera.gd" id="5_twjhg"]
+=======
+[ext_resource type="Script" uid="uid://brdobufhd2ekv" path="res://Entities/Gene/Camera.gd" id="5_twjhg"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://85g3prbvvwkv" path="res://Systems/Particles/RoomParticles.tscn" id="6_txbsq"]
-[ext_resource type="PackedScene" uid="uid://b6pc0pegkjbea" path="res://Entities/Alice/alice.tscn" id="8_p7uja"]
-[ext_resource type="Script" path="res://World/House/Scripts/Canvas_Modulate.gd" id="9_7ksos"]
+[ext_resource type="PackedScene" uid="uid://mfrembd8q6n0" path="res://World/House/Scenes/map_outside.tscn" id="7_5crlr"]
+[ext_resource type="Script" uid="uid://dxpfesq4sf0sm" path="res://World/House/Scripts/Canvas_Modulate.gd" id="9_7ksos"]
 
 [sub_resource type="Environment" id="Environment_0agw0"]
 background_mode = 3
@@ -29,9 +33,6 @@ fog_light_color = Color(1, 0, 0.427451, 1)
 [node name="MainScene" type="Node2D"]
 y_sort_enabled = true
 
-[node name="DemoMap2" parent="." instance=ExtResource("5_4xog2")]
-position = Vector2(-1352, -40)
-
 [node name="Hud" parent="." instance=ExtResource("1_fh8r2")]
 
 [node name="DebugPanel" parent="." instance=ExtResource("2_ofx2c")]
@@ -47,7 +48,11 @@ script = ExtResource("5_twjhg")
 
 [node name="Player" parent="." instance=ExtResource("4_gh3rb")]
 modulate = Color(1.1, 1.1, 1.1, 1)
+<<<<<<< Updated upstream
 position = Vector2(-1256, 117)
+=======
+position = Vector2(-184, -136)
+>>>>>>> Stashed changes
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")
@@ -59,5 +64,4 @@ script = ExtResource("9_7ksos")
 generator_off_darkness = 15
 generator_transition_time = 0.5
 
-[node name="Alice" parent="." instance=ExtResource("8_p7uja")]
-position = Vector2(-1325, -18)
+[node name="MapOutside" parent="." instance=ExtResource("7_5crlr")]

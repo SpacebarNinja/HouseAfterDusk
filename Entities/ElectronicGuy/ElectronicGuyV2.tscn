@@ -1,9 +1,15 @@
 [gd_scene load_steps=32 format=3 uid="uid://38ts1v8d4yx6"]
 
 [ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/ElectronicGuy/Art/TvG_Idle.png" id="1_qxvli"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Entities/ElectronicGuy/Electronic_Guy.gd" id="1_vui34"]
 [ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/ElectronicGuy/Art/TvG_Teleport.png" id="2_r4oyu"]
 [ext_resource type="Script" path="res://Dev Stuff/BaseStates/Statemachine.gd" id="4_ndyrx"]
+=======
+[ext_resource type="Script" uid="uid://blai35rlryacv" path="res://Entities/ElectronicGuy/Electronic_Guy.gd" id="1_vui34"]
+[ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/ElectronicGuy/Art/TvG_Teleport.png" id="2_r4oyu"]
+[ext_resource type="Script" uid="uid://dbh5t8vs4cyi2" path="res://Dev Stuff/BaseStates/Statemachine.gd" id="4_ndyrx"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="5_7t6pa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p44n"]

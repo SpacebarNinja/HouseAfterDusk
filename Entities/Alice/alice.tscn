@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://b6pc0pegkjbea"]
 
-[ext_resource type="Script" path="res://Entities/Alice/alice.gd" id="1_7efny"]
+[ext_resource type="Script" uid="uid://bc26gra8axkmf" path="res://Entities/Alice/alice.gd" id="1_7efny"]
 [ext_resource type="Texture2D" uid="uid://kmdjuohfkrv" path="res://Entities/Gene/Art/StepShadow.png" id="2_gnlrb"]
 [ext_resource type="Texture2D" uid="uid://b4f44qpwm3wmr" path="res://Entities/Alice/Art/AliceSpritesheet.png" id="2_t6hot"]
-[ext_resource type="Script" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="4_xp28v"]
+[ext_resource type="Script" uid="uid://quwo3b013qqr" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="4_xp28v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xf0wo"]
 radius = 4.0
@@ -80,7 +80,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8x0h"]
 size = Vector2(62, 102)
 
-[node name="Alice" type="CharacterBody2D" groups=["Player"]]
+[node name="Alice" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1

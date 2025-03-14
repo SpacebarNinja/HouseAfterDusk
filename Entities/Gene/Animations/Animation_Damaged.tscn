@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://doi0gc0x5c2cu"]
 
-[ext_resource type="Script" path="res://Entities/Gene/Animations/Animation_Damaged.gd" id="1_ivufs"]
+[ext_resource type="Script" uid="uid://bfl0g8rw2iniu" path="res://Entities/Gene/Animations/Animation_Damaged.gd" id="1_ivufs"]
 [ext_resource type="Texture2D" uid="uid://i3pykgoanitu" path="res://Entities/Gene/Art/Gene_Hurt.png" id="2_e154t"]
 
 [sub_resource type="Animation" id="Animation_d04ss"]
@@ -74,8 +74,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tca1n"]
 _data = {
-"RESET": SubResource("Animation_d04ss"),
-"Take_Damage": SubResource("Animation_w0aw1")
+&"RESET": SubResource("Animation_d04ss"),
+&"Take_Damage": SubResource("Animation_w0aw1")
 }
 
 [node name="Damaged" type="Node2D" node_paths=PackedStringArray("animation_player")]

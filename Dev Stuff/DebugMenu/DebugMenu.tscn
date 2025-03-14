@@ -1,25 +1,38 @@
 [gd_scene load_steps=43 format=3 uid="uid://chyhpk7ouru8b"]
 
-[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
+[ext_resource type="Script" uid="uid://cfauk360uoi6j" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
-[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Game.gd" id="3_2ur0b"]
-[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Enemy.gd" id="3_6x55g"]
+[ext_resource type="Script" uid="uid://ccnfh0kof8bnu" path="res://Dev Stuff/DebugMenu/Debug_Window_Game.gd" id="3_2ur0b"]
+[ext_resource type="Script" uid="uid://biypn2yyrakci" path="res://Dev Stuff/DebugMenu/Debug_Window_Enemy.gd" id="3_6x55g"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="3_mat6y"]
 [ext_resource type="Texture2D" uid="uid://dfcnpdl2irh8p" path="res://Entities/ElectronicGuy/Art/The Sexyman.png" id="3_nyy1d"]
 [ext_resource type="Theme" uid="uid://domqwgw7g646m" path="res://Dev Stuff/DebugMenu/Gui_Minimize.tres" id="4_1qtaa"]
 [ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/TheDolls/Art/Doll_Idle.png" id="4_ke238"]
 [ext_resource type="Theme" uid="uid://c4c6stt0oceom" path="res://Dev Stuff/DebugMenu/Gui_Close.tres" id="5_6eqat"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window.gd" id="5_nofec"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Player.gd" id="8_iwgxf"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Map.gd" id="9_u6m8c"]
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Inventory.gd" id="10_gerqt"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="11_8rupj"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="13_nnlmn"]
+=======
+[ext_resource type="Script" uid="uid://qwweby8xep7k" path="res://Dev Stuff/DebugMenu/Debug_Window.gd" id="5_nofec"]
+[ext_resource type="Script" uid="uid://kh111erh10oi" path="res://Dev Stuff/DebugMenu/Debug_Window_Player.gd" id="8_iwgxf"]
+[ext_resource type="Script" uid="uid://csp1w1xsliv2c" path="res://Dev Stuff/DebugMenu/Debug_Window_Map.gd" id="9_u6m8c"]
+[ext_resource type="Script" uid="uid://c0ir0wtemiw21" path="res://Dev Stuff/DebugMenu/Debug_Window_Inventory.gd" id="10_gerqt"]
+[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="11_8rupj"]
+[ext_resource type="Script" uid="uid://2sxumcwcp80r" path="res://addons/gloot/core/inventory_item.gd" id="13_nnlmn"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="14_m2d0y"]
-[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
+[ext_resource type="Script" uid="uid://eog3jdphrrmu" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="15_w6hg1"]
 [ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/deer male calciumtrice.png" id="16_awk0u"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
+=======
+[ext_resource type="Script" uid="uid://xkuseyh1wcqg" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
+>>>>>>> Stashed changes
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="16_lwjpa"]
 [ext_resource type="Texture2D" uid="uid://ds5wnn3jpk8ir" path="res://Dev Stuff/DebugMenu/Trash_Icon.png" id="20_ndrq0"]
 [ext_resource type="Texture2D" uid="uid://dyiuj0rpblf3d" path="res://Systems/Inventory/Backpack/Art/Slot2.png" id="20_nw6bf"]

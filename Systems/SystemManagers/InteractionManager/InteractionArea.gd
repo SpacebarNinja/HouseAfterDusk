@@ -9,9 +9,20 @@ var interactable
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
+<<<<<<< Updated upstream
+=======
 
-	intr_display_instance = get_node("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
-	interactable = get_node(interactable_node)
+	interactable = get_node_or_null(interactable_node)
+	intr_display_instance = get_node_or_null("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
+
+	if not intr_display_instance:
+		print("InteractionDisplay not found! Retrying after scene loads...")
+		call_deferred("_delayed_setup")
+
+func _delayed_setup():
+	intr_display_instance = get_node_or_null("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
+>>>>>>> Stashed changes
+
 	
 func _on_body_entered(body):
 	if body.name == 'Player':

@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="House After Dusk v0.24.0"
+config/name="House After Dusk v0.25.1"
 run/main_scene="res://MainScene.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="res://Boot Splash.png"
 config/icon="res://Logo.png"
 
@@ -26,6 +26,10 @@ ItemRecipes="*res://Singletons/ItemRecipes.gd"
 HudManager="*res://Singletons/HudManager.gd"
 GlobalItemList="*res://Singletons/item_list.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+<<<<<<< Updated upstream
+=======
+SceneManager="*res://Singletons/SceneManager.gd"
+>>>>>>> Stashed changes
 
 [debug]
 

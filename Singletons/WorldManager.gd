@@ -1,6 +1,6 @@
 extends Node
 
-var WorldTime: int = 0  # In-game time from 0 to 2399
+var WorldTime: int = 1200  # In-game time from 0 to 2399
 var CurrentDay: int = 0
 var DisplayTime: String = "12:00 AM"
 var DayPart: String = "Night"

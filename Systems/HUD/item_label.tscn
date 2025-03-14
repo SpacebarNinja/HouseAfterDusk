@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://be4u50ae7hfcr"]
 
-[ext_resource type="Script" path="res://Systems/HUD/item_label.gd" id="1_hfbnv"]
+[ext_resource type="Script" uid="uid://iltutmuldrvk" path="res://Systems/HUD/item_label.gd" id="1_hfbnv"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="2_tkclp"]
 
 [sub_resource type="FontVariation" id="FontVariation_qwhc7"]

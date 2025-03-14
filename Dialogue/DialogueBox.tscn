@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cit0csbs20sji"]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_xep2f"]
-[ext_resource type="Script" path="res://Dialogue/balloon.gd" id="2_dpubs"]
+[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_xep2f"]
+[ext_resource type="Script" uid="uid://cl6qbcejftytt" path="res://Dialogue/balloon.gd" id="2_dpubs"]
 [ext_resource type="Texture2D" uid="uid://be6gt6bbkbv70" path="res://Dialogue/HDSprites/Gene/GeneNeutral.png" id="2_gnqau"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="3_6yg28"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_d048x"]
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="5_a5o8d"]
-[ext_resource type="Script" path="res://Dialogue/profile.gd" id="6_lesu3"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="5_a5o8d"]
+[ext_resource type="Script" uid="uid://clwn3fkrifwg" path="res://Dialogue/profile.gd" id="6_lesu3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)

@@ -1,10 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://tehcs4dunwu6"]
 
-[ext_resource type="Script" path="res://Systems/Inventory/Others/dropped_item.gd" id="1_rxg02"]
-[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="2_lr3x2"]
+[ext_resource type="Script" uid="uid://b6cyufdt7k1r2" path="res://Systems/Inventory/Others/dropped_item.gd" id="1_rxg02"]
+[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="2_lr3x2"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="3_nfvrw"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="4_gxbog"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="5_mjr8d"]
+=======
+[ext_resource type="Script" uid="uid://2sxumcwcp80r" path="res://addons/gloot/core/inventory_item.gd" id="4_gxbog"]
+[ext_resource type="Script" uid="uid://eog3jdphrrmu" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="5_mjr8d"]
+>>>>>>> Stashed changes
 
 [node name="Dropped_Item" type="Node2D"]
 script = ExtResource("1_rxg02")

@@ -1,7 +1,25 @@
-extends Node2D
+extends Node2D 
 
-@onready var hud = get_tree().get_first_node_in_group("Hud")
-@onready var journal = hud.get_node("MechanicHud/Journal")
+var hud = null
+var journal = null
+
+func _ready():
+	hud = get_tree().get_first_node_in_group("Hud")
+
+	if hud:
+		journal = hud.get_node_or_null("MechanicHud/Journal")
+		if not journal:
+			print("⚠️ Journal node not found! Will try again after load.")
+			call_deferred("_delayed_setup")
+	else:
+		print("⚠️ HUD not found! Delaying lookup...")
+		call_deferred("_delayed_setup")
+
+func _delayed_setup():
+	hud = get_tree().get_first_node_in_group("Hud")
+	if hud:
+		journal = hud.get_node_or_null("MechanicHud/Journal")
+
 
 func on_intr_area_entered():
 	handle_text()

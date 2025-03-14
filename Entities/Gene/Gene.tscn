@@ -1,5 +1,6 @@
 [gd_scene load_steps=69 format=3 uid="uid://boutdgluq4gbq"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Entities/Gene/Gene.gd" id="1_dghqg"]
 [ext_resource type="Texture2D" uid="uid://kmdjuohfkrv" path="res://Entities/Gene/Art/StepShadow.png" id="5_8ccvq"]
 [ext_resource type="PackedScene" uid="uid://doi0gc0x5c2cu" path="res://Entities/Gene/Animations/Animation_Damaged.tscn" id="8_4b4sb"]
@@ -8,6 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://b63mv2idn7heg" path="res://Assets/Icons/InteractTilesheet.png" id="11_nnoln"]
 [ext_resource type="PackedScene" uid="uid://c0te2f6mrt2cg" path="res://Entities/Gene/Animations/Animation_Glock.tscn" id="12_cd0wl"]
 [ext_resource type="Script" path="res://Dev Stuff/BaseStates/Animation_handler.gd" id="12_o4wjr"]
+=======
+[ext_resource type="Script" uid="uid://o0o0dvo1auhd" path="res://Entities/Gene/Gene.gd" id="1_dghqg"]
+[ext_resource type="Texture2D" uid="uid://kmdjuohfkrv" path="res://Entities/Gene/Art/StepShadow.png" id="5_8ccvq"]
+[ext_resource type="PackedScene" uid="uid://doi0gc0x5c2cu" path="res://Entities/Gene/Animations/Animation_Damaged.tscn" id="8_4b4sb"]
+[ext_resource type="Script" uid="uid://dcjvxkk4taqdl" path="res://Systems/SystemManagers/InteractionManager/InteractionDisplay.gd" id="10_jm0va"]
+[ext_resource type="Texture2D" uid="uid://bjeyopkhh1mjf" path="res://Assets/Icons/InteractInner.png" id="10_qlqfi"]
+[ext_resource type="Texture2D" uid="uid://b63mv2idn7heg" path="res://Assets/Icons/InteractTilesheet.png" id="11_nnoln"]
+[ext_resource type="PackedScene" uid="uid://c0te2f6mrt2cg" path="res://Entities/Gene/Animations/Animation_Glock.tscn" id="12_cd0wl"]
+[ext_resource type="Script" uid="uid://cclh1qwjfuuxm" path="res://Dev Stuff/BaseStates/Animation_handler.gd" id="12_o4wjr"]
+>>>>>>> Stashed changes
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="12_wtv2l"]
 [ext_resource type="PackedScene" uid="uid://cyb62lsrjwyej" path="res://Entities/Gene/Animations/Animation_Basic.tscn" id="13_dgayu"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="26_w7ypw"]
@@ -19,6 +30,10 @@ radius = 0.01
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xf0wo"]
 radius = 7.0
+<<<<<<< Updated upstream
+=======
+height = 22.0
+>>>>>>> Stashed changes
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbktw"]
 radius = 18.0
@@ -404,7 +419,11 @@ z_index = 2
 shape = SubResource("CircleShape2D_648xo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+<<<<<<< Updated upstream
 position = Vector2(0, 28)
+=======
+position = Vector2(1, 28)
+>>>>>>> Stashed changes
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xf0wo")
 

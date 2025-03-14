@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://ce2nviltx65es"]
 
-[ext_resource type="Script" path="res://Systems/Journal/Journal.gd" id="1_s50go"]
+[ext_resource type="Script" uid="uid://bkf46ccxcm6ct" path="res://Systems/Journal/Journal.gd" id="1_s50go"]
 [ext_resource type="Texture2D" uid="uid://b5oy7pjn7jdxu" path="res://Systems/Journal/Art/Journal_Spritesheet.png" id="2_wnnw8"]
 [ext_resource type="AudioStream" uid="uid://cqxqoqepp4o2p" path="res://Systems/Journal/Audio/journal_flip.mp3" id="5_cllvo"]
 [ext_resource type="AudioStream" uid="uid://nntpsebkboxi" path="res://Systems/Journal/Audio/journal_close.mp3" id="6_xgbdv"]

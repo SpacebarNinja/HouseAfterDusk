@@ -1,6 +1,10 @@
 [gd_scene load_steps=21 format=3 uid="uid://btnne6ekpxmv4"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Entities/Deer/deer.gd" id="1_ca34h"]
+=======
+[ext_resource type="Script" uid="uid://i4b3y0uag3t8" path="res://Entities/Deer/deer.gd" id="1_ca34h"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/deer male calciumtrice.png" id="2_4tpnj"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="3_gl0rp"]
 

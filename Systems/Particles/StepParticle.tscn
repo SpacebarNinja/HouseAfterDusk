@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://chpmd454k2mu3"]
 
 [ext_resource type="Texture2D" uid="uid://c385ytdx2hdm6" path="res://Entities/Gene/Art/Step Particle.png" id="1_lw5h0"]
-[ext_resource type="Script" path="res://Systems/Particles/step_particle.gd" id="2_ij0cd"]
+[ext_resource type="Script" uid="uid://dxccdqih5gby8" path="res://Systems/Particles/step_particle.gd" id="2_ij0cd"]
 
 [sub_resource type="Curve" id="Curve_vgerq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494505), 0.0, 0.0, 0, 0]

@@ -1,57 +1,72 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=96 format=3 uid="uid://ctm1dfhfkd0fl"]
+=======
+[gd_scene load_steps=102 format=3 uid="uid://ctm1dfhfkd0fl"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
-[ext_resource type="Script" path="res://Systems/HUD/Hud.gd" id="1_ofedd"]
+[ext_resource type="Script" uid="uid://bj7mvceij3byi" path="res://Systems/HUD/Hud.gd" id="1_ofedd"]
 [ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
-[ext_resource type="Script" path="res://Systems/HUD/main_hud.gd" id="2_miqxo"]
+[ext_resource type="Script" uid="uid://dasdx28o3ql83" path="res://Systems/HUD/main_hud.gd" id="2_miqxo"]
+[ext_resource type="Shader" uid="uid://bwwhyf4a1odbe" path="res://Assets/Shader/ScanLine.gdshader" id="2_uomja"]
 [ext_resource type="Texture2D" uid="uid://cn81rks2rm6sr" path="res://Systems/HUD/Art/DialogueOverlay2.png" id="3_gncqb"]
 [ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
-[ext_resource type="Script" path="res://Systems/HUD/dialogue_overlay.gd" id="4_oxeg6"]
+[ext_resource type="Script" uid="uid://y3bunldt8byx" path="res://Systems/HUD/dialogue_overlay.gd" id="4_oxeg6"]
 [ext_resource type="Texture2D" uid="uid://bejiwjyyicoh4" path="res://Systems/Inventory/Backpack/Art/Backpack.png" id="5_dcrnc"]
 [ext_resource type="Texture2D" uid="uid://dyoppchjbfcf4" path="res://Systems/HUD/Art/HPBarBG.png" id="6_6xx1r"]
 [ext_resource type="Texture2D" uid="uid://vmnj8hovs5q8" path="res://Systems/HUD/Art/HungerBarBG.png" id="6_bxfdd"]
-[ext_resource type="Script" path="res://Systems/HUD/BackpackSprite.gd" id="7_661ui"]
+[ext_resource type="Script" uid="uid://chjfv0mn4jqcv" path="res://Systems/HUD/BackpackSprite.gd" id="7_661ui"]
 [ext_resource type="Texture2D" uid="uid://dbp6jtu1o2s75" path="res://Systems/HUD/Art/HungerBar.png" id="7_mc64d"]
 [ext_resource type="Texture2D" uid="uid://bpxtq036g4j51" path="res://Systems/HUD/Art/HPBar.png" id="7_o8nrm"]
 [ext_resource type="Texture2D" uid="uid://bxs3m1fskp3xt" path="res://Systems/Inventory/Backpack/Art/ICON (BAG).png" id="7_s703r"]
 [ext_resource type="Texture2D" uid="uid://bywqhh6utc21w" path="res://Systems/Journal/Art/ICON (JOURNAL).png" id="8_r3lqb"]
-[ext_resource type="Script" path="res://Systems/HUD/HudButton.gd" id="9_dlaxh"]
+[ext_resource type="Script" uid="uid://d0y5eg18oo8i1" path="res://Systems/HUD/HudButton.gd" id="9_dlaxh"]
 [ext_resource type="Texture2D" uid="uid://mo83elou1nbx" path="res://Systems/HUD/Art/SprintBar.png" id="10_66pv7"]
-[ext_resource type="Script" path="res://Systems/HUD/BetaText.gd" id="14_ovp23"]
-[ext_resource type="Shader" path="res://Assets/Shader/vignette.gdshader" id="15_k06wk"]
+[ext_resource type="Script" uid="uid://d3884fxawwofi" path="res://Systems/HUD/BetaText.gd" id="14_ovp23"]
+[ext_resource type="Shader" uid="uid://dt8044m7sgioc" path="res://Assets/Shader/vignette.gdshader" id="15_k06wk"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="16_dnbc0"]
-[ext_resource type="Script" path="res://Systems/HUD/Keybind.gd" id="17_dpk2t"]
+[ext_resource type="Script" uid="uid://6q3n5f0hmhu5" path="res://Systems/HUD/Keybind.gd" id="17_dpk2t"]
 [ext_resource type="Texture2D" uid="uid://dro6j75bhe75l" path="res://Systems/HUD/Art/QTE_button_hold.png" id="19_5b5fa"]
 [ext_resource type="Texture2D" uid="uid://k4pwyg81cd63" path="res://Systems/HUD/Art/Clock/Clock.png" id="19_hou1q"]
-[ext_resource type="Script" path="res://Systems/HUD/quick_time_event.gd" id="19_unuhn"]
-[ext_resource type="Script" path="res://Systems/HUD/Clock.gd" id="19_xbt5x"]
+[ext_resource type="Script" uid="uid://b1qoye8jbjwri" path="res://Systems/HUD/quick_time_event.gd" id="19_unuhn"]
+[ext_resource type="Script" uid="uid://bs76hoo75k4pd" path="res://Systems/HUD/Clock.gd" id="19_xbt5x"]
 [ext_resource type="Texture2D" uid="uid://d3kxe07wlbmuv" path="res://Systems/HUD/Art/Clock/ClockMinuteHand.png" id="20_5x24c"]
 [ext_resource type="Texture2D" uid="uid://brqapcjwswkui" path="res://Systems/HUD/Art/Clock/ClockHourHand.png" id="20_fc33r"]
 [ext_resource type="Texture2D" uid="uid://cbda0cdpe7kmi" path="res://Systems/HUD/Art/QTE_Button.png" id="20_h45fp"]
 [ext_resource type="Texture2D" uid="uid://cj6mrdv61c0c0" path="res://Systems/HUD/Art/QTE_bar.png" id="21_ondmv"]
 [ext_resource type="Texture2D" uid="uid://lyguhc2jijia" path="res://Systems/HUD/Art/QTE_Bar_interior.png" id="22_ewsfi"]
 [ext_resource type="Texture2D" uid="uid://da7q4fiarxqqw" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollBase.png" id="26_1s1oi"]
-[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/item_panel.gd" id="26_874ad"]
+[ext_resource type="Script" uid="uid://8ht710iie2qn" path="res://Systems/HUD/WorkbenchSystem/item_panel.gd" id="26_874ad"]
 [ext_resource type="Texture2D" uid="uid://bkspp07fopy0s" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollCap.png" id="26_gsrpr"]
 [ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="26_tggdx"]
 [ext_resource type="Texture2D" uid="uid://bb1nbgmfo3v2f" path="res://Systems/HUD/Art/Cooking_GUI.png" id="26_wlppn"]
 [ext_resource type="Texture2D" uid="uid://dp3t44eq4vjmr" path="res://Systems/Inventory/Backpack/Items/RareFish.png" id="27_qodvs"]
 [ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/item_label.tscn" id="28_0chnb"]
-[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/scroll_base.gd" id="28_1iy7h"]
+[ext_resource type="Script" uid="uid://d16t80r43v0wy" path="res://Systems/HUD/WorkbenchSystem/scroll_base.gd" id="28_1iy7h"]
 [ext_resource type="Texture2D" uid="uid://ct21jwiimm3yw" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollButton.png" id="28_dux36"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="28_omeas"]
 [ext_resource type="Texture2D" uid="uid://dc1ncqlchf7t0" path="res://Systems/Inventory/Backpack/Items/Fish.png" id="29_cc8gp"]
-[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/scroll_button.gd" id="29_pheyb"]
-[ext_resource type="Script" path="res://Systems/HUD/WorkbenchSystem/crafting_hud.gd" id="29_yu7lx"]
+[ext_resource type="Script" uid="uid://f4ifriqp0sgi" path="res://Systems/HUD/WorkbenchSystem/scroll_button.gd" id="29_pheyb"]
+[ext_resource type="Script" uid="uid://cij3d7mcd2tm3" path="res://Systems/HUD/WorkbenchSystem/crafting_hud.gd" id="29_yu7lx"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="30_qo76f"]
-[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
+[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="32_1yik7"]
-[ext_resource type="Script" path="res://Systems/HUD/cooking_hud.gd" id="32_4ndme"]
+[ext_resource type="Script" uid="uid://dxso7syfgnkhk" path="res://Systems/HUD/cooking_hud.gd" id="32_4ndme"]
 [ext_resource type="Texture2D" uid="uid://b47khq87dqvli" path="res://Systems/HUD/WorkbenchSystem/Art/Table.png" id="33_hqrie"]
-[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
+[ext_resource type="Script" uid="uid://eog3jdphrrmu" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
 [ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
-[ext_resource type="Script" path="res://Systems/HUD/fishing_hud.gd" id="45_s6v0h"]
+[ext_resource type="Script" uid="uid://c6knq676vf5di" path="res://Systems/HUD/fishing_hud.gd" id="45_s6v0h"]
 [ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
+<<<<<<< Updated upstream
+=======
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pji"]
+shader = ExtResource("2_uomja")
+shader_parameter/scanline_color = Color(1, 1, 1, 0.1)
+shader_parameter/scanline_spacing = 6.0
+shader_parameter/scanline_width = 0.5
+shader_parameter/edge_softness = 1.0
+>>>>>>> Stashed changes
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")
@@ -61,6 +76,59 @@ shader_parameter/vignette_strength = 9.36
 shader_parameter/dither_strength = 0.01
 shader_parameter/opacity = 0.6
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_l5n60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b2a1c"]
+resource_name = "transition_in"
+length = 0.6135
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.6, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xakbd"]
+resource_name = "transition_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_baug7"]
+_data = {
+&"RESET": SubResource("Animation_l5n60"),
+&"transition_in": SubResource("Animation_b2a1c"),
+&"transition_out": SubResource("Animation_xakbd")
+}
 
 [sub_resource type="Theme" id="Theme_iv4kw"]
 
@@ -186,9 +254,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hts70"]
 _data = {
-"RESET": SubResource("Animation_t1g2a"),
-"press_button": SubResource("Animation_6q7tj"),
-"quick_time_event": SubResource("Animation_5au88")
+&"RESET": SubResource("Animation_t1g2a"),
+&"press_button": SubResource("Animation_6q7tj"),
+&"quick_time_event": SubResource("Animation_5au88")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oic7u"]
@@ -338,8 +406,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0daj"]
 _data = {
-"RESET": SubResource("Animation_hqy0f"),
-"transition": SubResource("Animation_0t1i1")
+&"RESET": SubResource("Animation_hqy0f"),
+&"transition": SubResource("Animation_0t1i1")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omof5"]
@@ -389,6 +457,13 @@ script = ExtResource("1_ofedd")
 [node name="BGProcessing" type="CanvasLayer" parent="."]
 layer = 2
 
+[node name="ScanLine" type="ColorRect" parent="BGProcessing"]
+material = SubResource("ShaderMaterial_k5pji")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.798701, 0.661984, 0.661984, 0.4)
+
 [node name="Vignette Effect" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5gsb")
 offset_right = 1152.0
@@ -401,6 +476,20 @@ offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.4)
+
+[node name="Transition" type="ColorRect" parent="BGProcessing"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGProcessing/Transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_baug7")
+}
+autoplay = "RESET"
 
 [node name="DialogueOverlay" type="TextureRect" parent="BGProcessing"]
 visible = false
@@ -648,7 +737,7 @@ texture_progress = ExtResource("22_ewsfi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="QTEHud"]
 libraries = {
-"": SubResource("AnimationLibrary_hts70")
+&"": SubResource("AnimationLibrary_hts70")
 }
 
 [node name="CraftingHud" type="CanvasLayer" parent="." groups=["CraftingHud"]]
@@ -1242,7 +1331,7 @@ field_style = SubResource("StyleBoxTexture_3dasj")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CookingHud"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_p0daj")
+&"": SubResource("AnimationLibrary_p0daj")
 }
 
 [node name="FishingHud" type="CanvasLayer" parent="."]

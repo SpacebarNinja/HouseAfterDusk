@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://by8cmg6buqlgn"]
 
-[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="1_gj37t"]
+[ext_resource type="Script" uid="uid://gyig00lylmv" path="res://addons/gloot/core/item_protoset.gd" id="1_gj37t"]
 
 [resource]
 script = ExtResource("1_gj37t")

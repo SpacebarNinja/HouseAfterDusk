@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bia3jkstduut1"]
 
-[ext_resource type="Script" path="res://Singletons/GameDirector.gd" id="1_n8tm4"]
+[ext_resource type="Script" uid="uid://eynnn55jxcxm" path="res://Singletons/GameDirector.gd" id="1_n8tm4"]
 
 [node name="EnemyDirector" type="Node"]
 script = ExtResource("1_n8tm4")

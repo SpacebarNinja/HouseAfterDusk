@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ca6hna2d0mqb4"]
 
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="1_6llro"]
-[ext_resource type="Script" path="res://Systems/Journal/Page.gd" id="1_rlvic"]
+[ext_resource type="Script" uid="uid://bvdogvs0vldoj" path="res://Systems/Journal/Page.gd" id="1_rlvic"]
 [ext_resource type="Texture2D" uid="uid://ckl7e85ksp8ff" path="res://Systems/Journal/Art/ICON (REFRESH).png" id="2_2w11j"]
 [ext_resource type="Texture2D" uid="uid://dcthb3k5bodg" path="res://Systems/Journal/Art/ICON (SUBMIT).png" id="2_66j2j"]
 [ext_resource type="Texture2D" uid="uid://bqntp8gsuhgx" path="res://Systems/Journal/Art/ICON(UNDO).png" id="2_rxihg"]
