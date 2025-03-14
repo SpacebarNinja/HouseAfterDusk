@@ -1,0 +1,459 @@
+[gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://cur0w3wce5lgx"]
+
+[ext_resource type="Script" uid="uid://kpp8ll3d4a3a" path="res://addons/gloot/core/item_protoset.gd" id="1_4u7dt"]
+
+[resource]
+script = ExtResource("1_4u7dt")
+json_data = "[
+    {
+        \"Description\": \"is a black berry\",
+        \"Name\": \"Acai Berry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"acai_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Bogberry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"it is a berry nice salad\",
+        \"Name\": \"Berry Nice Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"50\",
+        \"id\": \"berry_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Berry Nice Salad.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"bread\",
+        \"Name\": \"Bread\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"25\",
+        \"id\": \"bread\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Bread.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Rabbits :3\",
+        \"Name\": \"Carrot\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"carrot\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Carrot.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I prefer dark\",
+        \"Name\": \"Chocolate\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"chocolate\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Chocolate.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I swear these are round\",
+        \"Name\": \"Cocoa\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"cocoa\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Cocoa.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Its coffee\",
+        \"Name\": \"Coffee\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"coffee\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Coffee.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Almost coffee\",
+        \"Name\": \"Coffee Beans\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"coffee_beans\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Coffee Beans.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Hunger games\",
+        \"Name\": \"Cornucopia\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"cornucopia\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Cornucopia.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Look at him dance\",
+        \"Name\": \"Crab\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"crab\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Crab.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Well crab, this is a very crabby meal\",
+        \"Name\": \"Crab Meal\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"crab_meal\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Crabby Meal.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Heals 2 hp. Smells weird.\",
+        \"Name\": \"Fish\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"fish\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Fish.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Doesnt look like a flower\",
+        \"Name\": \"Flour\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"flour\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Flour.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"is a berry\",
+        \"Name\": \"Goji Berry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"goji_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Baneberry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"its a berry... is it honking?\",
+        \"Name\": \"Goose Berry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"goose_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Gooseberry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"This is grape\",
+        \"Name\": \"Grape\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"grape\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Grape.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"all natural salad\",
+        \"Name\": \"Grassy Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"grassy_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Grassy Salad.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"WHO DRINKS GRAVY??\",
+        \"Name\": \"Gravy\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"gravy\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Gravy.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Tasty Fish\",
+        \"Name\": \"Grilled Fish\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"grilled_fish\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Grilled Fish.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"a very hearty meal\",
+        \"Name\": \"Hearty Meal\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"hearty_meal\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Hearty Meal.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"1/11 collected\",
+        \"Name\": \"Herb\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"herb\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Herb.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"This is a jam\",
+        \"Name\": \"Jam\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"15\",
+        \"id\": \"jam\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Jam.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Wheres the P for this J\",
+        \"Name\": \"Jam Sandwich\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"15\",
+        \"id\": \"jam_sandwich\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Jam Sandwich.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"I can't eat this raw...\",
+        \"Name\": \"Meat\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"meat\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Meat.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Good ole shrooms\",
+        \"Name\": \"Mushroom\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"mushroom\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Mushroom.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"its very dark\",
+        \"Name\": \"Nightshadeberry\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"nightshade_berry\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/NightshadeBerry.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"the best breakfast\",
+        \"Name\": \"Pancakes\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"30\",
+        \"id\": \"pancakes\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pancakes.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"BLACK BEANS\",
+        \"Name\": \"Pepper\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"pepper\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pepper.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"BLACK BEANS\",
+        \"Name\": \"Pepper Beans\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"30\",
+        \"id\": \"pepper_beans\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Pepper Beans.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"An uncooked potato. Can be cooked.\",
+        \"Name\": \"Potato\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"potato\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Potato.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Just call it wheat\",
+        \"Name\": \"Rye\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"20\",
+        \"id\": \"rye\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Rye.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Dope seafloor\",
+        \"Name\": \"Seaweed\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"seaweed\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Seaweed.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Pretty simple\",
+        \"Name\": \"Simple Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"simple_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Simple Salad.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Very Italian\",
+        \"Name\": \"Spaghetti\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"spaghetti\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Spaghetti.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Its just sugar\",
+        \"Name\": \"Sugar\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"sugar\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Sugar.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Its just sugarcane\",
+        \"Name\": \"Sugarcane\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"20\",
+        \"id\": \"sugarcane\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Sugarcane.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Japanese cuisine\",
+        \"Name\": \"Sushi\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"sushi\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Sushi.png\",
+        \"max_stack_size\": \"8\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Dont look at me like that\",
+        \"Name\": \"Tentacle\",
+        \"Type\": \"Ingredient\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"tentacle\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Tentacle.png\",
+        \"max_stack_size\": \"4\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"ITS RAW\",
+        \"Name\": \"Trash\",
+        \"Type\": \"Product\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"20\",
+        \"id\": \"trash\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Garbage.png\",
+        \"max_stack_size\": \"16\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Very venomous ;)\",
+        \"Name\": \"toxin\",
+        \"Type\": \"Product\",
+        \"edible\": \"false\",
+        \"hunger_value\": \"0\",
+        \"id\": \"toxin\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Toxin.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"Description\": \"Greeenst\",
+        \"Name\": \"Veggie Salad\",
+        \"Type\": \"Product\",
+        \"edible\": \"true\",
+        \"hunger_value\": \"20\",
+        \"id\": \"veggie_salad\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Simple Salad.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    }
+]"

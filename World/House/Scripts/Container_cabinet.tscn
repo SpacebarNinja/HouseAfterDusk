@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=3 uid="uid://upgsn02qes0p"]
+
+[ext_resource type="Texture2D" uid="uid://b2s8m2ad3lnjr" path="res://World/House/Art/MAPFixed.png" id="1_4pd0r"]
+[ext_resource type="Texture2D" uid="uid://d3ya58xkuhmv5" path="res://World/House/Art/Interactables/Cabinet.png" id="1_dmsyh"]
+[ext_resource type="Script" uid="uid://bnwe3wvhtruqv" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="2_4pd0r"]
+[ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="3_j437b"]
+[ext_resource type="Script" uid="uid://fq4mtywc6r2n" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="5_40c3r"]
+[ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="6_j437b"]
+
+[sub_resource type="GDScript" id="GDScript_dmsyh"]
+resource_name = "container_cabinet"
+script/source = "extends Item_Container
+
+@onready var backpack = get_tree().get_first_node_in_group(\"Backpack\")
+@onready var container_display = $CanvasLayer
+
+@export var sprite_2d: Sprite2D
+@export var open_cabinet: Texture
+@export var close_cabinet: Texture
+
+func _ready():
+	container_display.hide()
+	generate_loot(TYPE.DEMO)
+	
+func _physics_process(delta):
+	if Input.is_action_just_pressed(\"Escape\") and is_open:
+		close_container()
+	
+func on_intr_area_entered():
+	handle_text()
+
+func on_intr_area_exited():
+	pass
+	
+#====================================
+
+func handle_text():
+	WorldManager.add_interactable(str(\"Open Container\"), 0, Callable(self, \"open_container\"))
+
+func open_container():
+	sprite_2d.texture = open_cabinet
+	is_open = true
+	container_display.show()
+	
+func close_container():
+	sprite_2d.texture = close_cabinet
+	is_open = false
+	container_display.hide()
+
+func _on_ctrl_inventory_grid_ex_inventory_item_context_activated(item):
+	if backpack.inventory.has_place_for(item):
+		item._add_item_to_owner(item, backpack.inventory, 0)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wgx"]
+atlas = ExtResource("1_4pd0r")
+region = Rect2(320, 164, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40c3r"]
+atlas = ExtResource("1_4pd0r")
+region = Rect2(224, 164, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uddtp"]
+atlas = ExtResource("1_dmsyh")
+region = Rect2(520, 40, 456, 624)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uddtp"]
+texture = ExtResource("6_j437b")
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5loaw"]
+texture = ExtResource("6_j437b")
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8gsw"]
+texture = ExtResource("6_j437b")
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40c3r"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
+
+[node name="Cabinet_Container" type="Control" node_paths=PackedStringArray("inventory")]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_dmsyh")
+open_cabinet = SubResource("AtlasTexture_d2wgx")
+close_cabinet = SubResource("AtlasTexture_40c3r")
+inventory = NodePath("CanvasLayer/InventoryGridStacked")
+type = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 624.0
+offset_top = 128.0
+offset_right = 1104.0
+offset_bottom = 752.0
+scale = Vector2(0.7, 0.7)
+texture = SubResource("AtlasTexture_uddtp")
+
+[node name="InventoryGridStacked" type="Node" parent="CanvasLayer"]
+script = ExtResource("2_4pd0r")
+size = Vector2i(2, 2)
+item_protoset = ExtResource("3_j437b")
+
+[node name="CtrlInventoryGridEx" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 664.0
+offset_top = 280.0
+offset_right = 920.0
+offset_bottom = 536.0
+script = ExtResource("5_40c3r")
+inventory_path = NodePath("../InventoryGridStacked")
+field_dimensions = Vector2(94, 94)
+item_spacing = 68
+field_style = SubResource("StyleBoxTexture_uddtp")
+field_highlighted_style = SubResource("StyleBoxTexture_5loaw")
+field_selected_style = SubResource("StyleBoxTexture_i8gsw")
+selection_style = SubResource("StyleBoxFlat_40c3r")
+
+[connection signal="inventory_item_context_activated" from="CanvasLayer/CtrlInventoryGridEx" to="." method="_on_ctrl_inventory_grid_ex_inventory_item_context_activated"]

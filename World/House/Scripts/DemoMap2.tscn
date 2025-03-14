@@ -1,6 +1,6 @@
-[gd_scene load_steps=155 format=4 uid="uid://bsglmfebiwnb"]
+[gd_scene load_steps=158 format=4 uid="uid://bsglmfebiwnb"]
 
-[ext_resource type="Script" path="res://World/House/Scripts/Demomap2.gd" id="1_ffw1e"]
+[ext_resource type="Script" uid="uid://cmyy5qbxb1fe3" path="res://World/House/Scripts/Demomap2.gd" id="1_ffw1e"]
 [ext_resource type="Texture2D" uid="uid://cmt1c200gkqsr" path="res://World/House/Art/MAPTiles.png" id="2_e8q4k"]
 [ext_resource type="Texture2D" uid="uid://bkccgrqnic4q2" path="res://World/House/Art/MAP2.png" id="2_lf63l"]
 [ext_resource type="Texture2D" uid="uid://b2s8m2ad3lnjr" path="res://World/House/Art/MAPFixed.png" id="3_cad2m"]
@@ -9,41 +9,42 @@
 [ext_resource type="Texture2D" uid="uid://ds5pxf1qjo1o8" path="res://World/House/Art/MAPDecor.png" id="5_whmnk"]
 [ext_resource type="Texture2D" uid="uid://bak3je71lqimb" path="res://World/House/Art/MAPElectrical.png" id="6_3ulbh"]
 [ext_resource type="Texture2D" uid="uid://kfx1rdk8htn5" path="res://World/House/Art/NavigationTile.png" id="6_7gkpj"]
-[ext_resource type="Script" path="res://World/House/Scripts/Rooms.gd" id="6_asq3q"]
+[ext_resource type="Script" uid="uid://60tua30y8oax" path="res://World/House/Scripts/Rooms.gd" id="6_asq3q"]
 [ext_resource type="Material" uid="uid://dd1lkq85yan68" path="res://Assets/Shader/Furniture Shadow.tres" id="7_jj0mf"]
-[ext_resource type="Script" path="res://World/House/Scripts/Tv.gd" id="7_moaoa"]
+[ext_resource type="Script" uid="uid://cpwb1ns35uovt" path="res://World/House/Scripts/Tv.gd" id="7_moaoa"]
 [ext_resource type="Texture2D" uid="uid://cdtyu1fgiumb5" path="res://World/House/Art/Televisions_Tilesheet.png" id="13_sxctw"]
 [ext_resource type="AudioStream" uid="uid://e21vasx674dd" path="res://World/House/Audio/tv_on.mp3" id="14_rlmvb"]
 [ext_resource type="AudioStream" uid="uid://ng1ftqvckqqi" path="res://World/House/Audio/door_open.mp3" id="15_disf8"]
 [ext_resource type="AudioStream" uid="uid://slecwkvnj0ju" path="res://World/House/Audio/tv_switch_static.wav" id="15_wgd6a"]
 [ext_resource type="AudioStream" uid="uid://cwil6cml1n162" path="res://World/House/Audio/tv_static.mp3" id="16_d2hp2"]
-[ext_resource type="Script" path="res://World/House/Scripts/TableJournal.gd" id="16_du6og"]
+[ext_resource type="Script" uid="uid://bt8yraxww3t76" path="res://World/House/Scripts/TableJournal.gd" id="16_du6og"]
 [ext_resource type="AudioStream" uid="uid://d08rrm1sibsdm" path="res://Sounds/Ambient Night BG.mp3" id="17_5j2w4"]
-[ext_resource type="Script" path="res://World/House/Scripts/HidingSpot.gd" id="17_oi2wj"]
+[ext_resource type="Script" uid="uid://bxcrwe50kku0y" path="res://World/House/Scripts/HidingSpot.gd" id="17_oi2wj"]
 [ext_resource type="AudioStream" uid="uid://dsqfc5dynomg5" path="res://World/House/Audio/Channels/Channel1 - Children Music.mp3" id="17_up5o5"]
 [ext_resource type="AudioStream" uid="uid://pvdvpu2vpdga" path="res://World/House/Audio/Channels/Channel2 - Boxing.mp3" id="18_hx7gl"]
-[ext_resource type="Script" path="res://Sounds/AmbientBG.gd" id="18_kqqhq"]
-[ext_resource type="Script" path="res://World/House/Scripts/Window.gd" id="18_rd8s4"]
+[ext_resource type="Script" uid="uid://cguonm7mkx3rl" path="res://Sounds/AmbientBG.gd" id="18_kqqhq"]
+[ext_resource type="Script" uid="uid://fqburs50mc2s" path="res://World/House/Scripts/Window.gd" id="18_rd8s4"]
 [ext_resource type="AudioStream" uid="uid://bxcfwyqvb3qta" path="res://World/House/Audio/Channels/Channel3 - Romantic.mp3" id="19_kpcc4"]
-[ext_resource type="Script" path="res://World/House/Scripts/WindowArea.gd" id="20_8kuny"]
+[ext_resource type="Script" uid="uid://bv182posnloss" path="res://World/House/Scripts/WindowArea.gd" id="20_8kuny"]
 [ext_resource type="AudioStream" uid="uid://btikk04bsxcnn" path="res://World/House/Audio/Channels/Channel4 - News.mp3" id="20_c3v45"]
 [ext_resource type="Texture2D" uid="uid://cwt0ry1qmh6h2" path="res://World/House/Art/TVGlow.png" id="21_d16nc"]
 [ext_resource type="Texture2D" uid="uid://bs4ysvd3hopep" path="res://World/House/Art/MAPGenerator.png" id="21_u7gqm"]
+[ext_resource type="PackedScene" uid="uid://upgsn02qes0p" path="res://World/House/Scripts/Container_cabinet.tscn" id="30_bmwfn"]
 [ext_resource type="AudioStream" uid="uid://c6s1apohu7xkf" path="res://Sounds/Ambient Electric.mp3" id="30_c18we"]
-[ext_resource type="Script" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
-[ext_resource type="Shader" path="res://Assets/Shader/shader.gdshader" id="30_v07gy"]
+[ext_resource type="Script" uid="uid://baj0eybyo80yj" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
+[ext_resource type="Shader" uid="uid://dfyfxjjfrv8ep" path="res://Assets/Shader/shader.gdshader" id="30_v07gy"]
 [ext_resource type="AudioStream" uid="uid://jy6w2ie5oi73" path="res://Sounds/SmallElectricSparks.mp3" id="31_8luoa"]
 [ext_resource type="AudioStream" uid="uid://bvstno6a3812a" path="res://World/House/Audio/Electric/Generator_PowerOn.mp3" id="32_3ggy3"]
 [ext_resource type="AudioStream" uid="uid://di4umle8y72fx" path="res://World/House/Audio/Electric/Generator_PowerOff.mp3" id="33_asylt"]
-[ext_resource type="Script" path="res://World/House/Scripts/LightSwitch.gd" id="40_omnsj"]
+[ext_resource type="Script" uid="uid://bqsk584wu6pde" path="res://World/House/Scripts/LightSwitch.gd" id="40_omnsj"]
 [ext_resource type="Texture2D" uid="uid://plwy7x22th23" path="res://World/House/Art/Interactables/GeneratorOff.png" id="41_0upou"]
 [ext_resource type="Texture2D" uid="uid://chochta8gl8wq" path="res://World/House/Art/Interactables/LightRightOn.png" id="41_l3t43"]
 [ext_resource type="Texture2D" uid="uid://ufswde4vjh6u" path="res://World/House/Art/MAP_Flooring.png" id="41_rncrq"]
-[ext_resource type="Script" path="res://World/House/Scripts/GeneratorSwitch.gd" id="41_sodru"]
+[ext_resource type="Script" uid="uid://cttfqwg1aqbli" path="res://World/House/Scripts/GeneratorSwitch.gd" id="41_sodru"]
 [ext_resource type="Texture2D" uid="uid://xknojvyq2grn" path="res://World/House/Art/MAP_Edges_and_Sand.png" id="42_bqxdj"]
 [ext_resource type="Texture2D" uid="uid://b1qmc7ed3k206" path="res://World/House/Art/Interactables/GeneratorOn.png" id="42_y01l5"]
 [ext_resource type="Texture2D" uid="uid://c5wri0vtrmufn" path="res://World/House/Art/Interactables/LightRightOff.png" id="42_y2k6t"]
-[ext_resource type="Script" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="42_yfjwe"]
+[ext_resource type="Script" uid="uid://bb4t42pp5jbem" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="42_yfjwe"]
 [ext_resource type="AudioStream" uid="uid://crfmp267qmu4v" path="res://World/House/Art/Interactables/light_switch_on.mp3" id="43_b48re"]
 [ext_resource type="Texture2D" uid="uid://c7o2ugync4yf" path="res://World/House/Art/Outdoor_Decor.png" id="43_uqgk4"]
 [ext_resource type="AudioStream" uid="uid://b5kmn0jlbixqp" path="res://World/House/Art/Interactables/light_switch_off.mp3" id="44_2mtwq"]
@@ -107,73 +108,73 @@ texture = ExtResource("2_lf63l")
 texture_region_size = Vector2i(32, 32)
 8:2/0 = 0
 8:3/0 = 0
-8:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_5tmo6")
+8:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_5tmo6")
 9:2/0 = 0
 9:3/0 = 0
-9:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_exlan")
+9:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_exlan")
 9:6/0 = 0
 9:6/0/z_index = 2
-9:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_vda3g")
+9:6/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_vda3g")
 10:2/0 = 0
 10:3/0 = 0
 10:5/0 = 0
 10:6/0 = 0
 10:6/0/z_index = 2
-10:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_pw123")
+10:6/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_pw123")
 10:7/0 = 0
 10:7/0/z_index = 2
-10:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_x6djm")
+10:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_x6djm")
 10:8/0 = 0
 10:8/0/z_index = 2
-10:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_7anik")
+10:8/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_7anik")
 11:5/0 = 0
 11:6/0 = 0
 4:1/0 = 0
-4:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rffs8")
+4:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rffs8")
 4:2/0 = 0
 4:3/0 = 0
 5:1/0 = 0
-5:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rffs8")
+5:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rffs8")
 5:2/0 = 0
 5:3/0 = 0
-5:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_dwgj3")
+5:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_dwgj3")
 5:4/0 = 0
-5:4/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_kf1ub")
+5:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_kf1ub")
 6:1/0 = 0
-6:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rffs8")
+6:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rffs8")
 6:2/0 = 0
 6:3/0 = 0
 7:1/0 = 0
-7:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rffs8")
+7:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rffs8")
 7:2/0 = 0
 7:3/0 = 0
 7:4/0 = 0
 8:4/0 = 0
 8:7/0 = 0
 8:7/0/z_index = 2
-8:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_nqrwj")
+8:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_nqrwj")
 8:8/0 = 0
 8:8/0/z_index = 2
-8:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_hgnpb")
+8:8/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_hgnpb")
 9:1/0 = 0
 9:1/0/y_sort_origin = 120
-9:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_r4v5h")
+9:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_r4v5h")
 9:4/0 = 0
 9:7/0 = 0
 9:7/0/z_index = 2
-9:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_y2go7")
+9:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_y2go7")
 9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 9:8/0 = 0
 9:8/0/z_index = 2
-9:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_uys5c")
+9:8/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_uys5c")
 10:1/0 = 0
 10:1/0/y_sort_origin = 120
-10:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_6ld1d")
+10:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_6ld1d")
 10:4/0 = 0
 5:5/size_in_atlas = Vector2i(1, 3)
 5:5/0 = 0
 5:5/0/texture_origin = Vector2i(0, 32)
-5:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_aghc7")
+5:5/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_aghc7")
 5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -80, 16, -80, 16, 16, -16, 16)
 8:9/size_in_atlas = Vector2i(1, 3)
 8:9/0 = 0
@@ -211,7 +212,7 @@ texture_region_size = Vector2i(32, 32)
 3:3/0/y_sort_origin = -12
 8:6/0 = 0
 8:6/0/z_index = 2
-8:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_hnm53")
+8:6/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_hnm53")
 7:6/0 = 0
 8:5/0 = 0
 7:5/0 = 0
@@ -1066,6 +1067,13 @@ height = 58.63
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud8yo"]
 size = Vector2(107.999, 111.001)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmwfn"]
+atlas = ExtResource("3_cad2m")
+region = Rect2(224, 164, 32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57t7f"]
+size = Vector2(28, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_novc8"]
 size = Vector2(54, 82)
@@ -2586,6 +2594,7 @@ script = ExtResource("6_asq3q")
 y_sort_enabled = true
 
 [node name="Living Room" type="TileMapLayer" parent="ROOMS/CabinNodes"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(128, 128)
@@ -2770,7 +2779,6 @@ tile_map_data = PackedByteArray("AAD3//r/AAAEAAIAAAD5/wEAAQAGAAQAAAD8/wAAAQAKAAI
 tile_set = SubResource("TileSet_nlj7c")
 
 [node name="Kitchen" type="TileMapLayer" parent="ROOMS/CabinNodes"]
-visible = false
 z_index = 15
 y_sort_enabled = true
 texture_filter = 1
@@ -2839,6 +2847,50 @@ position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_2f6xm")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 
+[node name="Cabinet_Container" parent="ROOMS/CabinNodes/Kitchen" node_paths=PackedStringArray("sprite_2d") instance=ExtResource("30_bmwfn")]
+offset_left = 48.0
+offset_top = -136.0
+offset_right = 48.0
+offset_bottom = -136.0
+sprite_2d = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container"]
+texture = SubResource("AtlasTexture_bmwfn")
+
+[node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container" node_paths=PackedStringArray("sprite")]
+position = Vector2(0, 96)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("42_yfjwe")
+sprite = NodePath("../Sprite2D")
+interactable_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container/InteractionArea"]
+shape = SubResource("RectangleShape2D_57t7f")
+debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+
+[node name="Cabinet_Container2" parent="ROOMS/CabinNodes/Kitchen" node_paths=PackedStringArray("sprite_2d") instance=ExtResource("30_bmwfn")]
+offset_left = 112.0
+offset_top = -136.0
+offset_right = 112.0
+offset_bottom = -136.0
+sprite_2d = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container2"]
+texture = SubResource("AtlasTexture_bmwfn")
+
+[node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container2" node_paths=PackedStringArray("sprite")]
+position = Vector2(0, 96)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("42_yfjwe")
+sprite = NodePath("../Sprite2D")
+interactable_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container2/InteractionArea"]
+shape = SubResource("RectangleShape2D_57t7f")
+debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
+
 [node name="Black" type="ColorRect" parent="ROOMS/CabinNodes/Kitchen" groups=["ColorRect(Black)"]]
 show_behind_parent = true
 z_index = -5
@@ -2861,7 +2913,7 @@ z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAAGAPz/AgAEAAAAAAABAPv/AAAHAAUAAAABAP7/AAAHAAcAAAACAPv/AAAIAAUAAAACAP7/AAAIAAcAAAADAPv/AAAJAAUAAAADAP7/AAAJAAcAAAAEAPv/AAAKAAUAAAAEAP7/AAAKAAcAAAD+//7/AAADAAYAAAAAAPv/AAAFAAUAAAAAAP7/AAAFAAcAAAAFAP7/AAALAAgAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AAADAAYAAAAAAPv/AAAFAAUAAAAAAP7/AAAFAAcAAAABAP7/AAAHAAcAAAACAPv/AAAIAAUAAAACAP7/AAAIAAcAAAADAP7/AAAJAAcAAAAEAPv/AAAKAAUAAAAEAP7/AAAKAAcAAAAFAP7/AAALAAgAAAAGAPz/AgAEAAAAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
 [node name="Bathroom" type="TileMapLayer" parent="ROOMS/CabinNodes"]
