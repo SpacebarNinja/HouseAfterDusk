@@ -26,11 +26,7 @@ extends CharacterBody2D
 @export var alpha_end: float = 1
 @export var fade_speed: float = 7.0
 
-<<<<<<< Updated upstream
-@onready var rooms = get_node("/root/MainScene/DemoMap2/ROOMS")
-=======
 @onready var rooms = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
->>>>>>> Stashed changes
 
 var current_hunger: int
 var current_health: int
@@ -50,10 +46,7 @@ func set_walk_speed(speed: int):
 	movement_speed = speed
 
 func _process(delta):
-<<<<<<< Updated upstream
-=======
 	
->>>>>>> Stashed changes
 	modulate_player()
 	handle_flashlight(delta)
 	
@@ -79,13 +72,6 @@ func _process(delta):
 	finding_enemy()
 
 func modulate_player():
-<<<<<<< Updated upstream
-	if str(rooms.current_room.name) == 'OUTSIDE':
-		is_outside = true
-	else:
-		is_outside = false
-		
-=======
 	if is_instance_valid(rooms) and rooms.current_room:  # Ensures 'rooms' isn't a freed object
 		if str(rooms.current_room.name) == 'OUTSIDE':
 			is_outside = true
@@ -94,17 +80,13 @@ func modulate_player():
 	else:
 		is_outside = false  # Default if no rooms node exists
 
->>>>>>> Stashed changes
 	if not WorldManager.is_generator_on and not is_outside:
 		self.modulate = Color(1.5, 1.5, 1.5, 1)
 	else:
 		self.modulate = Color(1, 1, 1, 1)
 
-<<<<<<< Updated upstream
-=======
 
 
->>>>>>> Stashed changes
 func alternative_move():
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()

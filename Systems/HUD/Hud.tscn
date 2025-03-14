@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=96 format=3 uid="uid://ctm1dfhfkd0fl"]
-=======
 [gd_scene load_steps=102 format=3 uid="uid://ctm1dfhfkd0fl"]
->>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
 [ext_resource type="Script" uid="uid://bj7mvceij3byi" path="res://Systems/HUD/Hud.gd" id="1_ofedd"]
@@ -57,8 +53,6 @@
 [ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
 [ext_resource type="Script" uid="uid://c6knq676vf5di" path="res://Systems/HUD/fishing_hud.gd" id="45_s6v0h"]
 [ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
-<<<<<<< Updated upstream
-=======
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pji"]
 shader = ExtResource("2_uomja")
@@ -66,7 +60,6 @@ shader_parameter/scanline_color = Color(1, 1, 1, 0.1)
 shader_parameter/scanline_spacing = 6.0
 shader_parameter/scanline_width = 0.5
 shader_parameter/edge_softness = 1.0
->>>>>>> Stashed changes
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")

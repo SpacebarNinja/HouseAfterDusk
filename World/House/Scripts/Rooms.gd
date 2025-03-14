@@ -182,66 +182,36 @@ func stop_electrical_ambient():
 	is_electrical_ambient_playing = false
 		
 func _on_living_room_area_entered(_area):
-<<<<<<< Updated upstream
-=======
 	if is_outside: return
->>>>>>> Stashed changes
 	print("Entered Living Room area")
 	show_room(living_room)
 
 func _on_bathroom_area_entered(_area):
-<<<<<<< Updated upstream
-=======
 	if is_outside: return
->>>>>>> Stashed changes
 	print("Entered Bathroom area")
 	show_room(bathroom)
 
 func _on_kitchen_area_entered(_area):
-<<<<<<< Updated upstream
-=======
 	if is_outside: return
->>>>>>> Stashed changes
 	print("Entered Kitchen area")
 	show_room(kitchen)
 
 func _on_hallway_area_entered(_area):
-<<<<<<< Updated upstream
-=======
 	if is_outside: return
->>>>>>> Stashed changes
 	print("Entered Hallway area")
 	show_room(hallway)
 
 func _on_bedroom_area_entered(_area):
-<<<<<<< Updated upstream
-=======
 	if is_outside: return
->>>>>>> Stashed changes
 	print("Entered Bedroom area")
 	show_room(bedroom)
 
 func _on_storage_area_entered(_area):
-<<<<<<< Updated upstream
-=======
 	if is_outside: return
->>>>>>> Stashed changes
 	print("Entered Storage area")
 	show_room(storage)
 
 func _on_electrical_area_entered(_area):
-<<<<<<< Updated upstream
-	print("Entered Electrical area")
-	show_room(electrical)
-	
-func _on_outside_cabin_area_entered(_area):
-	print("Exited Cabin")
-	show_room(outside_cabin)
-
-func _on_crop_field_area_entered(_area):
-	print("At Crop Field")
-	show_room(crop_field)
-=======
 	if is_outside: return
 	print("Entered Electrical area")
 	show_room(electrical)
@@ -249,7 +219,6 @@ func _on_crop_field_area_entered(_area):
 func _on_exit_area_entered(_area):
 	print("Exited Cabin")
 	SceneManager.switch_map("res://World/House/Scenes/map_outside.tscn", Vector2(-80, -136), "zoom_in")
->>>>>>> Stashed changes
 	
 func _on_cam_x_living_room_area_entered(_area):
 	is_room_bounds_x = true

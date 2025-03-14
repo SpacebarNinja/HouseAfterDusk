@@ -14,11 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://fwghttekeajh" path="res://Entities/WindowGirl/Audio/Walk_grass.mp3" id="44_sj1sv"]
 [ext_resource type="AudioStream" uid="uid://drpyp0r6ywk2k" path="res://Entities/WindowGirl/Audio/Walk_wood.mp3" id="45_8s8gx"]
 [ext_resource type="AudioStream" uid="uid://dl0dfpchjqx2u" path="res://Entities/WindowGirl/Audio/Leave.wav" id="46_yd30a"]
-<<<<<<< Updated upstream
-[ext_resource type="Script" path="res://Dev Stuff/BaseStates/Statemachine.gd" id="47_xxjna"]
-=======
 [ext_resource type="Script" uid="uid://dbh5t8vs4cyi2" path="res://Dev Stuff/BaseStates/Statemachine.gd" id="47_xxjna"]
->>>>>>> Stashed changes
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_68jtf"]
 light_mode = 2
@@ -1327,15 +1323,6 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q53wl"]
 _data = {
-<<<<<<< Updated upstream
-"Attack": SubResource("Animation_w6g4v"),
-"BreakIn": SubResource("Animation_7k7fs"),
-"Death": SubResource("Animation_5t6q7"),
-"Idle": SubResource("Animation_yo52m"),
-"RESET": SubResource("Animation_qi4i4"),
-"Scream": SubResource("Animation_w4mjw"),
-"Sprint": SubResource("Animation_ow6w5")
-=======
 &"Attack": SubResource("Animation_w6g4v"),
 &"BreakIn": SubResource("Animation_7k7fs"),
 &"Death": SubResource("Animation_5t6q7"),
@@ -1343,7 +1330,6 @@ _data = {
 &"RESET": SubResource("Animation_qi4i4"),
 &"Scream": SubResource("Animation_w4mjw"),
 &"Sprint": SubResource("Animation_ow6w5")
->>>>>>> Stashed changes
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8r8vb"]

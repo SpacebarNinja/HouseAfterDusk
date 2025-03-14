@@ -1,10 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://27u4w2dyb8t8"]
 
-<<<<<<< Updated upstream
-[ext_resource type="Script" path="res://craftable_item_display.gd" id="1_65dux"]
-=======
 [ext_resource type="Script" uid="uid://b3jix63i7fimu" path="res://craftable_item_display.gd" id="1_65dux"]
->>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://dp3t44eq4vjmr" path="res://Systems/Inventory/Backpack/Items/RareFish.png" id="2_5jb7k"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="3_vcj2q"]
 [ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="4_12742"]

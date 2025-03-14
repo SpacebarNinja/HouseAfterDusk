@@ -22,11 +22,6 @@ var camera_anchor = Vector2.ZERO
 @export var craft_move_offset: float = 120.0
 @export var craft_move_speed: float = 5.0
 
-<<<<<<< Updated upstream
-func _ready():
-	global_position = player.global_position
-	camera_anchor = player.global_position
-=======
 @export_category("Zoom Settings")
 @export var zoom_speed: float = 3.0   # How fast the zoom lerps
 
@@ -38,17 +33,11 @@ func _ready():
 	global_position = player.global_position
 	camera_anchor = player.global_position
 	target_zoom = zoom
->>>>>>> Stashed changes
 
 func apply_shake():
 	shake_strength = randomStrength
 
 func _process(delta):
-<<<<<<< Updated upstream
-	var rooms_instance = get_node("/root/MainScene/DemoMap2/ROOMS")
-	var is_room_bounds_x = rooms_instance.is_room_bounds_x
-	var is_room_bounds_y = rooms_instance.is_room_bounds_y
-=======
 	
 	var rooms_instance = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
 
@@ -59,7 +48,6 @@ func _process(delta):
 		is_room_bounds_x = rooms_instance.is_room_bounds_x
 		is_room_bounds_y = rooms_instance.is_room_bounds_y
 
->>>>>>> Stashed changes
 	
 	var journal_instance = get_node("/root/MainScene/Hud/MechanicHud/Journal")
 	var is_journal_open = journal_instance.is_open
@@ -75,13 +63,9 @@ func _process(delta):
 	if not is_room_bounds_y:
 		camera_anchor.y = player.global_position.y
 
-<<<<<<< Updated upstream
-	HandleCraftingOffset(delta)
-=======
 	# Smooth zoom transition
 	zoom = zoom.lerp(target_zoom, zoom_speed * delta)
 
->>>>>>> Stashed changes
 	RoundPosition()
 
 func RoundPosition():
@@ -114,8 +98,6 @@ func HandleCraftingOffset(delta):
 
 func randomcam_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
-<<<<<<< Updated upstream
-=======
 
 func reset_camera_position(new_position: Vector2):
 	position_smoothing_enabled = false
@@ -127,4 +109,3 @@ func reset_camera_position(new_position: Vector2):
 func apply_zoom_transition(start_zoom: Vector2):
 	zoom = start_zoom
 	target_zoom = original_zoom
->>>>>>> Stashed changes

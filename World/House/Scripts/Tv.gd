@@ -59,15 +59,10 @@ func _ready():
 	television_light.hide()
 
 func _process(delta):
-<<<<<<< Updated upstream
-	# Check if remote is equipped or not
-	var item = backpack.get_equipped_item()
-=======
 	var item = null
 	if is_instance_valid(backpack):
 		item = backpack.get_equipped_item()
 
->>>>>>> Stashed changes
 	var remote_status = item and item.get_property("id", "") == 'tv_remote'
 
 	if remote_status != is_remote_equipped:

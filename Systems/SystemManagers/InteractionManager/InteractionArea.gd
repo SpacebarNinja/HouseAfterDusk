@@ -9,8 +9,6 @@ var interactable
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
-<<<<<<< Updated upstream
-=======
 
 	interactable = get_node_or_null(interactable_node)
 	intr_display_instance = get_node_or_null("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
@@ -21,7 +19,6 @@ func _ready():
 
 func _delayed_setup():
 	intr_display_instance = get_node_or_null("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
->>>>>>> Stashed changes
 
 	
 func _on_body_entered(body):

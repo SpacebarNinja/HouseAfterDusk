@@ -3,11 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/ElectronicGuy/Art/TvG_Idle.png" id="1_c2rm8"]
 [ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/ElectronicGuy/Art/TvG_Teleport.png" id="2_0f2x0"]
 [ext_resource type="AudioStream" uid="uid://dxyxe7mlwglu8" path="res://Entities/Gene/Audio/Glock_Shoot.wav" id="2_3i6hs"]
-<<<<<<< Updated upstream
-[ext_resource type="Script" path="res://Dev Stuff/BaseStates/Statemachine.gd" id="3_vcco8"]
-=======
 [ext_resource type="Script" uid="uid://dbh5t8vs4cyi2" path="res://Dev Stuff/BaseStates/Statemachine.gd" id="3_vcco8"]
->>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="4_ydiuq"]
 
 [sub_resource type="GDScript" id="GDScript_kvlcq"]
@@ -1041,21 +1037,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agpkr"]
 _data = {
-<<<<<<< Updated upstream
-"Idle1": SubResource("Animation_pocde"),
-"Idle2": SubResource("Animation_hkp1y"),
-"Idle3": SubResource("Animation_6dlxt"),
-"RESET": SubResource("Animation_q0212"),
-"Reappear": SubResource("Animation_gm2cm"),
-"Teleport": SubResource("Animation_bo0a4")
-=======
 &"Idle1": SubResource("Animation_pocde"),
 &"Idle2": SubResource("Animation_hkp1y"),
 &"Idle3": SubResource("Animation_6dlxt"),
 &"RESET": SubResource("Animation_q0212"),
 &"Reappear": SubResource("Animation_gm2cm"),
 &"Teleport": SubResource("Animation_bo0a4")
->>>>>>> Stashed changes
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4qscr"]
