@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://8f7lk7e3cf87"]
 
-[ext_resource type="Script" path="res://Systems/SystemManagers/GameManager/GameManager.gd" id="1_pihvo"]
+[ext_resource type="Script" uid="uid://b161owiwqtdsc" path="res://Singletons/GameManager.gd" id="1_pihvo"]
 [ext_resource type="PackedScene" uid="uid://0xglca5ob35f" path="res://Entities/WindowGirl/Scripts/WindowGirlV2.tscn" id="2_ttwdi"]
 [ext_resource type="PackedScene" uid="uid://38ts1v8d4yx6" path="res://Entities/ElectronicGuy/Scripts/ElectronicGuyV2.tscn" id="3_lopys"]
 [ext_resource type="PackedScene" uid="uid://chact4baxwqfo" path="res://Entities/TheDolls/Scripts/Doll.tscn" id="4_1c6j4"]

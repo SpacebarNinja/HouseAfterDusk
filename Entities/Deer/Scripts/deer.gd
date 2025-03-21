@@ -26,9 +26,7 @@ func _on_movement_timer_timeout():
 		movement_timer.wait_time = randf_range(5, 10)
 		wander()
 
-func _on_navigation_agent_2d_target_reached():
-	print("Destination Reached by ", self)
-	
+func _on_navigation_agent_2d_navigation_finished():
 	if current_state == BEHAVIOR_STATES.FLEE:
 		movement_speed = 75
 		wander_radius /= 2.5

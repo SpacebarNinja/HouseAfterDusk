@@ -10,6 +10,7 @@ var item = null
 func _ready():
 	item = GlobalItemList.get_item_by_id(id)
 	
+	print("Item: ", item)
 	dropped_item.create_and_add_item(id)
 	dropped_item.set_item_stack_size(item, amount)
 

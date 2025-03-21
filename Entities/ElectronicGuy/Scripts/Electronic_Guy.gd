@@ -10,12 +10,13 @@ extends Entity_Class
 @export var teleport_max_hide_length: float = 4.0
 
 #------------{ Electronic Guy Nodes }------------
-@onready var tv_node = get_tree().get_first_node_in_group("Tv")
 @onready var search_cooldown = $SearchCooldown
 @onready var movement_timer = $MovementTimer
 @onready var teleport_timer = $TeleportTimer
 @onready var glitch_timer = $GlitchTimer
 @onready var prowl_timer = $ProwlTimer
+
+var tv_node
 
 var corrupted_channels: Array = []
 var prowling = true
@@ -25,6 +26,7 @@ var hide_length
 func _ready():
 	super._ready()
 	corrupted_channels = [1,2,3,4]
+	hide()
 	
 func _physics_process(delta):
 	if prowling:
@@ -81,7 +83,7 @@ func _on_player_lost():
 		set_target_position(player.get_global_position())
 	
 func on_qte_success():
-	anim_tree.get("parameters/playback").travel("Idle")
+	anim_tree.get("parameters/playback").travel("QuickTimeEvent_Stun")
 	stun(2.5)
 
 func on_qte_fail():
@@ -91,6 +93,7 @@ func _on_stunned():
 	teleport_timer.stop()
 
 func _on_unstunned():
+	anim_tree.get("parameters/playback").travel("Idle")
 	start_teleport()
 
 func _on_glitch_timer_timeout():
@@ -133,9 +136,8 @@ func _on_prowl_timer_timeout():
 		if not QteHud.is_connected("QTE_Fail", Callable(self, "on_qte_fail")):
 			QteHud.connect("QTE_Fail", Callable(self, "on_qte_fail"))
 
-		movement_timer.start()
 		prowling = false
-
+		
 func _on_hitbox_body_entered(body):
 	if body == player and not prowling:
 		anim_tree.get("parameters/playback").travel("QuickTimeEvent_Loop")
@@ -143,12 +145,13 @@ func _on_hitbox_body_entered(body):
 		GameManager.start_quick_time_event()
 
 func _on_navigation_agent_2d_navigation_finished():
-	if current_state == BEHAVIOR_STATES.WANDER:
-		current_state = BEHAVIOR_STATES.IDLE
-	
-	elif current_state == BEHAVIOR_STATES.RETREAT:
+	if current_state == BEHAVIOR_STATES.RETREAT:
 		print("TvG Retreated")
 		queue_free()
 	
 	if GameManager.directing_enemy:
 		GameManager.directing_enemy = false
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Tv_Exit":
+		movement_timer.start()

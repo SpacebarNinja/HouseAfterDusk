@@ -7,29 +7,30 @@ extends Control
 const TRASH_SLOT_COORD = Vector2i(1080,40)
 const DEBUG_PANEL_COORD = Vector2(176, 16)
 var WindowDict: Dictionary
-var debugs_open: bool
 var combo_state: int = 0
 
 func _ready():
 	WindowDict = {
-		"game_panel": $CanvasLayer/GameWindow,
-		"enemy_panel":$CanvasLayer/EnemyWindow,
-		"player_panel": $CanvasLayer/PlayerWindow,
-		"map_panel": $CanvasLayer/MapWindow,
-		"hud_panel": $CanvasLayer/HudWindow,
-		"inventory_panel": $CanvasLayer/InventoryWindow
+		"game_panel": {"node": $CanvasLayer/GameWindow, "status": false},
+		"enemy_panel": {"node": $CanvasLayer/EnemyWindow, "status": false},
+		"inventory_panel": {"node": $CanvasLayer/InventoryWindow, "status": false}
 	}
 	
 	for key in WindowDict.keys():
-		WindowDict[key].hide()
+		WindowDict[key]["node"].hide()
+	trash_panel.hide()
 	
 func _process(_delta):
-	trash_panel.visible = debugs_open
 	handle_debug_tabs()
 	
 func open_debug_tab(tab: String):
-	WindowDict[tab].show()
-
+	WindowDict[tab]["node"].show()
+	WindowDict[tab]["status"] = true
+	
+func close_debug_tab(tab: String):
+	WindowDict[tab]["node"].hide()
+	WindowDict[tab]["status"] = false
+	
 func close_debug_menu():
 	for window in canvas_layer.get_children():
 		window.hide()
@@ -38,21 +39,22 @@ func handle_debug_tabs():
 	var debug_tabs = {
 		KEY_0: "game_panel",
 		KEY_9: "enemy_panel",
-		KEY_8: "player_panel",
-		KEY_7: "map_panel",
-		KEY_6: "hud_panel",
-		KEY_5: "inventory_panel"
+		KEY_8: "inventory_panel"
 	}
 	
 	for key in debug_tabs.keys():
 		if Input.is_key_pressed(KEY_SHIFT) and Input.is_key_pressed(KEY_QUOTELEFT) and Input.is_key_pressed(key):
-			open_debug_tab(debug_tabs[key])
-			debugs_open = true
+			if WindowDict[debug_tabs[key]]["status"] == false:
+				open_debug_tab(debug_tabs[key])
+			elif WindowDict[debug_tabs[key]]["status"] == true:
+				close_debug_tab(debug_tabs[key])
+			trash_panel.show()
 			return
 	
 	if Input.is_key_pressed(KEY_SHIFT) and Input.is_key_pressed(KEY_QUOTELEFT) and Input.is_key_pressed(KEY_BACKSPACE):
-		close_debug_menu()
-		debugs_open = false
+		for key in debug_tabs.keys():
+			close_debug_tab(debug_tabs[key])
+			trash_panel.hide()
 	
 func _on_trash_item_added(item):
 	trash_slot.remove_item(item)

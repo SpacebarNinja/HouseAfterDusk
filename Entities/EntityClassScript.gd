@@ -4,7 +4,7 @@ class_name Entity_Class
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var item_drop = preload("res://Systems/Inventory/Others/dropped_item.tscn")
 
-enum BEHAVIOR_STATES {IDLE, WANDER, SEARCH, PURSUE, FLEE, RETREAT, STUNNED}
+enum BEHAVIOR_STATES {PROWL, IDLE, WANDER, SEARCH, PURSUE, FLEE, RETREAT, STUNNED}
 enum VISION_DIRECTION {RANDOM, PATH, PLAYER}
 
 @export_category("General Enemy Stats")
@@ -83,7 +83,6 @@ func handle_vision_cone(delta):
 				player_currently_detected = true
 				break  # Exit loop early if player is found
 
-
 	# Emit signals based on player detection state
 	if player_currently_detected and not player_seen:
 		PlayerFound.emit()
@@ -119,9 +118,9 @@ func set_target_position(target_position: Vector2) -> void:
 		else:
 			print(global_position.distance_to(target_position), " too close, not setting.")
 	
-func take_damage(playerdamage: int):
-	if playerdamage > 0:
-		health = max(0, health - playerdamage)  # Clamp to 0
+func take_damage(player_damage: int):
+	if player_damage > 0:
+		health = max(0, health - player_damage)  # Clamp to 0
 		print("Enemy Health: ", health)
 	
 func manage_suspicion_meter(suspicion_speed: float):

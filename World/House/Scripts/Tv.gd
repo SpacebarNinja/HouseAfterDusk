@@ -9,6 +9,7 @@ extends Node2D
 
 @export var interaction_area: Area2D
 @export var tilemap: TileMapLayer
+
 @export_category("ChannelColors")
 @export var StaticChannelColors: Array[Color]
 @export var ChannelColors1: Array[Color]
@@ -36,6 +37,8 @@ var channels: Dictionary = {
 	$ChannelBGAudio4
 ]
 
+const TVCoords = Vector2i(0, 0)
+
 var current_channel: int = 0  # Start with Static channel
 var is_on: bool
 var has_power := true
@@ -43,7 +46,6 @@ var is_remote_equipped := false
 var current_color_index: int = 0
 var next_color_index: int = 1
 var color_lerp_value: float = 0.0
-var TVCoords := Vector2i(0, -1)
 
 var can_interact: bool = false
 
@@ -59,20 +61,26 @@ func _ready():
 	television_light.hide()
 
 func _process(delta):
-	# Check if remote is equipped or not
-	var item = backpack.get_equipped_item()
-	var remote_status = item and (item.get_property("id", "") == 'tv_remote' or item.get_property("id", "") == 'modified_remote')
+	var item = null
+	if is_instance_valid(backpack):
+		item = backpack.get_equipped_item()
+
+	var remote_status = item and item.get_property("id", "") == 'tv_remote'
 
 	if remote_status != is_remote_equipped:
 		is_remote_equipped = remote_status
 		handle_text()
+
 	
 	# Adjust audio volume based on current room
 	for audio in channel_bg_audio:
-		if str(rooms.current_room.name) == 'OUTSIDE':
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), -5)
-		else:
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), 5)
+		# Ensure rooms and current_room are valid before accessing .name
+		if rooms and is_instance_valid(rooms) and rooms.current_room and is_instance_valid(rooms.current_room):
+			if str(rooms.current_room.name) == 'OUTSIDE':
+				AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), -5)
+			else:
+				AudioServer.set_bus_volume_db(AudioServer.get_bus_index(audio.bus), 5)
+
 	
 	# Update television light color if the TV is on
 	if is_on:
@@ -145,6 +153,7 @@ func _on_switch_channel_button_pressed():
 
 	_reset_color_indices()  # Reset indices for the new channel
 	_update_channel_display()
+
 
 func _update_channel_display():
 	# Play switch sound
@@ -251,7 +260,7 @@ func _update_light_color(delta):
 			color_lerp_value = 0.0
 			current_color_index = next_color_index
 			next_color_index = (next_color_index + 1) % color_array.size() if color_array.size() > 1 else 0
-
+			
 func corrupt_channel(index: int):
 	channels["Channel %s" %index] = "Corrupted"
 	print("Corrupting Channel %s" %index)

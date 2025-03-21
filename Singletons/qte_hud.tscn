@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhyqyy1iw7f8v"]
+[gd_scene load_steps=12 format=3 uid="uid://ctdq183pdtysa"]
 
-[ext_resource type="Script" path="res://Systems/HUD/quick_time_event.gd" id="1_fhhpx"]
-[ext_resource type="Shader" path="res://Assets/Shader/vignette.gdshader" id="2_h6bny"]
+[ext_resource type="Script" uid="uid://ibxrnnbj6isp" path="res://Systems/HUD/quick_time_event.gd" id="1_fhhpx"]
+[ext_resource type="Shader" uid="uid://dt8044m7sgioc" path="res://Assets/Shader/vignette.gdshader" id="2_h6bny"]
 [ext_resource type="Texture2D" uid="uid://dro6j75bhe75l" path="res://Systems/HUD/Art/QTE_button_hold.png" id="3_4tiq5"]
 [ext_resource type="Texture2D" uid="uid://cbda0cdpe7kmi" path="res://Systems/HUD/Art/QTE_Button.png" id="4_los2b"]
 [ext_resource type="Texture2D" uid="uid://cj6mrdv61c0c0" path="res://Systems/HUD/Art/QTE_bar.png" id="5_fole6"]
@@ -126,9 +126,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hts70"]
 _data = {
-"RESET": SubResource("Animation_t1g2a"),
-"press_button": SubResource("Animation_6q7tj"),
-"quick_time_event": SubResource("Animation_5au88")
+&"RESET": SubResource("Animation_t1g2a"),
+&"press_button": SubResource("Animation_6q7tj"),
+&"quick_time_event": SubResource("Animation_5au88")
 }
 
 [node name="QTEHud" type="CanvasLayer" groups=["QTEHud"]]
@@ -190,7 +190,7 @@ texture_progress = ExtResource("6_bgkut")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hts70")
+&"": SubResource("AnimationLibrary_hts70")
 }
 
 [connection signal="timeout" from="QTETimer" to="." method="_on_qte_timer_timeout"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu52r448fpw0a"]
+
+[ext_resource type="Texture2D" uid="uid://bqy0g1e7ymdmm" path="res://Systems/Inventory/Backpack/Items/Bullet.png" id="1_otvn3"]
+[ext_resource type="Script" uid="uid://lmv2tirotfu0" path="res://Systems/Inventory/Weapons/bullet.gd" id="1_sanil"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_272nj"]
+radius = 64.0
+height = 240.0
+
+[node name="bullet" type="Node2D"]
+scale = Vector2(0.05, 0.05)
+script = ExtResource("1_sanil")
+speed = 1000.0
+max_distance = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+rotation = 2.35619
+texture = ExtResource("1_otvn3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_272nj")
+debug_color = Color(0.815686, 0.768627, 0.203922, 0.486275)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

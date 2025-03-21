@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6mn4mdwjqyri"]
 
-[ext_resource type="Script" path="res://World/House/Scripts/crop_slot.gd" id="1_1jpl6"]
-[ext_resource type="Script" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="2_4hmtb"]
+[ext_resource type="Script" uid="uid://dswwnrksi2p2" path="res://World/House/Scripts/crop_slot.gd" id="1_1jpl6"]
+[ext_resource type="Script" uid="uid://quwo3b013qqr" path="res://Systems/SystemManagers/InteractionManager/InteractionArea.gd" id="2_4hmtb"]
 [ext_resource type="Texture2D" uid="uid://00iuymxlwcv1" path="res://World/House/Art/Outdoor_Decor2.png" id="3_qba6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjilu"]
