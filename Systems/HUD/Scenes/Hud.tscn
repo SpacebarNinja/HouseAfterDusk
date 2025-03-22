@@ -334,6 +334,7 @@ mouse_filter = 2
 
 [node name="ScanLine" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5pji")
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -341,12 +342,14 @@ color = Color(0.799, 0.662, 0.662, 0.2)
 
 [node name="Vignette Effect" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5gsb")
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 
 [node name="BlackOverlay" type="ColorRect" parent="BGProcessing"]
 visible = false
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -355,6 +358,7 @@ color = Color(0, 0, 0, 0.4)
 [node name="Transition" type="ColorRect" parent="BGProcessing"]
 visible = false
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -369,6 +373,7 @@ autoplay = "RESET"
 [node name="DialogueOverlay" type="TextureRect" parent="BGProcessing"]
 visible = false
 modulate = Color(0.921, 0.883, 0.866, 0.3)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.600388, 0.600388)
@@ -496,6 +501,7 @@ script = ExtResource("17_dpk2t")
 
 [node name="BetaText" type="Label" parent="MainHud"]
 z_index = 100
+layout_mode = 0
 offset_top = 5.0
 offset_right = 1152.0
 offset_bottom = 38.0
@@ -561,6 +567,7 @@ move_speed = 4.2
 [node name="Table" type="TextureRect" parent="CraftingHud"]
 z_index = -1
 texture_filter = 1
+layout_mode = 0
 offset_left = 1152.0
 offset_right = 2304.0
 offset_bottom = 648.0
@@ -1122,6 +1129,7 @@ field_selected_style = SubResource("StyleBoxTexture_yvx3x")
 selection_style = SubResource("StyleBoxFlat_t8a2g")
 
 [node name="SkillCheck" type="Panel" parent="CookingHud"]
+layout_mode = 0
 offset_left = 688.0
 offset_top = 232.0
 offset_right = 904.0
@@ -1159,6 +1167,7 @@ anchors_preset = 0
 script = ExtResource("45_s6v0h")
 
 [node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 128.0
 offset_right = 276.0
@@ -1171,6 +1180,7 @@ texture_progress = SubResource("AtlasTexture_paots")
 texture_progress_offset = Vector2(4, 4)
 
 [node name="ProgressMeter" type="TextureProgressBar" parent="FishingHud"]
+layout_mode = 0
 offset_left = 288.0
 offset_top = 128.0
 offset_right = 308.0

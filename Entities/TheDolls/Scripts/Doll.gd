@@ -1,1 +1,0 @@
-extends Entity_Class
