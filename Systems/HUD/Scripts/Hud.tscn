@@ -1,9 +1,8 @@
-[gd_scene load_steps=92 format=3 uid="uid://cs3euhsmepn8e"]
+[gd_scene load_steps=92 format=3 uid="uid://ctm1dfhfkd0fl"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
 [ext_resource type="Script" uid="uid://dg1fwjeiv0nqf" path="res://Systems/HUD/Scripts/Hud.gd" id="1_ofedd"]
 [ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
-[ext_resource type="Shader" uid="uid://bwwhyf4a1odbe" path="res://Assets/Visuals/ScanLine.gdshader" id="2_esehe"]
 [ext_resource type="Script" uid="uid://bviderkc7hhxm" path="res://Systems/HUD/Scripts/main_hud.gd" id="2_miqxo"]
 [ext_resource type="Texture2D" uid="uid://cn81rks2rm6sr" path="res://Systems/HUD/Art/DialogueOverlay2.png" id="3_gncqb"]
 [ext_resource type="PackedScene" uid="uid://dm0cauxxqnbsf" path="res://Systems/Inventory/Backpack/Backpack.tscn" id="3_idjsy"]
@@ -14,11 +13,12 @@
 [ext_resource type="Script" uid="uid://cg1mwcla53gpt" path="res://Systems/HUD/Scripts/BackpackSprite.gd" id="7_661ui"]
 [ext_resource type="Texture2D" uid="uid://dbp6jtu1o2s75" path="res://Systems/HUD/Art/HungerBar.png" id="7_mc64d"]
 [ext_resource type="Texture2D" uid="uid://bpxtq036g4j51" path="res://Systems/HUD/Art/HPBar.png" id="7_o8nrm"]
+[ext_resource type="Texture2D" uid="uid://bxs3m1fskp3xt" path="res://Systems/Inventory/Backpack/Art/ICON (BAG).png" id="7_s703r"]
 [ext_resource type="Texture2D" uid="uid://bywqhh6utc21w" path="res://Systems/Journal/Art/ICON (JOURNAL).png" id="8_r3lqb"]
 [ext_resource type="Script" uid="uid://ch8lan6biuqyk" path="res://Systems/HUD/Scripts/HudButton.gd" id="9_dlaxh"]
 [ext_resource type="Texture2D" uid="uid://mo83elou1nbx" path="res://Systems/HUD/Art/SprintBar.png" id="10_66pv7"]
 [ext_resource type="Script" uid="uid://clga0e3f47l8b" path="res://Systems/HUD/Scripts/BetaText.gd" id="14_ovp23"]
-[ext_resource type="Shader" uid="uid://dt8044m7sgioc" path="res://Assets/Visuals/vignette.gdshader" id="15_k06wk"]
+[ext_resource type="Shader" uid="uid://dt8044m7sgioc" path="res://Assets/Shader/vignette.gdshader" id="15_k06wk"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="16_dnbc0"]
 [ext_resource type="Script" uid="uid://8xir6rn1x7v" path="res://Systems/HUD/Scripts/Keybind.gd" id="17_dpk2t"]
 [ext_resource type="Texture2D" uid="uid://k4pwyg81cd63" path="res://Systems/HUD/Art/Clock/Clock.png" id="19_hou1q"]
@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="26_tggdx"]
 [ext_resource type="Texture2D" uid="uid://bb1nbgmfo3v2f" path="res://Systems/HUD/Art/Cooking_GUI.png" id="26_wlppn"]
 [ext_resource type="Texture2D" uid="uid://dp3t44eq4vjmr" path="res://Systems/Inventory/Backpack/Items/RareFish.png" id="27_qodvs"]
-[ext_resource type="PackedScene" uid="uid://byf8km8hnlejp" path="res://Systems/HUD/Scenes/item_label.tscn" id="28_0chnb"]
+[ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/Scripts/item_label.tscn" id="28_0chnb"]
 [ext_resource type="Script" uid="uid://2d6g5p2570th" path="res://Systems/HUD/WorkbenchSystem/scroll_base.gd" id="28_1iy7h"]
 [ext_resource type="Texture2D" uid="uid://ct21jwiimm3yw" path="res://Systems/HUD/WorkbenchSystem/Art/ScrollButton.png" id="28_dux36"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="28_omeas"]
@@ -39,21 +39,16 @@
 [ext_resource type="Script" uid="uid://bfoj11s870g50" path="res://Systems/HUD/WorkbenchSystem/scroll_button.gd" id="29_pheyb"]
 [ext_resource type="Script" uid="uid://daucik7bf2ih0" path="res://Systems/HUD/WorkbenchSystem/crafting_hud.gd" id="29_yu7lx"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="30_qo76f"]
-[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
+[ext_resource type="Script" uid="uid://b0l1w5c5ua4rn" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="31_mq4gt"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="32_1yik7"]
 [ext_resource type="Script" uid="uid://dwx84waupee3x" path="res://Systems/HUD/Scripts/cooking_hud.gd" id="32_4ndme"]
 [ext_resource type="Texture2D" uid="uid://b47khq87dqvli" path="res://Systems/HUD/WorkbenchSystem/Art/Table.png" id="33_hqrie"]
-[ext_resource type="Script" uid="uid://eog3jdphrrmu" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
+[ext_resource type="Script" uid="uid://d1hhlp2hpww7j" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="34_qk7f8"]
 [ext_resource type="AudioStream" uid="uid://deub8yj1eataw" path="res://Systems/HUD/WorkbenchSystem/Sounds/Craft_SFX.mp3" id="37_awfko"]
 [ext_resource type="Script" uid="uid://f0ej3wkbxlm3" path="res://Systems/HUD/Scripts/fishing_hud.gd" id="45_s6v0h"]
 [ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pji"]
-shader = ExtResource("2_esehe")
-shader_parameter/scanline_color = Color(1, 1, 1, 0.1)
-shader_parameter/scanline_spacing = 6.0
-shader_parameter/scanline_width = 1.0
-shader_parameter/edge_softness = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5gsb"]
 shader = ExtResource("15_k06wk")
@@ -320,24 +315,21 @@ margin = Rect2(0, -320, 0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvkac"]
 size = Vector2(20, 56)
 
-[node name="Hud" type="CanvasLayer" groups=["Hud"]]
+[node name="Hud" type="Control" groups=["Hud"]]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_ofedd")
 
-[node name="BGProcessing" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="BGProcessing" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="ScanLine" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5pji")
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
-color = Color(0.799, 0.662, 0.662, 0.2)
+color = Color(0.798701, 0.661984, 0.661984, 0.4)
 
 [node name="Vignette Effect" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5gsb")
@@ -376,14 +368,8 @@ mouse_filter = 2
 texture = ExtResource("3_gncqb")
 script = ExtResource("4_oxeg6")
 
-[node name="MainHud" type="Control" parent="." groups=["MainHud"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="MainHud" type="CanvasLayer" parent="." groups=["MainHud"]]
+layer = 3
 script = ExtResource("2_miqxo")
 tired_color = Color(0.70366, 0.310181, 0.310181, 1)
 
@@ -391,7 +377,6 @@ tired_color = Color(0.70366, 0.310181, 0.310181, 1)
 visible = false
 z_index = 50
 texture_filter = 1
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -401,7 +386,6 @@ texture = ExtResource("2_0ak6f")
 stretch_mode = 4
 
 [node name="HungerBar" type="TextureProgressBar" parent="MainHud"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -421,7 +405,6 @@ texture_progress_offset = Vector2(0, 0.94)
 
 [node name="HealthBar" type="TextureProgressBar" parent="MainHud"]
 texture_filter = 1
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -442,7 +425,6 @@ texture_progress_offset = Vector2(0, 4.83)
 
 [node name="SprintBar" type="TextureProgressBar" parent="MainHud"]
 self_modulate = Color(0.741079, 0.582015, 0.377293, 1)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -461,8 +443,27 @@ texture_under = ExtResource("6_6xx1r")
 texture_progress = ExtResource("10_66pv7")
 texture_progress_offset = Vector2(0, 5.15)
 
+[node name="BackpackButton" type="Button" parent="MainHud"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = -324.0
+offset_right = 664.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+icon = ExtResource("7_s703r")
+flat = true
+script = ExtResource("9_dlaxh")
+opacity_color = Color(1, 1, 1, 0.4)
+
 [node name="JournalButton" type="Button" parent="MainHud"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -501,7 +502,7 @@ offset_right = 1152.0
 offset_bottom = 38.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_j6nef")
-text = "House After Dusk - Beta - V0.00.0 | FPS: 0.0
+text = "House After Dusk - Beta - V0.0.0 | FPS: 0.0
 Date"
 horizontal_alignment = 1
 script = ExtResource("14_ovp23")
@@ -545,15 +546,8 @@ scale = Vector2(3, 3.5)
 texture = ExtResource("20_fc33r")
 offset = Vector2(0, 5)
 
-[node name="CraftingHud" type="Control" parent="." groups=["CraftingHud"]]
+[node name="CraftingHud" type="CanvasLayer" parent="." groups=["CraftingHud"]]
 unique_name_in_owner = true
-z_index = -29
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("29_yu7lx")
 move_offset = -750.0
 move_speed = 4.2
@@ -1044,23 +1038,20 @@ flip_h = true
 stream = SubResource("AudioStreamRandomizer_eyi46")
 bus = &"SFX"
 
-[node name="CookingHud" type="Control" parent="."]
+[node name="CookingHud" type="CanvasLayer" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 0
 script = ExtResource("32_4ndme")
 
 [node name="CookingPanel" type="Panel" parent="CookingHud"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 88.0
-offset_top = 64.0
-offset_right = 600.0
-offset_bottom = 576.0
+offset_left = -488.0
+offset_top = -260.0
+offset_right = 24.0
+offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -1152,10 +1143,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_p0daj")
 }
 
-[node name="FishingHud" type="Control" parent="."]
+[node name="FishingHud" type="CanvasLayer" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 0
 script = ExtResource("45_s6v0h")
 
 [node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
@@ -1182,7 +1171,6 @@ texture_progress = SubResource("GradientTexture2D_rc5qm")
 texture_progress_offset = Vector2(4, 4)
 
 [node name="SuccessBar" type="NinePatchRect" parent="FishingHud"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1209,7 +1197,6 @@ visible = false
 shape = SubResource("RectangleShape2D_mdn8i")
 
 [node name="FishingHook" type="NinePatchRect" parent="FishingHud"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1241,29 +1228,22 @@ wait_time = 1.5
 wait_time = 10.0
 one_shot = true
 
-[node name="MechanicHud" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MechanicHud" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Journal" parent="MechanicHud" instance=ExtResource("1_7mtow")]
-z_index = -30
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -26.0
-offset_bottom = -26.0
-scale = Vector2(0.78587, 0.78587)
+offset_top = -4.0
+offset_bottom = -4.0
+scale = Vector2(0.600937, 0.600937)
 
 [node name="Backpack" type="Control" parent="MechanicHud"]
 z_index = 10
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1288,9 +1268,13 @@ texture = ExtResource("5_dcrnc")
 script = ExtResource("7_661ui")
 metadata/_edit_lock_ = true
 
+[connection signal="mouse_entered" from="MainHud/BackpackButton" to="MainHud/BackpackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHud/BackpackButton" to="MainHud/BackpackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainHud/BackpackButton" to="MainHud" method="_on_backpack_button_pressed"]
 [connection signal="mouse_entered" from="MainHud/JournalButton" to="MainHud/JournalButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHud/JournalButton" to="MainHud/JournalButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MainHud/JournalButton" to="MainHud" method="_on_journal_button_pressed"]
+[connection signal="pressed" from="MainHud/JournalButton" to="MechanicHud/Journal" method="_on_journal_button_pressed"]
 [connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton1" to="CraftingHud" method="_on_tab_button_1_pressed"]
 [connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton2" to="CraftingHud" method="_on_tab_button_2_pressed"]
 [connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton3" to="CraftingHud" method="_on_tab_button_3_pressed"]
