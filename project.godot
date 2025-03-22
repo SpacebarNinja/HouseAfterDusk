@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="House After Dusk v0.24.0"
+config/name="House After Dusk v0.26.2"
 run/main_scene="res://MainScene.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/image="res://Boot Splash.png"
-config/icon="res://Logo.png"
+boot_splash/image="uid://cy37rkpbm4s3a"
+config/icon="uid://clegykl6d88pl"
 
 [autoload]
 
@@ -45,6 +45,19 @@ mouse_cursor/custom_image="res://Assets/Cursors/Cursor.png"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gloot/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "pink",
+"res://Dev Stuff/": "purple",
+"res://Dialogue/": "blue",
+"res://Entities/": "teal",
+"res://Singletons/": "green",
+"res://Sounds/": "yellow",
+"res://Systems/": "orange",
+"res://World/": "red"
+}
 
 [global_group]
 

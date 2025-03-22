@@ -5,38 +5,38 @@ extends Entity_Class
 @export var glitch_length: float = 0.2
 
 @export_category("Teleport Stats")
+@export var teleport_min_speed: int = 80
+@export var teleport_max_speed: int = 150
 @export var teleport_frequency: int = 5
 @export var teleport_min_hide_length: float = 1.0
 @export var teleport_max_hide_length: float = 4.0
 
 #------------{ Electronic Guy Nodes }------------
-@onready var search_cooldown = $SearchCooldown
-@onready var movement_timer = $MovementTimer
 @onready var teleport_timer = $TeleportTimer
 @onready var glitch_timer = $GlitchTimer
-@onready var prowl_timer = $ProwlTimer
+@onready var search_cooldown = $SearchCooldown
+@onready var movement_timer = $MovementTimer
 
-var tv_node
-
-var corrupted_channels: Array = []
-var prowling = true
 var is_teleporting = false
 var hide_length
 
 func _ready():
 	super._ready()
-	corrupted_channels = [1,2,3,4]
-	hide()
-	
+	print(anim_tree.get_animation_list(), " | ", anim_tree.get_animation_library_list())
+	QteHud.connect("QTE_Success", Callable(self, "on_qte_success"))
+	QteHud.connect("QTE_Fail", Callable(self, "on_qte_fail"))
+
+	wander()
+
 func _physics_process(delta):
-	if prowling:
-		return
-	
 	super._physics_process(delta)
-	handle_behavior()
+	if player_detected:
+		var player_angle = rad_to_deg(get_angle_to(get_player_position()))
+		handle_vision_cone(player_angle, delta)
+		check_suspicion_meter(0.01)
 
 func glitch():
-	if not is_teleporting and not prowling:
+	if not is_teleporting:
 		anim_tree.get("parameters/playback").travel("Glitch")
 		await get_tree().create_timer(randf_range(glitch_length, glitch_length * 3)).timeout
 		
@@ -47,55 +47,42 @@ func glitch():
 func start_teleport():
 	is_teleporting = true
 	anim_tree.get("parameters/playback").travel("Teleport")
-	await get_tree().create_timer(0.8).timeout
+	await anim_tree.animation_finished
+	movement_speed = randi_range(teleport_min_speed, teleport_max_speed)  # Set random teleport speed
 	teleport_timer.wait_time = randf_range(teleport_min_hide_length, teleport_max_hide_length)
 	teleport_timer.start()  # Always restart timer
 
 func end_teleport():
 	if is_teleporting:
 		is_teleporting = false
+		movement_speed = 0
 		anim_tree.get("parameters/playback").travel("Idle")
-
-func handle_behavior():
-	if player_seen:
-		current_vision_direction = VISION_DIRECTION.PLAYER
-		manage_suspicion_meter(2)
 		
-	if suspicion >= 80 and not GameManager.directing_enemy:
-		GameManager.direct_enemy(self, GameManager.LOCATIONS.PLAYER_LOCATION)
-		
-func on_generator_turn_off() -> void:
-	print("Turned Off Generator, Killing TvG")
-	queue_free()
+func check_suspicion_meter(suspicion_speed: float):
+	if current_state != STATES.SEARCH:
+		return
 	
+	suspicion = clampf(suspicion + suspicion_speed, 0, MAX_SUSPICION)
+	print("Suspicion Level: ", suspicion)
+	if suspicion > 25 and suspicion <= 50 and not GameManager.directing_enemy:
+		GameManager.direct_enemy(self, "RANDOM_CABIN")
+	elif suspicion > 50 and suspicion <= 90 and not GameManager.directing_enemy:
+		GameManager.direct_enemy(self, "PLAYER_ROOM")
+	elif suspicion > 90 and not GameManager.directing_enemy:
+		GameManager.direct_enemy(self, "PLAYER_CURRENT")
+
 func _on_player_found():
-	if current_state in [BEHAVIOR_STATES.IDLE, BEHAVIOR_STATES.WANDER, BEHAVIOR_STATES.SEARCH]:
-		current_state = BEHAVIOR_STATES.PURSUE
-		teleport_timer.stop()
-		end_teleport()
-		manage_suspicion_meter(3)
+	player_detected = true
+	teleport_timer.stop()
+	if current_state == STATES.WANDER:
+		current_state = STATES.PURSUE
 		
 func _on_player_lost():
-	if current_state == BEHAVIOR_STATES.PURSUE:
-		current_state = BEHAVIOR_STATES.SEARCH
-		search_cooldown.start()
-		start_teleport()
-		set_target_position(player.get_global_position())
-	
-func on_qte_success():
-	anim_tree.get("parameters/playback").travel("QuickTimeEvent_Stun")
-	stun(2.5)
-
-func on_qte_fail():
-	player.take_damage(attack_damage,velocity)
-
-func _on_stunned():
-	teleport_timer.stop()
-
-func _on_unstunned():
-	anim_tree.get("parameters/playback").travel("Idle")
-	start_teleport()
-
+	if current_state == STATES.PURSUE and player_detected:
+		current_state = STATES.SEARCH
+		player_detected = false
+		teleport_timer.start()
+		
 func _on_glitch_timer_timeout():
 	glitch()
 
@@ -104,54 +91,32 @@ func _on_teleport_timer_timeout():
 
 func _on_search_cooldown_timeout():
 	if suspicion > 0:
-		manage_suspicion_meter(1)
+		check_suspicion_meter(-3)
 	else:
 		search_cooldown.stop()
-		retreat()
 
 func _on_movement_timer_timeout():
-	if current_state in [BEHAVIOR_STATES.IDLE, BEHAVIOR_STATES.WANDER]:
+	start_teleport()
+	
+	if current_state == STATES.WANDER:
 		movement_timer.wait_time = 5
 		wander()
 		
-	elif current_state == BEHAVIOR_STATES.PURSUE:
+	if current_state == STATES.PURSUE:
 		movement_timer.wait_time = 3
 	
-	start_teleport()
-	movement_timer.start()
-
-func _on_prowl_timer_timeout():
-	if corrupted_channels.size() > 0:
-		corrupted_channels.shuffle()  # Shuffle the array
-
-		var selected_channel = corrupted_channels.pop_front()  # Get and remove the first channel
-		print("TvG selected channel ", selected_channel)
-		tv_node.corrupt_channel(selected_channel)
-
-		prowl_timer.start()
-	else:
-		# All channels corrupted, start QTE
-		if not QteHud.is_connected("QTE_Success", Callable(self, "on_qte_success")):
-			QteHud.connect("QTE_Success", Callable(self, "on_qte_success"))
-		if not QteHud.is_connected("QTE_Fail", Callable(self, "on_qte_fail")):
-			QteHud.connect("QTE_Fail", Callable(self, "on_qte_fail"))
-
-		prowling = false
-		
-func _on_hitbox_body_entered(body):
-	if body == player and not prowling:
-		anim_tree.get("parameters/playback").travel("QuickTimeEvent_Loop")
-		await get_tree().create_timer(1).timeout
-		GameManager.start_quick_time_event()
-
-func _on_navigation_agent_2d_navigation_finished():
-	if current_state == BEHAVIOR_STATES.RETREAT:
-		print("TvG Retreated")
-		queue_free()
+func _on_player_entered_hitbox():
+	GameManager.start_quick_time_event()
 	
-	if GameManager.directing_enemy:
-		GameManager.directing_enemy = false
+func on_qte_success():
+	stun(5)
+	suspicion = 0
 
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "Tv_Exit":
-		movement_timer.start()
+func on_qte_fail():
+	player.take_damage(attack_damage,velocity)
+
+func _on_stunned():
+	teleport_timer.stop()
+
+func _on_unstunned():
+	teleport_timer.start()

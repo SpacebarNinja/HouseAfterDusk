@@ -7,10 +7,8 @@ var intr_display_instance
 var interactable
 
 func _ready():
-	if not is_connected("body_entered", Callable(self, "_on_body_entered")):
-		connect("body_entered", Callable(self, "_on_body_entered"))
-	if not is_connected("body_exited", Callable(self, "_on_body_exited")):
-		connect("body_exited", Callable(self, "_on_body_exited"))
+	connect("body_entered", Callable(self, "_on_body_entered"))
+	connect("body_exited", Callable(self, "_on_body_exited"))
 
 	interactable = get_node_or_null(interactable_node)
 	intr_display_instance = get_node_or_null("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
@@ -21,6 +19,7 @@ func _ready():
 
 func _delayed_setup():
 	intr_display_instance = get_node_or_null("/root/MainScene/Player/CanvasLayer/InteractionDisplay")
+
 	
 func _on_body_entered(body):
 	if body.name == 'Player':

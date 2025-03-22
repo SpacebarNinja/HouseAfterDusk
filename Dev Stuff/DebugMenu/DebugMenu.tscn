@@ -1,24 +1,25 @@
 [gd_scene load_steps=38 format=3 uid="uid://chyhpk7ouru8b"]
 
 [ext_resource type="Script" uid="uid://cfauk360uoi6j" path="res://Dev Stuff/DebugMenu/DebugMenu.gd" id="1_ovj22"]
-[ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
+[ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/Enemies/WindowGirl/Art/WG_Spritesheet.png" id="2_64gco"]
 [ext_resource type="Script" uid="uid://ccnfh0kof8bnu" path="res://Dev Stuff/DebugMenu/Debug_Window_Game.gd" id="3_2ur0b"]
 [ext_resource type="Script" uid="uid://biypn2yyrakci" path="res://Dev Stuff/DebugMenu/Debug_Window_Enemy.gd" id="3_6x55g"]
 [ext_resource type="Theme" uid="uid://bgki6iji2vosh" path="res://Dev Stuff/DebugMenu/Gui_Debug_Buttons.tres" id="3_mat6y"]
-[ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/TheDolls/Art/Doll_Idle.png" id="4_ke238"]
-[ext_resource type="PackedScene" uid="uid://kyn7m3vujx5b" path="res://Dev Stuff/DebugMenu/DebugWindow.tscn" id="7_qv0nl"]
+[ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/Enemies/TheDolls/Art/Doll_Idle.png" id="4_ke238"]
+[ext_resource type="PackedScene" uid="uid://d01aetr2xw0wv" path="res://Dev Stuff/DebugMenu/DebugWindow.tscn" id="7_qv0nl"]
+[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Player.gd" id="8_iwgxf"]
+[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Map.gd" id="9_u6m8c"]
 [ext_resource type="Script" uid="uid://c0ir0wtemiw21" path="res://Dev Stuff/DebugMenu/Debug_Window_Inventory.gd" id="10_gerqt"]
-[ext_resource type="Script" uid="uid://b0l1w5c5ua4rn" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="11_8rupj"]
+[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="11_8rupj"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="12_734th"]
-[ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="13_05cch"]
-[ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/ElectronicGuy/Art/TvG_Idle.png" id="13_8qyrp"]
-[ext_resource type="Script" uid="uid://dm8773pfykkbq" path="res://addons/gloot/core/inventory_item.gd" id="13_nnlmn"]
-[ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/Scripts/item_label.tscn" id="14_m2d0y"]
-[ext_resource type="Script" uid="uid://d1hhlp2hpww7j" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
+[ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Idle.png" id="13_8qyrp"]
+[ext_resource type="Script" uid="uid://2sxumcwcp80r" path="res://addons/gloot/core/inventory_item.gd" id="13_nnlmn"]
+[ext_resource type="PackedScene" uid="uid://byf8km8hnlejp" path="res://Systems/HUD/Scenes/item_label.tscn" id="14_m2d0y"]
+[ext_resource type="Script" uid="uid://eog3jdphrrmu" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_on3mp"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="15_w6hg1"]
-[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/Art/deer male calciumtrice.png" id="16_awk0u"]
+[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Animals/Deer/Art/deer male calciumtrice.png" id="16_awk0u"]
+[ext_resource type="Script" path="res://Dev Stuff/DebugMenu/Debug_Window_Hud.gd" id="16_hx5qb"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="16_lwjpa"]
-[ext_resource type="Script" uid="uid://dfkjdoa6xujy1" path="res://Systems/HUD/Scripts/item_label.gd" id="19_bcw1f"]
 [ext_resource type="Texture2D" uid="uid://ds5wnn3jpk8ir" path="res://Dev Stuff/DebugMenu/Trash_Icon.png" id="20_ndrq0"]
 [ext_resource type="Texture2D" uid="uid://dyiuj0rpblf3d" path="res://Systems/Inventory/Backpack/Art/Slot2.png" id="20_nw6bf"]
 
@@ -44,7 +45,7 @@ border_color = Color(0.890196, 0.729412, 0.384314, 0.588235)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phl58"]
 atlas = ExtResource("2_64gco")
-region = Rect2(5, 16.54, 48, 43.02)
+region = Rect2(5, 20, 48, 48)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fjag6"]
 font = ExtResource("12_734th")
@@ -52,18 +53,14 @@ font_size = 33
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcw1f"]
-atlas = ExtResource("13_05cch")
-region = Rect2(88, 104, 40, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nnwx"]
 atlas = ExtResource("13_8qyrp")
-region = Rect2(8, 482.425, 40, 104.31)
+region = Rect2(8, 488, 40, 110)
 margin = Rect2(0, 0, 0, -61.285)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rq56q"]
 atlas = ExtResource("4_ke238")
-region = Rect2(39.12, 72.465, 42.46, 43.95)
+region = Rect2(227.565, 339.985, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ny0x"]
 atlas = ExtResource("16_awk0u")
@@ -180,10 +177,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -114.0
-offset_top = 20.0
-offset_right = -36.0
-offset_bottom = 51.0
+offset_left = -106.0
+offset_top = 22.0
+offset_right = -28.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -197,10 +194,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 30.0
-offset_top = 20.0
-offset_right = 108.0
-offset_bottom = 51.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 100.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -235,7 +232,7 @@ theme = ExtResource("3_mat6y")
 text = "Camera Zoom: "
 horizontal_alignment = 1
 
-[node name="EnableDebugMode" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
+[node name="EnableNoclip" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -243,14 +240,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -152.0
+offset_top = -156.0
 offset_right = 112.0
-offset_bottom = -105.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
-toggle_mode = true
-text = "Enable Debug Mode"
+text = "Enable No Clip"
 
 [node name="KillAllEnemies" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 1
@@ -260,13 +256,47 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -88.0
+offset_top = -92.0
 offset_right = 112.0
-offset_bottom = -41.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Kill All Enemies"
+
+[node name="ShowPlayerPanel" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 36.0
+offset_right = -16.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+toggle_mode = true
+text = "Player"
+
+[node name="ShowMapPanel" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 100.0
+offset_right = -16.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+toggle_mode = true
+text = "Map"
 
 [node name="ShowEnemyPanel" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 1
@@ -276,9 +306,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 16.0
-offset_top = 64.0
+offset_top = 36.0
 offset_right = 112.0
-offset_bottom = 111.0
+offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
@@ -292,91 +322,55 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = 64.0
-offset_right = -16.0
-offset_bottom = 111.0
+offset_left = 16.0
+offset_top = 100.0
+offset_right = 112.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
 toggle_mode = true
 text = "Inventory"
 
-[node name="HudSelector" type="OptionButton" parent="CanvasLayer/GameWindow/GamePanel"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 304.0
-offset_right = 128.0
-offset_bottom = 336.0
-alignment = 1
-autowrap_mode = 3
-item_count = 4
-popup/item_0/text = "Main Hud"
-popup/item_0/id = 0
-popup/item_1/text = "Crafting Hud"
-popup/item_1/id = 2
-popup/item_2/text = "Cooking Hud"
-popup/item_2/id = 3
-popup/item_3/text = "Fishing Hud"
-popup/item_3/id = 4
-
-[node name="HudSelectorLabel" type="Label" parent="CanvasLayer/GameWindow/GamePanel/HudSelector"]
+[node name="ShowHudPanel" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -40.0
-offset_right = 47.5
-offset_bottom = -17.0
+offset_left = -112.0
+offset_top = 164.0
+offset_right = -16.0
+offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
-text = "Hud Selector"
-horizontal_alignment = 1
+toggle_mode = true
+text = "HUD"
 
-[node name="PlayerStats" type="OptionButton" parent="CanvasLayer/GameWindow/GamePanel"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 304.0
-offset_right = 240.0
-offset_bottom = 336.0
-alignment = 1
-autowrap_mode = 3
-item_count = 4
-popup/item_0/text = "Full Health"
-popup/item_0/id = 0
-popup/item_1/text = "Full Hunger"
-popup/item_1/id = 1
-popup/item_2/text = "Health  -20"
-popup/item_2/id = 2
-popup/item_3/text = "Hunger -10"
-popup/item_3/id = 3
-
-[node name="PlayerStatsLabel" type="Label" parent="CanvasLayer/GameWindow/GamePanel/PlayerStats"]
+[node name="InfiniteSprint" type="Button" parent="CanvasLayer/GameWindow/GamePanel"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.505
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -40.0
-offset_right = 46.955
-offset_bottom = -17.0
+offset_left = -112.0
+offset_top = -28.0
+offset_right = 112.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mat6y")
-text = "Player Stats"
-horizontal_alignment = 1
+toggle_mode = true
+text = "Enable Fast Sprint"
 
 [node name="EnemyWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
-offset_left = -296.0
-offset_top = -132.0
-offset_right = 24.0
-offset_bottom = -108.0
+offset_left = -304.0
+offset_top = -324.0
+offset_right = 16.0
+offset_bottom = -300.0
 panel = NodePath("EnemyPanel")
 
 [node name="EnemyPanel" type="Panel" parent="CanvasLayer/EnemyWindow"]
@@ -395,7 +389,6 @@ grow_vertical = 2
 script = ExtResource("3_6x55g")
 
 [node name="WGButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
-z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -421,16 +414,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_fjag6")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EnemyWindow/EnemyPanel/WGButton"]
-self_modulate = Color(0.951755, 0.649577, 0.36474, 1)
-z_index = -1
-layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
-texture = SubResource("AtlasTexture_bcw1f")
-
 [node name="TvGButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
-z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -455,16 +439,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_fjag6")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton"]
-self_modulate = Color(0.952941, 0.65098, 0.364706, 1)
-z_index = -1
-layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
-texture = SubResource("AtlasTexture_bcw1f")
-
 [node name="DollButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
-z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -490,16 +465,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_fjag6")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EnemyWindow/EnemyPanel/DollButton"]
-self_modulate = Color(0.952941, 0.65098, 0.364706, 1)
-z_index = -1
-layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
-texture = SubResource("AtlasTexture_bcw1f")
-
 [node name="DeerButton" type="TextureButton" parent="CanvasLayer/EnemyWindow/EnemyPanel"]
-z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -524,18 +490,308 @@ text = "0"
 label_settings = SubResource("LabelSettings_fjag6")
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton"]
-self_modulate = Color(0.952941, 0.65098, 0.364706, 1)
-z_index = -1
+[node name="PlayerWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = 32.0
+offset_top = -4.0
+offset_right = 352.0
+offset_bottom = 20.0
+panel = NodePath("PlayerPanel")
+
+[node name="PlayerPanel" type="Panel" parent="CanvasLayer/PlayerWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_iwgxf")
+
+[node name="FullHealth" type="Button" parent="CanvasLayer/PlayerWindow/PlayerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -112.0
+offset_right = 16.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Replenish Health"
+
+[node name="FullHunger" type="Button" parent="CanvasLayer/PlayerWindow/PlayerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Replenish Hunger"
+
+[node name="-10Health" type="Button" parent="CanvasLayer/PlayerWindow/PlayerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -112.0
+offset_right = 96.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "-10 Hp
+"
+
+[node name="-10Hunger" type="Button" parent="CanvasLayer/PlayerWindow/PlayerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -48.0
+offset_right = 96.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "-10 Hg
+"
+
+[node name="MapWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = -304.0
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = 20.0
+panel = NodePath("MapPanel")
+
+[node name="MapPanel" type="Panel" parent="CanvasLayer/MapWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_u6m8c")
+
+[node name="TeleportLabel" type="Label" parent="CanvasLayer/MapWindow/MapPanel"]
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
-texture = SubResource("AtlasTexture_bcw1f")
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 106.0
+offset_bottom = 39.0
+theme = ExtResource("3_mat6y")
+text = "Teleport to Cabin:"
+
+[node name="TeleportButton" type="OptionButton" parent="CanvasLayer/MapWindow/MapPanel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 88.0
+theme = ExtResource("3_mat6y")
+item_count = 7
+popup/item_0/text = "Living Room"
+popup/item_0/id = 0
+popup/item_1/text = "Bathroom"
+popup/item_1/id = 2
+popup/item_2/text = "Kitchen"
+popup/item_2/id = 1
+popup/item_3/text = "Hallway"
+popup/item_3/id = 3
+popup/item_4/text = "Bedroom"
+popup/item_4/id = 4
+popup/item_5/text = "Storage"
+popup/item_5/id = 5
+popup/item_6/text = "Electrical"
+popup/item_6/id = 6
+
+[node name="TeleportLabel2" type="Label" parent="CanvasLayer/MapWindow/MapPanel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 147.0
+offset_bottom = 119.0
+theme = ExtResource("3_mat6y")
+text = "Teleport to Forest:"
+
+[node name="TeleportButton2" type="OptionButton" parent="CanvasLayer/MapWindow/MapPanel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 152.0
+offset_bottom = 168.0
+theme = ExtResource("3_mat6y")
+item_count = 2
+popup/item_0/text = "OutsideCabin"
+popup/item_0/id = 0
+popup/item_1/text = "CropField"
+popup/item_1/id = 1
+
+[node name="HideBlackRect" type="Button" parent="CanvasLayer/MapWindow/MapPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -64.0
+offset_right = 144.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Hide Black Rects"
+
+[node name="ShowTilemaps" type="Button" parent="CanvasLayer/MapWindow/MapPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -112.0
+offset_right = 144.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Show Tilemaps"
+
+[node name="HudWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
+offset_left = 368.0
+offset_top = -4.0
+offset_right = 536.0
+offset_bottom = 20.0
+panel = NodePath("HudPanel")
+
+[node name="HudPanel" type="Panel" parent="CanvasLayer/HudWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 12.0
+offset_right = 84.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_hx5qb")
+
+[node name="ShowMainHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -116.0
+offset_right = 68.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Main Hud"
+
+[node name="ShowQTEHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "QTE Hud"
+
+[node name="ShowCraftingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -20.0
+offset_right = 68.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Crafting Hud"
+
+[node name="ShowCookingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 28.0
+offset_right = 68.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Cooking Hud"
+
+[node name="ShowFishingHud" type="Button" parent="CanvasLayer/HudWindow/HudPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 76.0
+offset_right = 68.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mat6y")
+text = "Fishing Hud"
 
 [node name="InventoryWindow" parent="CanvasLayer" node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
-offset_left = -296.0
+offset_left = 32.0
 offset_top = -324.0
-offset_right = 72.0
+offset_right = 400.0
 offset_bottom = -300.0
 panel = NodePath("InventoryPanel")
 
@@ -548,8 +804,7 @@ script = ExtResource("10_gerqt")
 
 [node name="ItemLabel" parent="CanvasLayer/InventoryWindow/InventoryPanel" instance=ExtResource("14_m2d0y")]
 z_index = 1
-position = Vector2(440, 8)
-script = ExtResource("19_bcw1f")
+position = Vector2(624, 16)
 
 [node name="Delay" type="Timer" parent="CanvasLayer/InventoryWindow/InventoryPanel"]
 wait_time = 0.1
@@ -570,7 +825,7 @@ item_protoset = ExtResource("16_lwjpa")
 [node name="_Node_42665" type="Node" parent="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear"]
 script = ExtResource("13_nnlmn")
 protoset = ExtResource("16_lwjpa")
-prototype_id = "pistol"
+prototype_id = "gun"
 properties = {
 "grid_position": Vector2i(1, 0)
 }
@@ -1301,16 +1556,31 @@ color = Color(0.821789, 0.821789, 0.821789, 1)
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/TimeSlider/Midnight" to="CanvasLayer/GameWindow/GamePanel" method="_on_midnight_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/TimeSlider/Noon" to="CanvasLayer/GameWindow/GamePanel" method="_on_noon_pressed"]
 [connection signal="value_changed" from="CanvasLayer/GameWindow/GamePanel/ZoomSlider" to="CanvasLayer/GameWindow/GamePanel" method="_on_zoom_slider_value_changed"]
-[connection signal="toggled" from="CanvasLayer/GameWindow/GamePanel/EnableDebugMode" to="CanvasLayer/GameWindow/GamePanel" method="_on_enable_debug_mode_toggled"]
+[connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/EnableNoclip" to="CanvasLayer/GameWindow/GamePanel" method="_on_enable_noclip_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/KillAllEnemies" to="CanvasLayer/GameWindow/GamePanel" method="_on_kill_all_enemies_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowPlayerPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_player_panel_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowMapPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_map_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowEnemyPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_enemy_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowInventoryPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_inventory_panel_pressed"]
-[connection signal="item_selected" from="CanvasLayer/GameWindow/GamePanel/HudSelector" to="CanvasLayer/GameWindow/GamePanel" method="_on_option_button_item_selected"]
-[connection signal="item_selected" from="CanvasLayer/GameWindow/GamePanel/PlayerStats" to="CanvasLayer/GameWindow/GamePanel" method="_on_player_stats_item_selected"]
+[connection signal="pressed" from="CanvasLayer/GameWindow/GamePanel/ShowHudPanel" to="CanvasLayer/GameWindow/GamePanel" method="_on_show_hud_panel_pressed"]
+[connection signal="toggled" from="CanvasLayer/GameWindow/GamePanel/InfiniteSprint" to="CanvasLayer/GameWindow/GamePanel" method="_on_infinite_sprint_toggled"]
 [connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/WGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_wg_button_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/TvGButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_tvg_button_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/DollButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_doll_button_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/EnemyWindow/EnemyPanel/DeerButton" to="CanvasLayer/EnemyWindow/EnemyPanel" method="_on_deer_button_gui_input"]
+[connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHealth" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_health_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/FullHunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_full_hunger_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Health" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehealth_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayerWindow/PlayerPanel/-10Hunger" to="CanvasLayer/PlayerWindow/PlayerPanel" method="_on_removehunger_pressed"]
+[connection signal="item_selected" from="CanvasLayer/MapWindow/MapPanel/TeleportButton" to="CanvasLayer/MapWindow/MapPanel" method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="CanvasLayer/MapWindow/MapPanel/TeleportButton2" to="CanvasLayer/MapWindow/MapPanel" method="_on_alt_option_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/MapWindow/MapPanel/HideBlackRect" to="CanvasLayer/MapWindow/MapPanel" method="_on_hide_black_rect_pressed"]
+[connection signal="pressed" from="CanvasLayer/MapWindow/MapPanel/ShowTilemaps" to="CanvasLayer/MapWindow/MapPanel" method="_on_show_tilemaps_pressed"]
+[connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowMainHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_main_hud_pressed"]
+[connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowQTEHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_qte_hud_pressed"]
+[connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowCraftingHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_crafting_hud_pressed"]
+[connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowCookingHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_cooking_hud_pressed"]
+[connection signal="pressed" from="CanvasLayer/HudWindow/HudPanel/ShowFishingHud" to="CanvasLayer/HudWindow/HudPanel" method="_on_show_fishing_hud_pressed"]
 [connection signal="timeout" from="CanvasLayer/InventoryWindow/InventoryPanel/Delay" to="CanvasLayer/InventoryWindow/InventoryPanel" method="_on_delay_timeout"]
 [connection signal="item_removed" from="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/Gear" to="CanvasLayer/InventoryWindow/InventoryPanel" method="on_item_removed"]
 [connection signal="inventory_item_context_activated" from="CanvasLayer/InventoryWindow/InventoryPanel/GearPanel/GearGrid" to="CanvasLayer/InventoryWindow/InventoryPanel" method="on_item_context_activated"]

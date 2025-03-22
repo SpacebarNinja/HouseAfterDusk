@@ -1,5 +1,7 @@
 extends TextureRect
 
+@onready var label = $Label
+
 @export_category("Window Settings")
 @export var panel: Panel
 
@@ -30,3 +32,8 @@ func _on_gui_input(event):
 		if dragging:
 			global_position = mouse_position - (size/2)
 			#print("Dragging window")
+
+func _on_label_text_submitted(_new_text):
+	label.set_editable(false)
+	label.set_selecting_enabled(false)
+	label.set_mouse_filter(Control.MOUSE_FILTER_PASS)

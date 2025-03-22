@@ -13,12 +13,14 @@ func _ready():
 	WindowDict = {
 		"game_panel": {"node": $CanvasLayer/GameWindow, "status": false},
 		"enemy_panel": {"node": $CanvasLayer/EnemyWindow, "status": false},
+		"player_panel": {"node": $CanvasLayer/PlayerWindow, "status": false},
+		"map_panel": {"node": $CanvasLayer/MapWindow, "status": false},
+		"hud_panel": {"node": $CanvasLayer/HudWindow, "status": false},
 		"inventory_panel": {"node": $CanvasLayer/InventoryWindow, "status": false}
 	}
 	
 	for key in WindowDict.keys():
 		WindowDict[key]["node"].hide()
-	trash_panel.hide()
 	
 func _process(_delta):
 	handle_debug_tabs()
@@ -39,7 +41,10 @@ func handle_debug_tabs():
 	var debug_tabs = {
 		KEY_0: "game_panel",
 		KEY_9: "enemy_panel",
-		KEY_8: "inventory_panel"
+		KEY_8: "player_panel",
+		KEY_7: "map_panel",
+		KEY_6: "hud_panel",
+		KEY_5: "inventory_panel"
 	}
 	
 	for key in debug_tabs.keys():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2likgss81t0s"]
 
-[ext_resource type="Script" uid="uid://djiirutm0hi8p" path="res://addons/kanban_tasks/view/settings/categories/categories.gd" id="1_n36ev"]
+[ext_resource type="Script" uid="uid://bwg3c4ofa3a5l" path="res://addons/kanban_tasks/view/settings/categories/categories.gd" id="1_n36ev"]
 
 [sub_resource type="Image" id="Image_jriv5"]
 data = {

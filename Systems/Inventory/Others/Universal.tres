@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://b30oa05buxfxg"]
 
-[ext_resource type="Script" uid="uid://csqlg7543uxlr" path="res://addons/gloot/core/item_protoset.gd" id="1_fwgd0"]
+[ext_resource type="Script" uid="uid://gyig00lylmv" path="res://addons/gloot/core/item_protoset.gd" id="1_fwgd0"]
 
 [resource]
 script = ExtResource("1_fwgd0")
@@ -18,7 +18,7 @@ json_data = "[
         \"Description\": \"A regular ole gun\",
         \"Name\": \"Gun\",
         \"Type\": \"Weapon\",
-        \"id\": \"pistol\",
+        \"id\": \"gun\",
         \"image\": \"res://Systems/Inventory/Backpack/Items/GUN.png\",
         \"max_stack_size\": \"1\",
         \"stack_size\": \"1\"

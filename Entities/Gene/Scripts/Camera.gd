@@ -65,7 +65,8 @@ func _process(delta):
 
 	# Smooth zoom transition
 	zoom = zoom.lerp(target_zoom, zoom_speed * delta)
-
+	
+	HandleCraftingOffset(delta)
 	RoundPosition()
 
 func RoundPosition():

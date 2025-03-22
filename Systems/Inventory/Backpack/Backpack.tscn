@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=3 uid="uid://dm0cauxxqnbsf"]
 
-[ext_resource type="Script" uid="uid://cdk0hsvlxetxi" path="res://Systems/Inventory/Backpack/BackpackInfo.gd" id="1_dlcgs"]
-[ext_resource type="Script" uid="uid://b0l1w5c5ua4rn" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_w6ijb"]
+[ext_resource type="Script" uid="uid://cew8ppr11jh8e" path="res://Systems/Inventory/Backpack/BackpackInfo.gd" id="1_dlcgs"]
+[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_w6ijb"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="4_g1y3s"]
-[ext_resource type="Script" uid="uid://dm8773pfykkbq" path="res://addons/gloot/core/inventory_item.gd" id="5_j15jq"]
-[ext_resource type="PackedScene" uid="uid://be4u50ae7hfcr" path="res://Systems/HUD/Scripts/item_label.tscn" id="5_stp4t"]
-[ext_resource type="Script" uid="uid://d1hhlp2hpww7j" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="7_0hrb1"]
+[ext_resource type="Theme" uid="uid://dc0jjhhecerr5" path="res://Assets/Visuals/InventoryTheme.tres" id="5_7mxnk"]
+[ext_resource type="Script" uid="uid://2sxumcwcp80r" path="res://addons/gloot/core/inventory_item.gd" id="5_j15jq"]
+[ext_resource type="PackedScene" uid="uid://byf8km8hnlejp" path="res://Systems/HUD/Scenes/item_label.tscn" id="5_stp4t"]
+[ext_resource type="Script" uid="uid://eog3jdphrrmu" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="7_0hrb1"]
 [ext_resource type="Texture2D" uid="uid://dav3ogmpxam8x" path="res://Systems/Inventory/Backpack/Art/Slot1.png" id="8_ams1b"]
 [ext_resource type="Texture2D" uid="uid://dyiuj0rpblf3d" path="res://Systems/Inventory/Backpack/Art/Slot2.png" id="9_7ayun"]
-[ext_resource type="Script" uid="uid://dfkjdoa6xujy1" path="res://Systems/HUD/Scripts/item_label.gd" id="10_7mxnk"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="10_vrtxb"]
 [ext_resource type="AudioStream" uid="uid://dfmg7w8lu34n2" path="res://Systems/Inventory/Backpack/Audio/Inven_Select1.mp3" id="11_pjyqh"]
 [ext_resource type="AudioStream" uid="uid://djnj5h682ckpw" path="res://Systems/Inventory/Backpack/Audio/Inven_Select2.mp3" id="12_cgka1"]
@@ -78,31 +78,19 @@ properties = {
 "stack_size": 5
 }
 
-[node name="_Node_94943" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "pistol"
-properties = {
-"grid_position": Vector2i(0, 1)
-}
-
-[node name="_Node_95246" type="Node" parent="Inventory"]
-script = ExtResource("5_j15jq")
-protoset = ExtResource("4_g1y3s")
-prototype_id = "bullet"
-properties = {
-"grid_position": Vector2i(0, 2),
-"stack_size": 3
-}
-
-[node name="_Node_30607" type="Node" parent="Inventory"]
+[node name="_Node_131401" type="Node" parent="Inventory"]
 script = ExtResource("5_j15jq")
 protoset = ExtResource("4_g1y3s")
 prototype_id = "raw_wood"
 properties = {
-"grid_position": Vector2i(0, 3),
+"grid_position": Vector2i(0, 4),
 "stack_size": 3
 }
+
+[node name="_Node_263555" type="Node" parent="Inventory"]
+script = ExtResource("5_j15jq")
+protoset = ExtResource("4_g1y3s")
+prototype_id = "tv_remote"
 
 [node name="Equippable" type="Node" parent="."]
 script = ExtResource("3_w6ijb")
@@ -116,13 +104,13 @@ scale = Vector2(1.155, 1.155)
 [node name="InventoryGrid" type="Control" parent="Inventory UI"]
 z_index = -10
 texture_filter = 1
-custom_minimum_size = Vector2(64, 404)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.4242
 offset_top = -58.8745
-offset_right = 106.424
-offset_bottom = 345.125
+offset_right = 42.4242
+offset_bottom = -58.8745
+theme = ExtResource("5_7mxnk")
 script = ExtResource("7_0hrb1")
 inventory_path = NodePath("../../Inventory")
 field_dimensions = Vector2(64, 64)
@@ -136,13 +124,13 @@ metadata/_edit_use_anchors_ = true
 [node name="EquipGrid" type="Control" parent="Inventory UI"]
 z_index = -10
 texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.4242
 offset_top = -135.065
-offset_right = 106.424
-offset_bottom = -71.065
+offset_right = 42.4242
+offset_bottom = -135.065
+theme = ExtResource("5_7mxnk")
 script = ExtResource("7_0hrb1")
 inventory_path = NodePath("../../Equippable")
 field_dimensions = Vector2(64, 64)
@@ -167,8 +155,6 @@ text = "Inventory"
 horizontal_alignment = 1
 
 [node name="ItemLabel" parent="." instance=ExtResource("5_stp4t")]
-position = Vector2(-162, -25)
-script = ExtResource("10_7mxnk")
 
 [node name="SelectAudio" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0dh13")

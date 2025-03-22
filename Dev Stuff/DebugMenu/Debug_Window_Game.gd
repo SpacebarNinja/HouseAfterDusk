@@ -3,17 +3,23 @@ extends Panel
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var main_hud = get_tree().get_first_node_in_group("MainHud")
 @onready var hud = get_tree().get_first_node_in_group("Hud")
+@onready var map = get_tree().get_first_node_in_group("Map")
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
 
 @onready var enemy_panel = $"../../EnemyWindow"
+@onready var player_panel = $"../../PlayerWindow"
+@onready var map_panel = $"../../MapWindow"
+@onready var hud_panel = $"../../HudWindow"
 @onready var inventory_panel = $"../../InventoryWindow"
 
 @onready var zoom_slider = $ZoomSlider
 @onready var zoom_label = $ZoomSlider/Label
-@onready var debug_mode_button = $EnableDebugMode
-
+@onready var noclip_button = $EnableNoclip
 @onready var time_label = $TimeSlider/TimeLabel
 @onready var time_slider = $TimeSlider
+@onready var infinite_sprint_button = $InfiniteSprint
+
+var no_clip_enabled: bool = false
 
 var zoom = 3.2
 
@@ -25,21 +31,19 @@ func _on_zoom_slider_value_changed(value):
 	zoom = zoom_slider.value/10
 	zoom_label.text = str("Zoom: ", zoom)
 	camera.target_zoom = Vector2(zoom,zoom)
-
-func _on_enable_debug_mode_toggled(toggled_on: bool) -> void:
-	if toggled_on:
+		
+func _on_enable_noclip_pressed():
+	if not no_clip_enabled:
 		player.set_collision_mask_value(1, false)
-		player.movement_speed = 400
-		main_hud.debug_sprint = true
-		debug_mode_button.self_modulate = Color(0,1,0, 1)
-		print("Debug Mode enabled")
+		no_clip_enabled = true
+		noclip_button.self_modulate = Color(0,1,0, 1)
+		print("No-clip enabled")
 	else:
 		player.set_collision_mask_value(1, true)
-		player.movement_speed = 80
-		main_hud.debug_sprint = false
-		debug_mode_button.self_modulate = Color(1,1,1)
-		debug_mode_button.release_focus()
-		print("Debug Mode disabled")
+		no_clip_enabled = false
+		noclip_button.self_modulate = Color(1,1,1)
+		noclip_button.release_focus()
+		print("No-clip disabled")
 		
 func _on_kill_all_enemies_pressed():
 	GameManager.kill_all_enemies()
@@ -54,34 +58,28 @@ func _on_midnight_pressed():
 func _on_noon_pressed():
 	WorldManager.WorldTime = 1200
 
-func _on_option_button_item_selected(index: int) -> void:
-	var display = null
-	
-	match index:
-		0:
-			display = "Main"
-		1:
-			display = "Crafting"
-		2:
-			display = "Cooking"
-		3:
-			display = "Fishing"
-	if display: hud.current_display(display)
-	
-func _on_player_stats_item_selected(index: int) -> void:
-	match index:
-		0:
-			player.current_health = player.max_health
-		1:
-			player.current_hunger = player.max_hunger
-		2:
-			player.take_damage(20, Vector2.ZERO)
-		3:
-			player.current_hunger -= 10
-			
+func _on_infinite_sprint_toggled(toggled_on):
+	if toggled_on:
+		player.set_walk_speed(400)
+		main_hud.debug_sprint = true
+		infinite_sprint_button.self_modulate = Color(0,1,0, 1)
+	else:
+		player.set_walk_speed(80)
+		main_hud.debug_sprint = false
+		infinite_sprint_button.self_modulate = Color(1,1,1)
+
 #Debug_Panels -----------------------------------------
+func _on_show_player_panel_pressed():
+	player_panel.show()
+
+func _on_show_map_panel_pressed():
+	map_panel.show()
+
 func _on_show_enemy_panel_pressed():
 	enemy_panel.show()
 
 func _on_show_inventory_panel_pressed():
 	inventory_panel.show()
+
+func _on_show_hud_panel_pressed():
+	hud_panel.show()

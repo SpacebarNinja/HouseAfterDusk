@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dj577duf8yjeb" path="res://addons/gloot/editor/common/choice_filter.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://digtudobrw3xb" path="res://addons/gloot/editor/common/dict_editor.tscn" id="2"]
-[ext_resource type="Script" uid="uid://cd7m405r8tgkd" path="res://addons/gloot/editor/protoset_editor/protoset_editor.gd" id="3"]
+[ext_resource type="Script" uid="uid://w3y4bpbyq4fw" path="res://addons/gloot/editor/protoset_editor/protoset_editor.gd" id="3"]
 
 [sub_resource type="Image" id="Image_xbjkg"]
 data = {

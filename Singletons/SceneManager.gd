@@ -8,8 +8,6 @@ var zoom_out_amount = -1.0
 var zoom_in_amount = 1.0
 var original_zoom = 3.2
 
-signal SwitchedMap
-
 func _ready():
 	# Set up UI transitions
 	call_deferred("_setup_ui_nodes")
@@ -82,4 +80,3 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 		transition_animation.play("transition_out")
 		await transition_animation.animation_finished
 		transition_node.visible = false
-	SwitchedMap.emit()

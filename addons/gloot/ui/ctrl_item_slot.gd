@@ -273,4 +273,3 @@ func _clear() -> void:
 	if is_instance_valid(_ctrl_inventory_item_rect):
 		_ctrl_inventory_item_rect.item = null
 		_ctrl_inventory_item_rect.texture = default_item_icon
-

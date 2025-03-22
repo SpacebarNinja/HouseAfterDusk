@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjme7iuv3j6yb"]
 
 [ext_resource type="PackedScene" uid="uid://cyj0avrwjowl" path="res://addons/gloot/editor/protoset_editor/protoset_editor.tscn" id="1"]
-[ext_resource type="Script" uid="uid://bc11vnirwuugt" path="res://addons/gloot/editor/protoset_editor/edit_protoset_button.gd" id="2"]
+[ext_resource type="Script" uid="uid://bd1421p0sw5kr" path="res://addons/gloot/editor/protoset_editor/edit_protoset_button.gd" id="2"]
 
 [sub_resource type="Image" id="Image_06nks"]
 data = {

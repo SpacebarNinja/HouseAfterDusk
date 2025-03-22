@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var journal = get_tree().get_first_node_in_group("Journal")
@@ -22,7 +22,7 @@ extends CanvasLayer
 @export var fade_speed: float = 7.0
 
 var debug_sprint: bool = false
-
+var stopped_dialoguing: bool = false
 func _ready():
 	if sprint_bar.value >= sprint_bar.max_value - 3:
 		sprint_bar.hide()
@@ -53,10 +53,12 @@ func _process(delta):
 		WorldManager.StopGeneMovement = true
 		HudManager.camera_movement = false
 		sprint_bar.visible = false
-	else:
+		stopped_dialoguing = false
+	elif not stopped_dialoguing:
 		WorldManager.StopGeneMovement = false
 		HudManager.camera_movement = true
 		sprint_bar.visible = true
+		stopped_dialoguing = true
 		
 func update_time_display():
 	time_display.text = WorldManager.DayPart + "\n" + WorldManager.CurrentDate
@@ -76,22 +78,29 @@ func _on_journal_button_pressed():
 	journal.is_open = !journal.is_open
 
 func update_health_bar():
-	health_bar.value = lerp(float(health_bar.value), float(player.current_health), 0.1)
+	health_bar.value = player.current_health
 	var health_percentage = player.current_health / health_bar.max_value
 	var health_color = Color(1.0, health_percentage, 1.0)
 	health_bar.tint_progress = health_color
 
 func update_hunger_bar():
-	hunger_bar.value = lerp(float(hunger_bar.value), float(player.current_hunger), 0.1)
+	hunger_bar.value = player.current_hunger
 
 func update_sprint_bar():
 	var sprint_fade_in_speed = 8.0 * get_process_delta_time()
 	var sprint_fade_out_speed = 5.0 * get_process_delta_time()
 
+	var player_instance = get_node("/root/MainScene/Player")
+	var distance_to_mouse = player_instance.distance_to_mouse
+	var altmove_sprint_distance = player_instance.altmove_sprint_distance
 	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
 
 	var is_sprinting = false
 	if Input.is_action_pressed("Sprint") and player.can_sprint and move_vector != Vector2.ZERO:
+		is_sprinting = true
+	elif distance_to_mouse > altmove_sprint_distance and Input.is_action_pressed("AlternativeMove") and player.can_sprint:
+		is_sprinting = true
+	elif Input.is_action_pressed("AlternativeMove") and Input.is_action_pressed("Sprint"):
 		is_sprinting = true
 		
 	if debug_sprint:

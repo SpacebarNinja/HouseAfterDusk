@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8bv63d2djwv3"]
 
-[ext_resource type="Script" uid="uid://cl7o0a2b3tqu" path="res://addons/gloot/editor/item_slot_editor/item_slot_inspector.gd" id="1_4gsgr"]
+[ext_resource type="Script" uid="uid://u185gfdnvwaq" path="res://addons/gloot/editor/item_slot_editor/item_slot_inspector.gd" id="1_4gsgr"]
 [ext_resource type="PackedScene" uid="uid://bgs0xwufm4k6k" path="res://addons/gloot/editor/item_slot_editor/item_slot_editor.tscn" id="2_ysqy6"]
 
 [sub_resource type="Image" id="Image_rwh50"]

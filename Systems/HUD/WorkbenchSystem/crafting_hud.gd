@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @export_category("Crafting")
 @export var move_offset: float = -50.0
@@ -139,4 +139,4 @@ func _on_item_selected(item: Dictionary):
 
 func HandleTableOffset(delta):
 	var target_x = (move_offset if HudManager.is_crafting else 0.0)
-	offset.x = lerp(offset.x, target_x, move_speed * delta)
+	position.x = lerp(position.x, target_x, move_speed * delta)

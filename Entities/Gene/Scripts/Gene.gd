@@ -3,38 +3,52 @@ extends CharacterBody2D
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
 @onready var hud = get_tree().get_first_node_in_group("MainHud")
 @onready var journal_instance = get_tree().get_first_node_in_group("Journal")
-@onready var StepParticleScene = preload("res://Systems/Particles/StepParticle.tscn")
 
-const max_health = 100
-const max_hunger = 55
+@onready var invulnerability_timer = $Timers/InvulnerabilityTimer
+@onready var hunger_timer = $Timers/HungerTimer
+@onready var raycast = $RaycastNodes
+@onready var animation_handler = $AnimationHandler
+@onready var hitbox = $Hitbox
 
-@export_category("Gene Stats")
+@export_category("Stats")
 @export var movement_speed: int = 80
-@export var current_health: int = 100
-@export var current_hunger: int = 55
+@export var max_health = 100
+@export var max_hunger = 55
 @export var knockback_power: int = 1000
-@export var can_take_damage: bool = true
+@export var altmove_sprint_distance = 75
 
-#------------{ Gene Nodes }------------
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var equipped_item_visual: Sprite2D = $EquippedItemVisual
-@onready var hunger_timer: Timer = $Timers/HungerTimer
-@onready var idle_timer: Timer = $Timers/IdleTimer
-@onready var vision_cone: PointLight2D = $VisionCone
-@onready var weapons_list: Node = $Weapons
+@export_category("Nodes")
+@export var flashlight: PointLight2D
+@export var audio_list: Array[AudioStreamPlayer2D]
 
+@export_category("Flashlight Fade Settings")
+@export var alpha_start: float = 0
+@export var alpha_end: float = 1
+@export var fade_speed: float = 7.0
+
+@onready var rooms = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
+
+var current_hunger: int
+var current_health: int
+var can_take_damage: bool = true
 var can_sprint: bool = true
-var can_spawn_particle: bool = true
 var flashlight_on: bool = true
-var equipped_weapon: bool = false
+var equipped_item: bool = false
 var current_weapon: String = ""
-var is_outside: bool = false
+var distance_to_mouse = 0.0
+var is_outside: bool
+func _ready():
+	current_health = max_health
+	current_hunger = max_hunger
+	hunger_timer.start()
 
-func _process(_delta):
+func set_walk_speed(speed: int):
+	movement_speed = speed
+
+func _process(delta):
+	
 	modulate_player()
-	handle_vision_cone()
+	handle_flashlight(delta)
 	
 	if WorldManager.StopGeneMovement:
 		return
@@ -42,149 +56,143 @@ func _process(_delta):
 	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
 	velocity = move_vector * movement_speed
 	
-	if equipped_weapon:
-		animation_tree.active = false
-		animated_sprite.hide()
-		equipped_item_visual.hide()
-	else:
-		animation_tree.active = true
-		animated_sprite.show()
-		equipped_item_visual.show()
-		handle_movement_animation()
+	var backpack_instance = get_node("/root/MainScene/Hud/MechanicHud/Backpack/BackpackInventory/BackpackSprite")
+	var is_hovering_inventory = backpack_instance.is_hovering_inventory
+	
+	if Input.is_action_pressed("AlternativeMove") and move_vector == Vector2.ZERO and !is_hovering_inventory:
+		alternative_move()
 
-	move_and_slide()
+	if Input.is_action_pressed("Sprint") and can_sprint:
+		sprint()
 
 	if Input.is_action_just_pressed("ToggleFlashlight"):
 		toggle_flashlight()
 
-func handle_movement_animation():
-	if velocity == Vector2.ZERO:
-		animation_tree.get("parameters/Movement/playback").travel("Idle")
-	elif Input.is_action_pressed("Sprint") and can_sprint:
-		sprint()
-	else:
-		animation_tree.get("parameters/Movement/playback").travel("Walk")
-	
-	var horizontal_input = Input.get_action_strength("WalkRight") - Input.get_action_strength("WalkLeft")
+	move_and_slide()
+	finding_enemy()
 
-	if horizontal_input == -1:
-		animated_sprite.flip_h = true
-		equipped_item_visual.flip_h = true
-	elif horizontal_input == 1:
-		animated_sprite.flip_h = false
-		equipped_item_visual.flip_h = false
-		
-func spawn_particle():
-	if not can_spawn_particle:
-		return  # Prevent multiple spawns while on cooldown
-
-	can_spawn_particle = false
-
-	# Spawn the step particle
-	var step_particle_instance = StepParticleScene.instantiate()
-	if randi() % 100 < 30:
-		step_particle_instance.amount = 2
-	add_child(step_particle_instance)
-	step_particle_instance.emitting = true
-	step_particle_instance.z_index = -1
-
-	# Introduce a random cooldown before enabling spawning again
-	var random_cooldown = randf_range(0.2, 0.6)
-	var timer = get_tree().create_timer(random_cooldown)
-	await timer.timeout
-	
-	can_spawn_particle = true
-	
 func modulate_player():
-	var rooms = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
-	if rooms:
-		var outside_status = rooms.is_outside
-		if outside_status != is_outside:  # Update only when it changes
-			is_outside = outside_status
-			
-			if not WorldManager.is_generator_on and not is_outside:
-				self.modulate = Color(1.5, 1.5, 1.5, 1)
-			else:
-				self.modulate = Color(1, 1, 1, 1)
+	if is_instance_valid(rooms) and rooms.current_room:  # Ensures 'rooms' isn't a freed object
+		if str(rooms.current_room.name) == 'OUTSIDE':
+			is_outside = true
+		else:
+			is_outside = false
+	else:
+		is_outside = false  # Default if no rooms node exists
+
+	if not WorldManager.is_generator_on and not is_outside:
+		self.modulate = Color(1.5, 1.5, 1.5, 1)
+	else:
+		self.modulate = Color(1, 1, 1, 1)
+
+
+
+func alternative_move():
+	var mouse_position = get_global_mouse_position()
+	var direction = (mouse_position - global_position).normalized()
+	distance_to_mouse = global_position.distance_to(mouse_position)
+
+	if not Input.is_action_pressed("Sprint"):
+		if distance_to_mouse < 10:
+			return
+		elif distance_to_mouse < 30:
+			global_position = global_position.lerp(mouse_position, 0.5 * get_process_delta_time())
+		elif distance_to_mouse > altmove_sprint_distance and can_sprint:
+			velocity = direction * (movement_speed * 2)
+		else:
+			velocity = direction * movement_speed
+	elif distance_to_mouse > 30:
+		velocity = direction * movement_speed
+
+func update_health_bar(new_health):
+	current_health = new_health
+
+func update_hunger_bar(hunger_value):
+	current_hunger = hunger_value
 
 func sprint():
-	if velocity.length() > 0:  # Ensure player is actually moving
-		velocity = velocity.normalized() * movement_speed * 2
-		animation_tree.get("parameters/Movement/playback").travel("Sprint")
-		spawn_particle()
-	
+	velocity *= 2
+
 func take_damage(enemy_damage: int, enemy_velocity: Vector2):
 	if can_take_damage:
-		current_health = clampi(current_health - enemy_damage, 0, max_health)
+		current_health -= enemy_damage
+		update_health_bar(current_health)
+		can_take_damage = false
+		invulnerability_timer.start()
 		take_knockback(enemy_velocity)
 		hud.reset_blood_overlay()
 		camera.apply_shake()
 		camera.is_hit = true
-		animation_tree.get("parameters/playback").travel("Damaged")
+		animation_handler.transition("Damaged")
 
 func take_knockback(enemy_velocity: Vector2):
-	var knockback_dir = (global_position - enemy_velocity).normalized()
-	velocity = knockback_dir * knockback_power
+	var knockback_dir = (enemy_velocity - velocity).normalized() * knockback_power
+	velocity = knockback_dir
 	move_and_slide()
 
-func replenish_health(healh_gain: int):
-	current_health = clampi(current_health + healh_gain, 0, max_health)
+func heal_health(healing: int):
+	current_health += healing
+	if current_health > max_health:
+		current_health = max_health
+	update_health_bar(current_health)
 
-func replenish_hunger(hunger_gain: int):
-	current_hunger = clampi(current_hunger + hunger_gain, 0, max_hunger)
+func replenish_hunger(food_value: int):
+	current_hunger += food_value
+	if current_hunger > max_hunger:
+		current_hunger = max_hunger
+	update_hunger_bar(current_hunger)
 
-func handle_vision_cone():
+func _on_hunger_timer_timeout():
+	current_hunger -= 1
+	if current_hunger < 0:
+		current_hunger = 0
+	update_hunger_bar(current_hunger)
+
+func _on_invulnerability_timer_timeout():
+	can_take_damage = true
+
+func handle_flashlight(delta):
+	var target_alpha = alpha_start if HudManager.is_dialoguing else alpha_end
+	
+	# Fade the light's color alpha instead of its modulate
+	var current_color = flashlight.color
+	current_color.a = lerp(current_color.a, target_alpha, fade_speed * delta)
+	flashlight.color = current_color
+	
 	if not journal_instance.is_open and HudManager.flashlight_movement:
 		var mouse_position = get_global_mouse_position()
-		vision_cone.look_at(mouse_position)
-		
-	for raycast in vision_cone.get_children():
-		if not raycast is RayCast2D:
-			continue  # Skip non-raycast nodes
-			
-		if raycast.is_colliding():
-			var collider = raycast.get_collider()
-			if collider and collider.is_in_group("Enemy"):
-				print("Found enemy: ", collider)
-					
+		flashlight.look_at(mouse_position)
+		raycast.look_at(mouse_position)
+
+
 func toggle_flashlight():
 	flashlight_on = not flashlight_on
-	vision_cone.enabled = flashlight_on
-
-func equip_weapon(weapon_check: bool, weapon_id: String):
-	# Load the weapon scene
-	var weapon_scene = load(str("res://Systems/Inventory/Weapons/", weapon_id, ".tscn"))
-	current_weapon = weapon_id
-	equipped_weapon = weapon_check
-	
-	if weapon_check:
-		if weapon_scene is PackedScene:
-			var weapon_instance = weapon_scene.instantiate()
-			current_weapon = weapon_id
-			
-			weapons_list.add_child(weapon_instance)
-
-			# Debugging prints
-			print("Equipping Item:", weapon_id)
-		else:
-			print("Invalid weapon scene:", weapon_scene)
+	flashlight.visible = flashlight_on
+	if flashlight_on:
+		play_audio(0)
 	else:
-		print("Unequipping Item:", weapon_id, weapon_check)
-		if weapons_list.get_child_count() > 0:
-			var weapon_instance = weapons_list.get_child(0)
-			weapons_list.remove_child(weapon_instance)
+		play_audio(1)
 
+func play_audio(index: int):
+	if index >= 0 and index < audio_list.size():
+		if not audio_list[index].is_playing():
+			audio_list[index].play()
 
-		
-func _on_hunger_timer_timeout():
-	current_hunger = clampi(current_hunger - 1, 0, max_hunger)
+func finding_enemy():
+	for raycasts in raycast.get_children():
+		var collider = raycasts.get_collider()
+		if collider:
+			if raycasts.is_colliding() and collider.is_in_group("Enemy"):
+				if collider:
+					collider.base_bools["is_seen"] = true
+				else:
+					collider.base_bools["is_seen"] = false
 
-func _on_idle_timer_timeout():
-	var alt_idle = randf()
-	if alt_idle > 0.65:
-		animation_tree.set("parameters/Movement/Idle/Alternative1/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	elif alt_idle > 0.9:
-		animation_tree.set("parameters/Movement/Idle/Alternative2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+func equip_weapon(has_equipped: bool, weapon: String):
+	equipped_item = has_equipped
+	current_weapon = weapon
 
-	idle_timer.wait_time = randf_range(6, 10)  # Cleaner way to set timer
-	idle_timer.start()
+	if equipped_item:
+		animation_handler.transition(current_weapon)
+	else:
+		animation_handler.transition("Basic")

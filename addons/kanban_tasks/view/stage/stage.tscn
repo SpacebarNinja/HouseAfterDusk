@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjmtdjfx7iqgp"]
 
-[ext_resource type="Script" uid="uid://o87i2dqqc5wp" path="res://addons/kanban_tasks/view/stage/stage.gd" id="1_i5556"]
-[ext_resource type="Script" uid="uid://b6iyavasddel0" path="res://addons/kanban_tasks/edit_label/edit_label.gd" id="2"]
+[ext_resource type="Script" uid="uid://ee76fc3ir31m" path="res://addons/kanban_tasks/view/stage/stage.gd" id="1_i5556"]
+[ext_resource type="Script" uid="uid://d18qni1pa2gc2" path="res://addons/kanban_tasks/edit_label/edit_label.gd" id="2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7hiu"]
 content_margin_left = 4.0

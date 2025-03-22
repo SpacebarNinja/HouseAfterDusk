@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://3r15ojyqxyb2"]
 
-[ext_resource type="PackedScene" uid="uid://ctm1dfhfkd0fl" path="res://Systems/HUD/Scripts/Hud.tscn" id="1_fh8r2"]
+[ext_resource type="PackedScene" uid="uid://cs3euhsmepn8e" path="res://Systems/HUD/Scenes/Hud.tscn" id="1_fh8r2"]
 [ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_ofx2c"]
 [ext_resource type="PackedScene" uid="uid://boutdgluq4gbq" path="res://Entities/Gene/Scripts/Gene.tscn" id="4_gh3rb"]
 [ext_resource type="Script" uid="uid://cm2xvss370c1m" path="res://Entities/Gene/Scripts/Camera.gd" id="5_twjhg"]
@@ -54,5 +54,5 @@ script = ExtResource("9_7ksos")
 generator_off_darkness = 15
 generator_transition_time = 0.5
 
-[node name="MapCabin" parent="." instance=ExtResource("7_5crlr")]
-y_sort_enabled = false
+[node name="MapCabin" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("7_5crlr")]
+spawn_location = []

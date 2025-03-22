@@ -15,7 +15,6 @@ var method_history = []
 @onready var undo_button = $UndoButton
 @onready var submit_button = $SubmitButton
 @onready var refresh_button = $RefreshButton
-@onready var name_editor = $NameEditor
 #-------------------------------------------------
 @onready var attitude_button = $AttitudeButton
 @onready var attitude_label = $AttitudeLabel

@@ -2,7 +2,6 @@ extends AnimationBase
 
 @onready var journal = get_tree().get_first_node_in_group("Journal")
 @onready var anim_sprite = $AnimatedSprite2D
-
 @export var timer_list: Array[Timer]
 
 var direction: String
@@ -29,7 +28,7 @@ func handle_animation():
 	var horizontal_input = Input.get_action_strength("WalkRight") - Input.get_action_strength("WalkLeft")
 	var vertical_input = Input.get_action_strength("WalkDown") - Input.get_action_strength("WalkUp")
 	var anim_vector = Vector2(horizontal_input, vertical_input)
-	
+
 	if horizontal_input == 1:
 		flip_sprite(false)
 	elif horizontal_input == -1:
@@ -98,10 +97,25 @@ func get_direction() -> String:
 	else:
 		return "right"
 
+var can_spawn_particle: bool = true
+
 func spawn_particle():
+	if not can_spawn_particle:
+		return  # Prevent multiple spawns while on cooldown
+
+	can_spawn_particle = false
+
+	# Spawn the step particle
 	var step_particle_instance = StepParticleScene.instantiate()
 	if randi() % 100 < 30:
 		step_particle_instance.amount = 2
 	add_child(step_particle_instance)
 	step_particle_instance.emitting = true
 	step_particle_instance.z_index = -1
+
+	# Introduce a random cooldown before enabling spawning again
+	var random_cooldown = randf_range(0.2, 0.6)
+	var timer = get_tree().create_timer(random_cooldown)
+	await timer.timeout
+	
+	can_spawn_particle = true 

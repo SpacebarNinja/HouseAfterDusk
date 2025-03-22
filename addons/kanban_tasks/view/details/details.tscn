@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwi22eyrmeeet"]
 
-[ext_resource type="Script" uid="uid://bs1af6tq0flcv" path="res://addons/kanban_tasks/view/details/details.gd" id="1_gh7s6"]
+[ext_resource type="Script" uid="uid://cqygdqda1qaww" path="res://addons/kanban_tasks/view/details/details.gd" id="1_gh7s6"]
 [ext_resource type="PackedScene" uid="uid://dwjg5vyxx4g48" path="res://addons/kanban_tasks/view/details/step_holder.tscn" id="2_0ptaf"]
 
 [sub_resource type="Image" id="Image_bpcvf"]

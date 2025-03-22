@@ -127,12 +127,14 @@ func _on_equippable_item_added(item):
 	# If a weapon is equipped, notify the player
 	if is_instance_valid(item):
 		if item.get_property("Type", "") == "Weapon":
-			player.equip_weapon(true, item.get_property("id", ""))
+			player.equip_weapon(true, item.get_property("Name", ""))
 
 func _on_equippable_item_removed(item):
 	if is_instance_valid(player) and is_instance_valid(item):
 		if item.get_property("Type", "") == "Weapon":
-			player.equip_weapon(false, item.get_property("id", ""))
+			player.equip_weapon(false, item.get_property("Name", ""))
+		else:
+			print("no Item")
 
 func _on_equippable_contents_changed():
 	# Play selection sound

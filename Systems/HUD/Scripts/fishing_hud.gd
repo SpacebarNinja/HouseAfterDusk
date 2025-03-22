@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var hud = get_tree().get_first_node_in_group("Hud")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")

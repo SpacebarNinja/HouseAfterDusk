@@ -1,24 +1,5 @@
 extends Control
 
-var HUMANOID = {
-	Descriptions = {
-		"height": [],
-		"gender": [],
-		"clothing": [],
-		"features": [],
-		"other": [],
-	},
-	Behaviors = {
-		"state_1": [],
-		"state_2": [],
-		"state_3": [],
-		"state_4": [],
-	},
-	Methods = {
-		"methods": []
-	}
-}
-
 var MONSTER = {
 	Descriptions = {
 		"height": ["Appears to be a giant", "Appears to be a tiny", "Appears to be a human-sized"],
@@ -71,7 +52,6 @@ enum Sub_category { Descriptions, Behaviors, Methods }
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var anim_sprite = $AnimatedSprite2D
-@onready var category_buttons = $CategoryButtons
 @onready var turn_left = $TurnLeft
 @onready var turn_right = $TurnRight
 @onready var journal_open_sfx = $JournalOpenSFX
@@ -101,13 +81,14 @@ var is_animating: bool = false
 func _ready():
 	self.hide()
 	hide_all_children(anim_sprite)
-	hide_all_children(category_buttons)
 	turn_left.hide()
 	turn_right.hide()
 
 	for i in range(page_amount):
 		add_page()
-	page_number = page_amount
+	
+		
+	page_number = 1
 	access_labels()
 
 
@@ -131,14 +112,10 @@ func _process(delta):
 			
 	var current_page = get_current_page()
 	if current_page:
-		var name_editor = current_page.get_node("NameEditor")
-		var notes_editor = current_page.get_node("NotesEditor")
-		if not name_editor.has_focus() and not notes_editor.has_focus():
-			if Input.is_action_just_pressed("Escape") and is_open and not is_animating:
-				open_journal_state = false
+		var title_node = current_page.get_node("Title")
+		title_node.text = 'Entry #' + str(page_number)
+		
 
-	if not is_open:
-		hide_all_children(category_buttons)
 
 func start_open_journal_animation():
 	if not HudManager.journal_visible:
@@ -157,18 +134,23 @@ func start_open_journal_animation():
 	target_opacity = 1.0
 	black_overlay_target_opacity = 1
 
-
 func _on_anim_sprite_animation_finished_open():
-	show_all_children(category_buttons)
 	anim_sprite.disconnect("animation_finished", Callable(self, "_on_anim_sprite_animation_finished_open"))
 	is_open = true
 	is_animating = false
+
+	show_current_page()
+	update_navigation_buttons()
+	
+	var current_page = get_current_page()
+	if current_page:
+		#current_page.set_category_data(MONSTER)  # Default to MONSTER
+		set_can_edit(true)
 
 
 func start_close_journal_animation():
 	is_animating = true
 	journal_close_sfx.play()
-	hide_all_children(category_buttons)
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 
 	for page in pages:
@@ -183,14 +165,12 @@ func start_close_journal_animation():
 	target_opacity = 0.0
 	black_overlay_target_opacity = 0
 
-
 func _on_anim_sprite_animation_finished_close():
 	self.hide()
 	is_open = false
 	player.set_walk_speed(80)
 	is_animating = false
 	anim_sprite.disconnect("animation_finished", Callable(self, "_on_anim_sprite_animation_finished_close"))
-
 
 func hide_all_children(node):
 	for child in node.get_children():
@@ -231,98 +211,60 @@ func show_current_page():
 	update_navigation_buttons()
 
 func update_navigation_buttons():
-	if page_number > 1:
-		turn_right.show()
+	if page_number < pages.size():
+		turn_right.show() 
 	else:
 		turn_right.hide()
 
-	if page_number < pages.size():
+	if page_number > 1:
 		turn_left.show()
 	else:
 		turn_left.hide()
 
+
 func queue_free_children(node):
 	for child in node.get_children():
 		child.queue_free()
-
-func humanoid_pressed():
-	hide_all_children(category_buttons)
 	show_all_children(anim_sprite)
 	show_current_page()
 	update_navigation_buttons()
 	var current_page = get_current_page()
 	if current_page:
-		current_page.set_category_data(HUMANOID)
+		#current_page.set_category_data(UNKNOWN)
 		set_can_edit(true)
 
-func monster_pressed():
-	hide_all_children(category_buttons)
-	show_all_children(anim_sprite)
-	show_current_page()
-	update_navigation_buttons()
-	var current_page = get_current_page()
-	if current_page:
-		current_page.set_category_data(MONSTER)
-		set_can_edit(true)
-
-func object_pressed():
-	hide_all_children(category_buttons)
-	show_all_children(anim_sprite)
-	show_current_page()
-	update_navigation_buttons()
-	var current_page = get_current_page()
-	if current_page:
-		current_page.set_category_data(OBJECT)
-		set_can_edit(true)
-
-func unknown_pressed():
-	hide_all_children(category_buttons)
-	show_all_children(anim_sprite)
-	show_current_page()
-	update_navigation_buttons()
-	var current_page = get_current_page()
-	if current_page:
-		current_page.set_category_data(UNKNOWN)
-		set_can_edit(true)
-
-
-func next_page():
+func previous_page():
 	if page_number < pages.size() and not is_animating:
 		is_animating = true
 		journal_open_sfx.play()
 		page_number += 1
-		anim_sprite.play_backwards("FlipPage")
+		anim_sprite.play("FlipPage")  # Flip forward
 		for page in pages:
 			page.hide()
 		await anim_sprite.animation_finished
-		var current_page = get_current_page()
-		if current_page:
-			show_current_page()
+		show_current_page()
 		update_navigation_buttons()
 		is_animating = false
 
-func previous_page():
+
+func next_page():
 	if page_number > 1 and not is_animating:
 		is_animating = true
 		journal_open_sfx.play()
 		page_number -= 1
-		anim_sprite.play("FlipPage")
+		anim_sprite.play_backwards("FlipPage")  # Flip backward
 		for page in pages:
 			page.hide()
 		await anim_sprite.animation_finished
-		var current_page = get_current_page()
-		if current_page:
-			show_current_page()
+		show_current_page()
 		update_navigation_buttons()
 		is_animating = false
 
-func new_word(main_category: String, category: String, subcategory: String, word: String) -> void:
-	print("Added New Words")
-	if main_category == 'HUMANOID':
-		HUMANOID[category][subcategory].append(word)
-	if main_category == 'MONSTER':
-		MONSTER[category][subcategory].append(word)
-	if main_category == 'OBJECT':
-		OBJECT[category][subcategory].append(word)
-	if main_category == 'UNKNOWN':
-		UNKNOWN[category][subcategory].append(word)
+
+func open_journal():
+	if is_open or is_animating:
+		return
+	open_journal_state = true
+	start_open_journal_animation()
+	HudManager.stats_visible = false
+	HudManager.inventory_visible = false

@@ -39,6 +39,8 @@ func _on_take():
 	print("taking book")
 	
 func _on_open():
+	print("journal script:", journal.get_script())
+
 	if not journal.is_open:
 		journal.open_journal()
 		journal.set_can_edit(true)
