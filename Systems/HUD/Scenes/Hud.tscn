@@ -392,7 +392,12 @@ mouse_filter = 2
 script = ExtResource("2_miqxo")
 tired_color = Color(0.70366, 0.310181, 0.310181, 1)
 
-[node name="BloodOverlay" type="TextureRect" parent="MainHud"]
+[node name="MainNodes" type="Control" parent="MainHud"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BloodOverlay" type="TextureRect" parent="MainHud/MainNodes"]
 visible = false
 z_index = 50
 texture_filter = 1
@@ -400,22 +405,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 56.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0ak6f")
 stretch_mode = 4
 
-[node name="HungerBar" type="TextureProgressBar" parent="MainHud"]
+[node name="HungerBar" type="TextureProgressBar" parent="MainHud/MainNodes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -586.36
-offset_top = 160.53
-offset_right = -524.36
-offset_bottom = 182.53
+offset_left = -30.36
+offset_top = 464.53
+offset_right = 31.64
+offset_bottom = 486.53
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
@@ -424,7 +431,7 @@ texture_under = ExtResource("6_bxfdd")
 texture_progress = ExtResource("7_mc64d")
 texture_progress_offset = Vector2(0, 0.94)
 
-[node name="HealthBar" type="TextureProgressBar" parent="MainHud"]
+[node name="HealthBar" type="TextureProgressBar" parent="MainHud/MainNodes"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -432,10 +439,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -586.0
-offset_top = 210.71
-offset_right = -502.0
-offset_bottom = 244.71
+offset_left = -30.0
+offset_top = 514.71
+offset_right = 54.0
+offset_bottom = 548.71
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
@@ -445,7 +452,7 @@ texture_under = ExtResource("6_6xx1r")
 texture_progress = ExtResource("7_o8nrm")
 texture_progress_offset = Vector2(0, 4.83)
 
-[node name="SprintBar" type="TextureProgressBar" parent="MainHud"]
+[node name="SprintBar" type="TextureProgressBar" parent="MainHud/MainNodes"]
 self_modulate = Color(0.741079, 0.582015, 0.377293, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -453,10 +460,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -116.0
-offset_top = 224.0
-offset_right = -54.0
-offset_bottom = 244.0
+offset_left = 440.0
+offset_top = 528.0
+offset_right = 502.0
+offset_bottom = 548.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -466,17 +473,17 @@ texture_under = ExtResource("6_6xx1r")
 texture_progress = ExtResource("10_66pv7")
 texture_progress_offset = Vector2(0, 5.15)
 
-[node name="JournalButton" type="Button" parent="MainHud"]
+[node name="JournalButton" type="Button" parent="MainHud/MainNodes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -568.0
-offset_top = -196.0
-offset_right = -304.0
-offset_bottom = 68.0
+offset_left = -12.0
+offset_top = 108.0
+offset_right = 252.0
+offset_bottom = 372.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
@@ -487,7 +494,7 @@ script = ExtResource("9_dlaxh")
 opacity_color = Color(1, 1, 1, 0.392157)
 added_hover_y = 10.0
 
-[node name="Keybind" type="Label" parent="MainHud/JournalButton"]
+[node name="Keybind" type="Label" parent="MainHud/MainNodes/JournalButton"]
 layout_mode = 0
 offset_left = 160.0
 offset_top = 106.667
@@ -499,12 +506,12 @@ theme_override_font_sizes/font_size = 225
 text = "J"
 script = ExtResource("17_dpk2t")
 
-[node name="BetaText" type="Label" parent="MainHud"]
+[node name="BetaText" type="Label" parent="MainHud/MainNodes"]
 z_index = 100
 layout_mode = 0
 offset_top = 5.0
 offset_right = 1152.0
-offset_bottom = 38.0
+offset_bottom = 44.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_j6nef")
 text = "House After Dusk - Beta - V0.00.0 | FPS: 0.0
@@ -512,7 +519,7 @@ Date"
 horizontal_alignment = 1
 script = ExtResource("14_ovp23")
 
-[node name="Clock" type="Control" parent="MainHud"]
+[node name="Clock" type="Control" parent="MainHud/MainNodes"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -521,7 +528,7 @@ offset_right = 48.0
 offset_bottom = 48.0
 script = ExtResource("19_xbt5x")
 
-[node name="TimeDisplay" type="Label" parent="MainHud/Clock"]
+[node name="TimeDisplay" type="Label" parent="MainHud/MainNodes/Clock"]
 layout_mode = 0
 offset_left = 112.0
 offset_top = 8.0
@@ -533,23 +540,70 @@ theme_override_font_sizes/font_size = 50
 text = "Midnight
 Day: 1"
 
-[node name="ClockSprite" type="Sprite2D" parent="MainHud/Clock"]
+[node name="ClockSprite" type="Sprite2D" parent="MainHud/MainNodes/Clock"]
 position = Vector2(48.5, 48)
 scale = Vector2(3, 3)
 texture = ExtResource("19_hou1q")
 
-[node name="HourHandSprite" type="Sprite2D" parent="MainHud/Clock"]
+[node name="HourHandSprite" type="Sprite2D" parent="MainHud/MainNodes/Clock"]
 position = Vector2(50, 45.6)
 rotation = 4.71239
 scale = Vector2(1.3, 1.6)
 texture = ExtResource("20_5x24c")
 offset = Vector2(0, 6.5)
 
-[node name="MinuteHandSprite" type="Sprite2D" parent="MainHud/Clock"]
+[node name="MinuteHandSprite" type="Sprite2D" parent="MainHud/MainNodes/Clock"]
 position = Vector2(50, 45)
 scale = Vector2(3, 3.5)
 texture = ExtResource("20_fc33r")
 offset = Vector2(0, 5)
+
+[node name="ExtraNodes" type="Control" parent="MainHud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Journal" parent="MainHud/ExtraNodes" instance=ExtResource("1_7mtow")]
+z_index = -30
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = -26.0
+scale = Vector2(0.78587, 0.78587)
+
+[node name="Backpack" type="Control" parent="MainHud/ExtraNodes"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="BackpackInventory" parent="MainHud/ExtraNodes/Backpack" groups=["Backpack"] instance=ExtResource("3_idjsy")]
+position = Vector2(536, 0)
+scale = Vector2(0.817009, 0.90688)
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite" type="Sprite2D" parent="MainHud/ExtraNodes/Backpack/BackpackInventory"]
+modulate = Color(1, 1, 1, 0.7)
+z_index = -40
+position = Vector2(48.9591, -8.82144)
+scale = Vector2(8.02111, 15.8309)
+texture = ExtResource("5_dcrnc")
+script = ExtResource("7_661ui")
+metadata/_edit_lock_ = true
 
 [node name="CraftingHud" type="Control" parent="." groups=["CraftingHud"]]
 unique_name_in_owner = true
@@ -1251,56 +1305,9 @@ wait_time = 1.5
 wait_time = 10.0
 one_shot = true
 
-[node name="MechanicHud" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Journal" parent="MechanicHud" instance=ExtResource("1_7mtow")]
-z_index = -30
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -26.0
-offset_bottom = -26.0
-scale = Vector2(0.78587, 0.78587)
-
-[node name="Backpack" type="Control" parent="MechanicHud"]
-z_index = 10
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-metadata/_edit_lock_ = true
-
-[node name="BackpackInventory" parent="MechanicHud/Backpack" groups=["Backpack"] instance=ExtResource("3_idjsy")]
-position = Vector2(536, 0)
-scale = Vector2(0.817009, 0.90688)
-metadata/_edit_lock_ = true
-
-[node name="BackpackSprite" type="Sprite2D" parent="MechanicHud/Backpack/BackpackInventory"]
-modulate = Color(1, 1, 1, 0.7)
-z_index = -40
-position = Vector2(48.9591, -8.82144)
-scale = Vector2(8.02111, 15.8309)
-texture = ExtResource("5_dcrnc")
-script = ExtResource("7_661ui")
-metadata/_edit_lock_ = true
-
-[connection signal="mouse_entered" from="MainHud/JournalButton" to="MainHud/JournalButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainHud/JournalButton" to="MainHud/JournalButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="MainHud/JournalButton" to="MainHud" method="_on_journal_button_pressed"]
+[connection signal="mouse_entered" from="MainHud/MainNodes/JournalButton" to="MainHud/MainNodes/JournalButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHud/MainNodes/JournalButton" to="MainHud/MainNodes/JournalButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainHud/MainNodes/JournalButton" to="MainHud" method="_on_journal_button_pressed"]
 [connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton1" to="CraftingHud" method="_on_tab_button_1_pressed"]
 [connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton2" to="CraftingHud" method="_on_tab_button_2_pressed"]
 [connection signal="pressed" from="CraftingHud/Table/ScrollBase/TabButton3" to="CraftingHud" method="_on_tab_button_3_pressed"]

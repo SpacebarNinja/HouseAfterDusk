@@ -3,7 +3,6 @@ extends Node
 enum LOCATIONS {RANDOM_CABIN, PLAYER_ROOM, PLAYER_LOCATION, CLOSEST_WINDOW}
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var map = get_tree().get_first_node_in_group("Map")
 @onready var hud = get_tree().get_first_node_in_group("MainHud")
 @onready var spawn_cooldown = $SpawnCooldown
 
@@ -13,7 +12,11 @@ var directing_enemy: bool = false
 var spawned_enemies: Dictionary = {}
 var difficulty: float = 1
 
+var current_map: Node
+
 func _ready():
+	SceneManager.connect("SwitchedMap", Callable(self, "on_map_switched"))
+	check_maps()
 	initialize_enemy_list()
 
 func initialize_enemy_list():
@@ -30,34 +33,37 @@ func spawn_enemy(index):
 		print("Error: Invalid entity_list index.")
 		return
 	
-	var enemy_instance = entity_list[index].instantiate()
-	enemy_instance.set_meta("scene_ref", entity_list[index])  # Store PackedScene reference
+	var enemy_instance = entity_list[index].instantiate()  # Store PackedScene reference
 	add_child(enemy_instance)
-	
-	var enemy_name = get_scene_name(entity_list[index])
-	
-	if enemy_name in spawned_enemies:
-		spawned_enemies[enemy_name]["spawned"] = true
-		spawned_enemies[enemy_name]["amount"] += 1
-		spawned_enemies[enemy_name]["instances"].append(enemy_instance)  # Store instance
-	else:
-		spawned_enemies[enemy_name] = {
-			"spawned": true,
-			"amount": 1,
-			"instances": [enemy_instance]
-		}
 
 	# Assign spawn position
 	var spawn_node = null
 	match enemy_instance.spawn_location:
 		"TV":
-			spawn_node = map.get_tv_node()
+			if current_map.has_method("get_tv_node"):
+				spawn_node = current_map.get_tv_node()
+				enemy_instance.tv_node = current_map.get_tv_node()
 		"CABIN":
-			spawn_node = map.get_cabin_random_spawn_nodes()
+			if current_map.has_method("get_cabin_random_spawn_nodes"):
+				spawn_node = current_map.get_cabin_random_spawn_nodes()
 		"FOREST":
-			spawn_node = map.get_forest_random_spawn_nodes()
+			if current_map.has_method("get_forest_random_spawn_nodes"):
+				spawn_node = current_map.get_forest_random_spawn_nodes()
 			
 	if spawn_node:
+		var enemy_name = get_scene_name(entity_list[index])
+		
+		if enemy_name in spawned_enemies:
+			spawned_enemies[enemy_name]["spawned"] = true
+			spawned_enemies[enemy_name]["amount"] += 1
+			spawned_enemies[enemy_name]["instances"].append(enemy_instance)  # Store instance
+		else:
+			spawned_enemies[enemy_name] = {
+				"spawned": true,
+				"amount": 1,
+				"instances": [enemy_instance]
+			}
+			
 		enemy_instance.global_position = spawn_node.global_position
 		enemy_instance.origin_location = spawn_node.global_position
 	else:
@@ -80,7 +86,7 @@ func kill_enemy(index):
 			print("Error: No instances of", enemy_name, "found.")
 	else:
 		print("Error: Enemy type not found in spawned_enemies dictionary.")
-	debug_spawned_enemies()
+	#debug_spawned_enemies()
 
 
 func kill_all_enemies():
@@ -91,7 +97,7 @@ func kill_all_enemies():
 		spawned_enemies[enemy_name]["spawned"] = false
 		spawned_enemies[enemy_name]["amount"] = 0
 	
-	debug_spawned_enemies()
+	#debug_spawned_enemies()
 	print("Killed all enemies.")
 	
 func debug_spawned_enemies():
@@ -108,13 +114,13 @@ func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
 	
 	match location:
 		LOCATIONS.RANDOM_CABIN:
-			target_position = map.get_random_cabin_room()
+			target_position = current_map.get_random_cabin_room()
 		LOCATIONS.PLAYER_ROOM:
-			target_position = map.get_current_room()
+			target_position = current_map.get_current_room()
 		LOCATIONS.PLAYER_LOCATION:
 			target_position = player.global_position
 		LOCATIONS.CLOSEST_WINDOW:
-			target_position = map.get_closest_window(enemy.global_position)
+			target_position = current_map.get_closest_window(enemy.global_position)
 	print("Directing to: ", location)
 	
 	if target_position:
@@ -134,3 +140,14 @@ func get_scene_name(packed_scene: PackedScene) -> String:
 	if packed_scene.resource_path:
 		return packed_scene.resource_path.get_file().get_basename()
 	return "Unknown Scene"
+
+func on_map_switched():
+	check_maps()
+	
+func check_maps():
+	var possible_maps = ["MapCabin", "MapOutside"]  # Add more if needed
+	for map_name in possible_maps:
+		current_map = get_node_or_null("/root/MainScene/" + map_name)
+		if current_map:
+			print("Current Map: ", current_map)
+			break  # Stop at the first found map

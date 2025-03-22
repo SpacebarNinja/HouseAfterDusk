@@ -1,6 +1,6 @@
-[gd_scene load_steps=118 format=3 uid="uid://0xglca5ob35f"]
+[gd_scene load_steps=117 format=3 uid="uid://0xglca5ob35f"]
 
-[ext_resource type="Script" uid="uid://brrn67oqdaxcp" path="res://Entities/Enemies/WindowGirl/Scripts/WindowGirlV2.gd" id="1_8yx1r"]
+[ext_resource type="Script" uid="uid://brrn67oqdaxcp" path="res://Entities/Enemies/WindowGirl/Scripts/WindowGirlV2.gd" id="1_n2wkp"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/Enemies/WindowGirl/Art/WG_Spritesheet.png" id="2_8tejb"]
 [ext_resource type="Texture2D" uid="uid://6tkser7ej7oj" path="res://Entities/Enemies/WindowGirl/Art/WG_Break_In_Spritesheet.png" id="3_6rl5w"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="4_6ogw0"]
@@ -352,6 +352,11 @@ animations = [{
 "name": &"Attack",
 "speed": 21.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"BreakIn_Side",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_64gm8")
@@ -447,7 +452,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uv6o3")
 }],
 "loop": false,
-"name": &"BreakIn",
+"name": &"BreakIn_Top",
 "speed": 10.0
 }, {
 "frames": [{
@@ -617,10 +622,6 @@ animations = [{
 "name": &"Scream",
 "speed": 10.0
 }]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26qmk"]
-atlas = ExtResource("4_6ogw0")
-region = Rect2(0, 56, 200, 88)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5ohf"]
 radius = 25.0799
@@ -1028,7 +1029,7 @@ advance_mode = 2
 states/Attack/node = SubResource("AnimationNodeAnimation_6jstm")
 states/Attack/position = Vector2(225, 296)
 states/BreakIn/node = SubResource("AnimationNodeAnimation_qr4a0")
-states/BreakIn/position = Vector2(103, 154)
+states/BreakIn/position = Vector2(81, 186)
 states/Death/node = SubResource("AnimationNodeAnimation_fd4gr")
 states/Death/position = Vector2(594, 154)
 states/End/position = Vector2(795, 154)
@@ -1040,13 +1041,19 @@ states/Scream/node = SubResource("AnimationNodeAnimation_7wtcv")
 states/Scream/position = Vector2(225, 24)
 states/Start/position = Vector2(103, 296)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3ys4a"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xwv7v"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_0hql0"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_xjfsh"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_lbwhp"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bssi2"), "Idle", "Scream", SubResource("AnimationNodeStateMachineTransition_hiqmh"), "Idle", "BreakIn", SubResource("AnimationNodeStateMachineTransition_8d5eo"), "Scream", "Death", SubResource("AnimationNodeStateMachineTransition_iyknk"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_e37ev"), "Run", "Death", SubResource("AnimationNodeStateMachineTransition_13qpx"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_nuer3"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_lmo3r"), "Scream", "Idle", SubResource("AnimationNodeStateMachineTransition_uiq3o"), "BreakIn", "Idle", SubResource("AnimationNodeStateMachineTransition_ejwi2")]
-graph_offset = Vector2(0, 83.0688)
+graph_offset = Vector2(-522.874, 29.5238)
 
-[node name="WindowGirlv2" type="CharacterBody2D"]
+[node name="WindowGirlv2" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "anim_player", "anim_tree", "navigation_agent", "vision_cone", "hitbox")]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_8yx1r")
+script = ExtResource("1_n2wkp")
 movement_speed = 80
+anim_sprite = NodePath("AnimatedSprite2D")
+anim_player = NodePath("AnimationPlayer")
+anim_tree = NodePath("AnimationTree")
+navigation_agent = NodePath("NavigationAgent2D")
+vision_cone = NodePath("VisionCone")
+hitbox = NodePath("Hitbox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
@@ -1067,7 +1074,7 @@ debug_enabled = true
 [node name="VisionCone" type="PointLight2D" parent="."]
 scale = Vector2(1.2, 2.5)
 color = Color(0.832644, 0.290377, 0.290377, 1)
-texture = SubResource("AtlasTexture_26qmk")
+texture = ExtResource("4_6ogw0")
 
 [node name="RayCast2D" type="RayCast2D" parent="VisionCone"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)

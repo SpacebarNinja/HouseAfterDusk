@@ -30,7 +30,7 @@ y_sort_enabled = true
 
 [node name="Hud" parent="." instance=ExtResource("1_fh8r2")]
 
-[node name="DebugPanel" parent="." instance=ExtResource("2_ofx2c")]
+[node name="DebugMenu" parent="." instance=ExtResource("2_ofx2c")]
 
 [node name="Player" parent="." instance=ExtResource("4_gh3rb")]
 modulate = Color(1.1, 1.1, 1.1, 1)
@@ -54,5 +54,4 @@ script = ExtResource("9_7ksos")
 generator_off_darkness = 15
 generator_transition_time = 0.5
 
-[node name="MapCabin" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("7_5crlr")]
-spawn_location = []
+[node name="MapCabin" parent="." instance=ExtResource("7_5crlr")]

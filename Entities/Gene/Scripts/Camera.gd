@@ -49,7 +49,7 @@ func _process(delta):
 		is_room_bounds_y = rooms_instance.is_room_bounds_y
 
 	
-	var journal_instance = get_node("/root/MainScene/Hud/MechanicHud/Journal")
+	var journal_instance = get_node("/root/MainScene/Hud/MainHud/ExtraNodes/Journal")
 	var is_journal_open = journal_instance.is_open
 
 	if is_hit:
@@ -65,8 +65,7 @@ func _process(delta):
 
 	# Smooth zoom transition
 	zoom = zoom.lerp(target_zoom, zoom_speed * delta)
-	
-	HandleCraftingOffset(delta)
+
 	RoundPosition()
 
 func RoundPosition():

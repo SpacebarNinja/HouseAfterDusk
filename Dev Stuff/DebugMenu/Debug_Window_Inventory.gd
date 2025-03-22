@@ -2,6 +2,8 @@ extends Panel
 
 @onready var Backpack = get_tree().get_first_node_in_group("Backpack")
 
+@onready var trash_slot: InventoryGridStacked = $TrashPanel/Trash
+
 @onready var gear_panel = $GearPanel
 @onready var food_panel = $FoodPanel
 @onready var material_panel = $ResourcePanel
@@ -68,3 +70,6 @@ func on_item_removed(item):
 
 func _on_delay_timeout():
 	current_grid.create_and_add_item_at(current_item, item_coord)
+
+func _on_trash_item_added(item: Variant) -> void:
+	trash_slot.remove_item(item)
