@@ -109,6 +109,7 @@ offset_top = 24.0
 offset_right = 128.0
 offset_bottom = 648.0
 grow_horizontal = 2
+mouse_filter = 1
 theme = ExtResource("3_mat6y")
 script = ExtResource("3_2ur0b")
 
@@ -360,6 +361,7 @@ offset_right = 160.0
 offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("3_6x55g")
 
 [node name="WGButton" type="TextureButton" parent="EnemyWindow/EnemyPanel"]
@@ -524,6 +526,7 @@ one_shot = true
 
 [node name="TrashPanel" type="Panel" parent="InventoryWindow/InventoryPanel"]
 z_index = 1
+layout_mode = 0
 offset_left = 376.0
 offset_top = 8.0
 offset_right = 440.0

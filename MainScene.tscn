@@ -34,7 +34,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_gh3rb")]
 modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(192, 160)
+position = Vector2(132, -83)
 
 [node name="Camera2D" type="Camera2D" parent="Player" groups=["MainCamera"]]
 zoom = Vector2(3.2, 3.2)

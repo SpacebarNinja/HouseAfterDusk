@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://byf8km8hnlejp"]
 
-[ext_resource type="Script" uid="uid://dfkjdoa6xujy1" path="res://Systems/HUD/item_label.gd" id="1_hfbnv"]
+[ext_resource type="Script" uid="uid://dfkjdoa6xujy1" path="res://Systems/HUD/Scripts/item_label.gd" id="1_hfbnv"]
 [ext_resource type="Texture2D" uid="uid://cr6porj4x6i2s" path="res://Systems/Inventory/Backpack/Art/ItemHover.png" id="2_jdv2l"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="2_tkclp"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://bicfulg8h4pxj"]
+[gd_scene load_steps=135 format=4 uid="uid://bicfulg8h4pxj"]
 
 [ext_resource type="Script" uid="uid://fgd0hiyybfx1" path="res://World/House/Scripts/map_cabin.gd" id="1_ffw1e"]
 [ext_resource type="Texture2D" uid="uid://cmt1c200gkqsr" path="res://World/House/Art/MAPTiles.png" id="2_e8q4k"]
@@ -1056,10 +1056,6 @@ height = 58.63
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud8yo"]
 size = Vector2(107.999, 111.001)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8w8dj"]
-atlas = ExtResource("3_cad2m")
-region = Rect2(224, 164, 32, 40)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsih2"]
 size = Vector2(32, 20)
 
@@ -1821,7 +1817,6 @@ tile_map_data = PackedByteArray("AAD5////AAAJAAcAAAD5/wAAAAAJAAcAAAD5/wEAAAAJAAc
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="Kitchen" type="TileMapLayer" parent="ROOMS/CabinNodes"]
-visible = false
 z_index = 15
 y_sort_enabled = true
 texture_filter = 1
@@ -1890,18 +1885,13 @@ position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_2f6xm")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 
-[node name="Cabinet_Container" parent="ROOMS/CabinNodes/Kitchen" node_paths=PackedStringArray("sprite_2d") instance=ExtResource("31_c7wuu")]
-offset_left = 48.0
-offset_top = -136.0
-offset_right = 48.0
-offset_bottom = -136.0
-sprite_2d = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container"]
-texture = SubResource("AtlasTexture_8w8dj")
+[node name="Cabinet_Container" parent="ROOMS/CabinNodes/Kitchen" node_paths=PackedStringArray("tilemaplayer") instance=ExtResource("31_c7wuu")]
+visible = false
+tilemaplayer = NodePath("../Furniture")
+tilemap_coord = Vector2i(1, -5)
 
 [node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container" node_paths=PackedStringArray("sprite")]
-position = Vector2(0, 88)
+position = Vector2(176, -144)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("42_yfjwe")
@@ -1912,18 +1902,13 @@ interactable_node = NodePath("..")
 shape = SubResource("RectangleShape2D_vsih2")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 
-[node name="Cabinet_Container2" parent="ROOMS/CabinNodes/Kitchen" node_paths=PackedStringArray("sprite_2d") instance=ExtResource("31_c7wuu")]
-offset_left = 112.0
-offset_top = -136.0
-offset_right = 112.0
-offset_bottom = -136.0
-sprite_2d = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container2"]
-texture = SubResource("AtlasTexture_8w8dj")
+[node name="Cabinet_Container2" parent="ROOMS/CabinNodes/Kitchen" node_paths=PackedStringArray("tilemaplayer") instance=ExtResource("31_c7wuu")]
+visible = false
+tilemaplayer = NodePath("../Furniture")
+tilemap_coord = Vector2i(3, -5)
 
 [node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Kitchen/Cabinet_Container2" node_paths=PackedStringArray("sprite")]
-position = Vector2(0, 88)
+position = Vector2(240, -144)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("42_yfjwe")
@@ -1956,7 +1941,7 @@ z_index = -1
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAD+//7/AAADAAYAAAAAAPv/AAAFAAUAAAAAAP7/AAAFAAcAAAABAP7/AAAHAAcAAAACAPv/AAAIAAUAAAACAP7/AAAIAAcAAAADAP7/AAAJAAcAAAAEAPv/AAAKAAUAAAAEAP7/AAAKAAcAAAAFAP7/AAALAAgAAAAGAPz/AgAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AAADAAYAAAAAAPv/AAAFAAUAAAAAAP7/AAAFAAcAAAABAP7/AAAHAAcAAAACAPv/AAAIAAUAAAACAP7/AAAIAAcAAAADAP7/AAAJAAcAAAAEAPv/AAAKAAUAAAAEAP7/AAAKAAcAAAAFAP7/AAALAAgAAAAGAPz/AgAEAAAAAAABAPv/AAAHAAUAAAADAPv/AAAHAAUAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
 [node name="Wall Hitbox" type="TileMapLayer" parent="ROOMS/CabinNodes/Kitchen"]
@@ -2303,6 +2288,7 @@ tile_map_data = PackedByteArray("AAACAAEAAAAJAAcAAAACAAIAAAAJAAcAAAACAAUAAAAJAAc
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="Storage" type="TileMapLayer" parent="ROOMS/CabinNodes"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(608, -32)

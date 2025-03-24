@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cefemc5rshqtr"
-path="res://.godot/imported/WG_Side_Animation.png-d55ae36a242008fde86fe37e55bfbd3d.ctex"
+uid="uid://biih7jfxwtfh2"
+path="res://.godot/imported/WG_Break_In_Side_Spritesheet.png-6464e1a1678df82b66c6a20a38fadb20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/WindowGirl/Art/WG_Side_Animation.png"
-dest_files=["res://.godot/imported/WG_Side_Animation.png-d55ae36a242008fde86fe37e55bfbd3d.ctex"]
+source_file="res://Entities/Enemies/WindowGirl/Art/WG_Break_In_Side_Spritesheet.png"
+dest_files=["res://.godot/imported/WG_Break_In_Side_Spritesheet.png-6464e1a1678df82b66c6a20a38fadb20.ctex"]
 
 [params]
 
