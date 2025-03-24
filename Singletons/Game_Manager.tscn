@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://8f7lk7e3cf87"]
 
-[ext_resource type="Script" uid="uid://b161owiwqtdsc" path="res://Systems/SystemManagers/GameManager/GameManager.gd" id="1_pihvo"]
+[ext_resource type="Script" uid="uid://chdgoah0laron" path="res://Singletons/game_manager.gd" id="1_yowh6"]
 [ext_resource type="PackedScene" uid="uid://0xglca5ob35f" path="res://Entities/Enemies/WindowGirl/Scripts/WindowGirlV2.tscn" id="2_ttwdi"]
 [ext_resource type="PackedScene" uid="uid://38ts1v8d4yx6" path="res://Entities/Enemies/ElectronicGuy/Scripts/ElectronicGuyV2.tscn" id="3_lopys"]
 [ext_resource type="PackedScene" uid="uid://chact4baxwqfo" path="res://Entities/Enemies/TheDolls/Scripts/Doll.tscn" id="4_1c6j4"]
 [ext_resource type="PackedScene" uid="uid://btnne6ekpxmv4" path="res://Entities/Animals/Deer/Scripts/Deer.tscn" id="5_ji3ye"]
 
 [node name="GameManager" type="Node"]
-script = ExtResource("1_pihvo")
+script = ExtResource("1_yowh6")
 entity_list = Array[PackedScene]([ExtResource("2_ttwdi"), ExtResource("3_lopys"), ExtResource("4_1c6j4"), ExtResource("5_ji3ye")])
 
 [node name="SpawnCooldown" type="Timer" parent="."]

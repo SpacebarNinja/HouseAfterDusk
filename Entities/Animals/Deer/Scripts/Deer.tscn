@@ -1,12 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://btnne6ekpxmv4"]
+[gd_scene load_steps=21 format=3 uid="uid://btnne6ekpxmv4"]
 
-[ext_resource type="Script" uid="uid://cralv3syvwr27" path="res://Entities/Animals/Deer/Scripts/deer.gd" id="1_mm3lw"]
-[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Animals/Deer/Art/deer male calciumtrice.png" id="2_s3xci"]
+[ext_resource type="Script" uid="uid://cralv3syvwr27" path="res://Entities/Deer/Scripts/deer.gd" id="1_mm3lw"]
+[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/Art/deer male calciumtrice.png" id="2_s3xci"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="3_fexvt"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y62b4"]
-radius = 6.0
-height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2mpi"]
 atlas = ExtResource("2_s3xci")
@@ -130,9 +126,7 @@ animations = [{
 radius = 11.5434
 
 [node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone", "hitbox")]
-scale = Vector2(2, 2)
 collision_layer = 8
-collision_mask = 9
 script = ExtResource("1_mm3lw")
 movement_speed = 150
 health = 80
@@ -144,18 +138,12 @@ navigation_agent = NodePath("NavigationAgent2D")
 vision_cone = NodePath("Vision")
 hitbox = NodePath("Hitbox")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_y62b4")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8eft")
-animation = &"Run"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 50.0
 navigation_layers = 2
 path_postprocessing = 1
 debug_enabled = true
@@ -172,26 +160,36 @@ texture = ExtResource("3_fexvt")
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, -35)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D3" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, -15)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D4" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 0)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D5" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 15)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast2D6" type="RayCast2D" parent="Vision"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 target_position = Vector2(80, 35)
 collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
@@ -207,5 +205,5 @@ autostart = true
 
 [connection signal="Death" from="." to="." method="_on_death"]
 [connection signal="PlayerFound" from="." to="." method="_on_player_found"]
-[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

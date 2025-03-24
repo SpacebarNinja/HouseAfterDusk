@@ -18,7 +18,7 @@ json_data = "[
         \"Description\": \"A regular ole gun\",
         \"Name\": \"Gun\",
         \"Type\": \"Weapon\",
-        \"id\": \"gun\",
+        \"id\": \"pistol\",
         \"image\": \"res://Systems/Inventory/Backpack/Items/GUN.png\",
         \"max_stack_size\": \"1\",
         \"stack_size\": \"1\"

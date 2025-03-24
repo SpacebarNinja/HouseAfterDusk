@@ -152,6 +152,6 @@ func _on_navigation_agent_2d_navigation_finished():
 	if GameManager.directing_enemy:
 		GameManager.directing_enemy = false
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Tv_Exit":
 		movement_timer.start()

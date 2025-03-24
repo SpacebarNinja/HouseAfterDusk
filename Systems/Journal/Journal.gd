@@ -56,7 +56,7 @@ enum Sub_category { Descriptions, Behaviors, Methods }
 @onready var turn_right = $TurnRight
 @onready var journal_open_sfx = $JournalOpenSFX
 @onready var journal_close_sfx = $JournalCloseSFX
-@onready var black_overlay = $"../../BGProcessing/BlackOverlay"
+@onready var black_overlay = $"../../../BGProcessing/BlackOverlay"
 
 @export var page_amount: int = 3
 var page_number: int
@@ -168,7 +168,7 @@ func start_close_journal_animation():
 func _on_anim_sprite_animation_finished_close():
 	self.hide()
 	is_open = false
-	player.set_walk_speed(80)
+	player.movement_speed = 80
 	is_animating = false
 	anim_sprite.disconnect("animation_finished", Callable(self, "_on_anim_sprite_animation_finished_close"))
 

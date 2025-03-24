@@ -42,7 +42,7 @@ func on_item_mouse_entered(item):
 	target_alpha = 1.0  # Fully visible
 	opaque_speed = 10.0
 
-func on_item_mouse_exited(item):
+func on_item_mouse_exited(_item):
 	target_offset = Vector2(0.0, 0.0)
 	target_alpha = 0.0  # Fully transparent
 	opaque_speed = 20.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ctdq183pdtysa"]
 
 [ext_resource type="Script" uid="uid://ibxrnnbj6isp" path="res://Systems/HUD/quick_time_event.gd" id="1_fhhpx"]
-[ext_resource type="Shader" uid="uid://dt8044m7sgioc" path="res://Assets/Visuals/vignette.gdshader" id="2_h6bny"]
+[ext_resource type="Shader" uid="uid://dt8044m7sgioc" path="res://Assets/Shader/vignette.gdshader" id="2_h6bny"]
 [ext_resource type="Texture2D" uid="uid://dro6j75bhe75l" path="res://Systems/HUD/Art/QTE_button_hold.png" id="3_4tiq5"]
 [ext_resource type="Texture2D" uid="uid://cbda0cdpe7kmi" path="res://Systems/HUD/Art/QTE_Button.png" id="4_los2b"]
 [ext_resource type="Texture2D" uid="uid://cj6mrdv61c0c0" path="res://Systems/HUD/Art/QTE_bar.png" id="5_fole6"]

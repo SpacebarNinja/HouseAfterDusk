@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var mechanic_hud = $MechanicHud
 
 var display_dict: Dictionary
 var current_hud: String
@@ -19,7 +18,7 @@ func _ready():
 func _input(_event):
 	if Input.is_action_pressed("Escape"):
 		#current_display("Main")
-		player.set_walk_speed(80)
+		player.movement_speed = 80
 		
 func current_display(display):
 	for keys in display_dict.keys():

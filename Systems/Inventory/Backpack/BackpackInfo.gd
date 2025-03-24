@@ -17,9 +17,6 @@ var hover_speed = 0.2  # The bigger the faster
 @onready var select_audio = $SelectAudio
 @onready var unselect_audio = $UnselectAudio
 
-func _ready() -> void:
-	print(get_inventory_items())
-
 func _process(_delta):
 	HandleHover()
 

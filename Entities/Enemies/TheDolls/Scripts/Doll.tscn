@@ -31,12 +31,17 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj146"]
 
-[node name="Doll" type="CharacterBody2D"]
+[node name="Doll" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_v3bm4")
+movement_speed = 0
+acceleration = 0
 spawn_location = "CABIN"
+anim_sprite = NodePath("AnimatedSprite2D")
+navigation_agent = NodePath("NavigationAgent2D")
+vision_cone = NodePath("Vision")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.16, 0.16)
