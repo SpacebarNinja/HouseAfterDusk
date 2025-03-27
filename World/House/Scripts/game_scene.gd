@@ -2,23 +2,26 @@ extends Node
 
 enum LOCATIONS {RANDOM_CABIN, PLAYER_ROOM, PLAYER_LOCATION, CLOSEST_WINDOW}
 
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var hud = get_tree().get_first_node_in_group("MainHud")
+@onready var QteHud = get_tree().get_first_node_in_group("QTEHud")
 @onready var spawn_cooldown = $SpawnCooldown
 
 @export var entity_list: Array[PackedScene]
+var player: Node
+var current_map: Node
 
 var directing_enemy: bool = false
 var spawned_enemies: Dictionary = {}
 var difficulty: float = 1
 
-var current_map: Node
-
 func _ready():
-	SceneManager.connect("SwitchedMap", Callable(self, "on_map_switched"))
-	check_maps()
+	SceneManager.connect("SwitchedMap", Callable(self, "check_maps"))
 	initialize_enemy_list()
-
+	initialize_game_elements()
+	check_maps()
+	
+func initialize_game_elements():
+	player = get_tree().get_first_node_in_group("Player")
+	
 func initialize_enemy_list():
 	for enemy in entity_list:
 		var enemy_name = get_scene_name(enemy)
@@ -103,12 +106,6 @@ func kill_all_enemies():
 func debug_spawned_enemies():
 	print(spawned_enemies)
 
-func _on_spawn_cooldown_timeout():
-	var spawn_chance = randf_range(1, 100) * difficulty
-	print("Attempting Spawn")
-	if spawn_chance >= 90:
-		spawn_enemy(randi_range(0,3))
-
 func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
 	var target_position = null
 	
@@ -141,9 +138,6 @@ func get_scene_name(packed_scene: PackedScene) -> String:
 		return packed_scene.resource_path.get_file().get_basename()
 	return "Unknown Scene"
 
-func on_map_switched():
-	check_maps()
-	
 func check_maps():
 	var possible_maps = ["MapCabin", "MapOutside"]  # Add more if needed
 	for map_name in possible_maps:
@@ -151,3 +145,11 @@ func check_maps():
 		if current_map:
 			print("Current Map: ", current_map)
 			break  # Stop at the first found map
+		else:
+			print("No Map")
+			
+func _on_spawn_cooldown_timeout():
+	var spawn_chance = randf_range(1, 100) * difficulty
+	print("Attempting Spawn")
+	if spawn_chance >= 90:
+		spawn_enemy(randi_range(0,3))

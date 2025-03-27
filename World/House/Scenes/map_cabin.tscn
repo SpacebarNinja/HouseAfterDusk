@@ -32,7 +32,7 @@
 [ext_resource type="Script" uid="uid://hgedwbg6tenj" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
 [ext_resource type="Shader" uid="uid://dj2cghjp5n8er" path="res://Assets/Visuals/shader.gdshader" id="30_v07gy"]
 [ext_resource type="AudioStream" uid="uid://jy6w2ie5oi73" path="res://Sounds/SmallElectricSparks.mp3" id="31_8luoa"]
-[ext_resource type="PackedScene" uid="uid://upgsn02qes0p" path="res://World/House/Scripts/Container_cabinet.tscn" id="31_c7wuu"]
+[ext_resource type="PackedScene" uid="uid://upgsn02qes0p" path="res://World/House/Scenes/Container_cabinet.tscn" id="31_c7wuu"]
 [ext_resource type="AudioStream" uid="uid://bvstno6a3812a" path="res://World/House/Audio/Electric/Generator_PowerOn.mp3" id="32_3ggy3"]
 [ext_resource type="AudioStream" uid="uid://di4umle8y72fx" path="res://World/House/Audio/Electric/Generator_PowerOff.mp3" id="33_asylt"]
 [ext_resource type="Script" uid="uid://c2flv888g1l6c" path="res://World/House/Scripts/LightSwitch.gd" id="40_omnsj"]
@@ -1623,7 +1623,6 @@ script = ExtResource("6_asq3q")
 y_sort_enabled = true
 
 [node name="Living Room" type="TileMapLayer" parent="ROOMS/CabinNodes"]
-visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(127, 128)
@@ -1817,6 +1816,7 @@ tile_map_data = PackedByteArray("AAD5////AAAJAAcAAAD5/wAAAAAJAAcAAAD5/wEAAAAJAAc
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="Kitchen" type="TileMapLayer" parent="ROOMS/CabinNodes"]
+visible = false
 z_index = 15
 y_sort_enabled = true
 texture_filter = 1

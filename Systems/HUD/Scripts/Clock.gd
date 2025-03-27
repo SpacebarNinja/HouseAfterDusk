@@ -1,5 +1,6 @@
 extends Control
 
+@onready var game_scene = get_tree().get_first_node_in_group("GameScene")
 @onready var hour_hand_sprite = $HourHandSprite
 @onready var minute_hand_sprite = $MinuteHandSprite
 
@@ -65,7 +66,7 @@ func update_day_part():
 		WorldManager.DayPart = "Night"
 	elif hour >= 5 and hour < 6:
 		WorldManager.DayPart = "Dawn"
-		GameManager.spawn_cooldown.stop()
+		game_scene.spawn_cooldown.stop()
 	elif hour >= 6 and hour < 12:
 		WorldManager.DayPart = "Morning"
 	elif hour >= 12 and hour < 13:
@@ -77,13 +78,13 @@ func update_day_part():
 	else:
 		WorldManager.DayPart = "Night"
 		date_updated = false
-		if GameManager.spawn_cooldown.is_stopped():
-			GameManager.spawn_cooldown.start()
+		if game_scene.spawn_cooldown.is_stopped():
+			game_scene.spawn_cooldown.start()
 
 func update_current_date():
 	WorldManager.CurrentDay += 1
 	WorldManager.CurrentDate = "Day: " + str(WorldManager.CurrentDay)
-	GameManager.difficulty *= 1.05
+	game_scene.difficulty *= 1.05
 
 func update_clock_hands():
 	# Convert WorldTime into hours and minutes

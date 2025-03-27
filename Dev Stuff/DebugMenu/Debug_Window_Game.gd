@@ -1,5 +1,6 @@
 extends Panel
 
+@onready var game_scene = get_tree().get_first_node_in_group("GameScene")
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var main_hud = get_tree().get_first_node_in_group("MainHud")
 @onready var hud = get_tree().get_first_node_in_group("Hud")
@@ -42,7 +43,7 @@ func _on_enable_debug_mode_toggled(toggled_on: bool) -> void:
 		print("Debug Mode disabled")
 		
 func _on_kill_all_enemies_pressed():
-	GameManager.kill_all_enemies()
+	game_scene.kill_all_enemies()
 
 func _on_time_slider_value_changed(value):
 	time_label.text = "World Time: " + str(value)
@@ -80,6 +81,8 @@ func _on_player_stats_item_selected(index: int) -> void:
 			player.take_damage(20, Vector2.ZERO)
 		3:
 			player.current_hunger -= 10
+		4:
+			player.take_damage(100, Vector2.ZERO)
 			
 #Debug_Panels -----------------------------------------
 func _on_show_enemy_panel_pressed():

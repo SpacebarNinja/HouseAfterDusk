@@ -16,17 +16,17 @@ extends Entity_Class
 @onready var glitch_timer = $GlitchTimer
 @onready var prowl_timer = $ProwlTimer
 
-var tv_node
-
+var tv_node 
 var corrupted_channels: Array = []
 var prowling = true
+var attacking = false
 var is_teleporting = false
-var hide_length
 
 func _ready():
 	super._ready()
 	corrupted_channels = [1,2,3,4]
 	hide()
+	toggle_vision(false)
 	
 func _physics_process(delta):
 	if prowling:
@@ -34,15 +34,17 @@ func _physics_process(delta):
 	
 	super._physics_process(delta)
 	handle_behavior()
-
+	
 func glitch():
-	if not is_teleporting and not prowling:
-		anim_tree.get("parameters/playback").travel("Glitch")
-		await get_tree().create_timer(randf_range(glitch_length, glitch_length * 3)).timeout
+	if is_teleporting or prowling or attacking:
+		return
 		
-		anim_tree.get("parameters/playback").travel("Idle")
-		glitch_timer.wait_time = randf_range(glitch_frequency, glitch_frequency * 1.5)
-		glitch_timer.start()
+	anim_tree.get("parameters/playback").travel("Glitch")
+	await get_tree().create_timer(randf_range(glitch_length, glitch_length * 3)).timeout
+	
+	play_idle_animation()
+	glitch_timer.wait_time = randf_range(glitch_frequency, glitch_frequency * 1.5)
+	glitch_timer.start()
 
 func start_teleport():
 	is_teleporting = true
@@ -54,16 +56,19 @@ func start_teleport():
 func end_teleport():
 	if is_teleporting:
 		is_teleporting = false
-		anim_tree.get("parameters/playback").travel("Idle")
+		play_idle_animation()
 
 func handle_behavior():
 	if player_seen:
 		current_vision_direction = VISION_DIRECTION.PLAYER
 		manage_suspicion_meter(2)
 		
-	if suspicion >= 80 and not GameManager.directing_enemy:
-		GameManager.direct_enemy(self, GameManager.LOCATIONS.PLAYER_LOCATION)
-		
+	if suspicion >= 80 and not game_scene.directing_enemy:
+		game_scene.direct_enemy(self, game_scene.LOCATIONS.PLAYER_LOCATION)
+
+func play_idle_animation():
+	anim_tree.get("parameters/playback").travel("Idle")
+	
 func on_generator_turn_off() -> void:
 	print("Turned Off Generator, Killing TvG")
 	queue_free()
@@ -94,6 +99,8 @@ func _on_stunned():
 
 func _on_unstunned():
 	anim_tree.get("parameters/playback").travel("Idle")
+	attacking = false
+	glitch_timer.start()
 	start_teleport()
 
 func _on_glitch_timer_timeout():
@@ -141,16 +148,18 @@ func _on_prowl_timer_timeout():
 func _on_hitbox_body_entered(body):
 	if body == player and not prowling:
 		anim_tree.get("parameters/playback").travel("QuickTimeEvent_Loop")
+		attacking = true
+		glitch_timer.stop()
 		await get_tree().create_timer(1).timeout
-		GameManager.start_quick_time_event()
+		game_scene.start_quick_time_event()
 
 func _on_navigation_agent_2d_navigation_finished():
 	if current_state == BEHAVIOR_STATES.RETREAT:
 		print("TvG Retreated")
 		queue_free()
 	
-	if GameManager.directing_enemy:
-		GameManager.directing_enemy = false
+	if game_scene.directing_enemy:
+		game_scene.directing_enemy = false
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Tv_Exit":

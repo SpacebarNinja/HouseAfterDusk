@@ -12,11 +12,13 @@ func _ready():
 		"Main": $MainHud,
 		"Crafting": $CraftingHud,
 		"Cooking": $CookingHud,
-		"Fishing": $FishingHud
+		"Fishing": $FishingHud,
+		"Death": $DeathHud,
+		"QTE": $QTEHud
 	}
 
 func _input(_event):
-	if Input.is_action_pressed("Escape"):
+	if Input.is_action_pressed("Escape") and not current_hud == "QTE":
 		#current_display("Main")
 		player.movement_speed = 80
 		
@@ -29,8 +31,9 @@ func current_display(display):
 	if current_hud == "Crafting":
 		display_dict["Crafting"].currently_crafting = (current_hud == "Crafting")
 		
-	if current_hud == "Fishing":
+	elif current_hud == "Fishing":
 		display_dict["Fishing"].chance_timer.start()
 		display_dict["Fishing"].duration_timer.start()
-
-	print("CurrentDisplay: ", display)
+	
+	elif current_hud == "Death":
+		display_dict["Death"].animation_player.play("death_screen")

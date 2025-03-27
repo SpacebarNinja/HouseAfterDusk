@@ -22,6 +22,7 @@ extends Control
 @export var fade_speed: float = 7.0
 
 var debug_sprint: bool = false
+var stopped_dialoguing: bool = false
 
 func _ready():
 	if sprint_bar.value >= sprint_bar.max_value - 3:
@@ -53,10 +54,12 @@ func _process(delta):
 		WorldManager.StopGeneMovement = true
 		HudManager.camera_movement = false
 		sprint_bar.visible = false
-	else:
+		stopped_dialoguing = false
+	elif not stopped_dialoguing:
 		WorldManager.StopGeneMovement = false
 		HudManager.camera_movement = true
 		sprint_bar.visible = true
+		stopped_dialoguing = true
 		
 func update_time_display():
 	time_display.text = WorldManager.DayPart + "\n" + WorldManager.CurrentDate

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b75p3fcrvmurc"]
 
-[ext_resource type="Script" uid="uid://chr5fyvn584je" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="1_lyuuv"]
+[ext_resource type="Script" uid="uid://juicwfooqiv8" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="1_lyuuv"]
 [ext_resource type="Resource" uid="uid://b30oa05buxfxg" path="res://Systems/Inventory/Others/Universal.tres" id="2_nak3j"]
-[ext_resource type="Script" uid="uid://cypgfq45rbfa6" path="res://addons/gloot/core/inventory_item.gd" id="3_2p131"]
+[ext_resource type="Script" uid="uid://2sxumcwcp80r" path="res://addons/gloot/core/inventory_item.gd" id="3_2p131"]
 
 [node name="ItemList" type="Node"]
 script = ExtResource("1_lyuuv")
@@ -16,7 +16,7 @@ prototype_id = "bullet"
 [node name="_Node_56557" type="Node" parent="."]
 script = ExtResource("3_2p131")
 protoset = ExtResource("2_nak3j")
-prototype_id = "gun"
+prototype_id = "bullet"
 properties = {
 "grid_position": Vector2i(0, 1)
 }

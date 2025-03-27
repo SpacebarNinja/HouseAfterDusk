@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfcnpdl2irh8p"
-path="res://.godot/imported/The Sexyman.png-66109e2441d4a35994c6077d8ad61577.ctex"
+uid="uid://codio7pfqi0ot"
+path="res://.godot/imported/Art.jpg-a864d3a822a92b8ef57009b7687e661e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/ElectronicGuy/Art/The Sexyman.png"
-dest_files=["res://.godot/imported/The Sexyman.png-66109e2441d4a35994c6077d8ad61577.ctex"]
+source_file="res://Systems/MainMenu/Art.jpg"
+dest_files=["res://.godot/imported/Art.jpg-a864d3a822a92b8ef57009b7687e661e.ctex"]
 
 [params]
 

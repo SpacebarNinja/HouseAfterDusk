@@ -24,8 +24,8 @@ var camera_anchor = Vector2.ZERO
 
 @export_category("Zoom Settings")
 @export var zoom_speed: float = 3.0   # How fast the zoom lerps
+@export var target_zoom: Vector2
 
-var target_zoom: Vector2
 var original_zoom := Vector2(3.2, 3.2)
 
 func _ready():
@@ -50,13 +50,11 @@ func _process(delta):
 
 	
 	var journal_instance = get_node("/root/MainScene/Hud/MainHud/ExtraNodes/Journal")
-	var is_journal_open = journal_instance.is_open
 
 	if is_hit:
 		CameraShake(delta)
-	else:
-		if not is_journal_open and HudManager.camera_movement:
-			CameraLean()
+	elif not journal_instance.is_open:
+		CameraLean()
 
 	if not is_room_bounds_x:
 		camera_anchor.x = player.global_position.x
@@ -82,6 +80,9 @@ func CameraShake(delta):
 			is_hit = false
 
 func CameraLean():
+	if not HudManager.camera_movement:
+		return
+	
 	var target_position = camera_anchor
 	var mouse_position = get_global_mouse_position()
 

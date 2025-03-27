@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://dd1lkq85yan68" path="res://Assets/Visuals/Furniture Shadow.tres" id="5_1fglc"]
 [ext_resource type="Texture2D" uid="uid://00iuymxlwcv1" path="res://World/House/Art/Outdoor_Decor2.png" id="6_13o4d"]
 [ext_resource type="Texture2D" uid="uid://c7o2ugync4yf" path="res://World/House/Art/Outdoor_Decor.png" id="6_ttsd2"]
-[ext_resource type="PackedScene" uid="uid://b6mn4mdwjqyri" path="res://World/House/Scripts/CropSlot.tscn" id="7_lvpvg"]
+[ext_resource type="PackedScene" uid="uid://b6mn4mdwjqyri" path="res://World/House/Scenes/CropSlot.tscn" id="7_lvpvg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mvapc"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
