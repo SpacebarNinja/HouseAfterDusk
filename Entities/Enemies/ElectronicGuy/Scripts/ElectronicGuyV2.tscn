@@ -1519,7 +1519,7 @@ states/Teleport_Backward/position = Vector2(585, 172)
 states/Tv_Exit/node = SubResource("AnimationNodeAnimation_w0dhw")
 states/Tv_Exit/position = Vector2(332, 100)
 transitions = ["Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_7obh5"), "Teleport", "Teleport_Backward", SubResource("AnimationNodeStateMachineTransition_qq1up"), "Idle", "Glitch", SubResource("AnimationNodeStateMachineTransition_b4r00"), "Glitch", "Idle", SubResource("AnimationNodeStateMachineTransition_naexb"), "Teleport_Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_117uq"), "Idle", "QuickTimeEvent_Start", SubResource("AnimationNodeStateMachineTransition_u8owp"), "QuickTimeEvent_Start", "QuickTimeEvent_Loop", SubResource("AnimationNodeStateMachineTransition_1njbb"), "QuickTimeEvent_Loop", "QuickTimeEvent_Stop", SubResource("AnimationNodeStateMachineTransition_6400f"), "QuickTimeEvent_Stop", "QuickTimeEvent_Stun", SubResource("AnimationNodeStateMachineTransition_ow3ul"), "QuickTimeEvent_Stun", "Idle", SubResource("AnimationNodeStateMachineTransition_d4mox"), "Tv_Exit", "Idle", SubResource("AnimationNodeStateMachineTransition_n0asa"), "Start", "Tv_Exit", SubResource("AnimationNodeStateMachineTransition_w0dhw")]
-graph_offset = Vector2(0, -159.124)
+graph_offset = Vector2(-145.638, -29.3956)
 
 [node name="ElectronicGuyV2" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "anim_player", "anim_tree", "navigation_agent", "vision_cone", "hitbox") groups=["Electronic"]]
 y_sort_enabled = true
@@ -1533,6 +1533,7 @@ health = 1000
 attack_damage = 200
 spawn_location = "TV"
 wander_radius = 200.0
+current_state = 1
 anim_sprite = NodePath("AnimatedSprite2D")
 anim_player = NodePath("AnimationPlayer")
 anim_tree = NodePath("AnimationTree")
@@ -1557,6 +1558,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.892237, 0.243212, 0.471087, 1)
 
 [node name="VisionCone" type="PointLight2D" parent="."]
+position = Vector2(0, -64.5046)
 scale = Vector2(1.2, 2.5)
 color = Color(0.832644, 0.290377, 0.290377, 1)
 texture = ExtResource("5_7t6pa")

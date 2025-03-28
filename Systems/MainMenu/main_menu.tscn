@@ -460,7 +460,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -832.0
+offset_left = -320.0
+offset_right = -1152.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_3x3ji")
@@ -472,10 +473,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -406.81
-offset_top = -252.0
-offset_right = -342.81
-offset_bottom = -188.0
+offset_left = -448.0
+offset_top = -412.0
+offset_right = -384.0
+offset_bottom = -348.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -491,9 +492,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -488.0
+offset_left = -776.0
 offset_top = -132.0
-offset_right = -260.0
+offset_right = -548.0
 offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -523,10 +524,10 @@ vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PlayButton"]
 layout_mode = 0
-offset_left = -55.325
-offset_top = 13.675
-offset_right = 0.674999
-offset_bottom = 69.675
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 88.0
 texture = SubResource("AtlasTexture_5tiuc")
 
 [node name="TextureRect2" type="TextureRect" parent="PlayButton"]
@@ -545,9 +546,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -488.0
+offset_left = -776.0
 offset_top = -4.0
-offset_right = -256.0
+offset_right = -544.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -578,10 +579,10 @@ vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="SettingsButton"]
 layout_mode = 0
-offset_left = -53.065
-offset_top = 6.31
-offset_right = 18.935
-offset_bottom = 78.31
+offset_left = 56.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 96.0
 texture = SubResource("AtlasTexture_kwnau")
 
 [node name="TextureRect2" type="TextureRect" parent="SettingsButton"]
@@ -600,9 +601,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -472.0
+offset_left = -776.0
 offset_top = 124.0
-offset_right = -280.0
+offset_right = -584.0
 offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -633,10 +634,10 @@ vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="QuitButton"]
 layout_mode = 0
-offset_left = -67.87
-offset_top = 7.165
-offset_right = 12.13
-offset_bottom = 79.165
+offset_left = 71.57
+offset_top = 32.0
+offset_right = 151.57
+offset_bottom = 104.0
 texture = SubResource("AtlasTexture_3cdlb")
 
 [node name="TextureRect2" type="TextureRect" parent="QuitButton"]

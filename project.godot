@@ -24,7 +24,6 @@ ItemRecipes="*res://Singletons/ItemRecipes.gd"
 HudManager="*res://Singletons/HudManager.gd"
 GlobalItemList="*res://Singletons/item_list.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-SceneManager="*res://Singletons/SceneManager.gd"
 Load="*res://Singletons/Load.gd"
 
 [debug]

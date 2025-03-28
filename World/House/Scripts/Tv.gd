@@ -117,8 +117,8 @@ func erase_buttons():
 	WorldManager.Interactables.erase("Turn Off TV")
 	WorldManager.Interactables.erase("Turn On TV")
 	WorldManager.Interactables.erase("Switch Channel")
-		
-func _on_button_turn_on_pressed():
+
+func turn_on():
 	turn_on_sfx.play()
 	is_on = true
 	television_light.show()
@@ -128,9 +128,7 @@ func _on_button_turn_on_pressed():
 	tilemap.set_cell(TVCoords, 0, Vector2i(3, 0))
 	static_sfx.play()
 
-	handle_text()
-	
-func _on_button_turn_off_pressed():
+func turn_off():
 	tilemap.set_cell(TVCoords, 0, Vector2i(5, 4))
 	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
@@ -140,7 +138,13 @@ func _on_button_turn_off_pressed():
 	_stop_all_channel_audio()
 	_reset_color_indices()
 	static_sfx.stop()
+
+func _on_button_turn_on_pressed():
+	turn_on()
+	handle_text()
 	
+func _on_button_turn_off_pressed():
+	turn_off()
 	handle_text()
 
 func _on_switch_channel_button_pressed():

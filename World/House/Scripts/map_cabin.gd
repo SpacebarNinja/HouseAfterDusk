@@ -24,7 +24,7 @@ func get_cabin_random_spawn_nodes():
 		var spawn = nodes[randi() % nodes.size()]
 		print("CabinSpawn: ", spawn)
 		return spawn
-	
+
 func get_closest_window(Location: Vector2) -> Vector2:
 	var window_list: Array
 	

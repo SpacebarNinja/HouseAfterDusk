@@ -25,6 +25,8 @@ var is_teleporting = false
 func _ready():
 	super._ready()
 	corrupted_channels = [1,2,3,4]
+	tv_node = game_scene.current_map.get_tv_node()
+	tv_node.turn_on()
 	hide()
 	toggle_vision(false)
 	
@@ -69,7 +71,7 @@ func handle_behavior():
 func play_idle_animation():
 	anim_tree.get("parameters/playback").travel("Idle")
 	
-func on_generator_turn_off() -> void:
+func terminate() -> void:
 	print("Turned Off Generator, Killing TvG")
 	queue_free()
 	
@@ -87,11 +89,11 @@ func _on_player_lost():
 		start_teleport()
 		set_target_position(player.get_global_position())
 	
-func on_qte_success():
+func _on_qte_success():
 	anim_tree.get("parameters/playback").travel("QuickTimeEvent_Stun")
 	stun(2.5)
 
-func on_qte_fail():
+func _on_qte_fail():
 	player.take_damage(attack_damage,velocity)
 
 func _on_stunned():
@@ -138,10 +140,10 @@ func _on_prowl_timer_timeout():
 		prowl_timer.start()
 	else:
 		# All channels corrupted, start QTE
-		if not QteHud.is_connected("QTE_Success", Callable(self, "on_qte_success")):
-			QteHud.connect("QTE_Success", Callable(self, "on_qte_success"))
-		if not QteHud.is_connected("QTE_Fail", Callable(self, "on_qte_fail")):
-			QteHud.connect("QTE_Fail", Callable(self, "on_qte_fail"))
+		if not QteHud.is_connected("QTE_Success", Callable(self, "_on_qte_success")):
+			QteHud.connect("QTE_Success", Callable(self, "_on_qte_success"))
+		if not QteHud.is_connected("QTE_Fail", Callable(self, "_on_qte_fail")):
+			QteHud.connect("QTE_Fail", Callable(self, "_on_qte_fail"))
 
 		prowling = false
 		

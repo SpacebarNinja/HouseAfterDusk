@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=4 uid="uid://bicfulg8h4pxj"]
+[gd_scene load_steps=138 format=4 uid="uid://bicfulg8h4pxj"]
 
 [ext_resource type="Script" uid="uid://fgd0hiyybfx1" path="res://World/House/Scripts/map_cabin.gd" id="1_ffw1e"]
 [ext_resource type="Texture2D" uid="uid://cmt1c200gkqsr" path="res://World/House/Art/MAPTiles.png" id="2_e8q4k"]
@@ -28,11 +28,13 @@
 [ext_resource type="AudioStream" uid="uid://btikk04bsxcnn" path="res://World/House/Audio/Channels/Channel4 - News.mp3" id="20_c3v45"]
 [ext_resource type="Texture2D" uid="uid://cwt0ry1qmh6h2" path="res://World/House/Art/TVGlow.png" id="21_d16nc"]
 [ext_resource type="Texture2D" uid="uid://bs4ysvd3hopep" path="res://World/House/Art/MAPGenerator.png" id="21_u7gqm"]
+[ext_resource type="Script" uid="uid://dyy3vmbg22axd" path="res://World/House/Scenes/TransitionMap.gd" id="30_8w8dj"]
 [ext_resource type="AudioStream" uid="uid://c6s1apohu7xkf" path="res://Sounds/Ambient Electric.mp3" id="30_c18we"]
 [ext_resource type="Script" uid="uid://hgedwbg6tenj" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
 [ext_resource type="Shader" uid="uid://dj2cghjp5n8er" path="res://Assets/Visuals/shader.gdshader" id="30_v07gy"]
 [ext_resource type="AudioStream" uid="uid://jy6w2ie5oi73" path="res://Sounds/SmallElectricSparks.mp3" id="31_8luoa"]
 [ext_resource type="PackedScene" uid="uid://upgsn02qes0p" path="res://World/House/Scenes/Container_cabinet.tscn" id="31_c7wuu"]
+[ext_resource type="PackedScene" uid="uid://b4iq0rneorqjt" path="res://Systems/SystemManagers/InteractionManager/interaction_area.tscn" id="31_vsih2"]
 [ext_resource type="AudioStream" uid="uid://bvstno6a3812a" path="res://World/House/Audio/Electric/Generator_PowerOn.mp3" id="32_3ggy3"]
 [ext_resource type="AudioStream" uid="uid://di4umle8y72fx" path="res://World/House/Audio/Electric/Generator_PowerOff.mp3" id="33_asylt"]
 [ext_resource type="Script" uid="uid://c2flv888g1l6c" path="res://World/House/Scripts/LightSwitch.gd" id="40_omnsj"]
@@ -1047,6 +1049,9 @@ sources/1 = SubResource("TileSetAtlasSource_o30b0")
 sources/2 = SubResource("TileSetAtlasSource_5bx1e")
 sources/3 = SubResource("TileSetAtlasSource_whpas")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f25r"]
+size = Vector2(64, 32)
+
 [sub_resource type="GDScript" id="GDScript_m0jk6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipft"]
@@ -1071,6 +1076,9 @@ size = Vector2(56, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao0ot"]
 size = Vector2(76, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lloo"]
+size = Vector2(24, 64)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tiag5"]
 
@@ -1532,9 +1540,6 @@ size = Vector2(232, 224)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkg5k"]
 size = Vector2(232, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvccr"]
-size = Vector2(66, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlusg"]
 size = Vector2(126, 292)
 
@@ -1601,7 +1606,7 @@ random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("15_disf8")
 
-[node name="MapCabin" type="Node2D" groups=["Map", "navigation"]]
+[node name="MapCabin" type="Node2D" groups=["Map"]]
 y_sort_enabled = true
 script = ExtResource("1_ffw1e")
 
@@ -1807,13 +1812,29 @@ tile_map_data = PackedByteArray("AAD3//r/AAAEAAIAAAD5/wEAAQAGAAQAAAD8/wAAAQAKAAI
 tile_set = SubResource("TileSet_nlj7c")
 
 [node name="Wall Hitbox" type="TileMapLayer" parent="ROOMS/CabinNodes/Living Room"]
-visible = false
 z_index = 5
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(-127, -128)
-tile_map_data = PackedByteArray("AAD5////AAAJAAcAAAD5/wAAAAAJAAcAAAD5/wEAAAAJAAcAAAD5/wIAAAAJAAcAAAD5/wMAAAAJAAcAAAD5/wQAAAAJAAcAAAD5/wUAAAAJAAcAAAD5/wYAAAAJAAcAAAD5/wcAAAAJAAcAAAD5/wgAAAAJAAcAAAD5/wkAAAAJAAcAAAD6////AAAJAAcAAAD6/wkAAAAJAAcAAAD7////AAAJAAcAAAD7/wkAAAAJAAcAAAD8////AAAJAAcAAAD8/wkAAAAJAAcAAAD9/wkAAAAJAAcAAAD+/wkAAAAJAAcAAAD/////AAAJAAcAAAD//wkAAAAJAAcAAAAAAP//AAAJAAcAAAAAAAkAAAAJAAcAAAABAP//AAAJAAcAAAABAAkAAAAJAAcAAAACAAkAAAAJAAcAAAADAAkAAAAJAAcAAAAEAAkAAAAJAAcAAAAFAP//AAAJAAcAAAAGAP//AAAJAAcAAAAHAP//AAAJAAcAAAAHAAkAAAAJAAcAAAAIAP//AAAJAAcAAAAIAAkAAAAJAAcAAAAJAP//AAAJAAcAAAAJAAkAAAAJAAcAAAAKAP//AAAJAAcAAAAKAAkAAAAJAAcAAAALAP//AAAJAAcAAAALAAkAAAAJAAcAAAAMAP//AAAJAAcAAAAMAAAAAAAJAAcAAAAMAAEAAAAJAAcAAAAMAAIAAAAJAAcAAAAMAAUAAAAJAAcAAAAMAAYAAAAJAAcAAAAMAAcAAAAJAAcAAAAMAAgAAAAJAAcAAAAMAAkAAAAJAAcAAAA=")
+tile_map_data = PackedByteArray("AAD5////AAAJAAcAAAD5/wAAAAAJAAcAAAD5/wEAAAAJAAcAAAD5/wIAAAAJAAcAAAD5/wMAAAAJAAcAAAD5/wQAAAAJAAcAAAD5/wUAAAAJAAcAAAD5/wYAAAAJAAcAAAD5/wcAAAAJAAcAAAD5/wgAAAAJAAcAAAD5/wkAAAAJAAcAAAD6////AAAJAAcAAAD6/wkAAAAJAAcAAAD7////AAAJAAcAAAD7/wkAAAAJAAcAAAD8////AAAJAAcAAAD8/wkAAAAJAAcAAAD9/wkAAAAJAAcAAAD+/wkAAAAJAAcAAAD/////AAAJAAcAAAD//wkAAAAJAAcAAAAAAP//AAAJAAcAAAAAAAkAAAAJAAcAAAABAP//AAAJAAcAAAABAAkAAAAJAAcAAAACAAkAAAAJAAcAAAADAAkAAAAJAAcAAAAEAAkAAAAJAAcAAAAFAP//AAAJAAcAAAAGAP//AAAJAAcAAAAHAP//AAAJAAcAAAAHAAkAAAAJAAcAAAAIAP//AAAJAAcAAAAIAAkAAAAJAAcAAAAJAP//AAAJAAcAAAAJAAkAAAAJAAcAAAAKAP//AAAJAAcAAAAKAAkAAAAJAAcAAAALAP//AAAJAAcAAAALAAkAAAAJAAcAAAAMAP//AAAJAAcAAAAMAAAAAAAJAAcAAAAMAAEAAAAJAAcAAAAMAAIAAAAJAAcAAAAMAAUAAAAJAAcAAAAMAAYAAAAJAAcAAAAMAAcAAAAJAAcAAAAMAAgAAAAJAAcAAAAMAAkAAAAJAAcAAAAEAAoAAAAJAAcAAAAFAAoAAAAJAAcAAAAGAAoAAAAJAAcAAAAHAAoAAAAJAAcAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
+
+[node name="TransitionNode" type="Node2D" parent="ROOMS/CabinNodes/Living Room"]
+position = Vector2(65, 176)
+script = ExtResource("30_8w8dj")
+text = "Exit Cabin"
+filepath = "res://World/House/Scenes/map_outside.tscn"
+coordinate = Vector2(-80, -136)
+effect = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ROOMS/CabinNodes/Living Room/TransitionNode"]
+
+[node name="InteractionArea" parent="ROOMS/CabinNodes/Living Room/TransitionNode" node_paths=PackedStringArray("sprite") instance=ExtResource("31_vsih2")]
+sprite = NodePath("../Sprite2D")
+interactable_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/CabinNodes/Living Room/TransitionNode/InteractionArea"]
+shape = SubResource("RectangleShape2D_1f25r")
 
 [node name="Kitchen" type="TileMapLayer" parent="ROOMS/CabinNodes"]
 visible = false
@@ -2288,7 +2309,6 @@ tile_map_data = PackedByteArray("AAACAAEAAAAJAAcAAAACAAIAAAAJAAcAAAACAAUAAAAJAAc
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="Storage" type="TileMapLayer" parent="ROOMS/CabinNodes"]
-visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(608, -32)
@@ -2367,13 +2387,29 @@ shape = SubResource("RectangleShape2D_2f6xm")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 
 [node name="Wall Hitbox" type="TileMapLayer" parent="ROOMS/CabinNodes/Storage"]
-visible = false
 z_index = 5
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(-127, -128)
-tile_map_data = PackedByteArray("AAACAAAAAAAJAAcAAAACAAEAAAAJAAcAAAACAAIAAAAJAAcAAAACAAUAAAAJAAcAAAACAAYAAAAJAAcAAAADAAAAAAAJAAcAAAADAAYAAAAJAAcAAAAEAAAAAAAJAAcAAAAEAAYAAAAJAAcAAAAFAAAAAAAJAAcAAAAFAAYAAAAJAAcAAAAGAAAAAAAJAAcAAAAGAAYAAAAJAAcAAAAHAAAAAAAJAAcAAAAHAAYAAAAJAAcAAAAIAAAAAAAJAAcAAAAIAAYAAAAJAAcAAAAJAAAAAAAJAAcAAAAJAAYAAAAJAAcAAAAKAAAAAAAJAAcAAAAKAAEAAAAJAAcAAAAKAAIAAAAJAAcAAAAKAAUAAAAJAAcAAAAKAAYAAAAJAAcAAAA=")
+tile_map_data = PackedByteArray("AAACAAAAAAAJAAcAAAACAAEAAAAJAAcAAAACAAIAAAAJAAcAAAACAAUAAAAJAAcAAAACAAYAAAAJAAcAAAADAAAAAAAJAAcAAAADAAYAAAAJAAcAAAAEAAAAAAAJAAcAAAAEAAYAAAAJAAcAAAAFAAAAAAAJAAcAAAAFAAYAAAAJAAcAAAAGAAAAAAAJAAcAAAAGAAYAAAAJAAcAAAAHAAAAAAAJAAcAAAAHAAYAAAAJAAcAAAAIAAAAAAAJAAcAAAAIAAYAAAAJAAcAAAAJAAAAAAAJAAcAAAAJAAYAAAAJAAcAAAAKAAAAAAAJAAcAAAAKAAEAAAAJAAcAAAAKAAIAAAAJAAcAAAAKAAUAAAAJAAcAAAAKAAYAAAAJAAcAAAALAAIAAAAJAAcAAAALAAMAAAAJAAcAAAALAAQAAAAJAAcAAAALAAUAAAAJAAcAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
+
+[node name="TransitionNode" type="Node2D" parent="ROOMS/CabinNodes/Storage"]
+position = Vector2(184, 8)
+script = ExtResource("30_8w8dj")
+text = "Exit Cabin"
+filepath = "res://World/House/Scenes/map_outside.tscn"
+coordinate = Vector2(216, -256)
+effect = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ROOMS/CabinNodes/Storage/TransitionNode"]
+
+[node name="InteractionArea" parent="ROOMS/CabinNodes/Storage/TransitionNode" node_paths=PackedStringArray("sprite") instance=ExtResource("31_vsih2")]
+sprite = NodePath("../Sprite2D")
+interactable_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/CabinNodes/Storage/TransitionNode/InteractionArea"]
+shape = SubResource("RectangleShape2D_6lloo")
 
 [node name="Electrical" type="TileMapLayer" parent="ROOMS/CabinNodes"]
 visible = false
@@ -2553,13 +2589,6 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomDetection/Electrical"]
 polygon = PackedVector2Array(544, -80, 544, -160, 800, -160, 800, -256, 416, -256, 416, -80)
-
-[node name="Exit" type="Area2D" parent="RoomDetection"]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetection/Exit"]
-position = Vector2(191, 312)
-shape = SubResource("RectangleShape2D_vvccr")
 
 [node name="CameraLimit" type="Node2D" parent="."]
 visible = false
