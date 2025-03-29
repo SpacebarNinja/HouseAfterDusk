@@ -2,6 +2,7 @@ extends Control
 
 # Preload consumable data
 @onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
+@onready var hud = get_parent()
 
 # UI Elements
 @onready var cooking_panel = $CookingPanel
@@ -12,8 +13,6 @@ extends Control
 @onready var skill_check = $SkillCheck
 @onready var cooking_result = $SkillCheck/CookingResult
 @onready var cooking_result_grid = $SkillCheck/CookingResultGrid
-
-@onready var animation_player = $AnimationPlayer
 
 # Constants for better readability
 const TYPE_INGREDIENT = "Ingredient"
@@ -110,14 +109,13 @@ func _on_cooking_item_removed(item):
 	update_food_list(item.get_property("id", ""), -1 * item.get_property("stack_size", ""), item.get_property("Type", ""))
 
 func _on_cooking_result_item_removed(_item):
-	if animation_player:
-		animation_player.play_backwards("transition")
+	hud.animation_player.play_backwards("cooking_product")
 
 func _on_cook_button_pressed():
 	if can_craft:
 		is_finished_crafting = false
-		animation_player.play("transition")
-		await animation_player.animation_finished
+		hud.animation_player.play("cooking_product")
+		await hud.animation_player.animation_finished
 
 		var recipe = ItemRecipes.get_recipe(craftable_item, CATEGORY_FOOD)
 		var id = recipe["id"]

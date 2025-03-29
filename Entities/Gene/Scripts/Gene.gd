@@ -32,6 +32,7 @@ var flashlight_on: bool = false
 var equipped_weapon: bool = false
 var current_weapon: String = ""
 var is_outside: bool = false
+var is_alive: bool = true
 
 func _process(_delta):
 	modulate_player()
@@ -185,6 +186,7 @@ func death():
 	canvas_hud.current_display("Death")
 	vision_cone.enabled = false
 	HudManager.camera_movement = false
+	is_alive = false
 
 func _on_hunger_timer_timeout():
 	current_hunger = clampi(current_hunger - 1, 0, max_hunger)

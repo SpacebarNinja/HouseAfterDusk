@@ -60,7 +60,7 @@ func _on_chance_timer_timeout():
 		new_bar_location = Vector2(256,randi_range(BAR_UPPER, BAR_LOWER))
 		move_bar = true
 	
-func _on_duration_time_timeout():
+func _on_duration_timer_timeout() -> void:
 	reset()
 
 func _on_success_area_entered(_area):
