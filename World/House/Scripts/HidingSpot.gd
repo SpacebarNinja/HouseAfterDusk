@@ -23,13 +23,13 @@ func handle_text():
 func _on_hide():
 	is_hidden = true
 	player.position = hiding_spot.global_position
-	player.animation_handler.current_animation.anim_sprite.self_modulate.a = 0.3
+	player.animated_sprite.self_modulate.a = 0.3
 	WorldManager.StopGeneMovement = true
 	handle_text()
 	
 
 func _on_exit():
 	is_hidden = false
-	player.animation_handler.current_animation.anim_sprite.self_modulate.a = 1
+	player.animated_sprite.self_modulate.a = 1
 	WorldManager.StopGeneMovement = false
 	handle_text()

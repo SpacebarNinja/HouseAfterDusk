@@ -9,7 +9,6 @@ extends Node2D
 @onready var area_bedroom = $"../RoomDetection/Bedroom"
 @onready var area_storage = $"../RoomDetection/Storage"
 @onready var area_electrical = $"../RoomDetection/Electrical"
-@onready var area_exit = $"../RoomDetection/Exit"
 
 # Camera Limit Nodes =----------------------------------------------------------
 @onready var cam_x = $"../CameraLimit/CamX"
@@ -30,7 +29,9 @@ extends Node2D
 @onready var ambient_sparks = $CabinNodes/Electrical/AmbientSparks
 var transition_animation = null
 var transition_node = null
+
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var game_scene = get_tree().get_first_node_in_group("GameScene")
 
 # Preloads =--------------------------------------------------------------------
 const MAP_CABIN = preload("res://World/House/Scenes/map_cabin.tscn")
@@ -78,7 +79,6 @@ func _connect_signals():
 	area_bedroom.connect("area_entered", Callable(self, "_on_bedroom_area_entered"))
 	area_storage.connect("area_entered", Callable(self, "_on_storage_area_entered"))
 	area_electrical.connect("area_entered", Callable(self, "_on_electrical_area_entered"))
-	area_exit.connect("area_entered", Callable(self, "_on_exit_area_entered"))
 	
 	# Connect Camera Limit Signals
 	cam_x.connect("area_entered", Callable(self, "_on_cam_x_living_room_area_entered"))
@@ -215,10 +215,6 @@ func _on_electrical_area_entered(_area):
 	if is_outside: return
 	print("Entered Electrical area")
 	show_room(electrical)
-
-func _on_exit_area_entered(_area):
-	print("Exited Cabin")
-	SceneManager.switch_map("res://World/House/Scenes/map_outside.tscn", Vector2(-80, -136), "zoom_in")
 	
 func _on_cam_x_living_room_area_entered(_area):
 	is_room_bounds_x = true

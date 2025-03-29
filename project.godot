@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="House After Dusk v0.26.2"
-run/main_scene="res://MainScene.tscn"
+config/name="House After Dusk Repository"
+run/main_scene="uid://drvj3cgvv6w28"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="uid://cy37rkpbm4s3a"
 config/icon="uid://clegykl6d88pl"
@@ -24,9 +24,7 @@ ItemRecipes="*res://Singletons/ItemRecipes.gd"
 HudManager="*res://Singletons/HudManager.gd"
 GlobalItemList="*res://Singletons/item_list.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-QteHud="*res://Singletons/qte_hud.tscn"
-SceneManager="*res://Singletons/SceneManager.gd"
-GameManager="*res://Singletons/Game_Manager.tscn"
+Load="*res://Singletons/Load.gd"
 
 [debug]
 

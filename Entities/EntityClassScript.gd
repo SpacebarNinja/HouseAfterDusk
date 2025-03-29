@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Entity_Class
 
+@onready var QteHud = get_tree().get_first_node_in_group("QTEHud")
+@onready var game_scene = get_tree().get_first_node_in_group("GameScene")
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var item_drop = preload("res://Systems/Inventory/Others/dropped_item.tscn")
 
@@ -106,6 +108,14 @@ func handle_vision_cone(delta):
 	# Rotate the vision cone towards the target angle
 	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, delta * (3 if current_vision_direction == VISION_DIRECTION.RANDOM else 8))
 
+func toggle_vision(toggle: bool):
+	vision_cone.enabled = toggle
+	for raycast in vision_cone.get_children():
+		if not raycast is RayCast2D:
+			continue  # Skip non-raycast nodes
+		else:
+			raycast.enabled = toggle
+			
 func _on_idle_timer_timeout():
 	if current_state == BEHAVIOR_STATES.IDLE:
 		# Generate a new random angle for vision cone movement

@@ -48,8 +48,8 @@ func handle_behavior(_delta):
 			can_scream = false
 			scream_cooldown.start()
 		
-	if suspicion >= 80 and not GameManager.directing_enemy:
-		GameManager.direct_enemy(self, GameManager.LOCATIONS.PLAYER_LOCATION)
+	if suspicion >= 80 and not game_scene.directing_enemy:
+		game_scene.direct_enemy(self, game_scene.LOCATIONS.PLAYER_LOCATION)
 
 func handle_actions(action):
 	actions[action] = not actions[action]
@@ -63,7 +63,7 @@ func _on_player_lost():
 	if current_state == BEHAVIOR_STATES.PURSUE:
 		current_state = BEHAVIOR_STATES.SEARCH
 		search_cooldown.start()
-		GameManager.direct_enemy(self, GameManager.LOCATIONS.PLAYER_LOCATION)
+		game_scene.direct_enemy(self, game_scene.LOCATIONS.PLAYER_LOCATION)
 
 func _on_death():
 	anim_tree.get("parameters/playback").travel("Death")
@@ -71,7 +71,7 @@ func _on_death():
 func _on_window_check_timeout():
 	if randf() * 100 <= chance_to_window:
 		window_check.stop()
-		GameManager.direct_enemy(self, GameManager.LOCATIONS.CLOSEST_WINDOW)
+		game_scene.direct_enemy(self, game_scene.LOCATIONS.CLOSEST_WINDOW)
 		finding_window = true
 		
 func _on_scream_cooldown_timeout():
@@ -113,5 +113,5 @@ func _on_navigation_agent_2d_navigation_finished():
 	elif current_state == BEHAVIOR_STATES.RETREAT:
 		queue_free()
 		
-	if GameManager.directing_enemy:
-		GameManager.directing_enemy = false
+	if game_scene.directing_enemy:
+		game_scene.directing_enemy = false

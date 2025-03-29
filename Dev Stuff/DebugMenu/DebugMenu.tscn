@@ -314,7 +314,7 @@ offset_right = 240.0
 offset_bottom = 336.0
 alignment = 1
 autowrap_mode = 3
-item_count = 4
+item_count = 5
 popup/item_0/text = "Full Health"
 popup/item_0/id = 0
 popup/item_1/text = "Full Hunger"
@@ -323,6 +323,8 @@ popup/item_2/text = "Health  -20"
 popup/item_2/id = 2
 popup/item_3/text = "Hunger -10"
 popup/item_3/id = 3
+popup/item_4/text = "Kill Self"
+popup/item_4/id = 4
 
 [node name="PlayerStatsLabel" type="Label" parent="GameWindow/GamePanel/PlayerStats"]
 layout_mode = 1
@@ -340,6 +342,17 @@ grow_vertical = 2
 theme = ExtResource("3_mat6y")
 text = "Player Stats"
 horizontal_alignment = 1
+
+[node name="MenuButton" type="MenuButton" parent="GameWindow/GamePanel"]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 416.0
+offset_right = 728.0
+offset_bottom = 456.0
+text = "beans"
+item_count = 1
+popup/item_0/text = "beans"
+popup/item_0/id = 0
 
 [node name="EnemyWindow" parent="." node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
 offset_left = -296.0

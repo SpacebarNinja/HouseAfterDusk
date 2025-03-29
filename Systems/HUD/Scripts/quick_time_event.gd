@@ -1,10 +1,10 @@
-extends CanvasLayer
+extends Control
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var hud = get_tree().get_first_node_in_group("Hud")
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
-@onready var animation_player = $AnimationPlayer
+@onready var hud = get_parent()
 
+@onready var animation_player = $AnimationPlayer
 @onready var qte_timer = $QTETimer
 @onready var qte_bar = $QTEBar
 
@@ -12,8 +12,13 @@ extends CanvasLayer
 @export var qte_drain: float = 0.25
 @export var qte_gain: float = 7
 
+const QTE_MAX_VALUE = 100
+const QTE_MIN_VALUE = 0
+const PLAYER_SPEED_DEFAULT = 80
+const CAMERA_DEFAULT_ZOOM = 3.2
+
 var qte_active: bool = false
-var qte_camera_zoom: float = 3.2
+var qte_camera_zoom: float = CAMERA_DEFAULT_ZOOM
 
 signal QTE_Success
 signal QTE_Fail
@@ -23,43 +28,29 @@ func _process(delta):
 		handle_qte_speed(delta)
 	
 func handle_qte_speed(_delta):
-	qte_bar.value -= qte_drain
-	qte_camera_zoom += 0.001
-	camera.zoom = Vector2(qte_camera_zoom,qte_camera_zoom)
+	qte_bar.value = clamp(qte_bar.value - qte_drain, QTE_MIN_VALUE, QTE_MAX_VALUE)
+	qte_camera_zoom = min(qte_camera_zoom + 0.001, 5)  # Prevent excessive zoom
+	camera.target_zoom = Vector2(qte_camera_zoom, qte_camera_zoom)
 	
 	if Input.is_action_just_pressed("InteractFirst"):
 		animation_player.play("press_button")
-		qte_bar.value += qte_gain
+		qte_bar.value = clamp(qte_bar.value + qte_gain, QTE_MIN_VALUE, QTE_MAX_VALUE)
 		
-	if qte_bar.value >= 100:
+	if qte_bar.value >= QTE_MAX_VALUE:
 		QTE_Success.emit()
-		HudManager.clock_visible = true
-		HudManager.journal_visible = true
-		HudManager.stats_visible = true
-		HudManager.inventory_visible = true
-		HudManager.flashlight_movement = true
-		HudManager.camera_movement = true
-		HudManager.interaction_enabled = true
-		
+		toggle_hud_visibility(true)
 		qte_reset()
-		print("Succeeded Qte")
-	elif qte_bar.value <= 0:
+		print("Succeeded QTE")
+	elif qte_bar.value <= QTE_MIN_VALUE:
 		QTE_Fail.emit()
 		qte_reset()
-		print("Failed Qte")
+		print("Failed QTE")
 		
 func start_qte():
-	player.set_walk_speed(0)
 	qte_active = true
-	
+	set_player_state(false)
 	show()
-	HudManager.clock_visible = false
-	HudManager.journal_visible = false
-	HudManager.stats_visible = false
-	HudManager.inventory_visible = false
-	HudManager.flashlight_movement = false
-	HudManager.camera_movement = false
-	HudManager.interaction_enabled = false
+	toggle_hud_visibility(false)
 	
 	if qte_timer.is_stopped():
 		qte_timer.start()
@@ -68,16 +59,29 @@ func start_qte():
 		animation_player.play("quick_time_event")
 
 func qte_reset():
+	set_player_state(true)
 	hide()
-	player.set_walk_speed(80)
 	hud.current_display("Main")
 	qte_bar.value = 50
-	qte_camera_zoom = 3.2
-	camera.zoom = Vector2(3.2,3.2)
+	qte_camera_zoom = CAMERA_DEFAULT_ZOOM
+	camera.target_zoom = Vector2(CAMERA_DEFAULT_ZOOM, CAMERA_DEFAULT_ZOOM)
 	qte_timer.stop()
 	animation_player.stop()
 	qte_active = false
 	
 func _on_qte_timer_timeout():
-	if qte_bar.value < 100:
+	if qte_bar.value < QTE_MAX_VALUE:
 		QTE_Fail.emit()
+
+func set_player_state(active: bool):
+	player.movement_speed = 0 if not active else PLAYER_SPEED_DEFAULT
+	player.animated_sprite.visible = active
+
+func toggle_hud_visibility(visible: bool):
+	HudManager.clock_visible = visible
+	HudManager.journal_visible = visible
+	HudManager.stats_visible = visible
+	HudManager.inventory_visible = visible
+	HudManager.flashlight_movement = visible
+	HudManager.camera_movement = visible
+	HudManager.interaction_enabled = visible

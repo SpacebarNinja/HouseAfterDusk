@@ -54,7 +54,9 @@ func flicker_lights():
 	for electronic in electronics:
 		if electronic.has_method("slowly_turn_on_light"):
 			electronic.slowly_turn_on_light()
-
+		elif electronic.has_method("terminate"):
+			electronic.terminate()
+			
 func lights_turn_on():
 	_apply_to_electronics("turn_on_light")
 

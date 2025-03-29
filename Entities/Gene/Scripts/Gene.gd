@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@onready var camera = get_tree().get_first_node_in_group("MainCamera")
-@onready var hud = get_tree().get_first_node_in_group("MainHud")
+@onready var camera: Camera2D = $Camera2D
+@onready var main_hud = get_tree().get_first_node_in_group("MainHud")
+@onready var canvas_hud = get_tree().get_first_node_in_group("CanvasHud")
 @onready var journal_instance = get_tree().get_first_node_in_group("Journal")
 @onready var StepParticleScene = preload("res://Systems/Particles/StepParticle.tscn")
 
@@ -27,7 +28,7 @@ const max_hunger = 55
 
 var can_sprint: bool = true
 var can_spawn_particle: bool = true
-var flashlight_on: bool = true
+var flashlight_on: bool = false
 var equipped_weapon: bool = false
 var current_weapon: String = ""
 var is_outside: bool = false
@@ -117,11 +118,14 @@ func take_damage(enemy_damage: int, enemy_velocity: Vector2):
 	if can_take_damage:
 		current_health = clampi(current_health - enemy_damage, 0, max_health)
 		take_knockback(enemy_velocity)
-		hud.reset_blood_overlay()
+		main_hud.reset_blood_overlay()
 		camera.apply_shake()
 		camera.is_hit = true
 		animation_tree.get("parameters/playback").travel("Damaged")
-
+		
+		if current_health <= 0:
+			death()
+			
 func take_knockback(enemy_velocity: Vector2):
 	var knockback_dir = (global_position - enemy_velocity).normalized()
 	velocity = knockback_dir * knockback_power
@@ -174,8 +178,14 @@ func equip_weapon(weapon_check: bool, weapon_id: String):
 			var weapon_instance = weapons_list.get_child(0)
 			weapons_list.remove_child(weapon_instance)
 
+func death():
+	animation_tree.get("parameters/playback").travel("Death")
+	camera.target_zoom = Vector2(5.8, 5.8)
+	camera.offset = Vector2(32, 0)
+	canvas_hud.current_display("Death")
+	vision_cone.enabled = false
+	HudManager.camera_movement = false
 
-		
 func _on_hunger_timer_timeout():
 	current_hunger = clampi(current_hunger - 1, 0, max_hunger)
 

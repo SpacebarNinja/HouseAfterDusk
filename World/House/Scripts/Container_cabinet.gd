@@ -21,7 +21,7 @@ func on_intr_area_entered():
 	handle_text()
 
 func on_intr_area_exited():
-	pass
+	close_container()
 	
 #====================================
 
