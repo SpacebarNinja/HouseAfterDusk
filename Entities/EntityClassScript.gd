@@ -55,6 +55,7 @@ func _physics_process(delta):
 	if health <= 0:
 		Death.emit()
 
+# { Behavior Logic }------------------------------------------------------------
 func handle_movement(delta):
 	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 	
@@ -77,35 +78,33 @@ func handle_vision_cone(delta):
 
 	for raycast in vision_cone.get_children():
 		if not raycast is RayCast2D:
-			continue  # Skip non-raycast nodes
+			continue
 		
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
 			if collider and collider.is_in_group("Player"):
 				player_currently_detected = true
-				break  # Exit loop early if player is found
+				break  # Exit early once player is detected
 
 	# Emit signals based on player detection state
-	if player_currently_detected and not player_seen:
-		PlayerFound.emit()
-		player_seen = true
-		print("Found Player")
-	elif not player_currently_detected and player_seen:
-		PlayerLost.emit()
-		player_seen = false
-		print("Lost Player")
+	if player_currently_detected != player_seen:
+		if player_currently_detected:
+			PlayerFound.emit()
+			print("Found Player")
+		else:
+			PlayerLost.emit()
+			print("Lost Player")
+		player_seen = player_currently_detected
 
-	# Determine target rotation angle with PLAYER as the highest priority
+	# Set the vision cone's rotation angle
 	var target_angle: float
-
-	if current_vision_direction == VISION_DIRECTION.PLAYER and player_seen and player:
-		target_angle = (player.global_position - global_position).angle()
-	elif current_vision_direction == VISION_DIRECTION.PATH and velocity.length() > 0.1:
+	if current_vision_direction == VISION_DIRECTION.PLAYER:
+		target_angle = (player.global_position).angle()
+	elif current_vision_direction == VISION_DIRECTION.PATH:
 		target_angle = velocity.angle()
-	else:  # Default to RANDOM if none of the above conditions are met
+	else:
 		target_angle = random_idle_angle
 
-	# Rotate the vision cone towards the target angle
 	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, delta * (3 if current_vision_direction == VISION_DIRECTION.RANDOM else 8))
 
 func toggle_vision(toggle: bool):
@@ -115,11 +114,6 @@ func toggle_vision(toggle: bool):
 			continue  # Skip non-raycast nodes
 		else:
 			raycast.enabled = toggle
-			
-func _on_idle_timer_timeout():
-	if current_state == BEHAVIOR_STATES.IDLE:
-		# Generate a new random angle for vision cone movement
-		random_idle_angle = randf_range(-PI, PI)
 	
 func set_target_position(target_position: Vector2) -> void:
 	if navigation_agent:
@@ -138,7 +132,8 @@ func manage_suspicion_meter(suspicion_speed: float):
 		suspicion = clampf(suspicion + suspicion_speed, 0, 100)
 	else:
 		suspicion = clampf(suspicion - suspicion_speed, 0, 100)
-	
+		
+# { States Logic }------------------------------------------------------------
 func wander():
 	current_state = BEHAVIOR_STATES.WANDER
 	var random_offset_x = randf_range(-wander_radius, wander_radius)
@@ -173,3 +168,9 @@ func stun(duration: float):
 func retreat():
 	current_state = BEHAVIOR_STATES.RETREAT
 	set_target_position(origin_location)
+	
+# { Signals }------------------------------------------------------------
+func _on_idle_timer_timeout():
+	if current_state == BEHAVIOR_STATES.IDLE:
+		# Generate a new random angle for vision cone movement
+		random_idle_angle = randf_range(-PI, PI)

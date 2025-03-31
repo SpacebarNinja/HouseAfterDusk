@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://kfx1rdk8htn5" path="res://World/House/Art/NavigationTile.png" id="2_1a77j"]
 [ext_resource type="Texture2D" uid="uid://xknojvyq2grn" path="res://World/House/Art/MAP_Edges_and_Sand.png" id="2_a1hjj"]
 [ext_resource type="Texture2D" uid="uid://bkccgrqnic4q2" path="res://World/House/Art/MAP2.png" id="3_j8yoi"]
-[ext_resource type="Script" uid="uid://dyy3vmbg22axd" path="res://World/House/Scenes/TransitionMap.gd" id="3_pu1yv"]
+[ext_resource type="Script" uid="uid://dyy3vmbg22axd" path="res://World/House/Scripts/TransitionMap.gd" id="3_pu1yv"]
 [ext_resource type="PackedScene" uid="uid://b4iq0rneorqjt" path="res://Systems/SystemManagers/InteractionManager/interaction_area.tscn" id="4_jimqx"]
 [ext_resource type="Texture2D" uid="uid://bav704xv35mxv" path="res://World/House/Art/MAP_Exterior.png" id="4_n5qo4"]
 [ext_resource type="Material" uid="uid://dd1lkq85yan68" path="res://Assets/Visuals/Furniture Shadow.tres" id="5_1fglc"]

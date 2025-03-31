@@ -4,7 +4,6 @@ extends Control
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
 @onready var hud = get_parent()
 
-@onready var animation_player = $AnimationPlayer
 @onready var qte_timer = $QTETimer
 @onready var qte_bar = $QTEBar
 
@@ -33,7 +32,7 @@ func handle_qte_speed(_delta):
 	camera.target_zoom = Vector2(qte_camera_zoom, qte_camera_zoom)
 	
 	if Input.is_action_just_pressed("InteractFirst"):
-		animation_player.play("press_button")
+		hud.animation_player.play("quick_time_event_button")
 		qte_bar.value = clamp(qte_bar.value + qte_gain, QTE_MIN_VALUE, QTE_MAX_VALUE)
 		
 	if qte_bar.value >= QTE_MAX_VALUE:
@@ -49,24 +48,18 @@ func handle_qte_speed(_delta):
 func start_qte():
 	qte_active = true
 	set_player_state(false)
-	show()
 	toggle_hud_visibility(false)
 	
 	if qte_timer.is_stopped():
 		qte_timer.start()
-		
-	if not animation_player.is_playing():
-		animation_player.play("quick_time_event")
 
 func qte_reset():
 	set_player_state(true)
-	hide()
 	hud.current_display("Main")
 	qte_bar.value = 50
 	qte_camera_zoom = CAMERA_DEFAULT_ZOOM
 	camera.target_zoom = Vector2(CAMERA_DEFAULT_ZOOM, CAMERA_DEFAULT_ZOOM)
 	qte_timer.stop()
-	animation_player.stop()
 	qte_active = false
 	
 func _on_qte_timer_timeout():

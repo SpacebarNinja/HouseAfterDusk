@@ -4,8 +4,7 @@ enum LOCATIONS {RANDOM_CABIN, PLAYER_ROOM, PLAYER_LOCATION, CLOSEST_WINDOW}
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
-@onready var qte_hud = get_tree().get_first_node_in_group("QTEHud")
-@onready var transition_animation = get_node_or_null("Hud/BGProcessing/Transition/AnimationPlayer")
+@onready var hud = get_tree().get_first_node_in_group("CanvasHud")
 @onready var transition_node = get_node_or_null("Hud/BGProcessing/Transition")
 
 @onready var spawn_cooldown = $SpawnCooldown
@@ -42,10 +41,10 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 		return
 	
 	# TRANSITION
-	if transition_animation:
+	if hud:
 		transition_node.visible = true
-		transition_animation.play("transition_in")
-		await transition_animation.animation_finished
+		hud.animation_player.play("scene_transition_in")
+		await hud.animation_player.animation_finished
 
 	# Get MainScene correctly
 	var main_scene = get_node_or_null("/root/MainScene")
@@ -91,9 +90,9 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 			camera.apply_zoom_transition(Vector2(original_zoom + zoom_in_amount, original_zoom + zoom_in_amount))
 		camera.reset_camera_position(player.global_position)
 
-	if transition_animation:
-		transition_animation.play("transition_out")
-		await transition_animation.animation_finished
+	if hud:
+		hud.animation_player.play("scene_transition_out")
+		await hud.animation_player.animation_finished
 		transition_node.visible = false
 	
 func get_spawn_node(spawn_location):
@@ -190,10 +189,8 @@ func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
 
 # { Extra Logic }----------------------------------------------------------
 func start_quick_time_event():
-	if not qte_hud.qte_active:
-		qte_hud.start_qte()
-	else:
-		print("Currently in a QTE")
+	if player.is_alive:
+		hud.current_display("QTE")
 		
 func get_scene_name(packed_scene: PackedScene) -> String:
 	if packed_scene.resource_path:

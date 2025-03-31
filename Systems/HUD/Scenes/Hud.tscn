@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://cs3euhsmepn8e"]
+[gd_scene load_steps=102 format=3 uid="uid://cs3euhsmepn8e"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
 [ext_resource type="Script" uid="uid://dg1fwjeiv0nqf" path="res://Systems/HUD/Scripts/Hud.gd" id="1_ofedd"]
@@ -70,59 +70,6 @@ shader_parameter/vignette_strength = 9.36
 shader_parameter/dither_strength = 0.01
 shader_parameter/opacity = 0.6
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_l5n60"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_b2a1c"]
-resource_name = "transition_in"
-length = 0.6135
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.6, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_xakbd"]
-resource_name = "transition_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.4, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_baug7"]
-_data = {
-&"RESET": SubResource("Animation_l5n60"),
-&"transition_in": SubResource("Animation_b2a1c"),
-&"transition_out": SubResource("Animation_xakbd")
-}
 
 [sub_resource type="Theme" id="Theme_iv4kw"]
 
@@ -228,67 +175,6 @@ region_rect = Rect2(80, 41, 36, 29)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dasj"]
 region_rect = Rect2(2, 2, 16, 16)
 
-[sub_resource type="Animation" id="Animation_hqy0f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CookingHud/CookingPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(88, 64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CookingHud/SkillCheck:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(688, 232)]
-}
-
-[sub_resource type="Animation" id="Animation_0t1i1"]
-resource_name = "transition"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CookingHud/CookingPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(88, 64), Vector2(-688, 72)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CookingHud/SkillCheck:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(688, 232), Vector2(328, 240)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0daj"]
-_data = {
-&"RESET": SubResource("Animation_hqy0f"),
-&"transition": SubResource("Animation_0t1i1")
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_omof5"]
 atlas = ExtResource("45_xk6gj")
 region = Rect2(40, 20, 20, 372)
@@ -327,15 +213,6 @@ margin = Rect2(0, -320, 0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvkac"]
 size = Vector2(20, 56)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcq8x"]
-shader = ExtResource("15_k06wk")
-shader_parameter/inner_radius = 0.29
-shader_parameter/outer_radius = 1.56
-shader_parameter/vignette_strength = 9.36
-shader_parameter/dither_strength = 0.01
-shader_parameter/opacity = 0.6
-shader_parameter/vignette_color = Color(0, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hytho"]
 atlas = ExtResource("26_tggdx")
 region = Rect2(136, 44, 124, 52)
@@ -346,12 +223,219 @@ font_size = 50
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_6jvax"]
+[sub_resource type="Animation" id="Animation_nlno4"]
+resource_name = "scene_transition_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGProcessing/Transition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kvx2w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGProcessing/Transition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CookingHud/CookingPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CookingHud/SkillCheck:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(688, 232)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/opacity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathHud/RestartButton:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathHud/DeathLabel:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DeathHud/DeathLabel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(648, 400)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/vignette_strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.36]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("QTEHud:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DeathHud:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("QTEHud/QTEBUTTON/QTEButton:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("QTEHud/QTEBUTTON/QTEButtonPressed:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_whreg"]
+resource_name = "scene_transition_iout"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGProcessing/Transition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4yqif"]
+resource_name = "cooking_product"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CookingHud/CookingPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(88, 64), Vector2(-688, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CookingHud/SkillCheck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(688, 232), Vector2(328, 240)]
+}
+
+[sub_resource type="Animation" id="Animation_2m4ay"]
 resource_name = "death_screen"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Vignette Effect:material:shader_parameter/opacity")
+tracks/0/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -363,19 +447,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RestartButton:scale")
+tracks/1/path = NodePath("DeathHud/RestartButton:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.9, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DeathLabel:self_modulate")
+tracks/2/path = NodePath("DeathHud/DeathLabel:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -387,7 +471,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("DeathLabel:position")
+tracks/3/path = NodePath("DeathHud/DeathLabel:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -396,141 +480,102 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(648, 400), Vector2(672, 344)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_exkyl"]
-_data = {
-&"death_screen": SubResource("Animation_6jvax")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pvqf"]
-shader = ExtResource("15_k06wk")
-shader_parameter/inner_radius = 0.29
-shader_parameter/outer_radius = 1.56
-shader_parameter/vignette_strength = 9.36
-shader_parameter/dither_strength = 0.01
-shader_parameter/opacity = 0.6
-shader_parameter/vignette_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_t1g2a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Vignette Effect:material:shader_parameter/opacity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Vignette Effect:material:shader_parameter/vignette_strength")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [9.36]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("QTEBUTTON/QTEButtonPressed:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("QTEBUTTON/QTEButton:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathHud:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_6q7tj"]
-resource_name = "press_button"
-length = 0.02
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("QTEBUTTON/QTEButtonPressed:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("QTEBUTTON/QTEButton:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_5au88"]
-resource_name = "quick_time_event"
+[sub_resource type="Animation" id="Animation_2pvqf"]
+resource_name = "start_quick_time_event"
 length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Vignette Effect:material:shader_parameter/opacity")
+tracks/0/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.6, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Vignette Effect:material:shader_parameter/vignette_strength")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [9.36, 30.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/vignette_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QTEHud:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hts70"]
+[sub_resource type="Animation" id="Animation_yv6xd"]
+resource_name = "quick_time_event_button"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QTEHud/QTEBUTTON/QTEButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QTEHud/QTEBUTTON/QTEButtonPressed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yv6xd"]
 _data = {
-&"RESET": SubResource("Animation_t1g2a"),
-&"press_button": SubResource("Animation_6q7tj"),
-&"quick_time_event": SubResource("Animation_5au88")
+&"RESET": SubResource("Animation_kvx2w"),
+&"cooking_product": SubResource("Animation_4yqif"),
+&"death_screen": SubResource("Animation_2m4ay"),
+&"quick_time_event_button": SubResource("Animation_yv6xd"),
+&"quick_time_event_start": SubResource("Animation_2pvqf"),
+&"scene_transition_in": SubResource("Animation_nlno4"),
+&"scene_transition_out": SubResource("Animation_whreg")
 }
 
 [node name="Hud" type="CanvasLayer" groups=["CanvasHud"]]
 script = ExtResource("1_ofedd")
 
 [node name="BGProcessing" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -553,25 +598,17 @@ offset_bottom = 648.0
 mouse_filter = 2
 
 [node name="BlackOverlay" type="ColorRect" parent="BGProcessing"]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.4)
 
 [node name="Transition" type="ColorRect" parent="BGProcessing"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BGProcessing/Transition"]
-libraries = {
-&"": SubResource("AnimationLibrary_baug7")
-}
-autoplay = "RESET"
 
 [node name="DialogueOverlay" type="TextureRect" parent="BGProcessing"]
 visible = false
@@ -584,6 +621,7 @@ texture = ExtResource("3_gncqb")
 script = ExtResource("4_oxeg6")
 
 [node name="MainHud" type="Control" parent="." groups=["MainHud"]]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -802,6 +840,7 @@ metadata/_edit_lock_ = true
 
 [node name="CraftingHud" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = -29
 layout_mode = 3
 anchors_preset = 15
@@ -1402,12 +1441,6 @@ inventory_path = NodePath("../CookingResult")
 field_dimensions = Vector2(90, 90)
 field_style = SubResource("StyleBoxTexture_3dasj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CookingHud"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_p0daj")
-}
-
 [node name="FishingHud" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -1498,19 +1531,10 @@ wait_time = 10.0
 one_shot = true
 
 [node name="DeathHud" type="Control" parent="."]
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("48_w2ixv")
-
-[node name="Vignette Effect" type="ColorRect" parent="DeathHud"]
-z_index = -110
-material = SubResource("ShaderMaterial_wcq8x")
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
 
 [node name="RestartButton" type="TextureButton" parent="DeathHud"]
 layout_mode = 1
@@ -1569,29 +1593,17 @@ label_settings = SubResource("LabelSettings_ifq5g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathHud"]
-libraries = {
-&"": SubResource("AnimationLibrary_exkyl")
-}
-
 [node name="QTEHud" type="Control" parent="." groups=["QTEHud"]]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("50_nlno4")
+qte_gain = 10.0
 
 [node name="QTETimer" type="Timer" parent="QTEHud"]
 wait_time = 12.0
 one_shot = true
-
-[node name="Vignette Effect" type="ColorRect" parent="QTEHud"]
-z_index = -110
-material = SubResource("ShaderMaterial_2pvqf")
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
 
 [node name="QTEBUTTON" type="Control" parent="QTEHud"]
 layout_mode = 1
@@ -1609,6 +1621,7 @@ grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 
 [node name="QTEButtonPressed" type="Sprite2D" parent="QTEHud/QTEBUTTON"]
+visible = false
 position = Vector2(0, 26.6667)
 texture = ExtResource("51_kvx2w")
 
@@ -1636,9 +1649,9 @@ fill_mode = 3
 texture_under = ExtResource("53_4yqif")
 texture_progress = ExtResource("54_2m4ay")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="QTEHud"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_hts70")
+&"": SubResource("AnimationLibrary_yv6xd")
 }
 
 [connection signal="mouse_entered" from="MainHud/MainNodes/JournalButton" to="MainHud/MainNodes/JournalButton" method="_on_mouse_entered"]
@@ -1653,4 +1666,7 @@ libraries = {
 [connection signal="item_added" from="CookingHud/CookingPanel/CookingSlots" to="CookingHud" method="_on_cooking_item_added"]
 [connection signal="item_removed" from="CookingHud/CookingPanel/CookingSlots" to="CookingHud" method="_on_cooking_item_removed"]
 [connection signal="item_removed" from="CookingHud/SkillCheck/CookingResult" to="CookingHud" method="_on_cooking_result_item_removed"]
+[connection signal="timeout" from="FishingHud/ChanceTimer" to="FishingHud" method="_on_chance_timer_timeout"]
+[connection signal="timeout" from="FishingHud/DurationTimer" to="FishingHud" method="_on_duration_timer_timeout"]
 [connection signal="pressed" from="DeathHud/RestartButton" to="DeathHud" method="_on_restart_button_pressed"]
+[connection signal="timeout" from="QTEHud/QTETimer" to="QTEHud" method="_on_qte_timer_timeout"]

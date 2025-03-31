@@ -67,7 +67,7 @@ func handle_behavior():
 		
 	if suspicion >= 80 and not game_scene.directing_enemy:
 		game_scene.direct_enemy(self, game_scene.LOCATIONS.PLAYER_LOCATION)
-
+		
 func play_idle_animation():
 	anim_tree.get("parameters/playback").travel("Idle")
 	
@@ -90,7 +90,7 @@ func _on_player_lost():
 		set_target_position(player.get_global_position())
 	
 func _on_qte_success():
-	anim_tree.get("parameters/playback").travel("QuickTimeEvent_Stun")
+	anim_tree.get("parameters/playback").travel("QuickTimeEvent_Stop")
 	stun(2.5)
 
 func _on_qte_fail():
@@ -100,7 +100,7 @@ func _on_stunned():
 	teleport_timer.stop()
 
 func _on_unstunned():
-	anim_tree.get("parameters/playback").travel("Idle")
+	play_idle_animation()
 	attacking = false
 	glitch_timer.start()
 	start_teleport()
@@ -149,7 +149,8 @@ func _on_prowl_timer_timeout():
 		
 func _on_hitbox_body_entered(body):
 	if body == player and not prowling:
-		anim_tree.get("parameters/playback").travel("QuickTimeEvent_Loop")
+		anim_tree.get("parameters/playback").travel("QuickTimeEvent_Start")
+		player.hide()
 		attacking = true
 		glitch_timer.stop()
 		await get_tree().create_timer(1).timeout
