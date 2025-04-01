@@ -1,7 +1,7 @@
 [gd_scene load_steps=154 format=3 uid="uid://38ts1v8d4yx6"]
 
 [ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Idle.png" id="1_qxvli"]
-[ext_resource type="Script" uid="uid://dchtn8jyjlc3h" path="res://Entities/Enemies/ElectronicGuy/Scripts/Electronic_Guy.gd" id="1_vui34"]
+[ext_resource type="Script" uid="uid://dchtn8jyjlc3h" path="res://Entities/Enemies/ElectronicGuy/Scene/Electronic_Guy.gd" id="1_vui34"]
 [ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Teleport.png" id="2_r4oyu"]
 [ext_resource type="Texture2D" uid="uid://bbxxbbp03d7i8" path="res://Entities/Enemies/ElectronicGuy/Art/TV_guy_Kidnap.png" id="3_eey8l"]
 [ext_resource type="Texture2D" uid="uid://dt0mtv6t7gdf3" path="res://Entities/Enemies/ElectronicGuy/Art/TVG_Stunned.png" id="3_f42a4"]
