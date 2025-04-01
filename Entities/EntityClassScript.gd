@@ -147,10 +147,10 @@ func flee():
 	current_state = BEHAVIOR_STATES.FLEE
 	var flee_direction = (global_position - player.global_position).normalized()
 	var flee_distance = wander_radius * 2
-	var new_position = global_position + flee_direction * flee_distance
-	#print("Fleeing to ", new_position)
+	var target_position = global_position + flee_direction * flee_distance
+	#print("Fleeing to ", target_position)
 	
-	set_target_position(new_position)
+	set_target_position(target_position)
 
 func stun(duration: float):
 	current_state = BEHAVIOR_STATES.STUNNED
@@ -173,4 +173,4 @@ func retreat():
 func _on_idle_timer_timeout():
 	if current_state == BEHAVIOR_STATES.IDLE:
 		# Generate a new random angle for vision cone movement
-		random_idle_angle = randf_range(-PI, PI)
+		random_idle_angle = randf_range(-45, 45)

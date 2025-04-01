@@ -4,7 +4,7 @@ extends Control
 @onready var journal = get_tree().get_first_node_in_group("Journal")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 
-@onready var blood_overlay: TextureRect = $MainNodes/BloodOverlay
+@onready var blood_overlay: TextureRect = $"../BGProcessing/BloodOverlay"
 @onready var hunger_bar: TextureProgressBar = $MainNodes/HungerBar
 @onready var health_bar: TextureProgressBar = $MainNodes/HealthBar
 @onready var sprint_bar: TextureProgressBar = $MainNodes/SprintBar

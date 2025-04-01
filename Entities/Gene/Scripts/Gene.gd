@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var main_hud = get_tree().get_first_node_in_group("MainHud")
 @onready var canvas_hud = get_tree().get_first_node_in_group("CanvasHud")
 @onready var journal_instance = get_tree().get_first_node_in_group("Journal")
+@onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var StepParticleScene = preload("res://Systems/Particles/StepParticle.tscn")
 
 const max_health = 100
@@ -24,7 +25,7 @@ const max_hunger = 55
 @onready var hunger_timer: Timer = $Timers/HungerTimer
 @onready var idle_timer: Timer = $Timers/IdleTimer
 @onready var vision_cone: PointLight2D = $VisionCone
-@onready var weapons_list: Node = $Weapons
+@onready var equipped_item = $EquippedItem
 
 var can_sprint: bool = true
 var can_spawn_particle: bool = true
@@ -32,7 +33,6 @@ var flashlight_on: bool = false
 var equipped_weapon: bool = false
 var current_weapon: String = ""
 var is_outside: bool = false
-var is_alive: bool = true
 
 func _process(_delta):
 	modulate_player()
@@ -153,6 +153,7 @@ func handle_vision_cone():
 				print("Found enemy: ", collider)
 					
 func toggle_flashlight():
+	
 	flashlight_on = not flashlight_on
 	vision_cone.enabled = flashlight_on
 
@@ -167,7 +168,7 @@ func equip_weapon(weapon_check: bool, weapon_id: String):
 			var weapon_instance = weapon_scene.instantiate()
 			current_weapon = weapon_id
 			
-			weapons_list.add_child(weapon_instance)
+			equipped_item.add_child(weapon_instance)
 
 			# Debugging prints
 			print("Equipping Item:", weapon_id)
@@ -175,9 +176,9 @@ func equip_weapon(weapon_check: bool, weapon_id: String):
 			print("Invalid weapon scene:", weapon_scene)
 	else:
 		print("Unequipping Item:", weapon_id, weapon_check)
-		if weapons_list.get_child_count() > 0:
-			var weapon_instance = weapons_list.get_child(0)
-			weapons_list.remove_child(weapon_instance)
+		if equipped_item.get_child_count() > 0:
+			var weapon_instance = equipped_item.get_child(0)
+			equipped_item.remove_child(weapon_instance)
 
 func death():
 	animation_tree.get("parameters/playback").travel("Death")
@@ -186,8 +187,8 @@ func death():
 	canvas_hud.current_display("Death")
 	vision_cone.enabled = false
 	HudManager.camera_movement = false
-	is_alive = false
-
+	set_collision_layer_value(2, false)
+	
 func _on_hunger_timer_timeout():
 	current_hunger = clampi(current_hunger - 1, 0, max_hunger)
 

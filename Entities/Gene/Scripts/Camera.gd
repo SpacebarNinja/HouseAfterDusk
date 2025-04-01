@@ -65,6 +65,7 @@ func _process(delta):
 	zoom = zoom.lerp(target_zoom, zoom_speed * delta)
 
 	RoundPosition()
+	HandleCraftingOffset(delta)
 
 func RoundPosition():
 	var x = round(global_position.x * 10.0) / 10.0

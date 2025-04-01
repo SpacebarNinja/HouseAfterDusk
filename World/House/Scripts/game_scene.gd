@@ -53,7 +53,6 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 		return
 	
 	# Get current map, making sure it's actually a child of MainScene
-	var current_map = null
 	for child in main_scene.get_children():
 		if child.is_in_group("Map"):  # Ensure maps are grouped properly
 			current_map = child
@@ -189,8 +188,7 @@ func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
 
 # { Extra Logic }----------------------------------------------------------
 func start_quick_time_event():
-	if player.is_alive:
-		hud.current_display("QTE")
+	hud.current_display("QTE")
 		
 func get_scene_name(packed_scene: PackedScene) -> String:
 	if packed_scene.resource_path:

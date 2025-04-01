@@ -1,6 +1,6 @@
 [gd_scene load_steps=102 format=3 uid="uid://cs3euhsmepn8e"]
 
-[ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Journal.tscn" id="1_7mtow"]
+[ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Scenes/Journal.tscn" id="1_7mtow"]
 [ext_resource type="Script" uid="uid://dg1fwjeiv0nqf" path="res://Systems/HUD/Scripts/Hud.gd" id="1_ofedd"]
 [ext_resource type="Texture2D" uid="uid://uwqkyocflvat" path="res://Systems/HUD/Art/Blood_Overlay.png" id="2_0ak6f"]
 [ext_resource type="Shader" uid="uid://bwwhyf4a1odbe" path="res://Assets/Visuals/ScanLine.gdshader" id="2_esehe"]
@@ -223,22 +223,6 @@ font_size = 50
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_nlno4"]
-resource_name = "scene_transition_in"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BGProcessing/Transition:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_kvx2w"]
 length = 0.001
 tracks/0/type = "value"
@@ -386,22 +370,6 @@ tracks/11/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_whreg"]
-resource_name = "scene_transition_iout"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BGProcessing/Transition:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_4yqif"]
 resource_name = "cooking_product"
 length = 0.5
@@ -493,6 +461,34 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_yv6xd"]
+resource_name = "quick_time_event_button"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QTEHud/QTEBUTTON/QTEButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QTEHud/QTEBUTTON/QTEButtonPressed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_2pvqf"]
 resource_name = "start_quick_time_event"
 length = 10.0
@@ -533,32 +529,36 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_yv6xd"]
-resource_name = "quick_time_event_button"
-length = 0.1
+[sub_resource type="Animation" id="Animation_nlno4"]
+resource_name = "scene_transition_in"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("QTEHud/QTEBUTTON/QTEButton:visible")
+tracks/0/path = NodePath("BGProcessing/Transition:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("QTEHud/QTEBUTTON/QTEButtonPressed:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+
+[sub_resource type="Animation" id="Animation_whreg"]
+resource_name = "scene_transition_iout"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGProcessing/Transition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yv6xd"]
@@ -586,6 +586,7 @@ mouse_filter = 2
 
 [node name="ScanLine" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5pji")
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -593,11 +594,13 @@ color = Color(0.799, 0.662, 0.662, 0.2)
 
 [node name="Vignette Effect" type="ColorRect" parent="BGProcessing"]
 material = SubResource("ShaderMaterial_k5gsb")
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 
 [node name="BlackOverlay" type="ColorRect" parent="BGProcessing"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -605,6 +608,7 @@ color = Color(0, 0, 0, 0.4)
 
 [node name="Transition" type="ColorRect" parent="BGProcessing"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -613,6 +617,7 @@ color = Color(0, 0, 0, 1)
 [node name="DialogueOverlay" type="TextureRect" parent="BGProcessing"]
 visible = false
 modulate = Color(0.921, 0.883, 0.866, 0.3)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.600388, 0.600388)
@@ -620,23 +625,7 @@ mouse_filter = 2
 texture = ExtResource("3_gncqb")
 script = ExtResource("4_oxeg6")
 
-[node name="MainHud" type="Control" parent="." groups=["MainHud"]]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_miqxo")
-
-[node name="MainNodes" type="Control" parent="MainHud"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BloodOverlay" type="TextureRect" parent="MainHud/MainNodes"]
+[node name="BloodOverlay" type="TextureRect" parent="BGProcessing"]
 visible = false
 z_index = 50
 texture_filter = 1
@@ -650,6 +639,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0ak6f")
 stretch_mode = 4
+
+[node name="MainHud" type="Control" parent="." groups=["MainHud"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_miqxo")
+
+[node name="MainNodes" type="Control" parent="MainHud"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="HungerBar" type="TextureProgressBar" parent="MainHud/MainNodes"]
 layout_mode = 1
@@ -747,6 +751,7 @@ script = ExtResource("17_dpk2t")
 
 [node name="BetaText" type="Label" parent="MainHud/MainNodes"]
 z_index = 100
+layout_mode = 0
 offset_top = 5.0
 offset_right = 1152.0
 offset_bottom = 44.0
@@ -856,6 +861,7 @@ move_speed = 4.2
 [node name="Table" type="TextureRect" parent="CraftingHud"]
 z_index = -1
 texture_filter = 1
+layout_mode = 0
 offset_left = 1152.0
 offset_right = 2304.0
 offset_bottom = 648.0
@@ -1417,6 +1423,7 @@ field_selected_style = SubResource("StyleBoxTexture_yvx3x")
 selection_style = SubResource("StyleBoxFlat_t8a2g")
 
 [node name="SkillCheck" type="Panel" parent="CookingHud"]
+layout_mode = 0
 offset_left = 688.0
 offset_top = 232.0
 offset_right = 904.0
@@ -1448,6 +1455,7 @@ anchors_preset = 0
 script = ExtResource("45_s6v0h")
 
 [node name="BackgroundBar" type="TextureProgressBar" parent="FishingHud"]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 128.0
 offset_right = 276.0
@@ -1460,6 +1468,7 @@ texture_progress = SubResource("AtlasTexture_paots")
 texture_progress_offset = Vector2(4, 4)
 
 [node name="ProgressMeter" type="TextureProgressBar" parent="FishingHud"]
+layout_mode = 0
 offset_left = 288.0
 offset_top = 128.0
 offset_right = 308.0

@@ -1543,10 +1543,10 @@ vision_cone = NodePath("VisionCone")
 hitbox = NodePath("Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_mb30b")
-animation = &"QuickTimeEvent_Stun"
-frame = 1
+animation = &""
 offset = Vector2(0, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

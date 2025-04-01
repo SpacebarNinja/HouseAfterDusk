@@ -37,6 +37,7 @@ func _process(delta):
 	if HudManager.is_crafting:
 		HudManager.camera_movement = false
 		HudManager.flashlight_movement = false
+		visible = true
 		
 	HandleTableOffset(delta)
 

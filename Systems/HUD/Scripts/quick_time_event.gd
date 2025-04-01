@@ -70,11 +70,11 @@ func set_player_state(active: bool):
 	player.movement_speed = 0 if not active else PLAYER_SPEED_DEFAULT
 	player.animated_sprite.visible = active
 
-func toggle_hud_visibility(visible: bool):
-	HudManager.clock_visible = visible
-	HudManager.journal_visible = visible
-	HudManager.stats_visible = visible
-	HudManager.inventory_visible = visible
-	HudManager.flashlight_movement = visible
-	HudManager.camera_movement = visible
-	HudManager.interaction_enabled = visible
+func toggle_hud_visibility(visibility: bool):
+	HudManager.clock_visible = visibility
+	HudManager.journal_visible = visibility
+	HudManager.stats_visible = visibility
+	HudManager.inventory_visible = visibility
+	HudManager.flashlight_movement = visibility
+	HudManager.camera_movement = visibility
+	HudManager.interaction_enabled = visibility

@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgh1w6p3m7p5o"]
+
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Comicoro.ttf" id="1_km1po"]
+[ext_resource type="Script" uid="uid://cefjakmirindv" path="res://Systems/Journal/Scripts/dropdown_button.gd" id="1_lovx2"]
+[ext_resource type="Script" uid="uid://c5liwgkwcsrsg" path="res://Systems/Journal/Scripts/button_hover.gd" id="1_xo5tg"]
+[ext_resource type="Texture2D" uid="uid://8lyiwscj26d0" path="res://Assets/UI/Menu_Buttons2.png" id="4_j6r13"]
+
+[sub_resource type="FontVariation" id="FontVariation_j6r13"]
+base_font = ExtResource("1_km1po")
+spacing_top = -10
+spacing_bottom = -60
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1gdm"]
+
+[node name="DropdownButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xo5tg")
+button_path = NodePath("MarginContainer/MarginContainer/CenterContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 56.0
+offset_bottom = 26.0
+scale = Vector2(4.38201, 4.38201)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+modulate = Color(0.60183, 0.294948, 0.0436487, 1)
+layout_mode = 2
+texture = ExtResource("4_j6r13")
+region_rect = Rect2(69, 84, 41, 10)
+patch_margin_left = 9
+patch_margin_top = 2
+patch_margin_right = 9
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_j6r13")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h1gdm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h1gdm")
+text = "test"
+alignment = 0
+script = ExtResource("1_lovx2")

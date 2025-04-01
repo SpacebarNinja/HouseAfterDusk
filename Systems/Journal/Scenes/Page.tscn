@@ -1,0 +1,252 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca6hna2d0mqb4"]
+
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Comicoro.ttf" id="1_6llro"]
+[ext_resource type="Texture2D" uid="uid://ckl7e85ksp8ff" path="res://Systems/Journal/Art/ICON (REFRESH).png" id="2_2w11j"]
+[ext_resource type="Texture2D" uid="uid://dcthb3k5bodg" path="res://Systems/Journal/Art/ICON (SUBMIT).png" id="2_66j2j"]
+[ext_resource type="Texture2D" uid="uid://bqntp8gsuhgx" path="res://Systems/Journal/Art/ICON(UNDO).png" id="2_rxihg"]
+[ext_resource type="Script" uid="uid://bvh7ed5hgl3ir" path="res://Systems/Journal/Scripts/add_button.gd" id="5_ejf8w"]
+[ext_resource type="Texture2D" uid="uid://bjhs2qpirkqjq" path="res://Systems/Journal/Art/Add.png" id="6_hj76i"]
+[ext_resource type="Script" uid="uid://c57fy2v11m158" path="res://Systems/Journal/Scripts/PageV2.gd" id="7_g5edn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4y5pc"]
+line_spacing = 0.0
+font = ExtResource("1_6llro")
+font_size = 144
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejf8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gd3rf"]
+
+[node name="Page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UndoButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 524.0
+offset_top = 26.0
+offset_right = 1044.0
+offset_bottom = 546.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_colors/icon_hover_color = Color(1, 0.509804, 0.443137, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("2_rxihg")
+flat = true
+
+[node name="SubmitButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 524.0
+offset_top = 176.0
+offset_right = 788.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/icon_hover_color = Color(1, 0.509804, 0.443137, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("2_66j2j")
+flat = true
+
+[node name="RefreshButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 524.0
+offset_top = 326.0
+offset_right = 788.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/icon_hover_color = Color(1, 0.509804, 0.443137, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("2_2w11j")
+flat = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -574.0
+offset_top = -307.0
+offset_right = 263.0
+offset_bottom = -172.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.348681, 0.348681)
+text = "Entry #1:"
+label_settings = SubResource("LabelSettings_4y5pc")
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="Title2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -291.0
+offset_right = 1513.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.186874, 0.186874)
+text = "━━━━━━━━━━━━━━━━━━━"
+label_settings = SubResource("LabelSettings_4y5pc")
+autowrap_mode = 3
+
+[node name="Notes" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = 228.0
+offset_right = 416.0
+offset_bottom = 363.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.307026, 0.307026)
+text = "Notes:"
+label_settings = SubResource("LabelSettings_4y5pc")
+autowrap_mode = 3
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = -273.0
+offset_top = -300.0
+offset_right = 1541.0
+offset_bottom = -56.0
+scale = Vector2(0.145693, 0.145693)
+theme_override_colors/font_placeholder_color = Color(0.622196, 0.622196, 0.622196, 1)
+theme_override_colors/font_color = Color(0.262397, 0.262397, 0.262397, 1)
+theme_override_fonts/font = ExtResource("1_6llro")
+theme_override_font_sizes/font_size = 251
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ejf8w")
+placeholder_text = "Unnamed Entry"
+max_length = 20
+context_menu_enabled = false
+
+[node name="NotesEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 265.0
+offset_right = 2991.0
+offset_bottom = 1011.0
+scale = Vector2(0.138, 0.138)
+theme_override_colors/font_placeholder_color = Color(0.622196, 0.622196, 0.622196, 1)
+theme_override_colors/font_color = Color(0.262397, 0.262397, 0.262397, 1)
+theme_override_fonts/font = ExtResource("1_6llro")
+theme_override_font_sizes/font_size = 251
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ejf8w")
+placeholder_text = "..."
+context_menu_enabled = false
+wrap_mode = 1
+
+[node name="PhysicalDescription" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -233.0
+offset_right = 1290.0
+offset_bottom = 1274.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.231019, 0.231019)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6llro")
+theme_override_font_sizes/font_size = 144
+text = "Physical Description: 
+Upon observation, the entity appears to be a _____ (height) _____ (shape) _____ (features). Its overall structure suggests possible adaptations for _____ (e.g., movement, defense, predation). The texture of its exterior appears to be ____"
+autowrap_mode = 3
+
+[node name="Add" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -332.585
+offset_top = -233.712
+offset_right = -290.585
+offset_bottom = -228.712
+scale = Vector2(5.115, 5.115)
+pivot_offset = Vector2(21, 2.5)
+script = ExtResource("5_ejf8w")
+button_path = NodePath("AddButton")
+
+[node name="AddButton" type="Button" parent="Add"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 5.0
+pivot_offset = Vector2(20.5, 2.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gd3rf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gd3rf")
+icon = ExtResource("6_hj76i")
+
+[node name="Label" type="Label" parent="Add/AddButton"]
+layout_mode = 0
+offset_left = 6.52081
+offset_top = -0.33494
+offset_right = 1040.52
+offset_bottom = 164.665
+scale = Vector2(0.0336326, 0.0336326)
+theme_override_colors/font_color = Color(0.506789, 0, 0.0827743, 1)
+theme_override_fonts/font = ExtResource("1_6llro")
+theme_override_font_sizes/font_size = 176
+text = "Create a new entry"
+
+[node name="Words" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -406.585
+offset_top = -243.712
+offset_right = -366.585
+offset_bottom = -203.712
+scale = Vector2(0.249936, 0.249936)
+script = ExtResource("7_g5edn")
+
+[connection signal="pressed" from="UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]

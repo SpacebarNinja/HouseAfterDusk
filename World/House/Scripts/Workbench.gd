@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var interaction_area = $InteractionArea
 
 var can_interact: bool = false
 
@@ -19,13 +20,14 @@ func _on_use():
 	if HudManager.is_crafting:
 		return
 	
-	else:
-		HudManager.is_crafting = true
-		WorldManager.StopGeneMovement = true
-		WorldManager.Interactables.erase("Use Workbench")
+	HudManager.is_crafting = true
+	WorldManager.StopGeneMovement = true
+	WorldManager.Interactables.erase("Use Workbench")
+	interaction_area.monitoring = false
 
 func _process(_delta):
-	if not HudManager.is_crafting and can_interact:
+	if not HudManager.is_crafting:
 		HudManager.camera_movement = true
 		HudManager.flashlight_movement = true
+		interaction_area.monitoring = true
 		handle_text()

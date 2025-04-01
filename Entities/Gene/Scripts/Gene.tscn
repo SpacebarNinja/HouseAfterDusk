@@ -1800,6 +1800,8 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("6_ac21o")
 script = ExtResource("7_taegu")
 
+[node name="EquippedItem" type="Node2D" parent="."]
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 28)
 rotation = 1.5708
@@ -1949,8 +1951,6 @@ autostart = true
 wait_time = 10.0
 one_shot = true
 autostart = true
-
-[node name="Weapons" type="Node2D" parent="."]
 
 [node name="Step Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.596078)

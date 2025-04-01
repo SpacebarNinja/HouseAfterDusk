@@ -343,17 +343,6 @@ theme = ExtResource("3_mat6y")
 text = "Player Stats"
 horizontal_alignment = 1
 
-[node name="MenuButton" type="MenuButton" parent="GameWindow/GamePanel"]
-layout_mode = 0
-offset_left = 688.0
-offset_top = 416.0
-offset_right = 728.0
-offset_bottom = 456.0
-text = "beans"
-item_count = 1
-popup/item_0/text = "beans"
-popup/item_0/id = 0
-
 [node name="EnemyWindow" parent="." node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
 offset_left = -296.0
 offset_top = -132.0

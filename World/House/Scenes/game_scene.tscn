@@ -42,7 +42,7 @@ wait_time = 20.0
 
 [node name="Player" parent="." instance=ExtResource("3_c3x4n")]
 modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(117, 118)
+position = Vector2(694, -103)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")

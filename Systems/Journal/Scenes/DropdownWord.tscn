@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7iifwxw6kaa0"]
+
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Comicoro.ttf" id="1_4gvbs"]
+[ext_resource type="Script" uid="uid://cadbun12co3mw" path="res://Systems/Journal/Scripts/dropdown_word.gd" id="2_srnf1"]
+
+[node name="Word" type="Label"]
+offset_right = 1.0
+offset_bottom = 23.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(1, 0, 0.190183, 1)
+theme_override_fonts/font = ExtResource("1_4gvbs")
+theme_override_font_sizes/font_size = 128
+text = "???"
+script = ExtResource("2_srnf1")
+
+[node name="TemporaryWord" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4gvbs")
+theme_override_font_sizes/font_size = 128
+text = "???"
