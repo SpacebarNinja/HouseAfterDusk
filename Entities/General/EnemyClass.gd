@@ -6,27 +6,71 @@ class_name EnemyClass
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var item_drop = preload("res://Systems/Inventory/Others/dropped_item.tscn")
 
+enum PATHFINDING {WANDER, CHASE, RETREAT}
+
 @export_category("General Enemy Stats")
 @export var movement_speed: int = 75
 @export var health: int = 100
 @export var attack_damage: int = 0
-@export var suspicion: float = 0
 
 @export_category("Other Stats")
 @export var origin_location: Vector2
 @export var spawn_location: String
+@export var wander_radius: float
+@export var current_pathfinding: PATHFINDING
 
 @export_category("General Enemy Nodes")
 @export var animation_sprite: AnimatedSprite2D
-@export var animation_player: AnimationPlayer
 @export var animation_tree: AnimationTree
+@export var player_found_timer = Timer
 @export var navigation_agent: NavigationAgent2D
 @export var vision_cone: PointLight2D
 @export var hitbox: Area2D
+@export var statemachine: EnemyStateMachine
 
+signal PlayerFound
+signal PlayerLost
+
+var player_seen: bool = false
+var player_in_hitbox: bool = false
+
+func _ready():
+	player_found_timer.timeout.connect(on_player_found_timeout)
+	
+func handle_vision_cone(delta):
+	for raycast in vision_cone.get_children():
+		if not raycast is RayCast2D:
+			continue
+		
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider and collider.is_in_group("Player"):
+				PlayerFound.emit()
+				break  # Exit early once player is detected	
+				
+func toggle_vision(toggle: bool):
+	vision_cone.enabled = toggle
+	for raycast in vision_cone.get_children():
+		if not raycast is RayCast2D:
+			continue  # Skip non-raycast nodes
+		else:
+			raycast.enabled = toggle
+			
 func set_target_position(target_position: Vector2) -> void:
 	if navigation_agent:
-		if global_position.distance_to(target_position) > 20:  # Avoid targets too close
-			navigation_agent.target_position = target_position
-		else:
-			print(global_position.distance_to(target_position), " too close, not setting.")
+		var distance = global_position.distance_to(target_position)
+
+		if distance < 20:
+			var direction = (target_position - global_position).normalized()
+			target_position = global_position + direction * 20
+		
+		navigation_agent.target_position = target_position
+		
+func take_damage(player_damage: int):
+	if player_damage > 0:
+		health = max(0, health - player_damage)  # Clamp to 0
+		print("Enemy Health: ", health)
+		
+func on_player_found_timeout():
+	player_seen = false
+	PlayerLost.emit()

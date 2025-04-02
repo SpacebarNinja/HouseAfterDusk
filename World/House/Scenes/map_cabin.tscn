@@ -1613,7 +1613,6 @@ script = ExtResource("6_asq3q")
 y_sort_enabled = true
 
 [node name="Living Room" type="TileMapLayer" parent="ROOMS/CabinNodes"]
-visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(127, 128)
@@ -2221,6 +2220,7 @@ tile_map_data = PackedByteArray("AAACAAEAAAAJAAcAAAACAAIAAAAJAAcAAAACAAUAAAAJAAc
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="Storage" type="TileMapLayer" parent="ROOMS/CabinNodes"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(608, -32)
@@ -2250,9 +2250,10 @@ material = ExtResource("7_jj0mf")
 tile_map_data = PackedByteArray("AAD//wEAAAAAAAUAAAAFAAEAAAABAAUAAAAFAP3/AgAKAAgAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
-[node name="Workbench" type="Node2D" parent="ROOMS/CabinNodes/Storage"]
+[node name="Workbench" type="Node2D" parent="ROOMS/CabinNodes/Storage" node_paths=PackedStringArray("interaction_area")]
 position = Vector2(152, -64)
 script = ExtResource("30_s5to4")
+interaction_area = NodePath("InteractionArea")
 
 [node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Storage/Workbench" node_paths=PackedStringArray("sprite")]
 position = Vector2(6, -2)

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://0xglca5ob35f" path="res://Entities/Enemies/WindowGirl/Scripts/WindowGirlV2.tscn" id="2_c3x4n"]
 [ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_tinsn"]
 [ext_resource type="PackedScene" uid="uid://boutdgluq4gbq" path="res://Entities/Gene/Scripts/Gene.tscn" id="3_c3x4n"]
-[ext_resource type="PackedScene" uid="uid://38ts1v8d4yx6" path="res://Entities/Enemies/ElectronicGuy/Scene/ElectronicGuyV2.tscn" id="3_ikos8"]
+[ext_resource type="PackedScene" uid="uid://dttxuntfdbxb2" path="res://Entities/Enemies/ElectronicGuy/Scene/tvg_v3.tscn" id="3_ikos8"]
 [ext_resource type="PackedScene" uid="uid://chact4baxwqfo" path="res://Entities/Enemies/TheDolls/Scripts/Doll.tscn" id="4_uv65v"]
 [ext_resource type="PackedScene" uid="uid://btnne6ekpxmv4" path="res://Entities/Animals/Deer/Scripts/Deer.tscn" id="5_ikos8"]
 [ext_resource type="Script" uid="uid://dxpfesq4sf0sm" path="res://World/House/Scripts/Canvas_Modulate.gd" id="6_p6osx"]
@@ -42,7 +42,7 @@ wait_time = 20.0
 
 [node name="Player" parent="." instance=ExtResource("3_c3x4n")]
 modulate = Color(1.1, 1.1, 1.1, 1)
-position = Vector2(694, -103)
+position = Vector2(124, 92)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0agw0")

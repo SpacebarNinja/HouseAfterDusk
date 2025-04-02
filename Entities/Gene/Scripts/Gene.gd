@@ -40,7 +40,7 @@ func _process(_delta):
 	
 	if WorldManager.StopGeneMovement:
 		return
-	
+
 	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
 	velocity = move_vector * movement_speed
 	
