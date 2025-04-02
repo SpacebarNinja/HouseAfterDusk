@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://2wgk53icjxq8" path="res://Dev Stuff/DebugMenu/GUI_Buttons.png" id="3_5xj75"]
 [ext_resource type="Script" uid="uid://dvxue5fmh8lto" path="res://Assets/Visuals/button_template.gd" id="4_3ov0x"]
 [ext_resource type="Texture2D" uid="uid://clegykl6d88pl" path="res://HAD Logo.png" id="4_t75bb"]
-[ext_resource type="Texture2D" uid="uid://cqat7k1e3d5qo" path="res://Assets/Visuals/Menu_Buttons.png" id="5_3ov0x"]
+[ext_resource type="Texture2D" uid="uid://cqat7k1e3d5qo" path="res://Assets/UI/Menu_Buttons.png" id="5_3ov0x"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="5_t75bb"]
 
 [sub_resource type="Gradient" id="Gradient_qh7ng"]

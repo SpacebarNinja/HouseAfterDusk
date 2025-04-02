@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=3 uid="uid://dttxuntfdbxb2"]
+[gd_scene load_steps=160 format=3 uid="uid://dttxuntfdbxb2"]
 
 [ext_resource type="Script" uid="uid://tfwnmsa87bcr" path="res://Entities/Enemies/ElectronicGuy/Scene/tvg_v3.gd" id="1_hn372"]
 [ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Idle.png" id="2_p7gne"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dnnyqd8ke15d5" path="res://Entities/Enemies/ElectronicGuy/Art/TV_Exit.png" id="6_54eqp"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="7_5rjdu"]
 [ext_resource type="Script" uid="uid://b3gga3h8gifn2" path="res://Entities/General/EnemyStatemachine.gd" id="8_lfdcd"]
+[ext_resource type="Script" uid="uid://dq4jitqt3nuwk" path="res://Entities/Enemies/ElectronicGuy/States/prowl.gd" id="9_p7gne"]
+[ext_resource type="Script" uid="uid://ci156g2pucehn" path="res://Entities/Enemies/ElectronicGuy/States/idle.gd" id="10_bkoxt"]
+[ext_resource type="Script" uid="uid://x8kjlwc2u1gr" path="res://Entities/Enemies/ElectronicGuy/States/glitch.gd" id="11_54eqp"]
+[ext_resource type="Script" uid="uid://wl1670kmgpey" path="res://Entities/Enemies/ElectronicGuy/States/quick_time_event.gd" id="11_b4pc1"]
+[ext_resource type="Script" uid="uid://dlj52xwl1xhuh" path="res://Entities/Enemies/ElectronicGuy/States/stun.gd" id="12_5rjdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p44n"]
 atlas = ExtResource("2_p7gne")
@@ -1525,32 +1530,23 @@ states/Tv_Exit/position = Vector2(332, 100)
 transitions = ["Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_7obh5"), "Teleport", "Teleport_Backward", SubResource("AnimationNodeStateMachineTransition_qq1up"), "Idle", "Glitch", SubResource("AnimationNodeStateMachineTransition_b4r00"), "Glitch", "Idle", SubResource("AnimationNodeStateMachineTransition_naexb"), "Teleport_Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_117uq"), "Idle", "QuickTimeEvent_Start", SubResource("AnimationNodeStateMachineTransition_u8owp"), "QuickTimeEvent_Start", "QuickTimeEvent_Loop", SubResource("AnimationNodeStateMachineTransition_1njbb"), "QuickTimeEvent_Loop", "QuickTimeEvent_Stop", SubResource("AnimationNodeStateMachineTransition_6400f"), "QuickTimeEvent_Stop", "QuickTimeEvent_Stun", SubResource("AnimationNodeStateMachineTransition_ow3ul"), "QuickTimeEvent_Stun", "Idle", SubResource("AnimationNodeStateMachineTransition_d4mox"), "Tv_Exit", "Idle", SubResource("AnimationNodeStateMachineTransition_n0asa"), "Start", "Tv_Exit", SubResource("AnimationNodeStateMachineTransition_w0dhw"), "QuickTimeEvent_Loop", "Idle", SubResource("AnimationNodeStateMachineTransition_f2ogc")]
 graph_offset = Vector2(-145.638, -153.856)
 
-[sub_resource type="Animation" id="Animation_r3cew"]
-resource_name = "test"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_htll6"]
-_data = {
-&"test": SubResource("Animation_r3cew")
-}
-
-[node name="TvGv3" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "anim_player", "anim_tree", "navigation_agent", "vision_cone", "hitbox")]
+[node name="TvGv3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_player", "animation_tree", "navigation_agent", "vision_cone", "hitbox")]
 script = ExtResource("1_hn372")
 movement_speed = 0
 health = 10000
 attack_damage = 200
 spawn_location = "Tv"
-anim_sprite = NodePath("AnimatedSprite2D")
-anim_player = NodePath("AnimationPlayer")
-anim_tree = NodePath("AnimationTree")
+animation_sprite = NodePath("AnimatedSprite2D")
+animation_player = NodePath("AnimationPlayer")
+animation_tree = NodePath("AnimationTree")
 navigation_agent = NodePath("NavigationAgent2D")
 vision_cone = NodePath("VisionCone")
 hitbox = NodePath("Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_ijq52")
-animation = &""
+animation = &"Glitch"
 offset = Vector2(0, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1665,26 +1661,29 @@ wait_time = 2.0
 wait_time = 5.0
 one_shot = true
 
-[node name="TeleportTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="GlitchTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[node name="ProwlTimer" type="Timer" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_lfdcd")
+initial_state = NodePath("prowl")
+
+[node name="prowl" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_p7gne")
+enemy = NodePath("../..")
+
+[node name="ProwlTimer" type="Timer" parent="StateMachine/prowl"]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("8_lfdcd")
-
-[node name="prowl" type="Node" parent="StateMachine"]
-
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_bkoxt")
+enemy = NodePath("../..")
 
 [node name="glitch" type="Node" parent="StateMachine"]
+script = ExtResource("11_54eqp")
 
 [node name="wander" type="Node" parent="StateMachine"]
 
@@ -1692,15 +1691,19 @@ script = ExtResource("8_lfdcd")
 
 [node name="search" type="Node" parent="StateMachine"]
 
-[node name="stun" type="Node" parent="StateMachine"]
+[node name="stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_5rjdu")
+enemy = NodePath("../..")
 
 [node name="retreat" type="Node" parent="StateMachine"]
 
 [node name="teleport" type="Node" parent="StateMachine"]
 
-[node name="quick_time_event" type="Node" parent="StateMachine"]
+[node name="TeleportTimer" type="Timer" parent="StateMachine/teleport"]
+one_shot = true
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_htll6")
-}
+[node name="quick_time_event" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("11_b4pc1")
+enemy = NodePath("../..")
+
+[connection signal="timeout" from="StateMachine/prowl/ProwlTimer" to="StateMachine/prowl" method="_on_prowl_timer_timeout"]

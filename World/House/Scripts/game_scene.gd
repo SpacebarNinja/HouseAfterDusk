@@ -189,6 +189,7 @@ func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
 # { Extra Logic }----------------------------------------------------------
 func start_quick_time_event():
 	hud.current_display("QTE")
+	player.hide()
 		
 func get_scene_name(packed_scene: PackedScene) -> String:
 	if packed_scene.resource_path:

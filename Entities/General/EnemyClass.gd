@@ -1,4 +1,4 @@
-extends Node
+extends CharacterBody2D
 class_name EnemyClass
 
 @onready var qte_hud = get_tree().get_first_node_in_group("QTEHud")
@@ -17,9 +17,16 @@ class_name EnemyClass
 @export var spawn_location: String
 
 @export_category("General Enemy Nodes")
-@export var anim_sprite: AnimatedSprite2D
-@export var anim_player: AnimationPlayer
-@export var anim_tree: AnimationTree
+@export var animation_sprite: AnimatedSprite2D
+@export var animation_player: AnimationPlayer
+@export var animation_tree: AnimationTree
 @export var navigation_agent: NavigationAgent2D
 @export var vision_cone: PointLight2D
 @export var hitbox: Area2D
+
+func set_target_position(target_position: Vector2) -> void:
+	if navigation_agent:
+		if global_position.distance_to(target_position) > 20:  # Avoid targets too close
+			navigation_agent.target_position = target_position
+		else:
+			print(global_position.distance_to(target_position), " too close, not setting.")
