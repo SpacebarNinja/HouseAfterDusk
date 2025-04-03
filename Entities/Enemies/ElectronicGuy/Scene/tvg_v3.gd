@@ -17,14 +17,21 @@ extends EnemyClass
 @onready var teleport_timer: Timer = $TeleportTimer
 
 var tv_node = null
+var is_wandering: bool
 
 func _ready():
+	super._ready()
+	toggle_vision(false)
 	tv_node = game_scene.current_map.get_tv_node()
 	tv_node.turn_on()
 
 func _physics_process(delta: float) -> void:
-	handle_vision_cone(delta)
-
+	handle_vision_cone()
+	
+func terminate() -> void:
+	print("Turned Off Generator, Killing TvG")
+	queue_free()
+	
 func _on_player_found() -> void:
 	current_pathfinding = PATHFINDING.CHASE
 
@@ -33,3 +40,11 @@ func _on_player_lost() -> void:
 
 func _on_search_duration_timeout() -> void:
 	current_pathfinding = PATHFINDING.RETREAT
+
+func _on_movement_timer_timeout() -> void:
+	if is_wandering:
+		movement_timer.wait_time = 5
+	else:
+		movement_timer.wait_time = 3
+		
+	statemachine.on_child_transition(statemachine.current_state, "teleport")

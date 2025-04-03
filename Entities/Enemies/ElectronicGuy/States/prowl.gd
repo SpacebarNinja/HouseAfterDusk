@@ -3,11 +3,15 @@ extends EnemyState
 var corrupted_channels: Array = []
 
 func enter():
+	enemy.global_position = enemy.tv_node.global_position
 	enemy.prowl_timer.start()
 	enemy.prowl_timer.connect("timeout", Callable(self, "_on_prowl_timer_timeout"))
 	corrupted_channels = [1,2,3,4]
 
 func exit():
+	enemy.is_wandering = true
+	enemy.current_pathfinding = enemy.PATHFINDING.WANDER
+	enemy.search_duration.start()
 	enemy.prowl_timer.stop()
 	enemy.prowl_timer.disconnect("timeout", Callable(self, "_on_prowl_timer_timeout"))
 

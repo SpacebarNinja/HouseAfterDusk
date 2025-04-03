@@ -114,10 +114,10 @@ func spawn_enemy(index):
 		return
 	
 	var enemy_instance = entity_list[index].instantiate()
-	add_child(enemy_instance)
-
 	var spawn_node = get_spawn_node(enemy_instance.spawn_location)
+	
 	if spawn_node:
+		add_child(enemy_instance)
 		var enemy_name = get_scene_name(entity_list[index])
 		
 		# Use get() with default value to simplify dictionary updates
@@ -130,7 +130,7 @@ func spawn_enemy(index):
 		enemy_instance.origin_location = spawn_node.global_position
 		print("Spawned enemy:", enemy_name)
 	else:
-		print("Error: No valid", enemy_instance.spawn_location, "spawn node found.")
+		print("Error: No valid ", enemy_instance.spawn_location, " spawn node found.")
 	debug_spawned_enemies()
 
 func kill_enemy(index):
@@ -142,7 +142,10 @@ func kill_enemy(index):
 	if enemy_name in spawned_enemies:
 		if spawned_enemies[enemy_name]["instances"].size() > 0:
 			var enemy_instance = spawned_enemies[enemy_name]["instances"].pop_front()  # Remove first found instance
-			enemy_instance.queue_free()
+			if is_instance_valid(enemy_instance):
+				enemy_instance.queue_free()
+			else:
+				print("⚠️ WARNING: Enemy instance already freed.")
 			
 			spawned_enemies[enemy_name]["amount"] -= 1
 			if spawned_enemies[enemy_name]["amount"] <= 0:

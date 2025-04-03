@@ -18,3 +18,4 @@ func _on_qte_success():
 func _on_qte_fail():
 	enemy.animation_tree.get("parameters/playback").travel("Idle")
 	player.take_damage(enemy.attack_damage,enemy.velocity)
+	

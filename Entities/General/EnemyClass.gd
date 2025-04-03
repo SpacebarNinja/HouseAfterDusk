@@ -36,8 +36,16 @@ var player_in_hitbox: bool = false
 
 func _ready():
 	player_found_timer.timeout.connect(on_player_found_timeout)
+
+func handle_movement(delta):
+	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
+	velocity = movement_speed * direction
+	move_and_slide()
 	
-func handle_vision_cone(delta):
+	#print("Velocity:", velocity)
+	animation_sprite.flip_h = velocity.x < 0
+
+func handle_vision_cone():
 	for raycast in vision_cone.get_children():
 		if not raycast is RayCast2D:
 			continue

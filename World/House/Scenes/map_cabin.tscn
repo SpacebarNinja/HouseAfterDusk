@@ -569,7 +569,7 @@ texture_region_size = Vector2i(64, 75)
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(16, 21)
 0:1/0/z_index = 1
-0:1/0/y_sort_origin = 30
+0:1/0/y_sort_origin = -21
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 3:1/animation_columns = 3
 3:1/animation_frame_0/duration = 0.7
@@ -578,7 +578,7 @@ texture_region_size = Vector2i(64, 75)
 3:1/0 = 0
 3:1/0/texture_origin = Vector2i(16, 21)
 3:1/0/z_index = 1
-3:1/0/y_sort_origin = 30
+3:1/0/y_sort_origin = -21
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 0:2/animation_columns = 3
 0:2/animation_frame_0/duration = 0.7
@@ -587,7 +587,7 @@ texture_region_size = Vector2i(64, 75)
 0:2/0 = 0
 0:2/0/texture_origin = Vector2i(16, 21)
 0:2/0/z_index = 1
-0:2/0/y_sort_origin = 30
+0:2/0/y_sort_origin = -21
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 0:3/animation_columns = 2
 0:3/animation_frame_0/duration = 0.7
@@ -595,7 +595,7 @@ texture_region_size = Vector2i(64, 75)
 0:3/0 = 0
 0:3/0/texture_origin = Vector2i(16, 21)
 0:3/0/z_index = 1
-0:3/0/y_sort_origin = 30
+0:3/0/y_sort_origin = -21
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 0:4/animation_columns = 3
 0:4/animation_frame_0/duration = 0.7
@@ -604,12 +604,12 @@ texture_region_size = Vector2i(64, 75)
 0:4/0 = 0
 0:4/0/texture_origin = Vector2i(16, 21)
 0:4/0/z_index = 1
-0:4/0/y_sort_origin = 30
+0:4/0/y_sort_origin = -21
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 3:4/0 = 0
 3:4/0/texture_origin = Vector2i(16, 21)
 3:4/0/z_index = 1
-3:4/0/y_sort_origin = 30
+3:4/0/y_sort_origin = -21
 3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 3:3/next_alternative_id = 2
 3:3/animation_columns = 3
@@ -619,7 +619,7 @@ texture_region_size = Vector2i(64, 75)
 3:3/0 = 0
 3:3/0/texture_origin = Vector2i(16, 21)
 3:3/0/z_index = 1
-3:3/0/y_sort_origin = 30
+3:3/0/y_sort_origin = -21
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 3:2/animation_columns = 3
 3:2/animation_frame_0/duration = 0.7
@@ -628,12 +628,12 @@ texture_region_size = Vector2i(64, 75)
 3:2/0 = 0
 3:2/0/texture_origin = Vector2i(16, 21)
 3:2/0/z_index = 1
-3:2/0/y_sort_origin = 30
+3:2/0/y_sort_origin = -21
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(16, 21)
 0:0/0/z_index = 1
-0:0/0/y_sort_origin = 30
+0:0/0/y_sort_origin = -21
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 1:0/next_alternative_id = 2
 1:0/animation_columns = 2
@@ -642,7 +642,7 @@ texture_region_size = Vector2i(64, 75)
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(16, 21)
 1:0/0/z_index = 1
-1:0/0/y_sort_origin = 30
+1:0/0/y_sort_origin = -21
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 3:0/animation_columns = 4
 3:0/animation_frame_0/duration = 0.1
@@ -652,14 +652,14 @@ texture_region_size = Vector2i(64, 75)
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(16, 21)
 3:0/0/z_index = 1
-3:0/0/y_sort_origin = 30
+3:0/0/y_sort_origin = -21
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 5:4/animation_frame_0/duration = 0.1
 5:4/animation_frame_1/duration = 0.1
 5:4/0 = 0
 5:4/0/texture_origin = Vector2i(16, 21)
 5:4/0/z_index = 1
-5:4/0/y_sort_origin = 30
+5:4/0/y_sort_origin = -21
 5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 16, -40, 16, -40, -8, 8, -8)
 
 [sub_resource type="TileSet" id="TileSet_5makl"]
@@ -674,7 +674,7 @@ streams_count = 1
 stream_0/stream = ExtResource("15_wgd6a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4quj"]
-size = Vector2(72, 72)
+size = Vector2(64, 20)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvnsh"]
 random_pitch = 1.1
@@ -1621,7 +1621,7 @@ tile_set = SubResource("TileSet_vkpyt")
 
 [node name="TV" type="Node2D" parent="ROOMS/CabinNodes/Living Room" node_paths=PackedStringArray("interaction_area", "tilemap") groups=["Electronic"]]
 y_sort_enabled = true
-position = Vector2(-223, -43)
+position = Vector2(-223, -48)
 script = ExtResource("7_moaoa")
 interaction_area = NodePath("InteractionArea")
 tilemap = NodePath("TVTileMap")
@@ -1634,6 +1634,7 @@ ChannelColors4 = Array[Color]([Color(0.468415, 0.468415, 0.608618, 1), Color(0.5
 [node name="TVTileMap" type="TileMapLayer" parent="ROOMS/CabinNodes/Living Room/TV"]
 z_index = -1
 y_sort_enabled = true
+position = Vector2(0, 4.245)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_5makl")
 
@@ -1688,7 +1689,7 @@ texture = ExtResource("21_d16nc")
 texture_scale = 0.3
 
 [node name="InteractionArea" type="Area2D" parent="ROOMS/CabinNodes/Living Room/TV" node_paths=PackedStringArray("sprite")]
-position = Vector2(144, -135)
+position = Vector2(0, 40)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("42_yfjwe")
@@ -1696,7 +1697,6 @@ sprite = NodePath("../TVTileMap")
 interactable_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ROOMS/CabinNodes/Living Room/TV/InteractionArea"]
-position = Vector2(-142, 138)
 shape = SubResource("RectangleShape2D_k4quj")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)
 

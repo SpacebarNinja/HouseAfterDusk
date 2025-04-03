@@ -12,6 +12,7 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.transition.connect(on_child_transition)
 			
+	await get_tree().create_timer(0.2).timeout
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state

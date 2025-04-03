@@ -1,21 +1,26 @@
 extends EnemyState
 
-@onready var teleport_timer: Timer = $TeleportTimer
+var teleport_duration: float
 
 func enter():
 	teleport()
-	teleport_timer.connect("timeout", Callable(self, "_on_teleport_timer_timeout"))
-	if enemy.current_pathfinding == enemy.PATHFINDING.WANDER:
-		wander()
-
+	enemy.teleport_timer.connect("timeout", Callable(self, "_on_teleport_timer_timeout"))
+	enemy.movement_speed = randf_range(40, 200)
+	
 func exit():
-	teleport_timer.stop()
-	teleport_timer.disconnect("timeout", Callable(self, "_on_teleport_timer_timeout"))
+	if enemy.movement_timer.is_stopped():
+		enemy.movement_timer.start()
+	enemy.teleport_timer.stop()
+	enemy.teleport_timer.disconnect("timeout", Callable(self, "_on_teleport_timer_timeout"))
+	enemy.movement_speed = 0
 	
 func teleport():
-	enemy.animation_tree.get("parameters/playback").travel("Teleport")
-	teleport_timer.start(randf_range(enemy.teleport_min_hide_length, enemy.teleport_max_hide_length))
+	teleport_duration = randf_range(enemy.teleport_min_hide_length, enemy.teleport_max_hide_length)
 	
+	enemy.animation_tree.get("parameters/playback").travel("Teleport")
+	enemy.teleport_timer.start(teleport_duration)
+	
+	print("PF: ", enemy.current_pathfinding, " Speed: ", enemy.movement_speed)
 	if enemy.current_pathfinding == enemy.PATHFINDING.WANDER:
 		wander()
 	elif enemy.current_pathfinding == enemy.PATHFINDING.CHASE:

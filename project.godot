@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="House After Dusk Repository"
-run/main_scene="uid://drvj3cgvv6w28"
+run/main_scene="uid://3r15ojyqxyb2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="uid://cy37rkpbm4s3a"
 config/icon="uid://clegykl6d88pl"

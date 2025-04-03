@@ -345,9 +345,9 @@ horizontal_alignment = 1
 
 [node name="EnemyWindow" parent="." node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
 offset_left = -296.0
-offset_top = -132.0
+offset_top = -324.0
 offset_right = 24.0
-offset_bottom = -108.0
+offset_bottom = -300.0
 panel = NodePath("EnemyPanel")
 
 [node name="EnemyPanel" type="Panel" parent="EnemyWindow"]
@@ -505,9 +505,9 @@ offset_bottom = 48.0
 texture = SubResource("AtlasTexture_bcw1f")
 
 [node name="InventoryWindow" parent="." node_paths=PackedStringArray("panel") instance=ExtResource("7_qv0nl")]
-offset_left = -296.0
+offset_left = 48.0
 offset_top = -324.0
-offset_right = 72.0
+offset_right = 416.0
 offset_bottom = -300.0
 panel = NodePath("InventoryPanel")
 

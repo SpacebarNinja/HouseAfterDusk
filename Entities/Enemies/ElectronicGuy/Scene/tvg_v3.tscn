@@ -854,32 +854,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"toggle_vision"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_haii7"]
 resource_name = "Idle"
@@ -912,43 +886,43 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:movement_speed")
+tracks/2/path = NodePath("VisionCone:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -64), Vector2(0, -66), Vector2(0, -66), Vector2(0, -64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:current_state")
+tracks/3/path = NodePath("AnimatedSprite2D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("VisionCone:position")
+tracks/4/path = NodePath("Hitbox:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -64), Vector2(0, -66), Vector2(0, -66), Vector2(0, -64)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimatedSprite2D:visible")
+tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -957,31 +931,17 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/6/type = "method"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".")
+tracks/6/path = NodePath(".:movement_speed")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [true],
-"method": &"toggle_vision"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Hitbox:monitoring")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_8r6et"]
@@ -1164,13 +1124,12 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_f2ogc"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_v84hm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox:monitoring")
+tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1182,14 +1141,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
+tracks/1/path = NodePath(".:movement_speed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_o4k43"]
@@ -1235,40 +1194,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:movement_speed")
+tracks/3/path = NodePath("AnimatedSprite2D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.55, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 0, 80]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"toggle_vision"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_71ixp"]
@@ -1367,64 +1300,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:current_state")
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [true]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".")
+tracks/3/path = NodePath("Hitbox:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"toggle_vision"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c2gp"]
@@ -1435,7 +1330,7 @@ _data = {
 &"QuickTimeEvent_Start": SubResource("Animation_set42"),
 &"QuickTimeEvent_Stop": SubResource("Animation_4hy7a"),
 &"QuickTimeEvent_Stun": SubResource("Animation_8edx8"),
-&"RESET": SubResource("Animation_f2ogc"),
+&"RESET": SubResource("Animation_v84hm"),
 &"Teleport": SubResource("Animation_o4k43"),
 &"Teleport_Backward": SubResource("Animation_71ixp"),
 &"Tv_Exit": SubResource("Animation_w0dhw")
@@ -1529,15 +1424,19 @@ states/Teleport_Backward/position = Vector2(585, 172)
 states/Tv_Exit/node = SubResource("AnimationNodeAnimation_w0dhw")
 states/Tv_Exit/position = Vector2(332, 100)
 transitions = ["Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_7obh5"), "Teleport", "Teleport_Backward", SubResource("AnimationNodeStateMachineTransition_qq1up"), "Idle", "Glitch", SubResource("AnimationNodeStateMachineTransition_b4r00"), "Glitch", "Idle", SubResource("AnimationNodeStateMachineTransition_naexb"), "Teleport_Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_117uq"), "Idle", "QuickTimeEvent_Start", SubResource("AnimationNodeStateMachineTransition_u8owp"), "QuickTimeEvent_Start", "QuickTimeEvent_Loop", SubResource("AnimationNodeStateMachineTransition_1njbb"), "QuickTimeEvent_Loop", "QuickTimeEvent_Stop", SubResource("AnimationNodeStateMachineTransition_6400f"), "QuickTimeEvent_Stop", "QuickTimeEvent_Stun", SubResource("AnimationNodeStateMachineTransition_ow3ul"), "QuickTimeEvent_Stun", "Idle", SubResource("AnimationNodeStateMachineTransition_d4mox"), "Tv_Exit", "Idle", SubResource("AnimationNodeStateMachineTransition_n0asa"), "Start", "Tv_Exit", SubResource("AnimationNodeStateMachineTransition_w0dhw"), "QuickTimeEvent_Loop", "Idle", SubResource("AnimationNodeStateMachineTransition_f2ogc")]
-graph_offset = Vector2(-145.638, -199.71)
+graph_offset = Vector2(-145.638, -78.5254)
 
-[node name="TvGv3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine")]
+[node name="TvGv3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine") groups=["Electronic"]]
+light_mask = 0
+visibility_layer = 0
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_hn372")
 teleport_max_hide_length = 2.0
 movement_speed = 0
 health = 10000
 attack_damage = 200
-spawn_location = "Tv"
+spawn_location = "TV"
 wander_radius = 200.0
 animation_sprite = NodePath("AnimatedSprite2D")
 animation_tree = NodePath("AnimationTree")
@@ -1548,9 +1447,11 @@ hitbox = NodePath("Hitbox")
 statemachine = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_ijq52")
 animation = &"Glitch"
+frame = 9
 offset = Vector2(0, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1564,7 +1465,6 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.892237, 0.243212, 0.471087, 1)
 
 [node name="VisionCone" type="PointLight2D" parent="."]
-position = Vector2(0, -65.0814)
 scale = Vector2(1.2, 2.5)
 color = Color(0.832644, 0.290377, 0.290377, 1)
 texture = ExtResource("7_5rjdu")
@@ -1646,6 +1546,7 @@ collide_with_bodies = false
 position = Vector2(0, 12)
 collision_layer = 8
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_4s2np")
@@ -1714,4 +1615,5 @@ enemy = NodePath("../..")
 
 [connection signal="PlayerFound" from="." to="." method="_on_player_found"]
 [connection signal="PlayerLost" from="." to="." method="_on_player_lost"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="SearchDuration" to="." method="_on_search_duration_timeout"]
