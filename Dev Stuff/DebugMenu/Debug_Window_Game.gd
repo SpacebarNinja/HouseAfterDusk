@@ -78,11 +78,11 @@ func _on_player_stats_item_selected(index: int) -> void:
 		1:
 			player.current_hunger = player.max_hunger
 		2:
-			player.take_damage(20, Vector2.ZERO)
+			player.take_damage("TVG", "God", 20, Vector2.ZERO)
 		3:
 			player.current_hunger -= 10
 		4:
-			player.take_damage(100, Vector2.ZERO)
+			player.take_damage("TVG", "God", 100, Vector2.ZERO)
 			
 #Debug_Panels -----------------------------------------
 func _on_show_enemy_panel_pressed():

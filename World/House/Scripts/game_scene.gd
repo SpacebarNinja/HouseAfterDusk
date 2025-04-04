@@ -78,9 +78,6 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 	# Move player safely
 	if player:
 		player.global_position = player_position
-
-	# Reset camera position & apply transition zoom effect
-	HudManager.camera_movement = false
 	
 	if camera:
 		if transition_type == 'zoom_in':

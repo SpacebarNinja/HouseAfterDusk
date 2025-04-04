@@ -7,7 +7,7 @@ extends Panel
 @onready var label4 = $DeerButton/Label
 
 func update_labels():
-	label1.text = str(game_scene.spawned_enemies["WindowGirlV2"]["amount"])
+	label1.text = str(game_scene.spawned_enemies["wg_v3"]["amount"])
 	label2.text = str(game_scene.spawned_enemies["tvg_v3"]["amount"])
 	label3.text = str(game_scene.spawned_enemies["Doll"]["amount"])
 	label4.text = str(game_scene.spawned_enemies["Deer"]["amount"])

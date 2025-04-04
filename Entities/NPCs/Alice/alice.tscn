@@ -80,7 +80,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8x0h"]
 size = Vector2(62, 102)
 
-[node name="Alice" type="CharacterBody2D" groups=["Player"]]
+[node name="Alice" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1

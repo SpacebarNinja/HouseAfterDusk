@@ -59,7 +59,7 @@ func _ready():
 	cabin_rooms = [living_room, bathroom, kitchen, hallway, bedroom, storage, electrical]
 	reset_rooms()
 
-	transition_animation = get_node_or_null("/root/MainScene/Hud/BGProcessing/Transition/AnimationPlayer")
+	transition_animation = get_node_or_null("/root/MainScene/Hud/AnimationPlayer")
 	transition_node = get_node_or_null("/root/MainScene/Hud/BGProcessing/Transition")
 
 	if not transition_animation or not transition_node:

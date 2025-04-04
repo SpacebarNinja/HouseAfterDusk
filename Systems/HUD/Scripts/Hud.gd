@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var death_name: String = ""
 var display_dict: Dictionary
 var current_hud: String
 
@@ -22,6 +21,8 @@ func _ready():
 func _input(_event):
 	if Input.is_action_pressed("Escape") and not (current_hud == "QTE" or current_hud == "Death"):
 		#current_display("Main")
+		HudManager.camera_movement = true
+		HudManager.flashlight_movement = true
 		player.movement_speed = 80
 		
 func current_display(display):
@@ -36,12 +37,12 @@ func current_display(display):
 	elif current_hud == "Fishing":
 		display_dict["Fishing"].chance_timer.start()
 		display_dict["Fishing"].duration_timer.start()
-	
-	elif current_hud == "Death":
-		animation_player.play("death_screen")
-		if death_name:
-			display_dict["Death"].get_death_image(death_name)
 		
 	elif current_hud == "QTE":
 		animation_player.play("quick_time_event_start")
 		display_dict["QTE"].start_qte()
+
+func set_death(death_type: String, death_name: String):
+	if current_hud == "Death":
+		animation_player.play("death_screen")
+		display_dict["Death"].setup_death_report(death_type, death_name)

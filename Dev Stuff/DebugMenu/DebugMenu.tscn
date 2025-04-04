@@ -541,12 +541,13 @@ size = Vector2i(1, 1)
 item_protoset = ExtResource("16_lwjpa")
 
 [node name="TrashGrid" type="Control" parent="InventoryWindow/InventoryPanel/TrashPanel"]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 58.0
+offset_bottom = 58.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Trash")
 field_dimensions = Vector2(52, 52)
@@ -605,11 +606,12 @@ protoset = ExtResource("16_lwjpa")
 prototype_id = "bullet"
 
 [node name="GearGrid" type="Control" parent="InventoryWindow/InventoryPanel/GearPanel"]
+custom_minimum_size = Vector2(352, 64)
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 72.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Gear")
 field_dimensions = Vector2(64, 64)
@@ -950,11 +952,12 @@ properties = {
 }
 
 [node name="FoodGrid" type="Control" parent="InventoryWindow/InventoryPanel/FoodPanel"]
+custom_minimum_size = Vector2(352, 568)
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 576.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Food")
 field_dimensions = Vector2(64, 64)
@@ -1118,12 +1121,13 @@ properties = {
 }
 
 [node name="MaterialGrid" type="Control" parent="InventoryWindow/InventoryPanel/ResourcePanel"]
+custom_minimum_size = Vector2(352, 280)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 288.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Material")
 field_dimensions = Vector2(64, 64)
@@ -1207,12 +1211,13 @@ properties = {
 }
 
 [node name="EnemyGrid" type="Control" parent="InventoryWindow/InventoryPanel/MiscellaneousPanel"]
+custom_minimum_size = Vector2(352, 136)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 360.0
+offset_bottom = 144.0
 script = ExtResource("14_on3mp")
 inventory_path = NodePath("../Enemy")
 field_dimensions = Vector2(64, 64)

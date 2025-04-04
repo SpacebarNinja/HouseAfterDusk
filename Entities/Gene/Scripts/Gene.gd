@@ -123,7 +123,7 @@ func sprint():
 		animation_tree.get("parameters/Movement/playback").travel("Sprint")
 		spawn_particle()
 	
-func take_damage(enemy_damage: int, enemy_velocity: Vector2):
+func take_damage(type: String, enemy_name: String, enemy_damage: int, enemy_velocity: Vector2):
 	if can_take_damage:
 		current_health = clampi(current_health - enemy_damage, 0, max_health)
 		take_knockback(enemy_velocity)
@@ -133,7 +133,7 @@ func take_damage(enemy_damage: int, enemy_velocity: Vector2):
 		animation_tree.get("parameters/playback").travel("Damaged")
 		
 		if current_health <= 0:
-			death()
+			death(type, enemy_name)
 			
 func take_knockback(enemy_velocity: Vector2):
 	var knockback_dir = (global_position - enemy_velocity).normalized()
@@ -188,14 +188,17 @@ func equip_weapon(weapon_check: bool, weapon_id: String):
 			var weapon_instance = equipped_item.get_child(0)
 			equipped_item.remove_child(weapon_instance)
 
-func death():
+func death(type: String, enemy_name: String):
 	animation_tree.get("parameters/playback").travel("Death")
 	camera.target_zoom = Vector2(5.8, 5.8)
-	camera.offset = Vector2(32, 0)
-	canvas_hud.current_display("Death")
+	camera.offset = Vector2(-16, -8)
 	vision_cone.enabled = false
 	HudManager.camera_movement = false
 	set_collision_layer_value(2, false)
+	
+	await get_tree().create_timer(0.8).timeout
+	canvas_hud.current_display("Death")
+	canvas_hud.set_death(type, enemy_name)
 	
 func alternative_movement() -> bool:
 	var distance_to_mouse = global_position.distance_to(get_global_mouse_position())

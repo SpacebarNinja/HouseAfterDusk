@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgvunf2kbf3y8"
-path="res://.godot/imported/Death_By_Starvation.png-efc63e5c07dd8c02b0b6c260f0376950.ctex"
+path="res://.godot/imported/Death_By_STARVATION.png-870c96987ded918a1df0297110a1db28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/HUD/Art/Death_By_Starvation.png"
-dest_files=["res://.godot/imported/Death_By_Starvation.png-efc63e5c07dd8c02b0b6c260f0376950.ctex"]
+source_file="res://Systems/HUD/Art/Death_By_STARVATION.png"
+dest_files=["res://.godot/imported/Death_By_STARVATION.png-870c96987ded918a1df0297110a1db28.ctex"]
 
 [params]
 

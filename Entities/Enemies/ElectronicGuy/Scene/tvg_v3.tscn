@@ -1105,6 +1105,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisionCone:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -64)]
+}
 
 [sub_resource type="Animation" id="Animation_o4k43"]
 resource_name = "Teleport"
@@ -1395,7 +1407,7 @@ statemachine = NodePath("StateMachine")
 visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_ijq52")
-animation = &"Teleport"
+animation = &""
 offset = Vector2(0, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1409,6 +1421,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.892237, 0.243212, 0.471087, 1)
 
 [node name="VisionCone" type="PointLight2D" parent="."]
+position = Vector2(0, -64)
 scale = Vector2(1.2, 2.5)
 color = Color(0.832644, 0.290377, 0.290377, 1)
 texture = ExtResource("7_5rjdu")
@@ -1505,7 +1518,7 @@ tree_root = SubResource("AnimationNodeStateMachine_pvgnc")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="PlayerFoundTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 5.0
 one_shot = true
 
 [node name="MovementTimer" type="Timer" parent="."]

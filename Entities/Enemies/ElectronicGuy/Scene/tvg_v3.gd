@@ -27,8 +27,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	handle_vision_cone()
-	handle_movement(delta)
-	print("PlayerSeen: ", player_seen)
+	handle_movement()
 	
 func terminate() -> void:
 	print("Turned Off Generator, Killing TvG")
@@ -44,4 +43,4 @@ func _on_player_lost() -> void:
 	player_seen = false
 
 func _on_search_duration_timeout() -> void:
-	current_pathfinding = PATHFINDING.RETREAT
+	current_pathfinding = PATHFINDING.ORIGIN

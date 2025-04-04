@@ -6,7 +6,7 @@ class_name EnemyClass
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var item_drop = preload("res://Systems/Inventory/Others/dropped_item.tscn")
 
-enum PATHFINDING {WANDER, CHASE, RETREAT}
+enum PATHFINDING {WANDER, CHASE, ORIGIN, WINDOW}
 
 @export_category("General Enemy Stats")
 @export var movement_speed: int = 75
@@ -33,12 +33,11 @@ signal PlayerLost
 signal Death
 
 var player_seen: bool = false
-var player_in_hitbox: bool = false
 
 func _ready():
 	player_found_timer.timeout.connect(on_player_found_timeout)
 
-func handle_movement(_delta):
+func handle_movement():
 	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 	velocity = movement_speed * direction
 	move_and_slide()
@@ -59,7 +58,6 @@ func handle_vision_cone():
 				
 func rotate_vision_cone(target_angle: float, speed: float):
 	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, speed)
-	print("Pos: ", vision_cone.rotation)
 	
 func toggle_vision(toggle: bool):
 	vision_cone.enabled = toggle

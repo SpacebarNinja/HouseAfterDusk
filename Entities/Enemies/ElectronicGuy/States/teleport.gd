@@ -22,7 +22,7 @@ func teleport():
 			wander()
 		enemy.PATHFINDING.CHASE:
 			chase()
-		enemy.PATHFINDING.RETREAT:
+		enemy.PATHFINDING.ORIGIN:
 			retreat()
 			
 func wander():
