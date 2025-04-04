@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://btnne6ekpxmv4"]
+[gd_scene load_steps=20 format=3 uid="uid://btnne6ekpxmv4"]
 
-[ext_resource type="Script" uid="uid://cralv3syvwr27" path="res://Entities/Deer/Scripts/deer.gd" id="1_mm3lw"]
-[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Deer/Art/deer male calciumtrice.png" id="2_s3xci"]
+[ext_resource type="Texture2D" uid="uid://do2vy2srik4ky" path="res://Entities/Animals/Deer/Art/deer male calciumtrice.png" id="2_s3xci"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="3_fexvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2mpi"]
@@ -125,18 +124,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yybsu"]
 radius = 11.5434
 
-[node name="Deer" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone", "hitbox")]
+[node name="Deer" type="CharacterBody2D"]
 collision_layer = 8
-script = ExtResource("1_mm3lw")
-movement_speed = 150
-health = 80
-intelligence = 2
-spawn_location = "FOREST"
-wander_radius = 100.0
-anim_sprite = NodePath("AnimatedSprite2D")
-navigation_agent = NodePath("NavigationAgent2D")
-vision_cone = NodePath("Vision")
-hitbox = NodePath("Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8eft")
@@ -203,7 +192,5 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[connection signal="Death" from="." to="." method="_on_death"]
-[connection signal="PlayerFound" from="." to="." method="_on_player_found"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

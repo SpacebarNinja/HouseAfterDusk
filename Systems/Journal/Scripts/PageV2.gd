@@ -43,7 +43,7 @@ func _add_entry():
 	entry = " The entity, classified as an anomaly, has been identified as %height. It exhibits the characteristics of a %shape, notably %features that suggest possible evolutionary adaptations for survival. The observed behavior indicates that the creature %action in response to external stimuli and %reaction, implying an advanced or instinctual level of environmental awareness. Given its unpredictable nature, the recommended protocol involves %methods to ensure the safety of personnel and to contain the anomaly effectively."
 	add_button.hide()
 	
-func _process(delta):
+func _process(_delta):
 
 	# Call update_text() each frame to check if the typewriter effect has finished or dropdowns are resolved.
 	update_text()

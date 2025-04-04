@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://drvj3cgvv6w28"]
+[gd_scene load_steps=23 format=3 uid="uid://drvj3cgvv6w28"]
 
 [ext_resource type="Script" uid="uid://545py48ja0w" path="res://Systems/MainMenu/main_menu.gd" id="1_64lc2"]
 [ext_resource type="Texture2D" uid="uid://cy37rkpbm4s3a" path="res://Boot Splash.png" id="2_5xj75"]
@@ -27,11 +27,8 @@ font_size = 50
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3ov0x"]
-load_path = "res://.godot/imported/Menu_Buttons.png-e5e795209c7a863a4ca7e34ce2351b66.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tiuc"]
-atlas = SubResource("CompressedTexture2D_3ov0x")
+atlas = ExtResource("5_3ov0x")
 region = Rect2(40, 232, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dx2h"]
@@ -51,7 +48,7 @@ atlas = ExtResource("5_3ov0x")
 region = Rect2(152, 248, 168, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cdlb"]
-atlas = SubResource("CompressedTexture2D_3ov0x")
+atlas = ExtResource("5_3ov0x")
 region = Rect2(16, 152, 80, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2xy7"]

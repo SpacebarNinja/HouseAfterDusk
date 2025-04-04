@@ -8,8 +8,6 @@ func enter():
 
 func exit():
 	enemy.glitch_timer.wait_time = randf_range(enemy.glitch_frequency, enemy.glitch_frequency * 1.5)
-	if enemy.movement_timer.is_stopped():
-		enemy.movement_timer.start()
 	
 func glitch():
 	enemy.animation_tree.get("parameters/playback").travel("Glitch")

@@ -4,7 +4,7 @@ enum LOCATIONS {RANDOM_CABIN, PLAYER_ROOM, PLAYER_LOCATION, CLOSEST_WINDOW}
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var camera = get_tree().get_first_node_in_group("MainCamera")
-@onready var hud = get_tree().get_first_node_in_group("CanvasHud")
+@onready var canvas_hud = get_tree().get_first_node_in_group("CanvasHud")
 @onready var transition_node = get_node_or_null("Hud/BGProcessing/Transition")
 
 @onready var spawn_cooldown = $SpawnCooldown
@@ -41,10 +41,10 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 		return
 	
 	# TRANSITION
-	if hud:
+	if canvas_hud:
 		transition_node.visible = true
-		hud.animation_player.play("scene_transition_in")
-		await hud.animation_player.animation_finished
+		canvas_hud.animation_player.play("scene_transition_in")
+		await canvas_hud.animation_player.animation_finished
 
 	# Get MainScene correctly
 	var main_scene = get_node_or_null("/root/MainScene")
@@ -89,9 +89,9 @@ func switch_map(new_map_path: String, player_position: Vector2, transition_type:
 			camera.apply_zoom_transition(Vector2(original_zoom + zoom_in_amount, original_zoom + zoom_in_amount))
 		camera.reset_camera_position(player.global_position)
 
-	if hud:
-		hud.animation_player.play("scene_transition_out")
-		await hud.animation_player.animation_finished
+	if canvas_hud:
+		canvas_hud.animation_player.play("scene_transition_out")
+		await canvas_hud.animation_player.animation_finished
 		transition_node.visible = false
 	
 func get_spawn_node(spawn_location):
@@ -169,7 +169,7 @@ func kill_all_enemies():
 	#debug_spawned_enemies()
 	print("Killed all enemies.")
 
-func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
+func direct_enemy(enemy: EnemyClass, location: LOCATIONS):
 	var target_position = null
 
 	match location:
@@ -191,9 +191,8 @@ func direct_enemy(enemy: Entity_Class, location: LOCATIONS):
 
 # { Extra Logic }----------------------------------------------------------
 func start_quick_time_event():
-	hud.current_display("QTE")
-	player.hide()
-		
+	canvas_hud.current_display("QTE")
+
 func get_scene_name(packed_scene: PackedScene) -> String:
 	if packed_scene.resource_path:
 		return packed_scene.resource_path.get_file().get_basename()

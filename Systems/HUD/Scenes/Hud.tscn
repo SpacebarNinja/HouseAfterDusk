@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cs3euhsmepn8e"]
+[gd_scene load_steps=103 format=3 uid="uid://cs3euhsmepn8e"]
 
 [ext_resource type="PackedScene" uid="uid://ce2nviltx65es" path="res://Systems/Journal/Scenes/Journal.tscn" id="1_7mtow"]
 [ext_resource type="Script" uid="uid://dg1fwjeiv0nqf" path="res://Systems/HUD/Scripts/Hud.gd" id="1_ofedd"]
@@ -49,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://dtdg8a804jyup" path="res://Systems/HUD/Art/Fishing_GUI.png" id="45_xk6gj"]
 [ext_resource type="Script" uid="uid://c5qy2i8s1y64q" path="res://Systems/HUD/Scripts/death_hud.gd" id="48_w2ixv"]
 [ext_resource type="Script" uid="uid://dvxue5fmh8lto" path="res://Assets/Visuals/button_template.gd" id="49_exkyl"]
+[ext_resource type="Texture2D" uid="uid://bgvunf2kbf3y8" path="res://Systems/HUD/Art/Death_By_Starvation.png" id="49_kvx2w"]
 [ext_resource type="Script" uid="uid://ibxrnnbj6isp" path="res://Systems/HUD/Scripts/quick_time_event.gd" id="50_nlno4"]
 [ext_resource type="Texture2D" uid="uid://dro6j75bhe75l" path="res://Systems/HUD/Art/QTE_button_hold.png" id="51_kvx2w"]
 [ext_resource type="Texture2D" uid="uid://cbda0cdpe7kmi" path="res://Systems/HUD/Art/QTE_Button.png" id="52_whreg"]
@@ -288,43 +289,43 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DeathHud/DeathLabel:self_modulate")
+tracks/5/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/vignette_strength")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [9.36]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("DeathHud/DeathLabel:position")
+tracks/6/path = NodePath("QTEHud:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(648, 400)]
+"update": 1,
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("BGProcessing/Vignette Effect:material:shader_parameter/vignette_strength")
+tracks/7/path = NodePath("DeathHud:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [9.36]
+"update": 1,
+"values": [true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("QTEHud:visible")
+tracks/8/path = NodePath("QTEHud/QTEBUTTON/QTEButton:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -336,19 +337,19 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("DeathHud:visible")
+tracks/9/path = NodePath("QTEHud/QTEBUTTON/QTEButtonPressed:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("QTEHud/QTEBUTTON/QTEButton:visible")
+tracks/10/path = NodePath("BGProcessing/Vignette Effect:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -360,14 +361,26 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("QTEHud/QTEBUTTON/QTEButtonPressed:visible")
+tracks/11/path = NodePath("DeathHud/DeathStats:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DeathHud/DeathStats:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4yqif"]
@@ -427,38 +440,50 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DeathHud/DeathLabel:self_modulate")
+tracks/2/path = NodePath("DeathHud:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DeathHud/DeathLabel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(648, 400), Vector2(672, 344)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("DeathHud:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BGProcessing/Vignette Effect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathHud/DeathStats:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.139626]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathHud/DeathStats:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-664, -96), Vector2(12.995, 22.18)]
 }
 
 [sub_resource type="Animation" id="Animation_yv6xd"]
@@ -576,6 +601,7 @@ _data = {
 script = ExtResource("1_ofedd")
 
 [node name="BGProcessing" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -641,6 +667,7 @@ texture = ExtResource("2_0ak6f")
 stretch_mode = 4
 
 [node name="MainHud" type="Control" parent="." groups=["MainHud"]]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1400,6 +1427,7 @@ item_protoset = ExtResource("32_1yik7")
 
 [node name="CookingGrid" type="Control" parent="CookingHud/CookingPanel"]
 texture_filter = 1
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1408,8 +1436,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
 offset_top = -176.0
-offset_right = -88.0
-offset_bottom = -176.0
+offset_right = 162.0
+offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("34_qk7f8")
@@ -1435,12 +1463,13 @@ size = Vector2i(1, 1)
 item_protoset = ExtResource("32_1yik7")
 
 [node name="CookingResultGrid" type="Control" parent="CookingHud/SkillCheck"]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 93.0
 offset_top = 3.0
-offset_right = 93.0
-offset_bottom = 3.0
+offset_right = 183.0
+offset_bottom = 93.0
 script = ExtResource("34_qk7f8")
 inventory_path = NodePath("../CookingResult")
 field_dimensions = Vector2(90, 90)
@@ -1543,6 +1572,15 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("48_w2ixv")
 
+[node name="DeathStats" type="TextureRect" parent="DeathHud"]
+layout_mode = 0
+offset_right = 648.0
+offset_bottom = 648.0
+pivot_offset = Vector2(324, 324)
+texture = ExtResource("49_kvx2w")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="RestartButton" type="TextureButton" parent="DeathHud"]
 layout_mode = 1
 anchors_preset = 8
@@ -1550,9 +1588,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 480.0
+offset_left = 784.0
 offset_top = 128.0
-offset_right = 672.0
+offset_right = 976.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1576,26 +1614,6 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
-label_settings = SubResource("LabelSettings_ifq5g")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DeathLabel" type="Label" parent="DeathHud"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 648.0
-offset_top = 400.0
-offset_right = 819.0
-offset_bottom = 448.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.185005
-text = "You Died :)"
 label_settings = SubResource("LabelSettings_ifq5g")
 horizontal_alignment = 1
 vertical_alignment = 1

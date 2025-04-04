@@ -1,9 +1,10 @@
 extends EnemyState
 
-var stun_duration: float = 2.5
+@export var stun_duration: float = 2.5
 
 func enter():
 	enemy.animation_tree.get("parameters/playback").travel("QuickTimeEvent_Stop")
+	enemy.player_seen = false
 	await get_tree().create_timer(stun_duration).timeout
 	unstun()
 

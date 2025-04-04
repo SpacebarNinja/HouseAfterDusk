@@ -16,6 +16,7 @@ const max_hunger = 55
 @export var current_hunger: int = 55
 @export var knockback_power: int = 1000
 @export var can_take_damage: bool = true
+@export var ALTERNATIVE_MOVE_SPRINT_DISTANCE: int = 100
 
 #------------{ Gene Nodes }------------
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -33,6 +34,8 @@ var flashlight_on: bool = false
 var equipped_weapon: bool = false
 var current_weapon: String = ""
 var is_outside: bool = false
+var right_click_moving: bool = false
+var is_alt_sprinting: bool = false
 
 func _process(_delta):
 	modulate_player()
@@ -41,9 +44,13 @@ func _process(_delta):
 	if WorldManager.StopGeneMovement:
 		return
 
-	var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
-	velocity = move_vector * movement_speed
-	
+	var used_alternative = alternative_movement()
+
+	if not used_alternative:
+		var move_vector = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown")
+		velocity = move_vector * movement_speed
+		is_alt_sprinting = false
+
 	if equipped_weapon:
 		animation_tree.active = false
 		animated_sprite.hide()
@@ -52,7 +59,8 @@ func _process(_delta):
 		animation_tree.active = true
 		animated_sprite.show()
 		equipped_item_visual.show()
-		handle_movement_animation()
+		if not used_alternative:
+			handle_movement_animation()
 
 	move_and_slide()
 
@@ -189,6 +197,45 @@ func death():
 	HudManager.camera_movement = false
 	set_collision_layer_value(2, false)
 	
+func alternative_movement() -> bool:
+	var distance_to_mouse = global_position.distance_to(get_global_mouse_position())
+	var altmove_sprint_distance = ALTERNATIVE_MOVE_SPRINT_DISTANCE
+	var alternative_move_pressed = Input.is_action_pressed("AlternativeMove")
+	var sprint_pressed = Input.is_action_pressed("Sprint")
+	
+	var backpack_instance = get_node_or_null("/root/MainScene/Hud/MechanicHud/Backpack/BackpackInventory/BackpackSprite")
+	var is_hovering_inventory = backpack_instance and backpack_instance.get("is_hovering_inventory")
+
+	var no_keyboard_input = Input.get_vector("WalkLeft", "WalkRight", "WalkUp", "WalkDown") == Vector2.ZERO
+
+	if alternative_move_pressed and no_keyboard_input and distance_to_mouse > 10 and not is_hovering_inventory:
+		right_click_moving = true
+
+		var mouse_position = get_global_mouse_position()
+		var mouse_direction = (mouse_position - global_position).normalized()
+
+		if mouse_direction.x < 0:
+			animated_sprite.flip_h = true
+			equipped_item_visual.flip_h = true
+		else:
+			animated_sprite.flip_h = false
+			equipped_item_visual.flip_h = false
+
+		var is_sprinting = (sprint_pressed or distance_to_mouse > altmove_sprint_distance) and can_sprint
+		if is_sprinting:
+			velocity = mouse_direction * movement_speed * 2
+			animation_tree.get("parameters/Movement/playback").travel("Sprint")
+			spawn_particle()
+			is_alt_sprinting = true
+		else:
+			velocity = mouse_direction * movement_speed
+			animation_tree.get("parameters/Movement/playback").travel("Walk")
+			is_alt_sprinting = false
+
+		return true  # Indicate that alternative movement handled it
+	else:
+		right_click_moving = false
+		return false
 func _on_hunger_timer_timeout():
 	current_hunger = clampi(current_hunger - 1, 0, max_hunger)
 

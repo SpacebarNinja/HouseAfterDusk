@@ -9,9 +9,9 @@ func enter():
 	corrupted_channels = [1,2,3,4]
 
 func exit():
-	enemy.is_wandering = true
 	enemy.current_pathfinding = enemy.PATHFINDING.WANDER
 	enemy.search_duration.start()
+	enemy.movement_timer.start()
 	enemy.prowl_timer.stop()
 	enemy.prowl_timer.disconnect("timeout", Callable(self, "_on_prowl_timer_timeout"))
 

@@ -72,11 +72,15 @@ func _on_backpack_button_pressed():
 	backpack.is_open = !backpack.is_open
 
 func _on_journal_button_pressed():
-	if journal.is_open:
-		journal.open_journal_state = false
+	journal.open_journal_state = not journal.open_journal_state
+	if journal.open_journal_state:
+		HudManager.inventory_visible = false
+		HudManager.stats_visible = false
+		WorldManager.StopGeneMovement = true
 	else:
-		journal.open_journal_state = true
-	journal.is_open = !journal.is_open
+		HudManager.inventory_visible = true
+		HudManager.stats_visible = true
+		WorldManager.StopGeneMovement = false
 
 func update_health_bar():
 	health_bar.value = lerp(float(health_bar.value), float(player.current_health), 0.1)

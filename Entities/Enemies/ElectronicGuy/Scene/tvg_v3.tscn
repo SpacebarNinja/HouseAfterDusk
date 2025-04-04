@@ -1,10 +1,10 @@
-[gd_scene load_steps=161 format=3 uid="uid://dttxuntfdbxb2"]
+[gd_scene load_steps=160 format=3 uid="uid://dttxuntfdbxb2"]
 
 [ext_resource type="Script" uid="uid://tfwnmsa87bcr" path="res://Entities/Enemies/ElectronicGuy/Scene/tvg_v3.gd" id="1_hn372"]
 [ext_resource type="Texture2D" uid="uid://jnhrqbsna2l3" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Idle.png" id="2_p7gne"]
 [ext_resource type="Texture2D" uid="uid://dt0mtv6t7gdf3" path="res://Entities/Enemies/ElectronicGuy/Art/TVG_Stunned.png" id="3_bkoxt"]
 [ext_resource type="Texture2D" uid="uid://bbxxbbp03d7i8" path="res://Entities/Enemies/ElectronicGuy/Art/TV_guy_Kidnap.png" id="4_b4pc1"]
-[ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Teleport.png" id="5_fqpu8"]
+[ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Teleport.png" id="5_v84hm"]
 [ext_resource type="Texture2D" uid="uid://dnnyqd8ke15d5" path="res://Entities/Enemies/ElectronicGuy/Art/TV_Exit.png" id="6_54eqp"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="7_5rjdu"]
 [ext_resource type="Script" uid="uid://b3gga3h8gifn2" path="res://Entities/General/EnemyStatemachine.gd" id="8_lfdcd"]
@@ -227,37 +227,33 @@ region = Rect2(192, 300, 64, 150)
 atlas = ExtResource("3_bkoxt")
 region = Rect2(256, 300, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eaoea"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fog1"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(0, 0, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0p78q"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_455im"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(64, 0, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5dlij"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvqys"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(128, 0, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2qsx"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnnjk"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(192, 0, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l13yv"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ug76"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(256, 0, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1py3w"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkiiw"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(320, 0, 64, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywl4v"]
-atlas = ExtResource("5_fqpu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrgj7"]
+atlas = ExtResource("5_v84hm")
 region = Rect2(384, 0, 64, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rh5hb"]
-atlas = ExtResource("2_p7gne")
-region = Rect2(64, 450, 64, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hy7a"]
 atlas = ExtResource("6_54eqp")
@@ -644,28 +640,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eaoea")
+"texture": SubResource("AtlasTexture_5fog1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0p78q")
+"texture": SubResource("AtlasTexture_455im")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5dlij")
+"texture": SubResource("AtlasTexture_mvqys")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b2qsx")
+"texture": SubResource("AtlasTexture_rnnjk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l13yv")
+"texture": SubResource("AtlasTexture_2ug76")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1py3w")
+"texture": SubResource("AtlasTexture_bkiiw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ywl4v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rh5hb")
+"texture": SubResource("AtlasTexture_hrgj7")
 }],
 "loop": false,
 "name": &"Teleport",
@@ -854,6 +847,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_haii7"]
 resource_name = "Idle"
@@ -906,42 +911,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox:monitoring")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:movement_speed")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_8r6et"]
@@ -1025,20 +994,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"toggle_vision"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_4hy7a"]
@@ -1129,14 +1084,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1182,26 +1137,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox:monitoring")
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:movement_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 120]
 }
 
 [sub_resource type="Animation" id="Animation_71ixp"]
@@ -1235,38 +1190,43 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox:monitoring")
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:movement_speed")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"toggle_vision"
+}, {
+"args": [true],
+"method": &"toggle_vision"
+}]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D:visible")
+tracks/4/path = NodePath(".:movement_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_w0dhw"]
@@ -1308,18 +1268,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c2gp"]
@@ -1424,15 +1372,12 @@ states/Teleport_Backward/position = Vector2(585, 172)
 states/Tv_Exit/node = SubResource("AnimationNodeAnimation_w0dhw")
 states/Tv_Exit/position = Vector2(332, 100)
 transitions = ["Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_7obh5"), "Teleport", "Teleport_Backward", SubResource("AnimationNodeStateMachineTransition_qq1up"), "Idle", "Glitch", SubResource("AnimationNodeStateMachineTransition_b4r00"), "Glitch", "Idle", SubResource("AnimationNodeStateMachineTransition_naexb"), "Teleport_Backward", "Idle", SubResource("AnimationNodeStateMachineTransition_117uq"), "Idle", "QuickTimeEvent_Start", SubResource("AnimationNodeStateMachineTransition_u8owp"), "QuickTimeEvent_Start", "QuickTimeEvent_Loop", SubResource("AnimationNodeStateMachineTransition_1njbb"), "QuickTimeEvent_Loop", "QuickTimeEvent_Stop", SubResource("AnimationNodeStateMachineTransition_6400f"), "QuickTimeEvent_Stop", "QuickTimeEvent_Stun", SubResource("AnimationNodeStateMachineTransition_ow3ul"), "QuickTimeEvent_Stun", "Idle", SubResource("AnimationNodeStateMachineTransition_d4mox"), "Tv_Exit", "Idle", SubResource("AnimationNodeStateMachineTransition_n0asa"), "Start", "Tv_Exit", SubResource("AnimationNodeStateMachineTransition_w0dhw"), "QuickTimeEvent_Loop", "Idle", SubResource("AnimationNodeStateMachineTransition_f2ogc")]
-graph_offset = Vector2(-145.638, -78.5254)
+graph_offset = Vector2(-145.638, -68.6592)
 
 [node name="TvGv3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine") groups=["Electronic"]]
-light_mask = 0
-visibility_layer = 0
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_hn372")
-teleport_max_hide_length = 2.0
 movement_speed = 0
 health = 10000
 attack_damage = 200
@@ -1450,8 +1395,7 @@ statemachine = NodePath("StateMachine")
 visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_ijq52")
-animation = &"Glitch"
-frame = 9
+animation = &"Teleport"
 offset = Vector2(0, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1561,7 +1505,7 @@ tree_root = SubResource("AnimationNodeStateMachine_pvgnc")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="PlayerFoundTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 15.0
 one_shot = true
 
 [node name="MovementTimer" type="Timer" parent="."]
@@ -1578,11 +1522,11 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="TeleportTimer" type="Timer" parent="."]
+[node name="TeleportDuration" type="Timer" parent="."]
 one_shot = true
 
 [node name="SearchDuration" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 120.0
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -1615,5 +1559,4 @@ enemy = NodePath("../..")
 
 [connection signal="PlayerFound" from="." to="." method="_on_player_found"]
 [connection signal="PlayerLost" from="." to="." method="_on_player_lost"]
-[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="SearchDuration" to="." method="_on_search_duration_timeout"]

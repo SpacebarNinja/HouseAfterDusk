@@ -30,6 +30,7 @@ enum PATHFINDING {WANDER, CHASE, RETREAT}
 
 signal PlayerFound
 signal PlayerLost
+signal Death
 
 var player_seen: bool = false
 var player_in_hitbox: bool = false
@@ -37,7 +38,7 @@ var player_in_hitbox: bool = false
 func _ready():
 	player_found_timer.timeout.connect(on_player_found_timeout)
 
-func handle_movement(delta):
+func handle_movement(_delta):
 	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 	velocity = movement_speed * direction
 	move_and_slide()
@@ -49,13 +50,17 @@ func handle_vision_cone():
 	for raycast in vision_cone.get_children():
 		if not raycast is RayCast2D:
 			continue
-		
+		 
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
 			if collider and collider.is_in_group("Player"):
 				PlayerFound.emit()
 				break  # Exit early once player is detected	
 				
+func rotate_vision_cone(target_angle: float, speed: float):
+	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, speed)
+	print("Pos: ", vision_cone.rotation)
+	
 func toggle_vision(toggle: bool):
 	vision_cone.enabled = toggle
 	for raycast in vision_cone.get_children():
@@ -63,7 +68,10 @@ func toggle_vision(toggle: bool):
 			continue  # Skip non-raycast nodes
 		else:
 			raycast.enabled = toggle
-			
+
+func toggle_hitbox(toggle: bool):
+	hitbox.monitoring = toggle
+
 func set_target_position(target_position: Vector2) -> void:
 	if navigation_agent:
 		var distance = global_position.distance_to(target_position)
@@ -80,5 +88,4 @@ func take_damage(player_damage: int):
 		print("Enemy Health: ", health)
 		
 func on_player_found_timeout():
-	player_seen = false
 	PlayerLost.emit()

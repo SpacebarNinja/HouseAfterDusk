@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgh1w6p3m7p5o"]
 
-[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Comicoro.ttf" id="1_km1po"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="1_km1po"]
 [ext_resource type="Script" uid="uid://cefjakmirindv" path="res://Systems/Journal/Scripts/dropdown_button.gd" id="1_lovx2"]
 [ext_resource type="Script" uid="uid://c5liwgkwcsrsg" path="res://Systems/Journal/Scripts/button_hover.gd" id="1_xo5tg"]
-[ext_resource type="Texture2D" uid="uid://8lyiwscj26d0" path="res://Assets/UI/Menu_Buttons2.png" id="4_j6r13"]
+[ext_resource type="Texture2D" uid="uid://cqat7k1e3d5qo" path="res://Assets/UI/Menu_Buttons.png" id="4_j6r13"]
 
 [sub_resource type="FontVariation" id="FontVariation_j6r13"]
 base_font = ExtResource("1_km1po")

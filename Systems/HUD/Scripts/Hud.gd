@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var death_name: String = ""
 var display_dict: Dictionary
 var current_hud: String
 
@@ -38,7 +39,9 @@ func current_display(display):
 	
 	elif current_hud == "Death":
 		animation_player.play("death_screen")
-	
+		if death_name:
+			display_dict["Death"].get_death_image(death_name)
+		
 	elif current_hud == "QTE":
 		animation_player.play("quick_time_event_start")
 		display_dict["QTE"].start_qte()

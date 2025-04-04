@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://chact4baxwqfo"]
+[gd_scene load_steps=6 format=3 uid="uid://chact4baxwqfo"]
 
 [ext_resource type="Texture2D" uid="uid://bxmd8cuhdd1ss" path="res://Entities/Enemies/TheDolls/Art/Doll_Idle.png" id="1_bluyw"]
-[ext_resource type="Script" uid="uid://5hdtt33ahlct" path="res://Entities/Enemies/TheDolls/Scripts/Doll.gd" id="1_v3bm4"]
 [ext_resource type="Texture2D" uid="uid://crhys4clwm17s" path="res://Entities/Enemies/TheDolls/Art/Doll_Passive.png" id="2_8fyii"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="4_5vufh"]
 
@@ -31,17 +30,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj146"]
 
-[node name="Doll" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "navigation_agent", "vision_cone")]
+[node name="Doll" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_v3bm4")
-movement_speed = 0
-acceleration = 0
-spawn_location = "CABIN"
-anim_sprite = NodePath("AnimatedSprite2D")
-navigation_agent = NodePath("NavigationAgent2D")
-vision_cone = NodePath("Vision")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.16, 0.16)

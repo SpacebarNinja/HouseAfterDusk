@@ -68,7 +68,7 @@ func _on_qte_timer_timeout():
 
 func set_player_state(active: bool):
 	player.movement_speed = 0 if not active else PLAYER_SPEED_DEFAULT
-	player.animated_sprite.visible = active
+	player.visible = active
 
 func toggle_hud_visibility(visibility: bool):
 	HudManager.clock_visible = visibility

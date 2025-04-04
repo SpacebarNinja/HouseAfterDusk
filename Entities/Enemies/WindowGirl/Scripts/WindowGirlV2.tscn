@@ -1,6 +1,5 @@
-[gd_scene load_steps=145 format=3 uid="uid://0xglca5ob35f"]
+[gd_scene load_steps=144 format=3 uid="uid://0xglca5ob35f"]
 
-[ext_resource type="Script" uid="uid://brrn67oqdaxcp" path="res://Entities/Enemies/WindowGirl/Scripts/WindowGirlV2.gd" id="1_n2wkp"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/Enemies/WindowGirl/Art/WG_Spritesheet.png" id="2_8tejb"]
 [ext_resource type="Texture2D" uid="uid://6tkser7ej7oj" path="res://Entities/Enemies/WindowGirl/Art/WG_Break_In_Spritesheet.png" id="3_6rl5w"]
 [ext_resource type="Texture2D" uid="uid://biih7jfxwtfh2" path="res://Entities/Enemies/WindowGirl/Art/WG_Break_In_Side_Spritesheet.png" id="3_bwi8w"]
@@ -1395,17 +1394,9 @@ states/Start/position = Vector2(103, 296)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3ys4a"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xwv7v"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_0hql0"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_xjfsh"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_lbwhp"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bssi2"), "Idle", "Scream", SubResource("AnimationNodeStateMachineTransition_hiqmh"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_e37ev"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_lmo3r"), "Scream", "Idle", SubResource("AnimationNodeStateMachineTransition_uiq3o"), "Idle", "BreakIn_Side", SubResource("AnimationNodeStateMachineTransition_v57cf"), "BreakIn_Side", "Idle", SubResource("AnimationNodeStateMachineTransition_0dm7e"), "Idle", "BreakIn_Top", SubResource("AnimationNodeStateMachineTransition_1qdgg"), "BreakIn_Top", "Idle", SubResource("AnimationNodeStateMachineTransition_lfrwh")]
 graph_offset = Vector2(-522.874, -14.5819)
 
-[node name="WindowGirlv2" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite", "anim_player", "anim_tree", "navigation_agent", "vision_cone", "hitbox")]
+[node name="WindowGirlv2" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_n2wkp")
-movement_speed = 80
-anim_sprite = NodePath("AnimatedSprite2D")
-anim_player = NodePath("AnimationPlayer")
-anim_tree = NodePath("AnimationTree")
-navigation_agent = NodePath("NavigationAgent2D")
-vision_cone = NodePath("VisionCone")
-hitbox = NodePath("Hitbox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
@@ -1535,9 +1526,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_xo5kh")
 anim_player = NodePath("../AnimationPlayer")
 
-[connection signal="Death" from="." to="." method="_on_death"]
-[connection signal="PlayerFound" from="." to="." method="_on_player_found"]
-[connection signal="PlayerLost" from="." to="." method="_on_player_lost"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

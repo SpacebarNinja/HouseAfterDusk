@@ -1,4 +1,4 @@
-extends Entity_Class
+extends EnemyClass
 
 @export_category("Window Chance")
 @export var chance_to_window: float = 20

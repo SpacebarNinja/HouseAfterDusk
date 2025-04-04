@@ -29,7 +29,10 @@ func HandleHover():
 		target_alpha = 0.6
 
 	global_position.x = lerp(global_position.x, target_position.x, hover_speed)
-	modulate.a = lerp(modulate.a, target_alpha, hover_speed)
+	if HudManager.inventory_visible:
+		modulate.a = lerp(modulate.a, target_alpha, hover_speed)
+	else:
+		modulate.a = lerp(modulate.a, 0.0, hover_speed)
 
 func get_equipped_item():
 	var equipped_item = equippable.get_item_at(Vector2i(0,0))

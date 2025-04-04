@@ -3,6 +3,7 @@ extends EnemyState
 func enter():
 	enemy.qte_hud.connect("QTE_Success", Callable(self, "_on_qte_success"))
 	enemy.qte_hud.connect("QTE_Fail", Callable(self, "_on_qte_fail"))
+	enemy.movement_timer.stop()
 	
 	enemy.animation_tree.get("parameters/playback").travel("QuickTimeEvent_Start")
 	game_scene.start_quick_time_event()
@@ -18,4 +19,5 @@ func _on_qte_success():
 func _on_qte_fail():
 	enemy.animation_tree.get("parameters/playback").travel("Idle")
 	player.take_damage(enemy.attack_damage,enemy.velocity)
+	
 	
