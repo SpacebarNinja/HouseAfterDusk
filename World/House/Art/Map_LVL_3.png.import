@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djxidlvypgows"
-path="res://.godot/imported/MAP_Roof-1.png-d48609f3b7356e0e41eb2a2208425e35.ctex"
+uid="uid://dsx636wt2dvdy"
+path="res://.godot/imported/Map_LVL_3.png-2e7d8bae05f5443d8a931745a4f243b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/MAP_Roof-1.png"
-dest_files=["res://.godot/imported/MAP_Roof-1.png-d48609f3b7356e0e41eb2a2208425e35.ctex"]
+source_file="res://World/House/Art/Map_LVL_3.png"
+dest_files=["res://.godot/imported/Map_LVL_3.png-2e7d8bae05f5443d8a931745a4f243b9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtca0icunbony"
-path="res://.godot/imported/Glow.png-da33e87d69878d8318a9ba6d72bba255.ctex"
+uid="uid://bav704xv35mxv"
+path="res://.godot/imported/Map_Cabin_Exterior_1.png-1a06372e7603ba14061343ba0aa7cf5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/Glow.png"
-dest_files=["res://.godot/imported/Glow.png-da33e87d69878d8318a9ba6d72bba255.ctex"]
+source_file="res://World/House/Art/Map_Cabin_Exterior_1.png"
+dest_files=["res://.godot/imported/Map_Cabin_Exterior_1.png-1a06372e7603ba14061343ba0aa7cf5e.ctex"]
 
 [params]
 

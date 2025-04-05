@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2s8m2ad3lnjr"
-path="res://.godot/imported/MAPFixed.png-301e9b02a7e3fd9d62e490218a6bbe4c.ctex"
+uid="uid://c7o2ugync4yf"
+path="res://.godot/imported/Map_Cabin_Exterior_Decoration.png-8436f62046adb70d0c2596ac55b75fd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/MAPFixed.png"
-dest_files=["res://.godot/imported/MAPFixed.png-301e9b02a7e3fd9d62e490218a6bbe4c.ctex"]
+source_file="res://World/House/Art/Map_Cabin_Exterior_Decoration.png"
+dest_files=["res://.godot/imported/Map_Cabin_Exterior_Decoration.png-8436f62046adb70d0c2596ac55b75fd7.ctex"]
 
 [params]
 

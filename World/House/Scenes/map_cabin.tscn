@@ -1,13 +1,13 @@
-[gd_scene load_steps=132 format=4 uid="uid://bicfulg8h4pxj"]
+[gd_scene load_steps=130 format=4 uid="uid://bicfulg8h4pxj"]
 
 [ext_resource type="Script" uid="uid://fgd0hiyybfx1" path="res://World/House/Scripts/map_cabin.gd" id="1_ffw1e"]
-[ext_resource type="Texture2D" uid="uid://cmt1c200gkqsr" path="res://World/House/Art/MAPTiles.png" id="2_e8q4k"]
-[ext_resource type="Texture2D" uid="uid://bkccgrqnic4q2" path="res://World/House/Art/MAP2.png" id="2_lf63l"]
-[ext_resource type="Texture2D" uid="uid://b2s8m2ad3lnjr" path="res://World/House/Art/MAPFixed.png" id="3_cad2m"]
-[ext_resource type="Texture2D" uid="uid://bc1kv7615t2k2" path="res://World/House/Art/MAP3.png" id="4_jnbdu"]
+[ext_resource type="Texture2D" uid="uid://ufswde4vjh6u" path="res://World/House/Art/Map_Cabin_Floor.png" id="2_e8q4k"]
+[ext_resource type="Texture2D" uid="uid://bkccgrqnic4q2" path="res://World/House/Art/Map_Cabin_Interior_Wall.png" id="2_lf63l"]
+[ext_resource type="Texture2D" uid="uid://b2s8m2ad3lnjr" path="res://World/House/Art/Map_Cabin_Interior_1.png" id="3_cad2m"]
+[ext_resource type="Texture2D" uid="uid://bc1kv7615t2k2" path="res://World/House/Art/Map_Cabin_Interior_2.png" id="4_jnbdu"]
 [ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/House/Art/LightTexture.png" id="5_vgchx"]
-[ext_resource type="Texture2D" uid="uid://ds5pxf1qjo1o8" path="res://World/House/Art/MAPDecor.png" id="5_whmnk"]
-[ext_resource type="Texture2D" uid="uid://bak3je71lqimb" path="res://World/House/Art/MAPElectrical.png" id="6_3ulbh"]
+[ext_resource type="Texture2D" uid="uid://ds5pxf1qjo1o8" path="res://World/House/Art/Map_Cabin_Interior_Decoration.png" id="5_whmnk"]
+[ext_resource type="Texture2D" uid="uid://bak3je71lqimb" path="res://World/House/Art/Map_Cabin_Interior_3.png" id="6_3ulbh"]
 [ext_resource type="Texture2D" uid="uid://kfx1rdk8htn5" path="res://World/House/Art/NavigationTile.png" id="6_7gkpj"]
 [ext_resource type="Script" uid="uid://cybh76tml5qd" path="res://World/House/Scripts/Rooms.gd" id="6_asq3q"]
 [ext_resource type="Material" uid="uid://dd1lkq85yan68" path="res://Assets/Visuals/Furniture Shadow.tres" id="7_jj0mf"]
@@ -25,7 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://bxcfwyqvb3qta" path="res://World/House/Audio/Channels/Channel3 - Romantic.mp3" id="19_kpcc4"]
 [ext_resource type="AudioStream" uid="uid://btikk04bsxcnn" path="res://World/House/Audio/Channels/Channel4 - News.mp3" id="20_c3v45"]
 [ext_resource type="Texture2D" uid="uid://cwt0ry1qmh6h2" path="res://World/House/Art/TVGlow.png" id="21_d16nc"]
-[ext_resource type="Texture2D" uid="uid://bs4ysvd3hopep" path="res://World/House/Art/MAPGenerator.png" id="21_u7gqm"]
 [ext_resource type="Script" uid="uid://dyy3vmbg22axd" path="res://World/House/Scripts/TransitionMap.gd" id="30_8w8dj"]
 [ext_resource type="AudioStream" uid="uid://c6s1apohu7xkf" path="res://Sounds/Ambient Electric.mp3" id="30_c18we"]
 [ext_resource type="Script" uid="uid://hgedwbg6tenj" path="res://World/House/Scripts/Workbench.gd" id="30_s5to4"]
@@ -1027,20 +1026,6 @@ texture_region_size = Vector2i(32, 32)
 3:5/0 = 0
 3:5/0/texture_origin = Vector2i(0, -16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whpas"]
-texture = ExtResource("21_u7gqm")
-texture_region_size = Vector2i(32, 32)
-1:3/size_in_atlas = Vector2i(2, 3)
-1:3/0 = 0
-1:3/0/texture_origin = Vector2i(-16, 32)
-1:3/0/y_sort_origin = -10
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 26.6667, 16, 26.6667, -64, -16, -64)
-1:6/size_in_atlas = Vector2i(2, 3)
-1:6/0 = 0
-1:6/0/texture_origin = Vector2i(-16, 32)
-1:6/0/y_sort_origin = -10
-1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 26.6667, 16, 26.6667, -64, -16, -64)
-
 [sub_resource type="TileSet" id="TileSet_nlj7c"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -1048,7 +1033,6 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_ypjda")
 sources/1 = SubResource("TileSetAtlasSource_o30b0")
 sources/2 = SubResource("TileSetAtlasSource_5bx1e")
-sources/3 = SubResource("TileSetAtlasSource_whpas")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsih2"]
 size = Vector2(32, 20)
@@ -1616,7 +1600,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(127, 128)
-tile_map_data = PackedByteArray("AAD5/wUAAAAJAAYAAAAIAP//AAAIAAcAAAD1//j/AAAEAAEAAAD1//n/AAAKAAcAAAD1//r/AAAKAAcAAAD1//7/AAAKAAcAAAD1/wAAAAAKAAcAAAD1/wEAAAAKAAcAAAD1/wIAAAAKAAcAAAD1/wMAAAAKAAcAAAD1/wQAAAAKAAcAAAD1/wUAAAAFAAEAAAD2//j/AAAJAAgAAAD2/wUAAAAJAAYAAAD3/wUAAAAJAAYAAAD4/wUAAAAJAAYAAAD6/wUAAAAJAAYAAAD7/wUAAAAJAAYAAAD8/wUAAAAJAAYAAAD9//f/AAAJAAIAAAD9/wUAAAAJAAYAAAD+//f/AAAKAAIAAAD+/wUAAAAJAAYAAAD//wUAAAAJAAYAAAAAAAUAAAAKAAYAAAADAAUAAAAIAAYAAAAEAAUAAAAJAAYAAAAFAAUAAAAJAAYAAAAGAPj/AAAJAAgAAAAGAAUAAAAJAAYAAAAHAPj/AAAJAAgAAAAHAAUAAAAJAAYAAAAIAPj/AAAHAAEAAAAIAP3/AAAIAAcAAAAIAP7/AAAIAAcAAAAIAAAAAAAIAAcAAAAIAAEAAAAIAAcAAAAIAAIAAAAIAAcAAAAIAAMAAAAIAAcAAAAIAAQAAAAIAAcAAAAIAAUAAAAGAAEAAAAIAPv/AAAIAAcAAAAHAPv/AAAKAAkAAAD+//v/AAALAAgAAAD9//v/AAAKAAkAAAD8//v/AAAJAAkAAAD7//v/AAAJAAkAAAD6//v/AAAJAAkAAAD5//v/AAAJAAkAAAD1//3/AAAKAAcAAAD1////AAAKAAcAAAAIAPz/AAAIAAcAAAAGAPv/AAAJAAkAAAAFAPv/AAAJAAkAAAAEAPv/AAAJAAkAAAADAPv/AAAJAAkAAAACAPv/AAAJAAkAAAABAPv/AAAIAAkAAAAAAPv/AAAHAAgAAAD1//z/AAAKAAcAAAD1//v/AAAKAAcAAAD2//v/AAAIAAkAAAD3//v/AAAJAAkAAAD4//v/AAAJAAkAAAD6//r/AQAAAAIAAAAIAPn/AAAIAAcAAAAIAPr/AAAIAAcAAAD9//n/AAAJAAQAAAD+//n/AAAKAAQAAAAAAPn/AAAHAAQAAAABAPn/AAAIAAQAAAAEAPj/AAAJAAgAAAAFAPj/AAAJAAgAAAADAPj/AAAJAAgAAAACAPj/AAAJAAgAAAABAPj/AAAIAAgAAAAAAPj/AAAHAAMAAAD+//j/AAAKAAMAAAD9//j/AAAKAAgAAAD8//j/AAAJAAgAAAD7//j/AAAJAAgAAAD6//j/AAAJAAgAAAD5//j/AAAJAAgAAAD4//j/AAAJAAgAAAD3//j/AAAJAAgAAAABAPf/AAAIAAIAAAAAAPf/AAAHAAIAAAD2/wAAAwADAAEAAAD+/wQAAwABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD5/wUAAAAJAAYAAAAIAP//AAAIAAcAAAD1//j/AAAEAAEAAAD1//n/AAAKAAcAAAD1//r/AAAKAAcAAAD1//7/AAAKAAcAAAD1/wAAAAAKAAcAAAD1/wEAAAAKAAcAAAD1/wIAAAAKAAcAAAD1/wMAAAAKAAcAAAD1/wQAAAAKAAcAAAD1/wUAAAAFAAEAAAD2//j/AAAJAAgAAAD2/wUAAAAJAAYAAAD3/wUAAAAJAAYAAAD4/wUAAAAJAAYAAAD6/wUAAAAJAAYAAAD7/wUAAAAJAAYAAAD8/wUAAAAJAAYAAAD9//f/AAAJAAIAAAD9/wUAAAAJAAYAAAD+//f/AAAKAAIAAAD+/wUAAAAJAAYAAAD//wUAAAAJAAYAAAAAAAUAAAAKAAYAAAADAAUAAAAIAAYAAAAEAAUAAAAJAAYAAAAFAAUAAAAJAAYAAAAGAPj/AAAJAAgAAAAGAAUAAAAJAAYAAAAHAPj/AAAJAAgAAAAHAAUAAAAJAAYAAAAIAPj/AAAHAAEAAAAIAP3/AAAIAAcAAAAIAP7/AAAIAAcAAAAIAAAAAAAIAAcAAAAIAAEAAAAIAAcAAAAIAAIAAAAIAAcAAAAIAAMAAAAIAAcAAAAIAAQAAAAIAAcAAAAIAAUAAAAGAAEAAAAIAPv/AAAIAAcAAAAHAPv/AAAKAAkAAAD+//v/AAALAAgAAAD9//v/AAAKAAkAAAD8//v/AAAJAAkAAAD7//v/AAAJAAkAAAD1//3/AAAKAAcAAAD1////AAAKAAcAAAAIAPz/AAAIAAcAAAAGAPv/AAAJAAkAAAAFAPv/AAAJAAkAAAAEAPv/AAAJAAkAAAADAPv/AAAJAAkAAAACAPv/AAAJAAkAAAABAPv/AAAIAAkAAAAAAPv/AAAHAAgAAAD1//z/AAAKAAcAAAD1//v/AAAKAAcAAAD2//v/AAAIAAkAAAD3//v/AAAJAAkAAAD4//v/AAAJAAkAAAAIAPn/AAAIAAcAAAAIAPr/AAAIAAcAAAD9//n/AAAJAAQAAAD+//n/AAAKAAQAAAAAAPn/AAAHAAQAAAABAPn/AAAIAAQAAAAEAPj/AAAJAAgAAAAFAPj/AAAJAAgAAAADAPj/AAAJAAgAAAACAPj/AAAJAAgAAAABAPj/AAAIAAgAAAAAAPj/AAAHAAMAAAD+//j/AAAKAAMAAAD9//j/AAAKAAgAAAD8//j/AAAJAAgAAAD7//j/AAAJAAgAAAD6//j/AAAJAAgAAAD5//j/AAAJAAgAAAD4//j/AAAJAAgAAAD3//j/AAAJAAgAAAABAPf/AAAIAAIAAAAAAPf/AAAHAAIAAAD2/wAAAwADAAEAAAD+/wQAAwABAAAAAAD6//v/AAAJAAkAAAD5//v/AAAJAAkAAAD6//r/AQAAAAIAAAA=")
 tile_set = SubResource("TileSet_vkpyt")
 
 [node name="TV" type="Node2D" parent="ROOMS/CabinNodes/Living Room" node_paths=PackedStringArray("interaction_area", "tilemap") groups=["Electronic"]]
@@ -1800,7 +1784,7 @@ tile_set = SubResource("TileSet_lhb4b")
 y_sort_enabled = true
 texture_filter = 1
 material = ExtResource("7_jj0mf")
-tile_map_data = PackedByteArray("AAD3//r/AAAEAAIAAAD5/wEAAQAGAAQAAAD8/wAAAQAKAAIAAAADAPr/AAACAAIAAAAEAP7/AAADAAAAAAAFAP3/AAACAAAAAAAFAP7/AAABAAAAAAAFAP//AAAIAAIAAAAGAP3/AAAKAAMAAAAGAP//AAAKAAMAAAAHAAEAAAABAAUAAAD7//r/AgADAAQAAAD8//r/AgAFAAQAAAD8//n/AgAEAAUAAAD7//n/AgABAAYAAAAFAPr/AgAHAAMAAAD2//7/AgAHAAoAAAAHAAIAAgAIAAkAAAAGAAIAAgADAAoAAAAHAAMAAgAIAAoAAAD2//3/AgAHAAkAAAD3//3/AgABAAcAAAD3//7/AgABAAsAAAD2/wIAAgAHAAkAAAD2/wMAAgAHAAoAAAD3/wIAAgABAAoAAAD3/wMAAgABAAkAAAA=")
+tile_map_data = PackedByteArray("AAD3//r/AAAEAAIAAAD5/wEAAQAGAAQAAAD8/wAAAQAKAAIAAAADAPr/AAACAAIAAAAEAP7/AAADAAAAAAAFAP3/AAACAAAAAAAFAP7/AAABAAAAAAAFAP//AAAIAAIAAAAGAP3/AAAKAAMAAAAGAP//AAAKAAMAAAAHAAEAAAABAAUAAAD7//r/AgADAAQAAAD8//r/AgAFAAQAAAD8//n/AgAEAAUAAAD7//n/AgABAAYAAAAFAPr/AgAHAAMAAAD2//7/AgAHAAoAAAAHAAIAAgAIAAkAAAAGAAIAAgADAAoAAAAHAAMAAgAIAAoAAAD2//3/AgAHAAkAAAD3//3/AgABAAcAAAD3//7/AgABAAsAAAD2/wIAAgAHAAkAAAD2/wMAAgAHAAoAAAD3/wIAAgABAAoAAAD3/wMAAgABAAkAAAD6//v/AAAAAAIAAAA=")
 tile_set = SubResource("TileSet_nlj7c")
 
 [node name="Wall Hitbox" type="TileMapLayer" parent="ROOMS/CabinNodes/Living Room"]

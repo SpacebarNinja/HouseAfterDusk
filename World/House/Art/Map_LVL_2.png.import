@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkcte20xhftfs"
-path="res://.godot/imported/MAP_Exterior-1.png-c7943c19ccb869575448dcba0473c910.ctex"
+uid="uid://cq5iakecva0qv"
+path="res://.godot/imported/Map_LVL_2.png-1ff433f93453105d39974a16d3b75a5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/MAP_Exterior-1.png"
-dest_files=["res://.godot/imported/MAP_Exterior-1.png-c7943c19ccb869575448dcba0473c910.ctex"]
+source_file="res://World/House/Art/Map_LVL_2.png"
+dest_files=["res://.godot/imported/Map_LVL_2.png-1ff433f93453105d39974a16d3b75a5d.ctex"]
 
 [params]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=4 uid="uid://b5blwio4dw1c8"]
 
-[ext_resource type="Texture2D" uid="uid://cmjcl3u2l6t13" path="res://World/House/Art/Map LVL 1.png" id="1_kdubu"]
-[ext_resource type="Texture2D" uid="uid://cq5iakecva0qv" path="res://World/House/Art/Map LVL 2.png" id="2_d21ai"]
-[ext_resource type="Texture2D" uid="uid://dsx636wt2dvdy" path="res://World/House/Art/Map LVL 3.png" id="3_rj586"]
-[ext_resource type="Texture2D" uid="uid://djqar06c8nr0q" path="res://World/House/Art/Map LVL 4.png" id="4_4d7sh"]
-[ext_resource type="Texture2D" uid="uid://bgsks13lxwrox" path="res://World/House/Art/Map LVL 5.png" id="5_ir8iy"]
-[ext_resource type="Texture2D" uid="uid://ddkn60rr3bnnh" path="res://World/House/Art/Map LVL 6.png" id="6_hqns4"]
-[ext_resource type="Texture2D" uid="uid://bak3je71lqimb" path="res://World/House/Art/MAPElectrical.png" id="7_rj586"]
-[ext_resource type="Texture2D" uid="uid://b2s8m2ad3lnjr" path="res://World/House/Art/MAPFixed.png" id="8_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://cmjcl3u2l6t13" path="res://World/House/Art/Map_LVL_1.png" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://cq5iakecva0qv" path="res://World/House/Art/Map_LVL_2.png" id="2_d21ai"]
+[ext_resource type="Texture2D" uid="uid://dsx636wt2dvdy" path="res://World/House/Art/Map_LVL_3.png" id="3_rj586"]
+[ext_resource type="Texture2D" uid="uid://djqar06c8nr0q" path="res://World/House/Art/Map_LVL_4.png" id="4_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://bgsks13lxwrox" path="res://World/House/Art/Map_LVL_5.png" id="5_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://ddkn60rr3bnnh" path="res://World/House/Art/Map_LVL_6.png" id="6_hqns4"]
+[ext_resource type="Texture2D" uid="uid://bak3je71lqimb" path="res://World/House/Art/Map_Cabin_Interior_3.png" id="7_rj586"]
+[ext_resource type="Texture2D" uid="uid://b2s8m2ad3lnjr" path="res://World/House/Art/Map_Cabin_Interior_1.png" id="8_4d7sh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0ka3"]
 texture = ExtResource("1_kdubu")

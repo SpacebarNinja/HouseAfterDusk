@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djqar06c8nr0q"
-path="res://.godot/imported/Map LVL 4.png-de1f2d4754aec8780286b2198d0df2d6.ctex"
+uid="uid://ddkn60rr3bnnh"
+path="res://.godot/imported/Map_LVL_6.png-0905ca6d989160b80de920e317ddf284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/Map LVL 4.png"
-dest_files=["res://.godot/imported/Map LVL 4.png-de1f2d4754aec8780286b2198d0df2d6.ctex"]
+source_file="res://World/House/Art/Map_LVL_6.png"
+dest_files=["res://.godot/imported/Map_LVL_6.png-0905ca6d989160b80de920e317ddf284.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ufswde4vjh6u"
-path="res://.godot/imported/MAP_Flooring.png-ad6d2c28c76a857903c3b3af2cdb234b.ctex"
+uid="uid://00iuymxlwcv1"
+path="res://.godot/imported/Crops_Tilesheet.png-9f0b3b4afb95c5a5fda0c6d965e42959.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/MAP_Flooring.png"
-dest_files=["res://.godot/imported/MAP_Flooring.png-ad6d2c28c76a857903c3b3af2cdb234b.ctex"]
+source_file="res://World/House/Art/Crops_Tilesheet.png"
+dest_files=["res://.godot/imported/Crops_Tilesheet.png-9f0b3b4afb95c5a5fda0c6d965e42959.ctex"]
 
 [params]
 

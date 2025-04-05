@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ginhswjqeaai"
-path="res://.godot/imported/MAP1.png-c8607759cdbed6384d5a209c5b409b1c.ctex"
+uid="uid://bak3je71lqimb"
+path="res://.godot/imported/Map_Cabin_Interior_3.png-147c447f0703873b8d529a5a00595fa0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/House/Art/MAP1.png"
-dest_files=["res://.godot/imported/MAP1.png-c8607759cdbed6384d5a209c5b409b1c.ctex"]
+source_file="res://World/House/Art/Map_Cabin_Interior_3.png"
+dest_files=["res://.godot/imported/Map_Cabin_Interior_3.png-147c447f0703873b8d529a5a00595fa0.ctex"]
 
 [params]
 
