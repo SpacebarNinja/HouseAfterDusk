@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=3 uid="uid://boutdgluq4gbq"]
+[gd_scene load_steps=209 format=3 uid="uid://boutdgluq4gbq"]
 
 [ext_resource type="Script" uid="uid://87ilt1ooixit" path="res://Entities/Gene/Scripts/Gene.gd" id="1_dghqg"]
 [ext_resource type="Texture2D" uid="uid://i3pykgoanitu" path="res://Entities/Gene/Art/Gene_Hurt.png" id="2_775mw"]
@@ -10,14 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://ba62qmeng1u3k" path="res://Entities/Gene/Art/Gene_Holding_Glock.png" id="5_taegu"]
 [ext_resource type="Texture2D" uid="uid://dc1ncqlchf7t0" path="res://Systems/Inventory/Backpack/Items/Fish.png" id="6_ac21o"]
 [ext_resource type="Script" uid="uid://crt8fxmxnmrvb" path="res://Entities/Gene/Scripts/HandItem.gd" id="7_taegu"]
-[ext_resource type="AudioStream" uid="uid://drpyp0r6ywk2k" path="res://Entities/Enemies/WindowGirl/Audio/Walk_wood.mp3" id="10_hh1d6"]
+[ext_resource type="AudioStream" uid="uid://drpyp0r6ywk2k" path="res://Entities/General/Audio/Walk_wood.mp3" id="10_hh1d6"]
 [ext_resource type="Script" uid="uid://dcjvxkk4taqdl" path="res://Systems/SystemManagers/InteractionManager/InteractionDisplay.gd" id="10_jm0va"]
 [ext_resource type="Texture2D" uid="uid://bjeyopkhh1mjf" path="res://Assets/Icons/InteractInner.png" id="10_qlqfi"]
 [ext_resource type="Texture2D" uid="uid://b63mv2idn7heg" path="res://Assets/Icons/InteractTilesheet.png" id="11_nnoln"]
-[ext_resource type="AudioStream" uid="uid://fwghttekeajh" path="res://Entities/Enemies/WindowGirl/Audio/Walk_grass.mp3" id="11_v7brk"]
+[ext_resource type="AudioStream" uid="uid://fwghttekeajh" path="res://Entities/General/Audio/Walk_grass.mp3" id="11_v7brk"]
 [ext_resource type="AudioStream" uid="uid://b1lsplcl6ymej" path="res://Entities/Gene/Audio/Cigarette_Light.wav" id="12_w8lke"]
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="12_wtv2l"]
 [ext_resource type="AudioStream" uid="uid://tikfkxt8yo3j" path="res://Entities/Gene/Audio/Cigarette_Smoke.wav" id="13_icjiw"]
+[ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/House/Art/LightTexture.png" id="16_v7brk"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="26_w7ypw"]
 [ext_resource type="AudioStream" uid="uid://cwqpy14ox2ieg" path="res://Systems/Flashlight/Flashlight_On.wav" id="27_bpiyo"]
 [ext_resource type="AudioStream" uid="uid://tgv6uoqok60j" path="res://Systems/Flashlight/Flashlight_Off.wav" id="28_gk3e4"]
@@ -1836,12 +1837,17 @@ stream = ExtResource("27_bpiyo")
 [node name="Flashlight_Off" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("28_gk3e4")
 
-[node name="Move_Wood" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Move_wood" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_prupa")
 volume_db = 5.0
 bus = &"Footsteps"
 
-[node name="Move_Grass" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Move_grass" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_d3pl3")
+volume_db = 5.0
+bus = &"Footsteps"
+
+[node name="Move_tiles" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_d3pl3")
 volume_db = 5.0
 bus = &"Footsteps"
@@ -1854,13 +1860,27 @@ volume_db = 10.0
 stream = ExtResource("13_icjiw")
 volume_db = 10.0
 
+[node name="VisionCircle" type="PointLight2D" parent="."]
+energy = 0.2
+range_item_cull_mask = 5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 5
+texture = ExtResource("16_v7brk")
+texture_scale = 0.5
+
+[node name="VisionConeDebug" type="Sprite2D" parent="VisionCircle"]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_v7brk")
+
 [node name="VisionCone" type="PointLight2D" parent="."]
 scale = Vector2(1.3, 2.708)
 enabled = false
 energy = 0.6
+range_item_cull_mask = 5
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-shadow_item_cull_mask = 5
 texture = ExtResource("26_w7ypw")
 offset = Vector2(10, 0)
 

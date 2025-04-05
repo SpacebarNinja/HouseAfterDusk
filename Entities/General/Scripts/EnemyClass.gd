@@ -38,12 +38,14 @@ func _ready():
 	player_found_timer.timeout.connect(on_player_found_timeout)
 
 func handle_movement():
+	if not navigation_agent:
+		return
+	
 	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 	velocity = movement_speed * direction
 	move_and_slide()
 	
-	#print("Velocity:", velocity)
-	animation_sprite.flip_h = velocity.x < 0
+	animation_sprite.flip_h = velocity.length() < 0
 
 func handle_vision_cone():
 	for raycast in vision_cone.get_children():
@@ -62,9 +64,7 @@ func rotate_vision_cone(target_angle: float, speed: float):
 func toggle_vision(toggle: bool):
 	vision_cone.enabled = toggle
 	for raycast in vision_cone.get_children():
-		if not raycast is RayCast2D:
-			continue  # Skip non-raycast nodes
-		else:
+		if raycast is RayCast2D:
 			raycast.enabled = toggle
 
 func toggle_hitbox(toggle: bool):
@@ -82,8 +82,11 @@ func set_target_position(target_position: Vector2) -> void:
 		
 func take_damage(player_damage: int):
 	if player_damage > 0:
-		health = max(0, health - player_damage)  # Clamp to 0
+		health = max(0, health - player_damage)
 		print("Enemy Health: ", health)
+		
+		if health <= 0:
+			Death.emit()
 		
 func on_player_found_timeout():
 	PlayerLost.emit()

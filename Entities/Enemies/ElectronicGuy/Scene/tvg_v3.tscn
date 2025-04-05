@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://covd1ohlw8xpy" path="res://Entities/Enemies/ElectronicGuy/Art/TvG_Teleport.png" id="5_v84hm"]
 [ext_resource type="Texture2D" uid="uid://dnnyqd8ke15d5" path="res://Entities/Enemies/ElectronicGuy/Art/TV_Exit.png" id="6_54eqp"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="7_5rjdu"]
-[ext_resource type="Script" uid="uid://b3gga3h8gifn2" path="res://Entities/General/EnemyStatemachine.gd" id="8_lfdcd"]
+[ext_resource type="Script" uid="uid://b3gga3h8gifn2" path="res://Entities/General/Scripts/EnemyStatemachine.gd" id="8_lfdcd"]
 [ext_resource type="Script" uid="uid://dq4jitqt3nuwk" path="res://Entities/Enemies/ElectronicGuy/States/prowl.gd" id="9_p7gne"]
 [ext_resource type="Script" uid="uid://ci156g2pucehn" path="res://Entities/Enemies/ElectronicGuy/States/idle.gd" id="10_bkoxt"]
 [ext_resource type="Script" uid="uid://x8kjlwc2u1gr" path="res://Entities/Enemies/ElectronicGuy/States/glitch.gd" id="11_54eqp"]

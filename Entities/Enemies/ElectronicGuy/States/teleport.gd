@@ -15,7 +15,6 @@ func teleport():
 	teleport_duration = randf_range(enemy.teleport_min_hide_length, enemy.teleport_max_hide_length)
 	enemy.animation_tree.get("parameters/playback").travel("Teleport")
 	enemy.teleport_duration.start(teleport_duration)
-	print("PF: ", enemy.current_pathfinding, " Speed: ", enemy.movement_speed)
 
 	match enemy.current_pathfinding:
 		enemy.PATHFINDING.WANDER:

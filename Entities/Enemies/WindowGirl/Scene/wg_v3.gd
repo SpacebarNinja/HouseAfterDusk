@@ -11,7 +11,7 @@ var can_scream: bool = true
 func _ready():
 	super._ready()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	handle_vision_cone()
 	handle_movement()
 	
@@ -23,11 +23,14 @@ func _on_player_found() -> void:
 	player_seen = true
 	player_found_timer.start()
 	search_duration.wait_time += 10
+	
+	if can_scream:
+		statemachine.on_child_transition(statemachine.current_state, "scream")
 
 func _on_player_lost() -> void:
 	current_pathfinding = PATHFINDING.WANDER
 	player_seen = false
-	statemachine.on_child_transition(statemachine.current_state, "idle")
+	statemachine.on_child_transition(statemachine.current_state, "roam")
 	
 func _on_death():
 	statemachine.on_child_transition(statemachine.current_state, "death")

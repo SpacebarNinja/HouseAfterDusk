@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://biih7jfxwtfh2" path="res://Entities/Enemies/WindowGirl/Art/WG_Break_In_Side_Spritesheet.png" id="3_2ywuj"]
 [ext_resource type="Texture2D" uid="uid://6tkser7ej7oj" path="res://Entities/Enemies/WindowGirl/Art/WG_Break_In_Spritesheet.png" id="4_yd21i"]
 [ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="5_jkur3"]
-[ext_resource type="Script" uid="uid://b3gga3h8gifn2" path="res://Entities/General/EnemyStatemachine.gd" id="6_n3fac"]
-[ext_resource type="Script" uid="uid://b4ovchcltj1lk" path="res://Entities/Enemies/WindowGirl/States/idle.gd" id="7_bmry8"]
-[ext_resource type="Script" uid="uid://g60g50ir6iy6" path="res://Entities/Enemies/WindowGirl/States/sprint.gd" id="8_h03fr"]
+[ext_resource type="Script" uid="uid://b3gga3h8gifn2" path="res://Entities/General/Scripts/EnemyStatemachine.gd" id="6_n3fac"]
+[ext_resource type="Script" uid="uid://b4ovchcltj1lk" path="res://Entities/Enemies/WindowGirl/States/roam.gd" id="7_bmry8"]
 [ext_resource type="Script" uid="uid://bmx2qklejxrsg" path="res://Entities/Enemies/WindowGirl/States/attack.gd" id="9_13v3b"]
 [ext_resource type="Script" uid="uid://dcpu0dmndqrgb" path="res://Entities/Enemies/WindowGirl/States/break_in.gd" id="10_jl8vo"]
 [ext_resource type="Script" uid="uid://bm3y2dox2yxy8" path="res://Entities/Enemies/WindowGirl/States/scream.gd" id="11_hxvwb"]
@@ -15,6 +14,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5eup"]
 radius = 0.01
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fgo5v"]
+light_mode = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5386u"]
 atlas = ExtResource("2_gxcy6")
@@ -1319,7 +1321,7 @@ states/Sprint/node = SubResource("AnimationNodeAnimation_gxcy6")
 states/Sprint/position = Vector2(396, 296)
 states/Start/position = Vector2(103, 296)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3ys4a"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_xjfsh"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bssi2"), "Idle", "Scream", SubResource("AnimationNodeStateMachineTransition_hiqmh"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_e37ev"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_lmo3r"), "Scream", "Idle", SubResource("AnimationNodeStateMachineTransition_uiq3o"), "Idle", "BreakIn_Side", SubResource("AnimationNodeStateMachineTransition_v57cf"), "BreakIn_Side", "Idle", SubResource("AnimationNodeStateMachineTransition_0dm7e"), "Idle", "BreakIn_Top", SubResource("AnimationNodeStateMachineTransition_1qdgg"), "BreakIn_Top", "Idle", SubResource("AnimationNodeStateMachineTransition_lfrwh"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_2ywuj"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_yd21i"), "Sprint", "Attack", SubResource("AnimationNodeStateMachineTransition_jkur3")]
-graph_offset = Vector2(-135.728, 85.6305)
+graph_offset = Vector2(-135.728, 78.7745)
 
 [node name="wg_v3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine")]
 script = ExtResource("1_fgo5v")
@@ -1340,15 +1342,16 @@ position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_b5eup")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 4
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_fgo5v")
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_q4dgf")
 animation = &"Idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 1.0
 navigation_layers = 2
-radius = 20.0
+path_postprocessing = 1
 debug_enabled = true
 
 [node name="VisionCone" type="PointLight2D" parent="."]
@@ -1470,14 +1473,10 @@ one_shot = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_n3fac")
-initial_state = NodePath("idle")
+initial_state = NodePath("roam")
 
-[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="roam" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_bmry8")
-enemy = NodePath("../..")
-
-[node name="sprint" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("8_h03fr")
 enemy = NodePath("../..")
 
 [node name="attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]

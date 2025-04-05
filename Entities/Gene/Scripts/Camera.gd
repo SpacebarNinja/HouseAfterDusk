@@ -34,9 +34,6 @@ func _ready():
 	camera_anchor = player.global_position
 	target_zoom = zoom
 
-func apply_shake():
-	shake_strength = randomStrength
-
 func _process(delta):
 	
 	var rooms_instance = get_node_or_null("/root/MainScene/MapCabin/ROOMS")
@@ -66,7 +63,10 @@ func _process(delta):
 
 	RoundPosition()
 	HandleCraftingOffset(delta)
-
+	
+func apply_shake():
+	shake_strength = randomStrength
+	
 func RoundPosition():
 	var x = round(global_position.x * 10.0) / 10.0
 	var y = round(global_position.y * 10.0) / 10.0

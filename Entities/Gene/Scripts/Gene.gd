@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var camera: Camera2D = $Camera2D
+@onready var game_scene = get_tree().get_first_node_in_group("GameScene")
 @onready var main_hud = get_tree().get_first_node_in_group("MainHud")
 @onready var canvas_hud = get_tree().get_first_node_in_group("CanvasHud")
 @onready var journal_instance = get_tree().get_first_node_in_group("Journal")
@@ -27,6 +27,12 @@ const max_hunger = 55
 @onready var idle_timer: Timer = $Timers/IdleTimer
 @onready var vision_cone: PointLight2D = $VisionCone
 @onready var equipped_item = $EquippedItem
+@onready var camera: Camera2D = $Camera2D
+
+#------------{ Audio Nodes }------------
+@onready var move_wood: AudioStreamPlayer2D = $Audio/Move_Wood
+@onready var move_grass: AudioStreamPlayer2D = $Audio/Move_Grass
+@onready var move_tiles: AudioStreamPlayer2D = $Audio/Move_tiles
 
 var can_sprint: bool = true
 var can_spawn_particle: bool = true
@@ -83,7 +89,21 @@ func handle_movement_animation():
 	elif horizontal_input == 1:
 		animated_sprite.flip_h = false
 		equipped_item_visual.flip_h = false
+
+func handle_vision_cone():
+	if not journal_instance.is_open and HudManager.flashlight_movement:
+		var mouse_position = get_global_mouse_position()
+		vision_cone.look_at(mouse_position)
 		
+	for raycast in vision_cone.get_children():
+		if not raycast is RayCast2D:
+			continue  # Skip non-raycast nodes
+			
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider and collider.is_in_group("Enemy"):
+				print("Found enemy: ", collider)
+
 func spawn_particle():
 	if not can_spawn_particle:
 		return  # Prevent multiple spawns while on cooldown
@@ -140,28 +160,7 @@ func take_knockback(enemy_velocity: Vector2):
 	velocity = knockback_dir * knockback_power
 	move_and_slide()
 
-func replenish_health(healh_gain: int):
-	current_health = clampi(current_health + healh_gain, 0, max_health)
-
-func replenish_hunger(hunger_gain: int):
-	current_hunger = clampi(current_hunger + hunger_gain, 0, max_hunger)
-
-func handle_vision_cone():
-	if not journal_instance.is_open and HudManager.flashlight_movement:
-		var mouse_position = get_global_mouse_position()
-		vision_cone.look_at(mouse_position)
-		
-	for raycast in vision_cone.get_children():
-		if not raycast is RayCast2D:
-			continue  # Skip non-raycast nodes
-			
-		if raycast.is_colliding():
-			var collider = raycast.get_collider()
-			if collider and collider.is_in_group("Enemy"):
-				print("Found enemy: ", collider)
-					
 func toggle_flashlight():
-	
 	flashlight_on = not flashlight_on
 	vision_cone.enabled = flashlight_on
 
@@ -199,6 +198,12 @@ func death(type: String, enemy_name: String):
 	await get_tree().create_timer(0.8).timeout
 	canvas_hud.current_display("Death")
 	canvas_hud.set_death(type, enemy_name)
+	
+func replenish_health(healh_gain: int):
+	current_health = clampi(current_health + healh_gain, 0, max_health)
+
+func replenish_hunger(hunger_gain: int):
+	current_hunger = clampi(current_hunger + hunger_gain, 0, max_hunger)
 	
 func alternative_movement() -> bool:
 	var distance_to_mouse = global_position.distance_to(get_global_mouse_position())

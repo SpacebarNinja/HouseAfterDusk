@@ -64,24 +64,6 @@ func _process(delta):
 func update_time_display():
 	time_display.text = WorldManager.DayPart + "\n" + WorldManager.CurrentDate
 
-func _on_backpack_button_pressed():
-	if backpack.is_open:
-		backpack.close_backpack()
-	else:
-		backpack.open_backpack()
-	backpack.is_open = !backpack.is_open
-
-func _on_journal_button_pressed():
-	journal.open_journal_state = not journal.open_journal_state
-	if journal.open_journal_state:
-		HudManager.inventory_visible = false
-		HudManager.stats_visible = false
-		WorldManager.StopGeneMovement = true
-	else:
-		HudManager.inventory_visible = true
-		HudManager.stats_visible = true
-		WorldManager.StopGeneMovement = false
-
 func update_health_bar():
 	health_bar.value = lerp(float(health_bar.value), float(player.current_health), 0.1)
 	var health_percentage = player.current_health / health_bar.max_value
@@ -135,3 +117,14 @@ func reset_blood_overlay():
 
 func fade_blood_overlay():
 	blood_overlay.self_modulate.a = clamp(blood_overlay.self_modulate.a - 0.01, 0.0, 1.0)
+
+func _on_journal_button_pressed():
+	journal.open_journal_state = not journal.open_journal_state
+	if journal.open_journal_state:
+		HudManager.inventory_visible = false
+		HudManager.stats_visible = false
+		WorldManager.StopGeneMovement = true
+	else:
+		HudManager.inventory_visible = true
+		HudManager.stats_visible = true
+		WorldManager.StopGeneMovement = false

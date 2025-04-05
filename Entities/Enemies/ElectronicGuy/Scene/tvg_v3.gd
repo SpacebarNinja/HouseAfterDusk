@@ -25,7 +25,7 @@ func _ready():
 	tv_node = game_scene.current_map.get_tv_node()
 	tv_node.turn_on()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	handle_vision_cone()
 	handle_movement()
 	
