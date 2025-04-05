@@ -3,6 +3,7 @@ extends EnemyState
 var random_idle_angle: float
 
 func enter():
+	enemy.movement_timer.start()
 	enemy.animation_tree.get("parameters/playback").travel("Idle")
 	enemy.hitbox.connect("body_entered", Callable(self, "_on_hitbox_entered")) 
 	enemy.movement_timer.connect("timeout", Callable(self, "_on_movement_timer_timeout")) 

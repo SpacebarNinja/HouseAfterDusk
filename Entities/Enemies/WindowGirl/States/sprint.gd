@@ -6,7 +6,6 @@ func enter():
 	enemy.navigation_agent.connect("navigation_finished", Callable(self, "on_navigation_finished"))
 
 func exit():
-	enemy.movement_timer.start()
 	enemy.hitbox.disconnect("body_entered", Callable(self, "on_hitbox_entered"))
 	enemy.navigation_agent.disconnect("navigation_finished", Callable(self, "on_navigation_finished"))
 	

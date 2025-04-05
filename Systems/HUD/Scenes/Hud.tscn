@@ -777,7 +777,6 @@ texture = ExtResource("2_0ak6f")
 stretch_mode = 4
 
 [node name="MainHud" type="Control" parent="." groups=["MainHud"]]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1684,10 +1683,8 @@ script = ExtResource("48_w2ixv")
 
 [node name="ColorRect" type="ColorRect" parent="DeathHud"]
 layout_mode = 0
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 560.0
-offset_bottom = 616.0
+offset_right = 576.0
+offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="DeathHud"]
@@ -1699,6 +1696,8 @@ color = Color(0, 0, 0, 1)
 [node name="Vignette Effect" type="ColorRect" parent="DeathHud"]
 material = SubResource("ShaderMaterial_kvx2w")
 layout_mode = 0
+offset_left = 528.0
+offset_top = 272.0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -1710,8 +1709,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 580.0
-offset_bottom = 580.0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 596.0
+offset_bottom = 612.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(290, 290)

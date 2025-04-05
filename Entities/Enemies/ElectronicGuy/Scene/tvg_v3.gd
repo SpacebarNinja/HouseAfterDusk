@@ -36,6 +36,7 @@ func terminate() -> void:
 func _on_player_found() -> void:
 	current_pathfinding = PATHFINDING.CHASE
 	player_seen = true
+	player_found_timer.start()
 	search_duration.wait_time += 10
 
 func _on_player_lost() -> void:

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://chact4baxwqfo" path="res://Entities/Enemies/TheDolls/Scripts/Doll.tscn" id="4_uv65v"]
 [ext_resource type="PackedScene" uid="uid://btnne6ekpxmv4" path="res://Entities/Animals/Deer/Scripts/Deer.tscn" id="5_ikos8"]
 [ext_resource type="Script" uid="uid://dxpfesq4sf0sm" path="res://World/House/Scripts/Canvas_Modulate.gd" id="6_p6osx"]
-[ext_resource type="PackedScene" uid="uid://bicfulg8h4pxj" path="res://World/House/Scenes/map_cabin.tscn" id="7_2xe4u"]
+[ext_resource type="PackedScene" uid="uid://mfrembd8q6n0" path="res://World/House/Scenes/map_outside.tscn" id="10_ikos8"]
 
 [sub_resource type="Environment" id="Environment_0agw0"]
 background_mode = 3
@@ -54,6 +54,6 @@ script = ExtResource("6_p6osx")
 generator_off_darkness = 15
 generator_transition_time = 0.5
 
-[node name="MapCabin" parent="." instance=ExtResource("7_2xe4u")]
+[node name="MapOutside" parent="." instance=ExtResource("10_ikos8")]
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
