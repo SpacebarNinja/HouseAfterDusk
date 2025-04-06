@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://boutdgluq4gbq"]
+[gd_scene load_steps=214 format=3 uid="uid://boutdgluq4gbq"]
 
 [ext_resource type="Script" uid="uid://87ilt1ooixit" path="res://Entities/Gene/Scripts/Gene.gd" id="1_dghqg"]
 [ext_resource type="Texture2D" uid="uid://i3pykgoanitu" path="res://Entities/Gene/Art/Gene_Hurt.png" id="2_775mw"]
@@ -19,7 +19,8 @@
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="12_wtv2l"]
 [ext_resource type="AudioStream" uid="uid://tikfkxt8yo3j" path="res://Entities/Gene/Audio/Cigarette_Smoke.wav" id="13_icjiw"]
 [ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/House/Art/LightTexture.png" id="16_v7brk"]
-[ext_resource type="Texture2D" uid="uid://cvjw6ftcfhgaf" path="res://Systems/Flashlight/Cone_Lightv2.png" id="17_v7brk"]
+[ext_resource type="Texture2D" uid="uid://brbbw027revaf" path="res://Systems/Flashlight/test.png" id="17_v7brk"]
+[ext_resource type="Script" uid="uid://bof33c8otb54y" path="res://Entities/Gene/Scripts/Flashlight.gd" id="18_w8lke"]
 [ext_resource type="AudioStream" uid="uid://cwqpy14ox2ieg" path="res://Systems/Flashlight/Flashlight_On.wav" id="27_bpiyo"]
 [ext_resource type="AudioStream" uid="uid://tgv6uoqok60j" path="res://Systems/Flashlight/Flashlight_Off.wav" id="28_gk3e4"]
 
@@ -720,6 +721,144 @@ random_pitch = 1.4
 streams_count = 1
 stream_0/stream = ExtResource("11_v7brk")
 
+[sub_resource type="Animation" id="Animation_icjiw"]
+resource_name = "turn_on_flashlight"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.3, 0.366667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.1), Vector2(1, 0.1), Vector2(1, 0.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.366667, 0.466667, 0.5, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Audio/Flashlight_On:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_prupa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Audio/Flashlight_On:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Audio/Flashlight_Off:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d3pl3"]
+resource_name = "turn_off_flashlight"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Audio/Flashlight_Off:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei0pn"]
+_data = {
+&"RESET": SubResource("Animation_prupa"),
+&"turn_off_flashlight": SubResource("Animation_d3pl3"),
+&"turn_on_flashlight": SubResource("Animation_icjiw")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s1f2"]
 atlas = ExtResource("11_nnoln")
 region = Rect2(0, 0, 20, 20)
@@ -1126,26 +1265,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("..:can_take_damage")
+tracks/3/path = NodePath("../EquippedItemVisual:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../EquippedItemVisual:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_5wkmb"]
@@ -1482,50 +1621,50 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("..:can_take_damage")
+tracks/3/path = NodePath("../EquippedItemVisual:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(-2, 14)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../EquippedItemVisual:position")
+tracks/4/path = NodePath("../EquippedItemVisual:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-2, 14)]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../EquippedItemVisual:visible")
+tracks/5/path = NodePath("..:movement_speed")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [80]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("..:movement_speed")
+tracks/6/path = NodePath("../Hitbox:monitorable")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [80]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_v27xa"]
@@ -1820,7 +1959,6 @@ shape = SubResource("CircleShape2D_648xo")
 [node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 2
 collision_mask = 8
-monitorable = false
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -1874,7 +2012,7 @@ visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_v7brk")
 
-[node name="VisionCone" type="PointLight2D" parent="."]
+[node name="Flashlight" type="PointLight2D" parent="."]
 enabled = false
 energy = 0.6
 range_item_cull_mask = 5
@@ -1882,85 +2020,129 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("17_v7brk")
 offset = Vector2(0, 2.5)
-texture_scale = 0.6
+script = ExtResource("18_w8lke")
 
-[node name="VisionConeDebug" type="Sprite2D" parent="VisionCone"]
+[node name="VisionConeDebug" type="Sprite2D" parent="Flashlight"]
 visible = false
-scale = Vector2(0.6, 0.6)
 texture = ExtResource("17_v7brk")
 offset = Vector2(0, 2.5)
 
-[node name="RayCast2D" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, 40)
+target_position = Vector2(118, -104)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D2" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D2" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, 30)
+target_position = Vector2(118, -88)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D3" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D3" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, 20)
+target_position = Vector2(118, -72)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D4" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D4" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, 10)
+target_position = Vector2(118, -56)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D5" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D5" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, -40)
+target_position = Vector2(118, -40)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D7" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D6" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, -30)
+target_position = Vector2(118, -24)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D8" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D7" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, -20)
+target_position = Vector2(118, -8)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D9" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D8" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, -10)
+target_position = Vector2(118, 8)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast2D6" type="RayCast2D" parent="VisionCone"]
+[node name="RayCast2D9" type="RayCast2D" parent="Flashlight"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
 position = Vector2(10, 0)
-target_position = Vector2(80, 0)
+target_position = Vector2(118, 24)
 collision_mask = 9
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="RayCast2D10" type="RayCast2D" parent="Flashlight"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+position = Vector2(10, 0)
+target_position = Vector2(118, 40)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D11" type="RayCast2D" parent="Flashlight"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+position = Vector2(10, 0)
+target_position = Vector2(118, 56)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D12" type="RayCast2D" parent="Flashlight"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+position = Vector2(10, 0)
+target_position = Vector2(118, 72)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D13" type="RayCast2D" parent="Flashlight"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+position = Vector2(10, 0)
+target_position = Vector2(118, 88)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D14" type="RayCast2D" parent="Flashlight"]
+self_modulate = Color(0.531996, 0.650591, 0.936568, 1)
+position = Vector2(10, 0)
+target_position = Vector2(118, 104)
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flashlight"]
+libraries = {
+&"": SubResource("AnimationLibrary_ei0pn")
+}
 
 [node name="Timers" type="Node" parent="."]
 

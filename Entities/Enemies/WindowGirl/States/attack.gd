@@ -2,14 +2,15 @@ extends EnemyState
 
 func enter():
 	attack()
-	enemy.animation_player.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	
-func exit():
-	enemy.animation_player.disconnect("animation_finished", Callable(self, "_on_animation_finished"))
+	if enemy.can_scream:
+		enemy.can_scream = false
+		enemy.scream_cooldown.start()
 
 func attack():
 	enemy.animation_tree.get("parameters/playback").travel("Attack")
 	player.take_damage("WG", enemy.name, enemy.attack_damage, enemy.velocity)
-
-func _on_animation_finished():
+	
+	await get_tree().create_timer(0.3).timeout
+	
 	transition.emit(self, "roam")

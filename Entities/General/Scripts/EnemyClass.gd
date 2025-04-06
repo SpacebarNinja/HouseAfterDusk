@@ -34,33 +34,53 @@ signal PlayerLost
 signal Death
 
 var player_seen: bool = false
+var player_in_hitbox: bool = false
+var random_idle_angle: float
 
 func _ready():
-	player_found_timer.timeout.connect(on_player_found_timeout)
+	player_found_timer.timeout.connect(_on_player_found_timeout)
 
 func handle_movement():
 	if not navigation_agent:
 		return
 	
-	var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
-	velocity = movement_speed * direction
-	move_and_slide()
+	if not navigation_agent.is_navigation_finished():
+		var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
+		velocity = movement_speed * direction
+		move_and_slide()
+	else:
+		velocity = Vector2.ZERO
 	
-	animation_sprite.flip_h = velocity.length() < 0
-
-func handle_vision_cone():
+	animation_sprite.flip_h = velocity.x < 0
+	
+func handle_vision_cone_detection():
 	for raycast in vision_cone.get_children():
 		if not raycast is RayCast2D:
 			continue
-		 
+
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
 			if collider and collider.is_in_group("Player"):
 				PlayerFound.emit()
-				break  # Exit early once player is detected	
-				
-func rotate_vision_cone(target_angle: float, speed: float):
-	vision_cone.rotation = lerp_angle(vision_cone.rotation, target_angle, speed)
+				return  # Exit early once player is detected
+	
+func handle_vision_cone_rotation(delta):
+	if player_seen:
+		# Look at player
+		smooth_look_at(player.global_position, 5 * delta)
+	elif velocity == Vector2.ZERO:
+		# Idle: Look in a random direction
+		var direction = Vector2.RIGHT.rotated(random_idle_angle)
+		smooth_look_at(global_position + direction, delta)
+	else:
+		# Moving: Look in direction of movement
+		var direction = velocity.normalized()
+		smooth_look_at(global_position + direction, 5 * delta)
+
+func smooth_look_at(target_pos: Vector2, speed: float):
+	var target_angle = (target_pos - vision_cone.global_position).angle()
+	var new_rotation = lerp_angle(vision_cone.rotation, target_angle, speed)
+	vision_cone.rotation = new_rotation
 	
 func toggle_vision(toggle: bool):
 	vision_cone.enabled = toggle
@@ -89,5 +109,5 @@ func take_damage(player_damage: int):
 		if health <= 0:
 			Death.emit()
 		
-func on_player_found_timeout():
+func _on_player_found_timeout():
 	PlayerLost.emit()

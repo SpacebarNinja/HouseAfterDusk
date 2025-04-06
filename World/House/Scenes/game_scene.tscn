@@ -37,7 +37,6 @@ entity_list = Array[PackedScene]([ExtResource("2_ikos8"), ExtResource("3_ikos8")
 wait_time = 20.0
 
 [node name="Hud" parent="." instance=ExtResource("1_15343")]
-visible = false
 
 [node name="DebugMenu" parent="." instance=ExtResource("2_tinsn")]
 

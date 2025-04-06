@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5oy7pjn7jdxu" path="res://Systems/Journal/Art/Journal_Spritesheet.png" id="2_wnnw8"]
 [ext_resource type="Texture2D" uid="uid://bjhs2qpirkqjq" path="res://Systems/Journal/Art/Add.png" id="4_0cemy"]
 [ext_resource type="Script" uid="uid://bvh7ed5hgl3ir" path="res://Systems/Journal/Scripts/add_button.gd" id="4_vxenx"]
-[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Comicoro.ttf" id="5_aphu1"]
+[ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="5_aphu1"]
 [ext_resource type="AudioStream" uid="uid://cqxqoqepp4o2p" path="res://Systems/Journal/Audio/journal_flip.mp3" id="5_cllvo"]
 [ext_resource type="Script" uid="uid://c57fy2v11m158" path="res://Systems/Journal/Scripts/PageV2.gd" id="6_vf6fg"]
 [ext_resource type="AudioStream" uid="uid://nntpsebkboxi" path="res://Systems/Journal/Audio/journal_close.mp3" id="6_xgbdv"]

@@ -17,12 +17,11 @@ func _process(delta):
 	# Smoothly move towards the target
 	position = lerp(position, target_position, move_speed * delta)
 		
-	if HudManager.is_crafting:
+	if HudManager.is_interacting:
 		target_position = open_position
 	else:
 		target_position = closed_position
 
 func _input(event):
-	if HudManager.is_crafting and event.is_action_pressed("Escape"):
-		HudManager.is_crafting = false
+	if HudManager.is_interacting and event.is_action_pressed("Escape"):
 		WorldManager.StopGeneMovement = false

@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @onready var game_scene = get_tree().get_first_node_in_group("GameScene")
 @onready var main_hud = get_tree().get_first_node_in_group("MainHud")
+@onready var camera = get_tree().get_first_node_in_group("MainCamera")
 @onready var canvas_hud = get_tree().get_first_node_in_group("CanvasHud")
-@onready var journal_instance = get_tree().get_first_node_in_group("Journal")
 @onready var backpack = get_tree().get_first_node_in_group("Backpack")
 @onready var StepParticleScene = preload("res://Systems/Particles/StepParticle.tscn")
 
@@ -15,7 +15,6 @@ const max_hunger = 55
 @export var current_health: int = 100
 @export var current_hunger: int = 55
 @export var knockback_power: int = 1000
-@export var can_take_damage: bool = true
 @export var ALTERNATIVE_MOVE_SPRINT_DISTANCE: int = 100
 
 #------------{ Gene Nodes }------------
@@ -23,11 +22,10 @@ const max_hunger = 55
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var equipped_item_visual: Sprite2D = $EquippedItemVisual
-@onready var hunger_timer: Timer = $Timers/HungerTimer
+@onready var hitbox: Area2D = $Hitbox
 @onready var idle_timer: Timer = $Timers/IdleTimer
-@onready var vision_cone: PointLight2D = $VisionCone
 @onready var equipped_item = $EquippedItem
-@onready var camera: Camera2D = $Camera2D
+@onready var flashlight: PointLight2D = $Flashlight
 
 #------------{ Audio Nodes }------------
 @onready var move_wood: AudioStreamPlayer2D = $Audio/Move_wood
@@ -36,7 +34,6 @@ const max_hunger = 55
 
 var can_sprint: bool = true
 var can_spawn_particle: bool = true
-var flashlight_on: bool = false
 var equipped_weapon: bool = false
 var current_weapon: String = ""
 var is_outside: bool = false
@@ -71,7 +68,7 @@ func _process(_delta):
 	move_and_slide()
 
 	if Input.is_action_just_pressed("ToggleFlashlight"):
-		toggle_flashlight()
+		flashlight.toggle_flashlight()
 
 func handle_movement_animation():
 	if velocity == Vector2.ZERO:
@@ -91,11 +88,7 @@ func handle_movement_animation():
 		equipped_item_visual.flip_h = false
 
 func handle_vision_cone():
-	if not journal_instance.is_open and HudManager.flashlight_movement:
-		var mouse_position = get_global_mouse_position()
-		vision_cone.look_at(mouse_position)
-		
-	for raycast in vision_cone.get_children():
+	for raycast in flashlight.get_children():
 		if not raycast is RayCast2D:
 			continue  # Skip non-raycast nodes
 			
@@ -144,26 +137,21 @@ func sprint():
 		spawn_particle()
 	
 func take_damage(type: String, enemy_name: String, enemy_damage: int, enemy_velocity: Vector2):
-	if can_take_damage:
-		current_health = clampi(current_health - enemy_damage, 0, max_health)
-		take_knockback(enemy_velocity)
-		main_hud.reset_blood_overlay()
-		camera.apply_shake()
-		camera.is_hit = true
-		animation_tree.get("parameters/playback").travel("Damaged")
-		
-		if current_health <= 0:
-			death(type, enemy_name)
+	current_health = clampi(current_health - enemy_damage, 0, max_health)
+	take_knockback(enemy_velocity)
+	main_hud.reset_blood_overlay()
+	camera.apply_shake()
+	camera.is_hit = true
+	animation_tree.get("parameters/playback").travel("Damaged")
+	
+	if current_health <= 0:
+		death(type, enemy_name)
 			
 func take_knockback(enemy_velocity: Vector2):
 	var knockback_dir = (global_position - enemy_velocity).normalized()
 	velocity = knockback_dir * knockback_power
 	move_and_slide()
-
-func toggle_flashlight():
-	flashlight_on = not flashlight_on
-	vision_cone.enabled = flashlight_on
-
+	
 func equip_weapon(weapon_check: bool, weapon_id: String):
 	# Load the weapon scene
 	var weapon_scene = load(str("res://Systems/Inventory/Weapons/", weapon_id, ".tscn"))
@@ -191,7 +179,8 @@ func death(type: String, enemy_name: String):
 	animation_tree.get("parameters/playback").travel("Death")
 	camera.target_zoom = Vector2(5.8, 5.8)
 	camera.offset = Vector2(-16, -8)
-	vision_cone.enabled = false
+	flashlight.turn_off_flashlight()
+	flashlight.can_toggle = false
 	HudManager.camera_movement = false
 	set_collision_layer_value(2, false)
 	

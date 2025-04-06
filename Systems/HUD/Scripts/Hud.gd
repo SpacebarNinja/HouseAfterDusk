@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var camera = get_tree().get_first_node_in_group("MainCamera")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var display_dict: Dictionary
@@ -21,9 +22,12 @@ func _ready():
 func _input(_event):
 	if Input.is_action_pressed("Escape") and not (current_hud == "QTE" or current_hud == "Death"):
 		#current_display("Main")
+		HudManager.is_interacting = false
 		HudManager.camera_movement = true
 		HudManager.flashlight_movement = true
 		player.movement_speed = 80
+		camera.set_position(Vector2(0,0))
+		current_display("Main")
 		
 func current_display(display):
 	for keys in display_dict.keys():
@@ -31,10 +35,8 @@ func current_display(display):
 		display_dict[display].show()
 	
 	current_hud = display
-	if current_hud == "Crafting":
-		display_dict["Crafting"].currently_crafting = (current_hud == "Crafting")
 		
-	elif current_hud == "Fishing":
+	if current_hud == "Fishing":
 		display_dict["Fishing"].chance_timer.start()
 		display_dict["Fishing"].duration_timer.start()
 		

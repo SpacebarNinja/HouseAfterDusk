@@ -20,12 +20,6 @@ func exit():
 	enemy.hitbox.disconnect("body_entered", Callable(self, "_on_hitbox_entered"))
 	enemy.movement_timer.disconnect("timeout", Callable(self, "_on_movement_timer_timeout")) 
 	enemy.glitch_timer.disconnect("timeout", Callable(self, "_on_glitch_timer_timeout"))
-	
-func physics_update(delta):
-	if enemy.player_seen:
-		enemy.rotate_vision_cone(enemy.vision_cone.get_angle_to(player.global_position), 5 * delta)
-	else:
-		enemy.rotate_vision_cone(random_idle_angle, delta)
 		
 func _on_hitbox_entered(body):
 	if body == player:

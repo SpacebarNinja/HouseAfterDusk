@@ -13,7 +13,7 @@ var flashlight_movement = true
 var camera_movement = true
 var interaction_enabled = true
 
-var is_crafting = false
+var is_interacting = false
 
 var is_dialoguing = false
 
@@ -23,3 +23,7 @@ func _ready():
 func _process(_delta):
 	var balloon = get_node_or_null("/root/MainScene/DialogueBox")
 	is_dialoguing = balloon != null
+	
+	if is_interacting:
+		camera_movement = false
+		flashlight_movement = false

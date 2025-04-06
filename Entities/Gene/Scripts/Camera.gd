@@ -18,10 +18,6 @@ var camera_anchor = Vector2.ZERO
 @export var max_lean_distance := 100.0
 @export var lean_speed: float = 8
 
-@export_category("Crafting")
-@export var craft_move_offset: float = 120.0
-@export var craft_move_speed: float = 5.0
-
 @export_category("Zoom Settings")
 @export var zoom_speed: float = 3.0   # How fast the zoom lerps
 @export var target_zoom: Vector2
@@ -62,7 +58,6 @@ func _process(delta):
 	zoom = zoom.lerp(target_zoom, zoom_speed * delta)
 
 	RoundPosition()
-	HandleCraftingOffset(delta)
 	
 func apply_shake():
 	shake_strength = randomStrength
@@ -93,10 +88,6 @@ func CameraLean():
 
 	var lean_cam_offset = Vector2(cam_offset.x / x_sensitivity, cam_offset.y / y_sensitivity)
 	global_position = global_position.lerp(target_position + lean_cam_offset, lean_speed * get_process_delta_time())
-
-func HandleCraftingOffset(delta):
-	var target_x = camera_anchor.x + (craft_move_offset if HudManager.is_crafting else 0.0)
-	global_position.x = lerp(global_position.x, target_x, craft_move_speed * delta)
 
 func randomcam_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))

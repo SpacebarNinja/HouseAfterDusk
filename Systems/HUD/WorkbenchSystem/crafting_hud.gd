@@ -10,12 +10,10 @@ var camera_anchor = Vector2.ZERO
 @onready var protoset = preload("res://Systems/Inventory/Others/Universal.tres")
 @onready var scroll_base = $Table/ScrollBase
 @onready var item_panel = $Table/ScrollBase/ItemPanel
-@onready var table = $Table
 @onready var scroll_container1 = $Table/ScrollBase/ScrollContainer1
 
 var tabs_dict: Dictionary
 var CURRENT_TAB = 0
-var currently_crafting: bool
 
 func _ready():
 	
@@ -34,11 +32,6 @@ func _ready():
 	load_everything()
 	
 func _process(delta):
-	if HudManager.is_crafting:
-		HudManager.camera_movement = false
-		HudManager.flashlight_movement = false
-		visible = true
-		
 	HandleTableOffset(delta)
 
 func load_everything():
@@ -139,5 +132,5 @@ func _on_item_selected(item: Dictionary):
 	#print(item, " selected")
 
 func HandleTableOffset(delta):
-	var target_x = (move_offset if HudManager.is_crafting else 0.0)
+	var target_x = (move_offset if HudManager.is_interacting else 0.0)
 	position.x = lerp(position.x, target_x, move_speed * delta)

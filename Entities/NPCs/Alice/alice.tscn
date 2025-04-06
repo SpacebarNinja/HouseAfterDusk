@@ -78,7 +78,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8x0h"]
-size = Vector2(62, 102)
+size = Vector2(55, 26)
 
 [node name="Alice" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -117,7 +117,7 @@ scale = Vector2(0.89, 0.89)
 texture = ExtResource("2_gnlrb")
 
 [node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
-position = Vector2(0, -23)
+position = Vector2(0, 28)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_xp28v")
@@ -125,6 +125,5 @@ sprite = NodePath("../AnimatedSprite2D")
 interactable_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_d8x0h")
 debug_color = Color(0.676505, 0.65607, 0.356049, 0.245)

@@ -109,10 +109,12 @@ func _process(delta):
 		if open_journal_state:
 			HudManager.inventory_visible = false
 			HudManager.stats_visible = false
+			HudManager.flashlight_movement = false
 			WorldManager.StopGeneMovement = true
 		else:
 			HudManager.inventory_visible = true
 			HudManager.stats_visible = true
+			HudManager.flashlight_movement = true
 			WorldManager.StopGeneMovement = false
 
 	if not is_animating:
@@ -126,7 +128,6 @@ func _process(delta):
 		var title_node = current_page.get_node("Title")
 		title_node.text = 'Entry #' + str(page_number) + ':'
 
-
 func start_open_journal_animation():
 	if not HudManager.journal_visible:
 		return
@@ -135,7 +136,6 @@ func start_open_journal_animation():
 	black_overlay.show()
 	journal_open_sfx.play()
 	self.show()
-	anim_sprite.speed_scale = 1
 	anim_sprite.play("OpenJournal")
 	anim_sprite.connect("animation_finished", Callable(self, "_on_anim_sprite_animation_finished_open"))
 	Input.set_custom_mouse_cursor(quill, Input.CURSOR_ARROW)
@@ -171,7 +171,6 @@ func start_close_journal_animation():
 		page.hide()
 	turn_left.hide()
 	turn_right.hide()
-	anim_sprite.speed_scale = 1.4
 	anim_sprite.play_backwards("OpenJournal")
 	anim_sprite.connect("animation_finished", Callable(self, "_on_anim_sprite_animation_finished_close"))
 

@@ -11,8 +11,9 @@ var can_scream: bool = true
 func _ready():
 	super._ready()
 
-func _physics_process(_delta: float) -> void:
-	handle_vision_cone()
+func _physics_process(delta: float) -> void:
+	handle_vision_cone_detection()
+	handle_vision_cone_rotation(delta)
 	handle_movement()
 	
 	if health <= 0:
@@ -29,6 +30,7 @@ func _on_player_found() -> void:
 
 func _on_player_lost() -> void:
 	current_pathfinding = PATHFINDING.WANDER
+	movement_speed = 75
 	player_seen = false
 	statemachine.on_child_transition(statemachine.current_state, "roam")
 	
@@ -40,3 +42,13 @@ func _on_search_duration_timeout() -> void:
 
 func _on_scream_cooldown_timeout() -> void:
 	can_scream = true
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area == player.hitbox:
+		player_in_hitbox = true
+		print("player in hitbox A")
+
+func _on_hitbox_area_exited(area: Area2D) -> void:
+	if area == player.hitbox:
+		player_in_hitbox = false
+		print("player out of hitbox A")
