@@ -19,7 +19,7 @@
 [ext_resource type="FontFile" uid="uid://ckc3jpk6yiff1" path="res://Assets/Fonts/Comicoro.ttf" id="12_wtv2l"]
 [ext_resource type="AudioStream" uid="uid://tikfkxt8yo3j" path="res://Entities/Gene/Audio/Cigarette_Smoke.wav" id="13_icjiw"]
 [ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/House/Art/LightTexture.png" id="16_v7brk"]
-[ext_resource type="Texture2D" uid="uid://do0tj02dopgje" path="res://Systems/Flashlight/Cone_Light.png" id="26_w7ypw"]
+[ext_resource type="Texture2D" uid="uid://cvjw6ftcfhgaf" path="res://Systems/Flashlight/Cone_Lightv2.png" id="17_v7brk"]
 [ext_resource type="AudioStream" uid="uid://cwqpy14ox2ieg" path="res://Systems/Flashlight/Flashlight_On.wav" id="27_bpiyo"]
 [ext_resource type="AudioStream" uid="uid://tgv6uoqok60j" path="res://Systems/Flashlight/Flashlight_Off.wav" id="28_gk3e4"]
 
@@ -1875,19 +1875,20 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_v7brk")
 
 [node name="VisionCone" type="PointLight2D" parent="."]
-scale = Vector2(1.3, 2.708)
 enabled = false
 energy = 0.6
 range_item_cull_mask = 5
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-texture = ExtResource("26_w7ypw")
-offset = Vector2(10, 0)
+texture = ExtResource("17_v7brk")
+offset = Vector2(0, 2.5)
+texture_scale = 0.6
 
 [node name="VisionConeDebug" type="Sprite2D" parent="VisionCone"]
 visible = false
-texture = ExtResource("26_w7ypw")
-offset = Vector2(7, 0)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("17_v7brk")
+offset = Vector2(0, 2.5)
 
 [node name="RayCast2D" type="RayCast2D" parent="VisionCone"]
 self_modulate = Color(0.531996, 0.650591, 0.936568, 1)

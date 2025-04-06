@@ -6,28 +6,35 @@ func enter():
 	enemy.movement_timer.start()
 	enemy.hitbox.connect("body_entered", Callable(self, "_on_hitbox_entered")) 
 	enemy.movement_timer.connect("timeout", Callable(self, "_on_movement_timer_timeout")) 
-	
+	enemy.navigation_agent.connect("navigation_finished", Callable(self, "_on_navigation_finished")) 
 	random_idle_angle = randf_range(-45, 45)
 
 func exit():
 	enemy.hitbox.disconnect("body_entered", Callable(self, "_on_hitbox_entered"))
-	enemy.movement_timer.disconnect("timeout", Callable(self, "_on_movement_timer_timeout")) 
+	enemy.movement_timer.disconnect("timeout", Callable(self, "_on_movement_timer_timeout"))
+	enemy.navigation_agent.disconnect("navigation_finished", Callable(self, "_on_navigation_finished"))  
 	
 func physics_update(delta):
-	if enemy.player_seen:
-		# Look at Player
-		enemy.rotate_vision_cone(enemy.vision_cone.get_angle_to(player.global_position), 5 * delta)
-	else:
-		if enemy.velocity == Vector2.ZERO:
-			# Look around
-			enemy.animation_tree.get("parameters/playback").travel("Idle")
-			enemy.rotate_vision_cone(random_idle_angle, delta)
-		else:
-			# Look at Path
-			enemy.animation_tree.get("parameters/playback").travel("Sprint")
-			enemy.rotate_vision_cone(enemy.velocity.angle(), 5 * delta)
-	print(enemy.velocity)
+	handle_animation()
+	handle_vision_cone(delta)
 
+func handle_animation():
+	if enemy.velocity == Vector2.ZERO:
+		enemy.animation_tree.get("parameters/playback").travel("Idle")
+	else:
+		enemy.animation_tree.get("parameters/playback").travel("Sprint")
+		
+func handle_vision_cone(delta):
+	if enemy.player_seen:
+		# Highest priority: Look at player
+		enemy.rotate_vision_cone(enemy.vision_cone.get_angle_to(player.global_position), 5 * delta)
+	elif enemy.velocity == Vector2.ZERO:
+		# Idle: rotate randomly
+		enemy.rotate_vision_cone(random_idle_angle, delta)
+	else:
+		# Moving: face direction
+		enemy.rotate_vision_cone(enemy.velocity.angle(), 5 * delta)
+		
 func handle_path_finding():
 	match enemy.current_pathfinding:
 		enemy.PATHFINDING.CHASE:
@@ -65,3 +72,6 @@ func _on_movement_timer_timeout() -> void:
 	elif enemy.current_pathfinding == enemy.PATHFINDING.CHASE:
 		enemy.movement_timer.wait_time = 0.2
 	handle_path_finding()
+
+func _on_navigation_finished():
+	enemy.velocity = Vector2.ZERO

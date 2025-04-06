@@ -38,3 +38,4 @@ func on_child_transition(state: EnemyState, new_state_name: String):
 	
 	new_state.enter()
 	current_state = new_state
+	print(current_state)

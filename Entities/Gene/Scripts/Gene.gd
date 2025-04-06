@@ -30,8 +30,8 @@ const max_hunger = 55
 @onready var camera: Camera2D = $Camera2D
 
 #------------{ Audio Nodes }------------
-@onready var move_wood: AudioStreamPlayer2D = $Audio/Move_Wood
-@onready var move_grass: AudioStreamPlayer2D = $Audio/Move_Grass
+@onready var move_wood: AudioStreamPlayer2D = $Audio/Move_wood
+@onready var move_grass: AudioStreamPlayer2D = $Audio/Move_grass
 @onready var move_tiles: AudioStreamPlayer2D = $Audio/Move_tiles
 
 var can_sprint: bool = true
@@ -244,6 +244,7 @@ func alternative_movement() -> bool:
 	else:
 		right_click_moving = false
 		return false
+		
 func _on_hunger_timer_timeout():
 	current_hunger = clampi(current_hunger - 1, 0, max_hunger)
 

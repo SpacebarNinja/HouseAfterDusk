@@ -21,6 +21,7 @@ enum PATHFINDING {WANDER, CHASE, ORIGIN, WINDOW}
 
 @export_category("General Enemy Nodes")
 @export var animation_sprite: AnimatedSprite2D
+@export var animation_player: AnimationPlayer
 @export var animation_tree: AnimationTree
 @export var player_found_timer: Timer
 @export var navigation_agent: NavigationAgent2D

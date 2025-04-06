@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://dtxhk8su5ri5h"]
+[gd_scene load_steps=153 format=3 uid="uid://dtxhk8su5ri5h"]
 
 [ext_resource type="Script" uid="uid://cbrfni5ax58yw" path="res://Entities/Enemies/WindowGirl/Scene/wg_v3.gd" id="1_fgo5v"]
 [ext_resource type="Texture2D" uid="uid://b2mgb1hip35k3" path="res://Entities/Enemies/WindowGirl/Art/WG_Spritesheet.png" id="2_gxcy6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bmx2qklejxrsg" path="res://Entities/Enemies/WindowGirl/States/attack.gd" id="9_13v3b"]
 [ext_resource type="Script" uid="uid://dcpu0dmndqrgb" path="res://Entities/Enemies/WindowGirl/States/break_in.gd" id="10_jl8vo"]
 [ext_resource type="Script" uid="uid://bm3y2dox2yxy8" path="res://Entities/Enemies/WindowGirl/States/scream.gd" id="11_hxvwb"]
+[ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/House/Art/LightTexture.png" id="12_2ywuj"]
 [ext_resource type="Script" uid="uid://bv0j4q6ow8iwf" path="res://Entities/Enemies/WindowGirl/States/death.gd" id="12_gxcy6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5eup"]
@@ -1269,7 +1270,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xjfsh"]
 priority = 2
-switch_mode = 1
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bssi2"]
 
@@ -1323,13 +1324,14 @@ states/Start/position = Vector2(103, 296)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3ys4a"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_xjfsh"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bssi2"), "Idle", "Scream", SubResource("AnimationNodeStateMachineTransition_hiqmh"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_e37ev"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_lmo3r"), "Scream", "Idle", SubResource("AnimationNodeStateMachineTransition_uiq3o"), "Idle", "BreakIn_Side", SubResource("AnimationNodeStateMachineTransition_v57cf"), "BreakIn_Side", "Idle", SubResource("AnimationNodeStateMachineTransition_0dm7e"), "Idle", "BreakIn_Top", SubResource("AnimationNodeStateMachineTransition_1qdgg"), "BreakIn_Top", "Idle", SubResource("AnimationNodeStateMachineTransition_lfrwh"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_2ywuj"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_yd21i"), "Sprint", "Attack", SubResource("AnimationNodeStateMachineTransition_jkur3")]
 graph_offset = Vector2(-135.728, 78.7745)
 
-[node name="wg_v3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine")]
+[node name="wg_v3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_player", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine")]
 script = ExtResource("1_fgo5v")
 movement_speed = 80
 attack_damage = 15
 spawn_location = "FOREST"
 wander_radius = 100.0
 animation_sprite = NodePath("AnimatedSprite2D")
+animation_player = NodePath("AnimationPlayer")
 animation_tree = NodePath("AnimationTree")
 player_found_timer = NodePath("PlayerFoundTimer")
 navigation_agent = NodePath("NavigationAgent2D")
@@ -1494,6 +1496,16 @@ enemy = NodePath("../..")
 [node name="death" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("12_gxcy6")
 enemy = NodePath("../..")
+
+[node name="debug" type="PointLight2D" parent="."]
+position = Vector2(0, 8)
+energy = 0.2
+range_item_cull_mask = 5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 5
+texture = ExtResource("12_2ywuj")
+texture_scale = 0.5
 
 [connection signal="Death" from="." to="." method="_on_death"]
 [connection signal="PlayerFound" from="." to="." method="_on_player_found"]
