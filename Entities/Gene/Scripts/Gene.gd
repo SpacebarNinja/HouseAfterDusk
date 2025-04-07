@@ -233,7 +233,10 @@ func alternative_movement() -> bool:
 	else:
 		right_click_moving = false
 		return false
-		
+
+func play_footstep_audio(audio_name: String):
+	audio_name = game_scene.current_map.get_floor_tile()
+
 func _on_hunger_timer_timeout():
 	current_hunger = clampi(current_hunger - 1, 0, max_hunger)
 
