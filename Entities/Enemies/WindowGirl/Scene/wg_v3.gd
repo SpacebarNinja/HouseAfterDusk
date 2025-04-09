@@ -6,6 +6,8 @@ extends EnemyClass
 @onready var window_check: Timer = $WindowCheck
 @onready var scream_cooldown: Timer = $ScreamCooldown
 
+var window
+var window_chance: int = 10
 var can_scream: bool = true
 
 func _ready():
@@ -36,7 +38,15 @@ func _on_player_lost() -> void:
 	
 func _on_death():
 	statemachine.on_child_transition(statemachine.current_state, "death")
-	
+
+func _on_window_check_timeout() -> void:
+	if randi_range(1, 100) > window_chance:
+		current_pathfinding = PATHFINDING.WINDOW
+		window = game_scene.current_map.get_closest_window(global_position)
+		window_chance = 10
+	else:
+		window_chance *= 1.5
+
 func _on_search_duration_timeout() -> void:
 	current_pathfinding = PATHFINDING.ORIGIN
 

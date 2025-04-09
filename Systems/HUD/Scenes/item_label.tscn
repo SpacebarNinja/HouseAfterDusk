@@ -18,14 +18,18 @@ variation_transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 spacing_glyph = 52
 spacing_top = 55
 
-[node name="ItemLabel" type="Node2D"]
+[node name="ItemLabel" type="Control"]
 z_index = 3
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_hfbnv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 733.0
 offset_bottom = 572.0
 scale = Vector2(0.0977526, 0.0977526)
+mouse_filter = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 show_behind_parent = true
@@ -38,11 +42,13 @@ patch_margin_bottom = 73
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LabelDescription" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5)
 theme_override_constants/outline_size = 64
 theme_override_constants/line_separation = 35
@@ -59,11 +65,13 @@ autowrap_mode = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LabelInfo" type="RichTextLabel" parent="MarginContainer/MarginContainer/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5)
 theme_override_constants/outline_size = 64
 theme_override_constants/line_separation = -75

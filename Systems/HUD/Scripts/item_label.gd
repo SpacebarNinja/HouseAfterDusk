@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var label_info = %LabelInfo
 @onready var label_description = %LabelDescription

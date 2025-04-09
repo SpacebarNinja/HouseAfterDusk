@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bmx2qklejxrsg" path="res://Entities/Enemies/WindowGirl/States/attack.gd" id="9_13v3b"]
 [ext_resource type="Script" uid="uid://dcpu0dmndqrgb" path="res://Entities/Enemies/WindowGirl/States/break_in.gd" id="10_jl8vo"]
 [ext_resource type="Script" uid="uid://bm3y2dox2yxy8" path="res://Entities/Enemies/WindowGirl/States/scream.gd" id="11_hxvwb"]
-[ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/House/Art/LightTexture.png" id="12_2ywuj"]
+[ext_resource type="Texture2D" uid="uid://du4s2nch5v3gk" path="res://World/Art/LightTexture.png" id="12_2ywuj"]
 [ext_resource type="Script" uid="uid://bv0j4q6ow8iwf" path="res://Entities/Enemies/WindowGirl/States/death.gd" id="12_gxcy6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5eup"]
@@ -1329,7 +1329,7 @@ states/Sprint/node = SubResource("AnimationNodeAnimation_gxcy6")
 states/Sprint/position = Vector2(396, 296)
 states/Start/position = Vector2(103, 296)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3ys4a"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_xjfsh"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bssi2"), "Idle", "Scream", SubResource("AnimationNodeStateMachineTransition_hiqmh"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_e37ev"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_lmo3r"), "Scream", "Idle", SubResource("AnimationNodeStateMachineTransition_uiq3o"), "Idle", "BreakIn_Side", SubResource("AnimationNodeStateMachineTransition_v57cf"), "BreakIn_Side", "Idle", SubResource("AnimationNodeStateMachineTransition_0dm7e"), "Idle", "BreakIn_Top", SubResource("AnimationNodeStateMachineTransition_1qdgg"), "BreakIn_Top", "Idle", SubResource("AnimationNodeStateMachineTransition_lfrwh"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_2ywuj"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_yd21i"), "Sprint", "Attack", SubResource("AnimationNodeStateMachineTransition_jkur3")]
-graph_offset = Vector2(-135.728, 78.7745)
+graph_offset = Vector2(-1744, 10.7553)
 
 [node name="wg_v3" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite", "animation_player", "animation_tree", "player_found_timer", "navigation_agent", "vision_cone", "hitbox", "statemachine")]
 light_mask = 0
@@ -1566,5 +1566,6 @@ texture_scale = 0.5
 [connection signal="PlayerLost" from="." to="." method="_on_player_lost"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="timeout" from="WindowCheck" to="." method="_on_window_check_timeout"]
 [connection signal="timeout" from="ScreamCooldown" to="." method="_on_scream_cooldown_timeout"]
 [connection signal="timeout" from="SearchDuration" to="." method="_on_search_duration_timeout"]

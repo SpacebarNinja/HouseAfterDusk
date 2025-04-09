@@ -516,12 +516,14 @@ layout_mode = 0
 offset_top = 24.0
 offset_right = 368.0
 offset_bottom = 74.0
-mouse_filter = 1
 script = ExtResource("10_gerqt")
 
 [node name="ItemLabel" parent="InventoryWindow/InventoryPanel" instance=ExtResource("14_m2d0y")]
 z_index = 1
-position = Vector2(376, 88)
+offset_left = 376.0
+offset_top = 88.0
+offset_right = 376.0
+offset_bottom = 88.0
 
 [node name="Delay" type="Timer" parent="InventoryWindow/InventoryPanel"]
 wait_time = 0.1
@@ -558,14 +560,15 @@ selection_style = SubResource("StyleBoxFlat_63kor")
 
 [node name="GearPanel" type="Panel" parent="InventoryWindow/InventoryPanel"]
 layout_mode = 0
-offset_top = 48.0
-offset_right = 368.0
-offset_bottom = 128.0
-mouse_filter = 1
+offset_left = 552.0
+offset_top = 256.0
+offset_right = 920.0
+offset_bottom = 408.0
+mouse_filter = 2
 
 [node name="Gear" type="Node" parent="InventoryWindow/InventoryPanel/GearPanel"]
 script = ExtResource("11_8rupj")
-size = Vector2i(5, 1)
+size = Vector2i(5, 2)
 item_protoset = ExtResource("16_lwjpa")
 
 [node name="_Node_42665" type="Node" parent="InventoryWindow/InventoryPanel/GearPanel/Gear"]
@@ -605,6 +608,14 @@ script = ExtResource("13_nnlmn")
 protoset = ExtResource("16_lwjpa")
 prototype_id = "bullet"
 
+[node name="_Node_34553" type="Node" parent="InventoryWindow/InventoryPanel/GearPanel/Gear"]
+script = ExtResource("13_nnlmn")
+protoset = ExtResource("16_lwjpa")
+prototype_id = "flashlight"
+properties = {
+"grid_position": Vector2i(0, 1)
+}
+
 [node name="GearGrid" type="Control" parent="InventoryWindow/InventoryPanel/GearPanel"]
 anchors_preset = 0
 offset_left = 8.0
@@ -621,12 +632,12 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="FoodPanel" type="Panel" parent="InventoryWindow/InventoryPanel"]
-visible = false
 layout_mode = 0
-offset_left = -376.0
-offset_top = 50.0
-offset_right = -8.0
-offset_bottom = 634.0
+offset_left = 936.0
+offset_top = 40.0
+offset_right = 1304.0
+offset_bottom = 624.0
+mouse_filter = 2
 
 [node name="Food" type="Node" parent="InventoryWindow/InventoryPanel/FoodPanel"]
 script = ExtResource("11_8rupj")
@@ -966,11 +977,12 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="ResourcePanel" type="Panel" parent="InventoryWindow/InventoryPanel"]
-visible = false
 layout_mode = 0
-offset_top = 338.4
-offset_right = 368.0
-offset_bottom = 634.4
+offset_left = 552.0
+offset_top = 472.0
+offset_right = 920.0
+offset_bottom = 768.0
+mouse_filter = 2
 
 [node name="Material" type="Node" parent="InventoryWindow/InventoryPanel/ResourcePanel"]
 script = ExtResource("11_8rupj")
@@ -1135,11 +1147,12 @@ field_selected_style = SubResource("StyleBoxTexture_x55jd")
 selection_style = SubResource("StyleBoxFlat_tjg7t")
 
 [node name="MiscellaneousPanel" type="Panel" parent="InventoryWindow/InventoryPanel"]
-visible = false
 layout_mode = 0
-offset_top = 154.4
-offset_right = 368.0
-offset_bottom = 306.4
+offset_left = 552.0
+offset_top = 40.0
+offset_right = 920.0
+offset_bottom = 192.0
+mouse_filter = 2
 
 [node name="Enemy" type="Node" parent="InventoryWindow/InventoryPanel/MiscellaneousPanel"]
 script = ExtResource("11_8rupj")

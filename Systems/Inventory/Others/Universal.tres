@@ -42,6 +42,15 @@ json_data = "[
         \"stack_size\": \"1\"
     },
     {
+        \"Description\": \"A flashlight\",
+        \"Name\": \"Flashlight\",
+        \"Type\": \"Tool\",
+        \"id\": \"flashlight\",
+        \"image\": \"res://Systems/Inventory/Backpack/Items/Flashlight.png\",
+        \"max_stack_size\": \"1\",
+        \"stack_size\": \"1\"
+    },
+    {
         \"Description\": \"A trap!!\",
         \"Name\": \"Trap\",
         \"Type\": \"Tool\",

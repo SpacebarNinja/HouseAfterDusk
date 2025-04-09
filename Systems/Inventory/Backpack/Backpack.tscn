@@ -157,7 +157,10 @@ text = "Inventory"
 horizontal_alignment = 1
 
 [node name="ItemLabel" parent="." instance=ExtResource("5_stp4t")]
-position = Vector2(65, 11)
+offset_left = 65.0
+offset_top = 11.0
+offset_right = 65.0
+offset_bottom = 11.0
 
 [node name="SelectAudio" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0dh13")

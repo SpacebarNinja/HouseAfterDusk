@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://3r15ojyqxyb2"]
 
-[ext_resource type="Script" uid="uid://ck7dfdrhemiao" path="res://World/House/Scripts/game_scene.gd" id="1_6tws1"]
+[ext_resource type="Script" uid="uid://ck7dfdrhemiao" path="res://World/Scripts/game_scene.gd" id="1_6tws1"]
 [ext_resource type="PackedScene" uid="uid://cs3euhsmepn8e" path="res://Systems/HUD/Scenes/Hud.tscn" id="1_15343"]
 [ext_resource type="PackedScene" uid="uid://dtxhk8su5ri5h" path="res://Entities/Enemies/WindowGirl/Scene/wg_v3.tscn" id="2_ikos8"]
 [ext_resource type="PackedScene" uid="uid://chyhpk7ouru8b" path="res://Dev Stuff/DebugMenu/DebugMenu.tscn" id="2_tinsn"]
@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dttxuntfdbxb2" path="res://Entities/Enemies/ElectronicGuy/Scene/tvg_v3.tscn" id="3_ikos8"]
 [ext_resource type="PackedScene" uid="uid://chact4baxwqfo" path="res://Entities/Enemies/TheDolls/Scripts/Doll.tscn" id="4_uv65v"]
 [ext_resource type="PackedScene" uid="uid://btnne6ekpxmv4" path="res://Entities/Animals/Deer/Scripts/Deer.tscn" id="5_ikos8"]
-[ext_resource type="Script" uid="uid://dxpfesq4sf0sm" path="res://World/House/Scripts/Canvas_Modulate.gd" id="6_p6osx"]
-[ext_resource type="PackedScene" uid="uid://mfrembd8q6n0" path="res://World/House/Scenes/map_outside.tscn" id="10_ikos8"]
+[ext_resource type="Script" uid="uid://dxpfesq4sf0sm" path="res://World/Scripts/Canvas_Modulate.gd" id="6_p6osx"]
+[ext_resource type="PackedScene" uid="uid://mfrembd8q6n0" path="res://World/Scenes/map_outside.tscn" id="10_ikos8"]
 
 [sub_resource type="Environment" id="Environment_0agw0"]
 background_mode = 3

@@ -29,6 +29,8 @@ func handle_path_finding():
 			wander()
 		enemy.PATHFINDING.ORIGIN:
 			retreat()
+		enemy.PATHFINDING.WINDOW:
+			approach_window()
 	enemy.movement_timer.start()
 	enemy.random_idle_angle = randf_range(-45, 45)
 	
@@ -49,9 +51,13 @@ func retreat():
 	enemy.set_target_position(enemy.origin_location)
 	print(enemy, " retreating")
 
+func approach_window():
+	enemy.set_target_position(enemy.window.global_position)
+	print(enemy, " approaching window")
+
 func _on_movement_timer_timeout() -> void:
-	if enemy.current_pathfinding == enemy.PATHFINDING.WANDER or enemy.current_pathfinding == enemy.PATHFINDING.ORIGIN:
-		enemy.movement_timer.wait_time = 3
-	elif enemy.current_pathfinding == enemy.PATHFINDING.CHASE:
+	if enemy.current_pathfinding == enemy.PATHFINDING.CHASE:
 		enemy.movement_timer.wait_time = 0.2
+	else: 
+		enemy.movement_timer.wait_time = 3
 	handle_path_finding()
